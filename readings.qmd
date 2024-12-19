@@ -1,0 +1,15 @@
+---
+title: "Readings"
+format: 
+  html:
+    listing: 
+      contents: readings
+      type: table
+      table-hover: true
+      fields: [date, title, description]
+      sort: "date asc"
+      date-format: "short"
+    link-external-newwindow: true
+---
+
+Links to weekly readings

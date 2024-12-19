@@ -1,0 +1,17 @@
+---
+title: "Week 7 Readings"
+linktitle: "Wk 7 Readings"
+description: "More practice with data wrangling"
+date: "2024-02-21"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+* Continue with Week 6 readings.

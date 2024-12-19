@@ -1,0 +1,27 @@
+---
+title: "Week 4 Readings"
+linktitle: "Wk 4 Readings"
+description: "`dplyr`: `mutate()`, `across()`, ggplot: faceting, scales"
+date: "2024-01-31"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Required
+
+
+- [Data Transformation (3.1-3.3)](https://r4ds.hadley.nz/data-transform) from R for Data Science
+- [ggplot2: Elegant Graphics for Data Analysis, Scales & Guides](https://ggplot2-book.org/scales-guides.html)
+- [R for Data Science: Factors](https://r4ds.hadley.nz/factors.html) - we will continue to work with factors in the next few classes with `forcats` examples like provided here.
+
+## Optional
+
+- [Tidyverse style guide](https://style.tidyverse.org/index.html)
+- [Advanced R: style guide](http://adv-r.had.co.nz/Style.html)
+- `across()`: This [column-wise operations vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/colwise.html) will be useful for the next couple classes.

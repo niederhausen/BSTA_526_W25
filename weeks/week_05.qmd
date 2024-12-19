@@ -1,0 +1,178 @@
+---
+title: "Week 5"
+description: "Data summarizing, reshaping, and wrangling with multiple tables"
+date: "2/7/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Post-class updates 
+
+Updates made on 2/9/24
+
+* HW 5: see the updated HW 5 assignment on OneDrive called `hw_05_b526_v2.qmd`
+* Midterm: due date extended to 2/25/24. 
+    * See the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.
+* Material covered in class on 2/7/24
+    * Part 5 Sections 1-4.4
+    * Solutions to Challenge 1 from section 4.3 of the Part 5 notes are in OneDrive (`Challenge_1_solutions_Part5.html`)
+
+## Topics
+
+-   **Practice** loading data and using `mutate()` and `separate()`
+-   **Practice** using `here()` to load data in a subfolder of the project
+-   **Learn** how to `summarize()` data with `group_by()` to summarize within categories
+-   **Learn** and **apply** `bind_rows()` to combine rows from two or more datasets
+-   **Learn** about the different kinds of joins and how they merge data
+-   **Apply** `inner_join()` and `left_join()` to join tables on columns
+-   **Utilize** `pivot_longer()` to make a *wide* dataset *long*
+
+
+
+## Announcements
+
+* Class materials for BSTA 526 will be provided in the shared OneDrive folder [BSTA_526_W24_class_materials_public](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF). 
+* For today's class, make sure to download to your computer the folder called `part_05`, and then open RStudio by double-clicking on the file called `part_05.Rproj`.
+
+
+## Class materials
+
+* [Readings](../readings/05-reading.qmd)
+* One Drive [part_05 Project folder](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF)
+
+## Post-class survey
+
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 5 due on 2/14. 
+    * *See the updated HW 5 assignment on OneDrive called `hw_05_b526_v2.qmd`*
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+# Muddiest points from Week 5
+
+* See Week 4 page for [Week 4 feedback](week_04.qmd#muddiest-points-from-week-4).
+
+
+
+## `case_when()` vs `ifelse()`
+
+_The difference between case_when and ifelse_
+
+* `ifelse()` is the base R version of tidyverse's `case_when()`
+* I prefer using `case_when()` since it's easier to follow the logic.
+* `case_when()` is especially useful when there are more than two logical conditions being used.
+
+
+
+The example below creates a binary variable for bill length (long vs not long) using both `case_when()` and `ifelse()` as a comparison.
+
+* Compare the crosstabs of the two variables!
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(janitor)
+library(palmerpenguins)
+
+summary(penguins)
+
+penguins <- penguins %>% 
+  mutate(
+    long_bill1 = case_when(
+      bill_length_mm >= 45 ~ "long",
+      bill_length_mm < 45 ~ "not long",
+    ),
+    long_bill2 = ifelse(bill_length_mm >= 45, "long", "not long")
+  )
+
+penguins %>% tabyl(long_bill1, long_bill2) %>% 
+  adorn_title()
+
+```
+
+Below is an example using `case_when()` to create a categorical variable with 3 groups:
+
+```{r}
+penguins <- penguins %>% 
+  mutate(
+    long_bill3 = case_when(
+      bill_length_mm >= 50 ~ "long",
+      bill_length_mm <= 40 ~ "short",
+      TRUE ~ "medium"
+    ))
+
+penguins %>% tabyl(long_bill3, long_bill1) %>% 
+  adorn_title()
+```
+
+* Creating a categorical variable with 3 groups can be done with `ifelse()`, but it's harder to follow the logic:
+
+```{r}
+penguins <- penguins %>% 
+  mutate(
+    long_bill4 = ifelse(
+      bill_length_mm >= 50, "long",
+      ifelse(bill_length_mm <= 40, "short", "medium")
+      ))
+
+penguins %>% tabyl(long_bill3, long_bill4) %>% 
+  adorn_title()
+```
+
+
+## `separate()`
+
+_Different ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it'll be most relevant to use._
+
+* Choosing the "best" way of using `separate()` is overwhelming at first. 
+* I recommend starting with the simplest use case with a string being specified in `sep = " "`:
+
+>`separate(data, col, into, sep = " ")`
+
+* Which of the various versions we showed to use depends on how the data being separated are structured. 
+* Most of the time I have a simple character, such as a space (`sep = " "`) or a comma (`sep = ","`) that I want to separate by.
+* If the data are structured in a more complex way, then one of the `stringr` package options might come in handy.
+
+
+
+## `here::here()`
+
+_TSV files, very neat... But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, "here: and also "here" Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial._
+
+* Great question! This is definitely not intuitive, which is why I wanted to demonstrate it in class. 
+* The key is that 
+    * when rendering a qmd file the current working directory is the folder the file is sitting in, 
+    * while when running code in a file within RStudio the working directory is the folder where the `.Rproj` file is located.  
+* This distinction is important when loading other files from our computer during our workflow, and why `here::here()` makes our workflow so much easier!
+
+
+##  what functions will only work within another function (generally)
+
+* I'm not aware of functions that only work standalone within other functions. For example, the `mean()` function works on its own, but can also be used within a `summarise()`.
+
+
+```{r}
+mean(penguins$bill_length_mm, na.rm = TRUE)
+
+penguins %>% summarise(
+  m = mean(bill_length_mm, na.rm = TRUE)
+)
+```
+
+* That being said, a function has a set of parameters to be specified that are specific to that function. 
+
+
+
+

@@ -1,0 +1,33 @@
+---
+title: "Week 5 Readings"
+linktitle: "Wk 5 Readings"
+description: "summarize() and group_by(), doing things with multiple tables (left_join() etc), reshaping data (i.e. pivot_longer())"
+date: "2024-02-07"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Required
+
+- [`group_by()` Data Transformation (3.5-3.6)](https://r4ds.hadley.nz/data-transform.html#groups) from R for Data Science (2e)
+    + The 1st edition's [Section 5.6 on Grouped summaries with `summarise()`](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) is more detailed (wordier) and worth looking at as well.
+    + The 1st edition also has [Section 5.7 on Grouped mutates (and filters)](https://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters) that I did not see in the 2nd edition. _Please let me know if you find this content in the 2nd edition!_
+- [Aggregating data with `summarize` and `map`](https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#aggregating-data-with-summarize-and-map) - we will cover `map()` and `rowwise()` later, but `summarize` and `mutate` with `across` are described here. You may want to re-visit this when we get to `purrr`.
+
+## Optional
+
+- This [column-wise operations vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/colwise.html) will be useful for the next couple classes.
+
+The following resources are optional reading, but quite helpful in your Quarto journey.
+
+- [Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
+- [Quarto Guide](https://quarto.org/docs/guide/)
+- [Quarto Reference](https://quarto.org/docs/reference/)
+- [Chapter 28: Quarto](https://r4ds.hadley.nz/quarto.html) from R for Data Science (2e)

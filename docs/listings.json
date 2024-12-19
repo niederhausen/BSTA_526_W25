@@ -1,0 +1,37 @@
+[
+  {
+    "listing": "/weeks.html",
+    "items": [
+      "/weeks/week_01.html",
+      "/weeks/week_02.html",
+      "/weeks/week_03.html",
+      "/weeks/week_04.html",
+      "/weeks/week_05.html",
+      "/weeks/week_06.html",
+      "/weeks/week_07.html",
+      "/weeks/week_08.html",
+      "/weeks/week_09.html",
+      "/weeks/week_10.html",
+      "/weeks/week_11.html"
+    ]
+  },
+  {
+    "listing": "/readings.html",
+    "items": [
+      "/readings/01-reading.html",
+      "/readings/02-reading.html",
+      "/readings/03-reading.html",
+      "/readings/04-reading.html",
+      "/readings/05-reading.html",
+      "/readings/06-reading.html",
+      "/readings/07-reading.html",
+      "/readings/08-reading.html",
+      "/readings/09-reading.html",
+      "/readings/10-reading.html"
+    ]
+  },
+  {
+    "listing": "/function_week.html",
+    "items": []
+  }
+]

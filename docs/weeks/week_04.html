@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-01-31">
+<meta name="description" content="mutate(), case_when(), more ggplot2">
+
+<title>BSTA 526 Winter 2024 - Week 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/IMG_6759_med.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">BSTA 526 Winter 2024</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings.html" rel="" target="">
+ <span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../weeks.html" rel="" target="">
+ <span class="menu-text">Weeks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readings</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Weeks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../function_week.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions of the Week</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#announcements" id="toc-announcements" class="nav-link" data-scroll-target="#announcements">Announcements</a></li>
+  <li><a href="#class-materials" id="toc-class-materials" class="nav-link" data-scroll-target="#class-materials">Class materials</a></li>
+  <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
+  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
+  <li><a href="#muddiest-points-from-week-4" id="toc-muddiest-points-from-week-4" class="nav-link" data-scroll-target="#muddiest-points-from-week-4">Muddiest points from Week 4</a>
+  <ul class="collapse">
+  <li><a href="#keyboard-shortcut-for-the-pipe-or" id="toc-keyboard-shortcut-for-the-pipe-or" class="nav-link" data-scroll-target="#keyboard-shortcut-for-the-pipe-or">Keyboard shortcut for the pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</a></li>
+  <li><a href="#the-difference-between-na-value-and-0" id="toc-the-difference-between-na-value-and-0" class="nav-link" data-scroll-target="#the-difference-between-na-value-and-0">The difference between NA value and 0</a>
+  <ul class="collapse">
+  <li><a href="#na-not-available" id="toc-na-not-available" class="nav-link" data-scroll-target="#na-not-available">NA (Not Available)</a></li>
+  </ul></li>
+  <li><a href="#across-and-its-usage" id="toc-across-and-its-usage" class="nav-link" data-scroll-target="#across-and-its-usage"><code>across()</code> and it’s usage</a>
+  <ul class="collapse">
+  <li><a href="#links-to-check-out" id="toc-links-to-check-out" class="nav-link" data-scroll-target="#links-to-check-out">Links to check out</a></li>
+  </ul></li>
+  <li><a href="#and-.x" id="toc-and-.x" class="nav-link" data-scroll-target="#and-.x"><code>~</code> and <code>.x</code></a>
+  <ul class="collapse">
+  <li><a href="#links-to-check-out-1" id="toc-links-to-check-out-1" class="nav-link" data-scroll-target="#links-to-check-out-1">Links to check out</a></li>
+  </ul></li>
+  <li><a href="#exceptions-where-we-have-seen-the-used" id="toc-exceptions-where-we-have-seen-the-used" class="nav-link" data-scroll-target="#exceptions-where-we-have-seen-the-used">Exceptions where we have seen the <code>~</code> used</a>
+  <ul class="collapse">
+  <li><a href="#case_when" id="toc-case_when" class="nav-link" data-scroll-target="#case_when"><code>case_when</code></a></li>
+  <li><a href="#facet_wrap" id="toc-facet_wrap" class="nav-link" data-scroll-target="#facet_wrap"><code>facet_wrap</code></a></li>
+  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid"><code>facet_grid</code></a></li>
+  </ul></li>
+  <li><a href="#case_when-vs.-if_else" id="toc-case_when-vs.-if_else" class="nav-link" data-scroll-target="#case_when-vs.-if_else"><code>case_when</code> vs.&nbsp;<code>if_else</code></a></li>
+  <li><a href="#the-difference-between-a-theme-and-and-a-palette." id="toc-the-difference-between-a-theme-and-and-a-palette." class="nav-link" data-scroll-target="#the-difference-between-a-theme-and-and-a-palette.">The difference between a theme and and a palette.</a></li>
+  <li><a href="#be-careful-what-you-pipe-to-and-from" id="toc-be-careful-what-you-pipe-to-and-from" class="nav-link" data-scroll-target="#be-careful-what-you-pipe-to-and-from">Be careful what you pipe to and from</a></li>
+  <li><a href="#other-muddy-points" id="toc-other-muddy-points" class="nav-link" data-scroll-target="#other-muddy-points">Other muddy points</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 4</h1>
+</div>
+
+<div>
+  <div class="description">
+    <code>mutate()</code>, <code>case_when()</code>, more <code>ggplot2</code>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 31, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 13, 2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<ul>
+<li><strong>Learn</strong> and apply <code>mutate()</code> to change the data type of a variable</li>
+<li><strong>Apply</strong> <code>mutate()</code> to calculate a new variable based on other variables in a <code>data.frame</code>.</li>
+<li><strong>Apply</strong> <code>case_when</code> in a <code>mutate()</code> statement to make a continuous variable categorical</li>
+<li><strong>Learn</strong> how to <code>mutate()</code> <code>across()</code> multiple columns at once.</li>
+<li><strong>Learn</strong> to facet and change scales/palettes of ggplots.</li>
+</ul>
+</section>
+<section id="announcements" class="level2">
+<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
+<ul>
+<li>Class materials for BSTA 526 will be provided in the shared OneDrive folder <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">BSTA_526_W24_class_materials_public</a>.</li>
+<li>For today’s class, make sure to download to your computer the folder called <code>part_04</code>, and then open RStudio by double-clicking on the file called <code>part_04.Rproj</code>.</li>
+<li>If you have not already done so, please join the <a href="https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA">BSTA 526 Slack channel</a> and introduce yourself by posting in the <code>#random</code> channel.</li>
+</ul>
+</section>
+<section id="class-materials" class="level2">
+<h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
+<ul>
+<li><a href="../readings/04-reading.qmd">Readings</a></li>
+<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_04 Project folder</a></li>
+</ul>
+</section>
+<section id="post-class-survey" class="level2">
+<h2 class="anchored" data-anchor-id="post-class-survey">Post-class survey</h2>
+<ul>
+<li>Please fill out the <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu">post-class survey</a> to provide feedback. Thank you!</li>
+</ul>
+</section>
+<section id="homework" class="level2">
+<h2 class="anchored" data-anchor-id="homework">Homework</h2>
+<ul>
+<li>See OneDrive folder for homework assignment.</li>
+<li>HW 4 due on 2/7.</li>
+</ul>
+</section>
+<section id="recording" class="level2">
+<h2 class="anchored" data-anchor-id="recording">Recording</h2>
+<ul>
+<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&amp;studentItemId=0&amp;backPath=&amp;bltiAppStores=false&amp;errorMessage=&amp;clearAttr=&amp;messageId=&amp;source=&amp;title=&amp;newTopLevel=false&amp;sendingPage=190949&amp;postedComment=false&amp;addBefore=&amp;itemId=5172228&amp;path=push&amp;topicId=&amp;addTool=-1&amp;recheck=&amp;id=&amp;forumId=">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
+</ul>
+</section>
+<section id="muddiest-points-from-week-4" class="level1">
+<h1>Muddiest points from Week 4</h1>
+<p>Feedback from post-class surveys</p>
+<ul>
+<li>See Week 3 page for <a href="../weeks/week_03.html#feedback-from-post-class-surveys">Week 3 feedback</a>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               readxl, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               janitor,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"smoke_complete.xlsx"</span>), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">sheet =</span> <span class="dv">1</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">na =</span> <span class="st">"NA"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                     </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr::glimpse(smoke_complete)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="keyboard-shortcut-for-the-pipe-or" class="level2">
+<h2 class="anchored" data-anchor-id="keyboard-shortcut-for-the-pipe-or">Keyboard shortcut for the pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</h2>
+<p>In office hours, someone didn’t know about this fact and wanted to make sure everyone knows about it.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important keyboard shortcut
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In RStudio the keyboard shortcut for the pipe operator <code>%&gt;%</code> (or native pipe <code>|&gt;</code>) is <code>Ctrl + Shift + M</code> (Windows) or <code>Cmd + Shift + M</code> (Mac).</p>
+<p>Note: <code>Ctrl + Shift + M</code> also works on a Mac.</p>
+</div>
+</div>
+</section>
+<section id="the-difference-between-na-value-and-0" class="level2">
+<h2 class="anchored" data-anchor-id="the-difference-between-na-value-and-0">The difference between NA value and 0</h2>
+<section id="na-not-available" class="level3">
+<h3 class="anchored" data-anchor-id="na-not-available">NA (Not Available)</h3>
+<ul>
+<li><code>NA</code> is a special value in R that represents missing or undefined data.</li>
+<li><code>0</code> is a numeric value representing the number zero. It is a valid and well-defined numerical value in R.</li>
+<li>It’s important to handle <code>NA</code> values appropriately in data analysis and to consider their impact on calculations, as operations involving <code>NA</code> may result in <code>NA</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">+</span> <span class="dv">5</span>  <span class="co"># The result is NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">+</span> <span class="dv">5</span>  <span class="co"># The results is 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)  <span class="co"># The result is NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the argument na.rm = TRUE, means to ignore the NAs</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># The results is 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="co"># The result is 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="across-and-its-usage" class="level2">
+<h2 class="anchored" data-anchor-id="across-and-its-usage"><code>across()</code> and it’s usage</h2>
+<p>The biggest advantage that across brings is the ability to perform the same data manipulation task to multiple columns.</p>
+<p>Below the values in three columns are all set to the mean value using the <code>mean()</code>. I had to write out the function and the variable names three times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">days_to_death =</span> <span class="fu">mean</span>(days_to_death, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">days_to_birth =</span> <span class="fu">mean</span>(days_to_birth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">days_to_last_follow_up =</span> <span class="fu">mean</span>(days_to_last_follow_up, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<p>The same thing is accomplished using <code>across()</code> but we only have to call the <code>mean()</code> function once.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<section id="links-to-check-out" class="level3">
+<h3 class="anchored" data-anchor-id="links-to-check-out">Links to check out</h3>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/across.html"><code>across()</code> vignette</a></li>
+<li><a href="https://willhipson.netlify.app/post/dplyr_across/dplyr_across/">Why I love dplyr’s across</a></li>
+</ul>
+</section>
+</section>
+<section id="and-.x" class="level2">
+<h2 class="anchored" data-anchor-id="and-.x"><code>~</code> and <code>.x</code></h2>
+<p>We’ve seen the <code>~</code> and <code>.x</code> used with <code>dplyr::across()</code>. We will see them again later when we get to the package <code>purrr</code>.</p>
+<p>In the tidyverse, <code>~</code> and <code>.x</code> are used to create what they call <em>lambda</em> functions which are part of the <code>purrr</code> syntax. We have not talked about functions yet, but <code>purrr</code> package and the <code>dplyr::across()</code> function allow you to specify functions to apply in a few different ways:</p>
+<ol type="1">
+<li><strong>A named function, e.g.&nbsp;<code>mean</code>.</strong></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Above, just using the function name, we are not able to provide the additional argument <code>na.rm = TRUE</code> to the <code>mean()</code> function, so the columns are now all <code>NA</code> values because there were missing (<code>NA</code>) values in those columns.</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>An anonymous function, e.g.&nbsp;<code>\(x) x + 1</code> or <code>function(x) x + 1</code>.</strong></li>
+</ol>
+<p>This has not been covered yet. R lets you specify your own functions and there are two basic ways to do it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> \(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<p>or</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now we are able to use the additional argument <code>na.rm = TRUE</code> and the columns are now the means of the valid values in those columns.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>A purrr-style lambda function, e.g.&nbsp;<code>~ mean(.x, na.rm = TRUE)</code></strong></li>
+</ol>
+<p>We use <code>~</code> to indicate that we are supplying a lambda function and we use <code>.x</code> as a placeholder for the argument within our lambda function to indicate where to use the variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<section id="links-to-check-out-1" class="level3">
+<h3 class="anchored" data-anchor-id="links-to-check-out-1">Links to check out</h3>
+<p>Some of these are <code>purrr</code> focused which we have not covered yet. Others use <code>dplyr::across()</code> withing the <code>dplyr::summarize()</code> function which we will be covering soon</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/68249625/meaning-of-tilde-and-dot-notation-in-dplyr">Meaning of tilde and dot notation in dplyr</a></li>
+<li><a href="https://stackoverflow.com/questions/70665707/what-is-the-meaning-of-and-inside-the-function-map">What is the meaning of ‘~’ and ‘.’ inside the function map?</a></li>
+<li><a href="https://dplyr.tidyverse.org/reference/across.html"><code>across()</code> vignette</a></li>
+<li><a href="https://willhipson.netlify.app/post/dplyr_across/dplyr_across/">Why I love dplyr’s across</a></li>
+</ul>
+</section>
+</section>
+<section id="exceptions-where-we-have-seen-the-used" class="level2">
+<h2 class="anchored" data-anchor-id="exceptions-where-we-have-seen-the-used">Exceptions where we have seen the <code>~</code> used</h2>
+<p>In class, we have seen three instances where the <code>~</code> is used that is not for a lambda function.</p>
+<section id="case_when" class="level3">
+<h3 class="anchored" data-anchor-id="case_when"><code>case_when</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"0-5"</span>, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"6+"</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category    n    percent
+                 0-5 1100 0.95486111
+                  6+   52 0.04513889</code></pre>
+</div>
+</div>
+</section>
+<section id="facet_wrap" class="level3">
+<h3 class="anchored" data-anchor-id="facet_wrap"><code>facet_wrap</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Per the <a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html"><code>facet_wrap</code> vignettte</a>:</p>
+<blockquote class="blockquote">
+<p>For compatibility with the classic interface, can also be a formula or character vector. Use either a one sided formula, <code>~a + b</code>, or a character vector, <code>c("a", "b")</code>.</p>
+</blockquote>
+<p>Here it is being used to specify a formula.</p>
+<p>Though per the vignette, the <code>vars()</code> function is preferred syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(ggplot2<span class="sc">::</span><span class="fu">vars</span>(disease))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="facet_grid" class="level3">
+<h3 class="anchored" data-anchor-id="facet_grid"><code>facet_grid</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(disease <span class="sc">~</span> vital_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Per the <a href="https://ggplot2.tidyverse.org/reference/facet_grid.html"><code>facet_grid</code> vignettte</a>:</p>
+<blockquote class="blockquote">
+<p>For compatibility with the classic interface, rows can also be a formula with the rows (of the tabular display) on the LHS and the columns (of the tabular display) on the RHS; the dot in the formula is used to indicate there should be no faceting on this dimension (either row or column).</p>
+</blockquote>
+<p>Again, it is being used to specify a formula.</p>
+<p>Though per the vignette, the <code>ggplot2::vars()</code> function with the arguments <code>rows</code> and <code>cols</code> seems to be preferred:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> ggplot2<span class="sc">::</span><span class="fu">vars</span>(disease), </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols =</span> ggplot2<span class="sc">::</span><span class="fu">vars</span>(vital_status))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note: <code>dplyr::vars()</code> and <code>dplyr::ggplot2()</code> are the same function in different packages and can be used interchangeably.</p>
+</section>
+</section>
+<section id="case_when-vs.-if_else" class="level2">
+<h2 class="anchored" data-anchor-id="case_when-vs.-if_else"><code>case_when</code> vs.&nbsp;<code>if_else</code></h2>
+<p>In dplyr, both <code>if_else()</code> and <code>case_when()</code> are used for conditional transformations, but they have different use cases and behaviors.</p>
+<ol type="1">
+<li><code>if_else</code> function</li>
+</ol>
+<ul>
+<li><code>if_else()</code> is designed for simple vectorized conditions and is particularly useful when you have a <em>binary</em> condition (i.e., two possible outcomes).</li>
+<li>It evaluates a condition for each element of a vector and returns one of two values based on whether the condition is <code>TRUE</code> or <code>FALSE</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span>, <span class="st">"0-5"</span>, <span class="st">"6+"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category    n    percent
+                 0-5 1100 0.95486111
+                  6+   52 0.04513889</code></pre>
+</div>
+</div>
+<p>In this example, the column <code>cigarettes_category</code> is assigned the value “0-5” if <code>cigarettes_per_day</code> is less than 6 and “6+” otherwise.</p>
+<ol start="2" type="1">
+<li><code>case_when()</code> function</li>
+</ol>
+<ul>
+<li><code>case_when()</code> is more versatile and is suitable for handling multiple conditions with multiple possible outcomes. It is essentially a vectorized form of a <code>switch</code> or <code>if_else</code> chain.</li>
+<li>It allows you to specify multiple conditions and their corresponding values.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"0 to 2"</span>, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"2 to 4"</span>, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"4 to 6"</span>, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"6+"</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category   n    percent
+              0 to 2 455 0.39496528
+              2 to 4 493 0.42795139
+              4 to 6 152 0.13194444
+                  6+  52 0.04513889</code></pre>
+</div>
+</div>
+<p>In this example, the column <code>cigarettes_category</code> is assigned the value “0 to 2” if <code>cigarettes_per_day</code> is less than 2, “2 to 4” if less than 4 (but greater than 2), “4 to 6” if less than 6 (but greater than 4), and “6+” otherwise.</p>
+<p>Use <code>if_else()</code> when you have a simple binary condition, and use <code>case_when()</code> when you need to handle multiple conditions with different outcomes. <code>case_when()</code> is more flexible and expressive when dealing with complex conditional transformations.</p>
+</section>
+<section id="the-difference-between-a-theme-and-and-a-palette." class="level2">
+<h2 class="anchored" data-anchor-id="the-difference-between-a-theme-and-and-a-palette.">The difference between a theme and and a palette.</h2>
+<p>In <code>ggplot2</code>, a theme and a palette serve different purposes and are used in different contexts. In summary, a theme controls the overall appearance of the plot, while a palette is specifically related to the colors used to represent different groups or levels within the data. Both themes and palettes contribute to visual appeal and readability of your plot.</p>
+<ol type="1">
+<li><strong>Theme:</strong></li>
+</ol>
+<ul>
+<li>A theme in <code>ggplot2</code> refers to the overall visual appearance of the plot. It includes elements such as fonts, colors, grid lines, background, and other visual attributes that define the look and feel of the entire plot.</li>
+<li>Themes are set using functions like <code>theme_minimal()</code>, <code>theme_classic()</code>, or custom themes created with the <code>theme()</code> function. Themes control the global appearance of the plot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using theme_minimal()</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Palette:</strong></li>
+</ol>
+<ul>
+<li>A palette, on the other hand, refers to a set of colors used to represent different levels or categories in the data. It is particularly relevant when working with categorical or discrete data where you want to distinguish between different groups.</li>
+<li>Palettes are set using functions like <code>scale_fill_manual()</code> or <code>scale_color_manual()</code>. You can specify a vector of colors or use pre-defined palettes from packages like RColorBrewer or viridis (we looked at the viridis package in class).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using a color palette</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day, </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> disease)) <span class="sc">+</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"blue"</span>, </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="week_04_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="be-careful-what-you-pipe-to-and-from" class="level2">
+<h2 class="anchored" data-anchor-id="be-careful-what-you-pipe-to-and-from">Be careful what you pipe to and from</h2>
+<p>An error came up where a data frame was being piped to a function that did not accept a data frame as an argument (it accepted a vector)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars data frame was loaded earlier with the ggplot2 package</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span>  </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">n_distinct</span>(species) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in list2(...): object 'species' not found</code></pre>
+</div>
+</div>
+<ul>
+<li><code>starwars</code> is a data frame.</li>
+<li><code>dplyr::n_distinct()</code> only accepts a vector as an argument (check the help <code>?dplyr::n_distinct</code>)</li>
+</ul>
+<p>So we need to pipe a vector to the <code>dplyr::n_distinct()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">n_distinct</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38</code></pre>
+</div>
+</div>
+<p><code>dplyr::select()</code> accepts a data frame as its first argument and it return a vector (see the help <code>?dplyr::select</code>) which we can then pipe to <code>dplyr::n_distinct()</code>.</p>
+<p>The <code>%&gt;%</code> or <code>|&gt;</code> takes the output of the expression on its left and passes it as the first argument to the function on its right. The class / type of output on the left needs to agree or be acceptable as the first argument to the function on the right.</p>
+</section>
+<section id="other-muddy-points" class="level2">
+<h2 class="anchored" data-anchor-id="other-muddy-points">Other muddy points</h2>
+<ul>
+<li>Remembering applicable functions. Troubleshooting.</li>
+</ul>
+<blockquote class="blockquote">
+<p>This gets better with experience. You are all still very new to R so be patient with yourself.</p>
+</blockquote>
+<ul>
+<li>How to organize all of the material to understand the structure of how the R language works, rather than to keep track of all of the commands in an anecdotal way.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Again, I think that this gets better with experience. Though the R language, being open source, a lot of syntax is package dependent. So you need to be careful that some of the syntax we use with <code>dplyr</code> and the <code>tidyverse</code> will be different in base R or in other packages. This is something that comes with open source software (compared to Stata or SAS). The good news is that learning to use packages sets you up to better learn newer (to you) packages down the road.</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

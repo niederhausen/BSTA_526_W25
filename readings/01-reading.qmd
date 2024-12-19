@@ -1,0 +1,61 @@
+---
+title: "Week 1 Readings"
+linktitle: "Wk 1 Readings"
+description: "Introduction to R/RStudio/Vectors"
+date: "2024-01-10"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Required
+
+Remember, this reading is mostly supplemental and will help you if there are concepts that are unclear in class.
+
+- [R and RStudio Basics (Chapter 3)](https://ismayc.github.io/rbasics-book/3-rstudiobasics.html) - make sure to watch the videos.
+    * Skip the following sections in Chapter 3:
+        * 3.3.1, 3.3.3, 
+- [Intro to R & Rstudio, and Quarto](https://niederhausen.github.io/BSTA_511_F23/slides_md/Day01_bsta511_md.html) from Day 1 of BSTA 511/611 in Fall 2023 (taught by Meike Niederhausen)
+- [Vectors and Data Frames (Section 3.3)](https://datasciencebook.ca/wrangling.html#data-frames-vectors-and-lists)
+- [Workflow: scripts and projects](https://r4ds.hadley.nz/workflow-scripts.html)
+    * [Section 6.1: Scripts](https://r4ds.hadley.nz/workflow-scripts.html#scripts)
+    * [Section 6.2: Projects](https://r4ds.hadley.nz/workflow-scripts.html#projects)
+
+
+## Optional 
+
+### Markdown Basics
+
+* This is a short reference on how to do formatting in Markdown. This is optional, but may be a helpful reference as you continue on and work with Markdown and Quarto. 
+    * https://sph-r-programming-2023.netlify.app/reference/markdown.html
+    * Most of these topics are covered above in the Day 1 notes of BSTA 511/611.
+    * Skip the last two sections on Front matter and Citations, since these are different for Quarto.
+        * A [similar resource for Quarto](https://quarto.org/docs/authoring/markdown-basics.html) specifically
+        * [Quarto YAML for html](https://quarto.org/docs/reference/formats/html.html)
+        * [Quarto front matter](https://quarto.org/docs/authoring/front-matter.html)
+
+
+### Swirl Basics
+
+I'm going to highlight another resource for learning basic R concepts: `swirl`. This is a software package for R.
+
+To start it, run the following code in the console in RStudio Cloud:
+
+```{r}
+#| eval: false
+library(swirl)
+swirl()
+
+```
+
+You'll want to take a look at the `R Programming` course, especially the following sections:
+
+1. Basic Building Blocks
+3. Sequences of Numbers
+4. Vectors
+5. Missing values

@@ -1,0 +1,54 @@
+---
+title: "Week 11"
+description: "Final week"
+date: "03/20/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+* _No new material this week._ 
+    * Class will be office hours and held online via Webex. 
+    * See your email, Slack, or [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72?org.sakaiproject.portal.pluto.PORTLET_STATE=I1Nha2FpIFBvcnRsZXQgU3RhdGUKI1R1ZSBNYXIgMTkgMTk6MDA6MTkgUERUIDIwMjQKby5zLnAuci5zLldJTkRPV19TVEFURT1ub3JtYWwKby5zLnAuci5zLkFDVElPTj1mYWxzZQpvLnMucC5yLnMuUE9SVExFVF9NT0RFPXZpZXcKby5zLnAuci5zLklEPWYyYTE2NWFiLTFkOTQtNDRmYi1hMDQyLTJhMGMwMGE1YjcwNApvLnMucC5yLnMuU0VDVVJFPXRydWUK) for the link.  
+* Meike's office hours this week
+    * Thursday 4-5 pm (instead of Friday at 3:30). 
+    * Use same [Webex link](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) as usual office hours. 
+* __Final exam due Friday 3/22/2024 at 5:00 pm__.
+    * See OneDrive folder _final_exam_ for files. 
+* __Grades for midterm projects__ have been released. 
+    * Check the feedback attachment in Sakai (Excel file) for grade calculation and comments for each section.
+    * Points were calculated using the [grading rubric](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#grading-rubric) in the syllabus. The final grade is out of 10 points. See the [grading scale](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#grading-scale) for letter grade conversion.
+    * Please review the comments and let us know if you have any questions. 
+* _Please fill out the __course evaluations__ for the class._ 
+    * Course evaluations are very helpful for making improvements to our classes. 
+    * If too few students fill out the evaluations, they are not released to us.
+    * You might have two evaluations since there are two instructors. 
+
+
+## Topics
+
+* No new material will be covered this week.
+
+
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 10 due on 3/20. **Assignment is in the part 8 folder.**
+    * Recall that the [lowest HW score is dropped](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#homework)
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+## Muddiest points 
+
+* See Week 10 page for [Week 10 feedback](week_10.qmd#muddiest-points-from-week-10).

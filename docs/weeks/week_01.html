@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-01-10">
+<meta name="description" content="Intro to R/RStudio, Functions, Vectors, Data Types">
+
+<title>BSTA 526 Winter 2024 - Week 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/IMG_6759_med.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">BSTA 526 Winter 2024</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings.html" rel="" target="">
+ <span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../weeks.html" rel="" target="">
+ <span class="menu-text">Weeks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 1</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readings</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Weeks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../function_week.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions of the Week</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#announcements" id="toc-announcements" class="nav-link" data-scroll-target="#announcements">Announcements</a></li>
+  <li><a href="#class-materials" id="toc-class-materials" class="nav-link" data-scroll-target="#class-materials">Class materials</a></li>
+  <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
+  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
+  <li><a href="#muddiest-points" id="toc-muddiest-points" class="nav-link" data-scroll-target="#muddiest-points">Muddiest points</a>
+  <ul class="collapse">
+  <li><a href="#class-logistics" id="toc-class-logistics" class="nav-link" data-scroll-target="#class-logistics">Class logistics</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  </ul></li>
+  <li><a href="#clearest-points" id="toc-clearest-points" class="nav-link" data-scroll-target="#clearest-points">Clearest Points</a>
+  <ul class="collapse">
+  <li><a href="#class-logistics-1" id="toc-class-logistics-1" class="nav-link" data-scroll-target="#class-logistics-1">Class logistics</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding">Coding</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 1</h1>
+</div>
+
+<div>
+  <div class="description">
+    Intro to R/RStudio, Functions, Vectors, Data Types
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 10, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 13, 2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<ul>
+<li>Introduction to course/expectations (syllabus)</li>
+<li>Intro to R &amp; RStudio
+<ul>
+<li><a href="../resources/R info.pdf">Handout</a> with directions on installing R &amp; RStudio</li>
+</ul></li>
+<li>Introduction to Quarto</li>
+<li>Functions, Vectors, Data Types</li>
+</ul>
+</section>
+<section id="announcements" class="level2">
+<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
+<ul>
+<li>Class materials for BSTA 526 will be provided in the shared OneDrive folder <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">BSTA_526_W24_class_materials_public</a>.</li>
+<li>For today’s class, make sure to download to your computer the folder called <code>part_01</code>, and then open RStudio by double-clicking on the file called <code>part_01.Rproj</code>.</li>
+<li>Please join the <a href="https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA">BSTA 526 Slack channel</a> and introduce yourself by posting in the <code>#random</code> channel.</li>
+</ul>
+</section>
+<section id="class-materials" class="level2">
+<h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
+<ul>
+<li><a href="../readings/01-reading.qmd">Readings</a></li>
+<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/personal/niederha_ohsu_edu/_layouts/15/onedrive.aspx?ga=1&amp;id=%2Fpersonal%2Fniederha%5Fohsu%5Fedu%2FDocuments%2Fteaching%2FBSTA%20526%2FBSTA%5F526%5Fshared%2FBSTA%5F526%5FW24%5Fclass%5Fmaterials%5Fpublic%2Fpart%5F01&amp;view=0">part_01 Project folder</a></li>
+</ul>
+</section>
+<section id="post-class-survey" class="level2">
+<h2 class="anchored" data-anchor-id="post-class-survey">Post-class survey</h2>
+<ul>
+<li>Please fill out the <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu">post-class survey</a> to provide feedback. Thank you!</li>
+</ul>
+</section>
+<section id="homework" class="level2">
+<h2 class="anchored" data-anchor-id="homework">Homework</h2>
+<ul>
+<li>See OneDrive folder for homework assignment.</li>
+<li>HW 1 due on 1/17.</li>
+</ul>
+</section>
+<section id="recording" class="level2">
+<h2 class="anchored" data-anchor-id="recording">Recording</h2>
+<ul>
+<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&amp;studentItemId=0&amp;backPath=&amp;bltiAppStores=false&amp;errorMessage=&amp;clearAttr=&amp;messageId=&amp;source=&amp;title=&amp;newTopLevel=false&amp;sendingPage=190949&amp;postedComment=false&amp;addBefore=&amp;itemId=5172228&amp;path=push&amp;topicId=&amp;addTool=-1&amp;recheck=&amp;id=&amp;forumId=">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
+</ul>
+</section>
+<section id="muddiest-points" class="level2">
+<h2 class="anchored" data-anchor-id="muddiest-points">Muddiest points</h2>
+<section id="class-logistics" class="level3">
+<h3 class="anchored" data-anchor-id="class-logistics">Class logistics</h3>
+<ul>
+<li>Will there be presentation slides in future classes, or is everything embedded into the quarto/html files for all lectures?
+<ul>
+<li><em>The material will primarily be in quarto/html files and not slides.</em></li>
+</ul></li>
+<li>Specifics of what topics will be covered exactly. * <em>I don’t have a list of all the specific functions we will be covering, but you are welcome to peruse the <a href="https://sph-r-programming-2023.netlify.app/">BSTA 504 webpage from Winter 2023</a> to get more details on topics we will be covering. We will be closely following the same class materials.</em></li>
+<li>Identifying which section of the code we were discussing during the lecture
+<ul>
+<li><em>Thanks for letting me know. I will try to be clearer in the future, and also jump around less. Please let me know in class if you’re not sure where we are at.</em></li>
+</ul></li>
+<li>The material covered towards the end of the class felt a bit difficult to keep up with. I wish we would have been told to read the materials from Week 1 (or at least skim them) ahead of Day 1, because I quickly lost track of the conversation when shortcuts were used super quickly, for example, or when we jumped from chunks of code to another topic without reflecting on them. I still had 70% of the material down and I wrote great notes during the discussion (which I later filled in with the script that was on the class website), but I think it the beginner/intermediate programming lingo that was used to explain ideas here confused me at times. Thus, I struggled to keep up with discussions around packages / best coding practices, especially when they were not mentioned directly on the script (where I could follow along!).
+<ul>
+<li><em>Thanks for the feedback. In future years, we will reach out to students before the term to let them know about the readings to prepare for class. Please let us know if there is lingo we are using that you are not familiar with. Learning R and coding is a whole new language!</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
+<ul>
+<li>I have trouble thinking through where things are automatically downloaded, saved, and running from. I can attend office hours for this!
+<ul>
+<li><em>Office hours are always a great idea. I do recommend paying close attention to where files are being saved when downloading and preferably specifying their location instead using the default location. Having organized files will make working on complex analyses much easier.</em></li>
+</ul></li>
+<li>How to read the course material in R. While it made sense in real time it may be difficult when going back over the material.
+<ul>
+<li><em>Getting used to reading code and navigating the rendered html files takes a while, and is a part of learning R. Figuring out how to take notes for yourself that works for you is also a learning curve. I recommend taking notes in the qmd files as we go through them in class. After class you can summarize and transfer key points to other file formats that you are more used to using. I personally have a folder in my Google drive filled with documents on different R programming topics. It started with one file, and then eventually expanded to multiple files on different topics in an attempt to organize my notes better. Whenever I learn something new (such as an R function or handy R package) that I want to keep for future reference, I add to them with links to relevant webpages and/or filenames and locations of where I used them.</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">Code</h3>
+<ul>
+<li>What does the pacman package do? I have it installed but I’m not sure what it is actually used for.
+<ul>
+<li><em>I didn’t go into <code>pacman</code> in Day 1. The <code>p_load()</code> function from the <code>pacman</code> package (usually run as <code>pacman::p_load()</code>) lets you load many packages at once without separately using the <code>library()</code> function for each individually.</em></li>
+<li><em>An added bonus is that by default it will install packages you don’t already have, unless you specify <code>install = FALSE</code>.</em></li>
+<li><em>Another option is to set <code>update = TRUE</code> so that it will automatically update packages. I do not use this option though since sometimes updating packages causes conflicts with other packages or older code.</em></li>
+<li><em>You can read more about the different options in the <a href="https://www.rdocumentation.org/packages/pacman/versions/0.5.1/topics/p_load">documentation</a>. This <a href="https://medium.com/r-tutorials/an-alternative-to-loading-packages-in-r-using-pacman-p-load-6037903a301a">Medium article</a> also has some tips on using <code>pacman</code>.</em></li>
+</ul></li>
+<li>The part on when to load in packages once they’ve already been loaded in - like for example would it be good to put that as a step in our homework 1 .qmd at the top? Or not necessary since they’re already loaded in to R Studio from the work we did in class yesterday? What would happen if we try to load them in and they were already loaded in, would the .qmd file not render and show an error?
+<ul>
+<li><em>I always load my packages at the very top of the .qmd files, usually in the first code chunk (with the setup label). If you still have a previous R session open, then yes you don’t need to load the packages again to run code within RStudio. However, when a file is rendered it starts with an empty workspace, which is why our qmd file must include code that loads the packages (either using <code>library()</code> or <code>pacman::p_load()</code>. We don’t have to load packages at the beginning of the file, just before we have code that depends on the packages being used.</em></li>
+</ul></li>
+<li>I didn’t understand the part where we talked about num, char, logical combinations (line 503).
+<ul>
+<li><em>The content of the objects <code>char_logical</code>, <code>num_char</code>, <code>num_logical</code>, and <code>tricky</code> were designed specifically to be confusing and thus make us aware of how R will decide to assign the data type when a vector is a mix of data types. Some key takeaways are below. Let me know if you sitll have questions about this.</em>
+<ul>
+<li><em>Numbers and logical/boolean (<code>TRUE</code>, <code>FALSE</code>) do not have double quotes around them, but character strings do. If you add double quotes to a number or logical, then R will treat it as a character string.</em></li>
+<li><em>If a vector is a mix of numbers and character strings, then the data type of the vector is character.</em></li>
+<li><em>If a vector is a mix of numbers and logical, then the data type of the vector is numeric and the logical value is converted to a numeric value (<code>TRUE</code>=1, <code>FALSE</code>=0).</em></li>
+<li><em>If a vector is a mix of character strings and logical, then the data type of the vector is character and the logical value is converted to a character string and no longer operates as a logical (i.e.&nbsp;no longer equal to 1 or 0).</em></li>
+</ul></li>
+</ul></li>
+<li>Lines 614-619, confused what the ratio means there. Could you go over the correct code (or options of the correct code) for challenge 5?
+<ul>
+<li><em>The code <code>1:4</code> or <code>6:9</code> creates sequences of integers starting with the first specified digit and ending at the last specified digit. For example, <code>1:4</code> is the vector with the digits 1 2 3 4. You can also create decreasing sequences by making the first number the bigger one. For example, <code>9:7</code> is the vector 9 8 7.</em></li>
+<li><em>Challenge 5:</em>
+<ul>
+<li><code>more_heights_complete &lt;- na.omit(more_heights)</code></li>
+<li><code>median(more_heights_complete)</code></li>
+<li><em>You could also get the median of <code>more_heights</code> without first removing the missing values with <code>median(more_heights, na.rm = TRUE)</code>.</em></li>
+</ul></li>
+</ul></li>
+<li>how to count the TRUE values in a logical vector
+<ul>
+<li><code>TRUE</code> is equal to 1 in R (and <code>FALSE</code> is equal to 0), and the function <code>sum()</code> adds up the values in a vector. Thus, <code>sum(TRUE, FALSE, TRUE)</code> is equal to 2. Similarly, <code>sum(TRUE, FALSE, 5)</code> is equal to 6.</li>
+<li>The way I used it in class though is by counting how many values in the vector <code>z</code> (which was 7 9 11 13) are equal to 9. To do that I used the code <code>sum(z == 9)</code>. Breaking that down, the code inside the parentheses <code>z == 9</code> is equal to <code>FALSE TRUE FALSE FALSE</code> since the <code>==</code> means “equals to” in R.</li>
+<li>You can read up more on boolean and logical operators at the <a href="https://www.r-bloggers.com/2021/09/r-booleans-comparison-and-logical-operators/">R-bloggers post</a>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="clearest-points" class="level2">
+<h2 class="anchored" data-anchor-id="clearest-points">Clearest Points</h2>
+<p><em>Thank you for the feedback!</em></p>
+<section id="class-logistics-1" class="level3">
+<h3 class="anchored" data-anchor-id="class-logistics-1">Class logistics</h3>
+<ul>
+<li>Syllabus/course structure</li>
+<li>The syllabus review.</li>
+<li>Overall expectations and course flow</li>
+<li>Introduction to the class (first half of the class); conversation around syllabus; and the Quarto introduction</li>
+</ul>
+</section>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<ul>
+<li>How to create and edit a Quarto document in RStudio.</li>
+<li>The differences between quarto and markdown</li>
+<li>rmarkdown is no more, quarto it is!</li>
+</ul>
+</section>
+<section id="coding" class="level3">
+<h3 class="anchored" data-anchor-id="coding">Coding</h3>
+<ul>
+<li>Having code missing and fixing it in front of the class was helpful in troubleshooting.</li>
+<li>Just running through all the commands was very clear and easy to follow</li>
+<li>Basic R set up for quarto and introduction to R objects, vectors, etc.</li>
+<li>Introduction, functions, and explanations was the clearest for me.</li>
+<li>Classification of the objects in logical, character, and numeric</li>
+<li>Not necessarily a point, but I really liked when we were encouraged to use the shortcut keys for various commands on R and other little things like switching code between console vs inline , I have used R before for a class briefly but I never knew all these ways by which I can save time and be efficient while writing a code.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

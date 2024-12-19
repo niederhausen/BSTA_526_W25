@@ -1,0 +1,308 @@
+---
+title: "Week 10"
+description: "Intro to stats, broom, more purrr"
+date: "03/13/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+* Grades for midterm projects will be released in 1-2 days. 
+    * You will be notified by Sakai via your OHSU email address when grades are released. 
+    * Please review the comments and let us know if you have any questions. 
+* _Please fill out the course evaluations for the class._ 
+    * Course evaluations are very helpful for making improvements to our classes. 
+    * If too few students fill out the evaluations, they are not released to us.
+    * You might have two evaluations since there are two instructors. 
+
+
+<!-- * Final exam will be posted soon.  -->
+
+
+### Reminder to fill out post-class surveys
+
+* This is a reminder that 5% of your grade is based on filling out [post-class surveys](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) as a way of telling us that you came to class and engaged with the material for that week.
+* You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.
+* __Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.__ We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted. 
+
+_See [syllabus section on Post-class surveys](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#post-class-surveys)_
+
+
+
+## Topics
+
+### Part 8
+
+* Introduce simple statistical modelling
+* Learn about the useful `broom` package
+* More iteration with `purrr`
+* Slitting up data for iteration
+* Other useful `purrr`
+
+## Class materials
+
+Readings are linked below, and we are using the part_08 material on One Drive.
+
+* [Week 10 Readings](../readings/10-reading.qmd)
+* OneDrive [part_08 Project folders](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF)
+
+
+## Post-class survey
+
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 10 due on 3/20. **Assignment is in the part 8 folder.**
+
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+## Muddiest points from Week 10
+
+* See Week 9 page for [Week 9 feedback](week_09.qmd#muddiest-points-from-week-9).
+
+## Confusion on details of `purrr::map()`
+
+`purrr::map()` applies a function to each element of a vector or list and returns a new list where each element is the result of applying that function to the corresponding element of the original vector or list.
+
+```{r}
+#| eval: false
+
+map(.x, .f, ..., .progress = FALSE)
+```
+
++ `.x` the vector or list that you operate on
++ `.f` the function you want to apply to each element of the input vector or list. This function can be a built-in R function, a user-defined function, or an anonymous function defined on the fly.
+
+### Simple example
+
+```{r}
+#| message: false
+library(tidyverse)
+
+# Example list
+numbers <- list(1, 2, 3, 4, 5)
+numbers
+
+# Using map to square each element of the list
+squared_numbers <- purrr::map(.x = numbers, 
+                              .f = ~ .x ^ 2)
+```
+
+In this example:
+- `numbers` is a list containing numbers from 1 to 5.
+- `~ .x ^ 2` is an anonymous function that squares its input.
+- `map()` applies this anonymous function to each element of the `numbers` list, resulting in a new list where each element is the square of the corresponding element in the original list.
+
+After executing this code, the `squared_numbers` variable will contain the squared values of the original list:
+
+```{r}
+squared_numbers
+```
+
+
+### Example with a list of data frames
+
+Suppose we have a list of data frames where each data frame represents the sales data for different products. We want to calculate the total sales for each product across all the data frames in the list.
+
+```{r}
+# Sample list of data frames
+sales_data <- list(
+  product1 = data.frame(month = 1:3, sales = c(100, 150, 200)),
+  product2 = data.frame(month = 1:3, sales = c(120, 180, 220)),
+  product3 = data.frame(month = 1:3, sales = c(90, 130, 170))
+)
+
+sales_data
+
+```
+
+Create a function `` and apply it to each slot in `sales_data` list:
+
+```{r}
+# Function to calculate total sales for each data frame
+calculate_total_sales <- function(df) {
+  total_sales <- sum(df$sales)
+  return(total_sales)
+}
+
+# Applying the function to each data frame in the list
+total_sales_per_product <- purrr::map(.x = sales_data, 
+                                      .f = calculate_total_sales)
+```
+
+In this example:
+- `sales_data` is a list containing three data frames, each representing the sales data for a different product.
+- `calculate_total_sales()` is a function that takes a data frame as input and calculates the total sales for that product.
+- `map()` applies the `calculate_total_sales()` function to each data frame in the `sales_data` list, resulting in a new list `total_sales_per_product`, where each element is the total sales for a specific product across all months.
+
+After executing this code, the `total_sales_per_product` variable will contain the total sales for each product:
+
+```{r}
+total_sales_per_product
+```
+
+
+So, `total_sales_per_product` is a named list where each element represents the total sales for a specific product across all the data frames in the original list.
+
+
+## `purrr::reduce()`
+
+### How does it compare to `purrr::map()`? 
+
+The big difference between map() and reduce() has to do with what it returns:
+
+> `map()` usually returns a list or data structure with the same number as its input; The goal of `reduce()` is to take a list of items and return a single object.
+
+See the [purrr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf).
+
+
+### Simple example
+
+```{r}
+# Example vector
+numbers <- c(1, 2, 3, 4, 5)
+numbers
+
+# Using reduce to calculate cumulative sum
+cumulative_sum <- purrr::reduce(.x = numbers, 
+                                .f = `+`)
+
+```
+
+In this example:
+- `numbers` is the vector we want to operate on.
+- The function `+` is used as the operation to perform at each step of reduction, which in this case is addition.
+- `reduce()` will start by adding the first two elements (1 and 2), then add the result to the third element (3), and so on, until all elements have been processed.
+
+After executing this code, the `cumulative_sum` variable will contain the cumulative sum of the numbers:
+
+```{r}
+cumulative_sum
+```
+
+The steps are as follows:
+
+```{r}
+
+(cum_numbers <- numbers[1])
+
+(cum_numbers <- cum_numbers + numbers[2])
+
+(cum_numbers <- cum_numbers + numbers[3])
+
+(cum_numbers <- cum_numbers + numbers[4])
+
+(cum_numbers <- cum_numbers + numbers[5])
+```
+
+
+### With data frames
+
+Using our sales data list from above
+
+```{r}
+sales_data
+```
+
+We can combined the data sets in the list with `reduce()` and `bind_rows()`
+
+```{r}
+# Using an anonymous function, note bind_rows takes 2 arguments.
+combined_sales_data <- purrr::reduce(.x = sales_data, 
+                                     .f = function(x, y) bind_rows(x, y))
+
+
+# Using a named function
+combined_sales_data <- purrr::reduce(.x = sales_data, 
+                                     .f = dplyr::bind_rows)
+```
+
+In this example:
+- We use an anonymous function within `reduce()` that takes two arguments `x` and `y`, representing the accumulated result and the next element in the list, respectively.
+- Inside the anonymous function, we use `bind_rows()` to combine the accumulated result `x` with the next element `y`, effectively stacking them on top of each other.
+- `reduce()` applies this anonymous function iteratively to the list of data frames, resulting in a single data frame `combined_sales_data` that contains the combined sales data for all products.
+
+```{r}
+combined_sales_data
+```
+
+Doing this in steps:
+
+```{r}
+
+(cum_sales_data <- dplyr::bind_rows(sales_data[[1]]))
+
+(cum_sales_data <- dplyr::bind_rows(cum_sales_data, 
+                                    sales_data[[2]]))
+
+(cum_sales_data <- dplyr::bind_rows(cum_sales_data, 
+                                    sales_data[[3]]))
+
+
+```
+
+
+### Examples of reduce
+
++ [Pretty involved example from Maelle Salmon, but good practice](https://masalmon.eu/2023/07/26/reduce/)
++ [Tidyverse reference with examples](https://purrr.tidyverse.org/reference/reduce.html)
++ [R for Data Science, First Edition](https://r4ds.had.co.nz/iteration.html?q=reduce#reduce-and-accumulate)
++ [Another exmple blog post](https://yjunechoe.github.io/posts/2020-12-13-collapse-repetitive-piping-with-reduce/)
+
+
+## List.files function
+
+the `list.files()` function is used to obtain a character vector of file names in a specified directory. Here's a breakdown of how it works and its common parameters:
+
+1. **Directory Path**: The primary argument of `list.files()` is the path to the directory you want to list files from. If not specified, it defaults to the current working directory.
+
+2. **Pattern Matching**: `pattern` is an optional argument that allows you to specify a pattern for file names. Only file names matching this pattern will be returned. This can be useful for filtering specific types of files.
+
+3. **Recursive Listing**: If `recursive = TRUE`, the function will list files recursively, i.e., it will include files from subdirectories as well. By default, `recursive` is set to `FALSE`.
+
+4. **File Type**: The `full.names` argument controls whether the returned file names should include the full path (if `TRUE`) or just the file names (if `FALSE`, the default).
+
+5. **Character Encoding**: You can specify the `encoding` argument to handle file names with non-ASCII characters. This argument is especially useful on Windows systems where file names may use a different character encoding.
+
+Here's a simple example demonstrating the basic usage of `list.files()`:
+
+```{r}
+# List files in the current directory
+files <- list.files()
+
+# Print the file names
+print(files)
+```
+
+This will print the names of all files in the current working directory.
+
+```{r}
+
+#| eval: false
+
+# List CSV files in a specific directory
+csv_files <- list.files(path = "path/to/directory", pattern = "\\.csv$")
+
+# Print the CSV file names
+print(csv_files)
+```
+
+This will print the names of all CSV files in the specified directory.
+
+Overall, `list.files()` is a handy function for obtaining file names within a directory, providing flexibility through various parameters for customization according to specific needs, such as filtering by pattern or handling file names with non-standard characters.
+
+**NOTE** You need to pay attention to your working directory and your relative file paths. See Week 2 or 3 (?) about `here` package and the discussion about files paths. Best to always use Rprojects and the `here` package.

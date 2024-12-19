@@ -1,0 +1,129 @@
+---
+title: "Week 1"
+description: "Intro to R/RStudio, Functions, Vectors, Data Types"
+date: "1/10/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+## Topics
+
+* Introduction to course/expectations (syllabus)
+* Intro to R & RStudio
+    * [Handout](../resources/R info.pdf) with directions on installing R & RStudio
+* Introduction to Quarto
+* Functions, Vectors, Data Types
+
+
+## Announcements
+
+* Class materials for BSTA 526 will be provided in the shared OneDrive folder [BSTA_526_W24_class_materials_public](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF). 
+* For today's class, make sure to download to your computer the folder called `part_01`, and then open RStudio by double-clicking on the file called `part_01.Rproj`.
+* Please join the [BSTA 526 Slack channel](https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA) and introduce yourself by posting in the `#random` channel.
+
+
+## Class materials
+
+* [Readings](../readings/01-reading.qmd)
+* One Drive [part_01 Project folder](https://ohsuitg-my.sharepoint.com/personal/niederha_ohsu_edu/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Fniederha%5Fohsu%5Fedu%2FDocuments%2Fteaching%2FBSTA%20526%2FBSTA%5F526%5Fshared%2FBSTA%5F526%5FW24%5Fclass%5Fmaterials%5Fpublic%2Fpart%5F01&view=0)
+
+## Post-class survey
+
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 1 due on 1/17.
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+## Muddiest points
+
+### Class logistics
+
+* Will there be presentation slides in future classes, or is everything embedded into the quarto/html files for all lectures?
+    * _The material will primarily be in quarto/html files and not slides._
+* Specifics of what topics will be covered exactly.     * _I don't have a list of all the specific functions we will be covering, but you are welcome to peruse the [BSTA 504 webpage from Winter 2023](https://sph-r-programming-2023.netlify.app/) to get more details on topics we will be covering. We will be closely following the same class materials._
+* Identifying which section of the code we were discussing during the lecture
+    * _Thanks for letting me know. I will try to be clearer in the future, and also jump around less. Please let me know in class if you're not sure where we are at._
+* The material covered towards the end of the class felt a bit difficult to keep up with. I wish we would have been told to read the materials from Week 1 (or at least skim them) ahead of Day 1, because I quickly lost track of the conversation when shortcuts were used super quickly, for example, or when we jumped from chunks of code to another topic without reflecting on them. I still had 70% of the material down and I wrote great notes during the discussion (which I later filled in with the script that was on the class website), but I think it the beginner/intermediate programming lingo that was used to explain ideas here confused me at times. Thus, I struggled to keep up with discussions around packages / best coding practices, especially when they were not mentioned directly on the script (where I could follow along!). 
+    * _Thanks for the feedback. In future years, we will reach out to students before the term to let them know about the readings to prepare for class. Please let us know if there is lingo we are using that you are not familiar with. Learning R and coding is a whole new language!_
+
+
+### RStudio
+
+* I have trouble thinking through where things are automatically downloaded, saved, and running from. I can attend office hours for this!
+    * _Office hours are always a great idea. I do recommend paying close attention to where files are being saved when downloading and preferably specifying their location instead using the default location. Having organized files will make working on complex analyses much easier._
+* How to read the course material in R. While it made sense in real time it may be difficult when going back over the material.
+    * _Getting used to reading code and navigating the rendered html files takes a while, and is a part of learning R. Figuring out how to take notes for yourself that works for you is also a learning curve. I recommend taking notes in the qmd files as we go through them in class. After class you can summarize and transfer key points to other file formats that you are more used to using. I personally have a folder in my Google drive filled with documents on different R programming topics. It started with one file, and then eventually expanded to multiple files on different topics in an attempt to organize my notes better. Whenever I learn something new (such as an R function or handy R package) that I want to keep for future reference, I add to them with links to relevant webpages and/or filenames and locations of where I used them._
+
+
+
+### Code
+
+* What does the pacman package do? I have it installed but I'm not sure what it is actually used for.
+    * _I didn't go into `pacman` in Day 1. The `p_load()` function from the `pacman` package (usually run as `pacman::p_load()`) lets you load many packages at once without separately using the `library()` function for each individually._ 
+    * _An added bonus is that by default it will install packages you don't already have, unless you specify `install = FALSE`._ 
+    * _Another option is to set `update = TRUE` so that it will automatically update packages. I do not use this option though since sometimes updating packages causes conflicts with other packages or older code._ 
+    * _You can read more about the different options in the [documentation](https://www.rdocumentation.org/packages/pacman/versions/0.5.1/topics/p_load). This [Medium article](https://medium.com/r-tutorials/an-alternative-to-loading-packages-in-r-using-pacman-p-load-6037903a301a) also has some tips on using `pacman`._
+* The part on when to load in packages once they've already been loaded in - like for example would it be good to put that as a step in our homework 1 .qmd at the top? Or not necessary since they're already loaded in to R Studio from the work we did in class yesterday? What would happen if we try to load them in and they were already loaded in, would the .qmd file not render and show an error?
+    * _I always load my packages at the very top of the .qmd files, usually in the first code chunk (with the setup label). If you still have a previous R session open, then yes you don't need to load the packages again to run code within RStudio. However, when a file is rendered it starts with an empty workspace, which is why our qmd file must include code that loads the packages (either using `library()` or `pacman::p_load()`. We don't have to load packages at the beginning of the file, just before we have code that depends on the packages being used._
+* I didn't understand the part where we talked about num, char, logical combinations (line 503).
+    * _The content of the objects `char_logical`, `num_char`, `num_logical`, and `tricky` were designed specifically to be confusing and thus make us aware of how R will decide to assign the data type when a vector is a mix of data types. Some key takeaways are below. Let me know if you sitll have questions about this._
+        * _Numbers and logical/boolean (`TRUE`, `FALSE`) do not have double quotes around them, but character strings do. If you add double quotes to a number or logical, then R will treat it as a character string._
+        * _If a vector is a mix of numbers and character strings, then the data type of the vector is character._
+        * _If a vector is a mix of numbers and logical, then the data type of the vector is numeric and the logical value is converted to a numeric value (`TRUE`=1, `FALSE`=0)._
+        * _If a vector is a mix of character strings and logical, then the data type of the vector is character and the logical value is converted to a character string and no longer operates as a logical (i.e. no longer equal to 1 or 0)._
+* Lines 614-619, confused what the ratio means there. Could you go over the correct code (or options of the correct code) for challenge 5?
+    * _The code `1:4` or `6:9` creates sequences of integers starting with the first specified digit and ending at the last specified digit. For example, `1:4` is the vector with the digits 1 2 3 4. You can also create decreasing sequences by making the first number the bigger one. For example, `9:7` is the vector 9 8 7._
+    * _Challenge 5:_
+        * `more_heights_complete <- na.omit(more_heights)`
+        * `median(more_heights_complete)`
+        * _You could also get the median of `more_heights` without first removing the missing values with `median(more_heights, na.rm = TRUE)`._
+* how to count the TRUE values in a logical vector
+    * `TRUE` is equal to 1 in R (and `FALSE` is equal to 0), and the function `sum()` adds up the values in a vector. Thus, `sum(TRUE, FALSE, TRUE)` is equal to 2. Similarly, `sum(TRUE, FALSE, 5)` is equal to 6. 
+    * The way I used it in class though is by counting how many values in the vector `z` (which was 7  9 11 13) are equal to 9. To do that I used the code `sum(z == 9)`. Breaking that down, the code inside the parentheses `z == 9` is equal to `FALSE TRUE FALSE FALSE` since the `==` means "equals to" in R.
+    * You can read up more on boolean and logical operators at the [R-bloggers post](https://www.r-bloggers.com/2021/09/r-booleans-comparison-and-logical-operators/). 
+
+
+
+## Clearest Points
+
+_Thank you for the feedback!_ 
+
+### Class logistics
+
+* Syllabus/course structure 
+* The syllabus review.
+* Overall expectations and course flow
+* Introduction to the class (first half of the class); conversation around syllabus; and the Quarto introduction
+
+### Quarto
+
+* How to create and edit a Quarto document in RStudio.
+* The differences between quarto and markdown
+* rmarkdown is no more, quarto it is!
+
+### Coding
+
+* Having code missing and fixing it in front of the class was helpful in troubleshooting.
+* Just running through all the commands was very clear and easy to follow
+* Basic R set up for quarto and introduction to R objects, vectors, etc.
+* Introduction, functions, and explanations was the clearest for me.
+* Classification of the objects in logical, character, and numeric
+* Not necessarily a point, but I really liked when we were encouraged to use the shortcut keys for various commands on R and other little things like switching code between console vs inline , I have used R before for a class briefly but I never knew all these ways by which I can save time and be efficient while writing a code.
+
+
+

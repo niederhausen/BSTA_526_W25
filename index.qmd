@@ -1,11 +1,93 @@
 ---
-title: "BSTA_526_W25"
+title: ""
+toc: false
+sidebar: true
+page-layout: full
+link-external-newwindow: true
 ---
 
-This is a Quarto website.
+::: {style="background-color: #78c2ad"}
+::: {style="color: #FFFFFF"}
+::: grid
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: g-col-4
 
-```{r}
-1 + 1
-```
+&nbsp;
+
+![](images/IMG_6759_med.png){fig-align="center" width="150"}
+
+:::
+
+::: g-col-8
+# Welcome to BSTA 526!
+
+### R Programming for Health Data Science
+
+Winter 2024
+
+OHSU-PSU School of Public Health
+
+Oregon Health & Science University
+
+:::
+
+:::
+:::
+:::
+
+::: grid
+
+::: g-col-3
+### Instructors
+
+{{< iconify fluent person-24-filled size=20px >}} Meike Niederhausen, PhD  
+{{< iconify tabler mail-filled size=20px >}} [niederha\@ohsu.edu](mailto:niederha@ohsu.edu)
+
+{{< iconify fluent person-24-filled size=20px >}} Emile Latour, MS  
+{{< iconify tabler mail-filled size=20px >}} [latour\@ohsu.edu](mailto:latour@ohsu.edu)
+:::
+
+::: g-col-3
+### Course details
+
+{{< iconify ci calendar-days size=20px >}} Wednesdays   
+{{< iconify icon-park-outline time size=20px >}} 3:15 pm - 6:05 pm  
+{{< iconify fa6-solid person-chalkboard size=20px >}} In-person
+
+See [schedule](schedule.qmd) for room information
+:::
+
+::: g-col-3
+### Office Hours
+
+* See [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) for Webex links to office hours.
+- Mondays 3:00-4:00 pm (Emile)
+- Tuesdays 7:30-8:30 pm (Tia)
+- Wednesdays 6:05-7:05 pm (Tia) - Contact Tia to set up in-person option in classroom for Wed office hour
+- Fridays 3:30-4:30 pm (Meike; starting Feb 9th)
+
+:::
+
+<!-- {{< iconify fa6-solid fluent-mdl2:join-online-meeting size=20px >}}  -->
+<!-- arcticons:webex -->
+
+
+::: g-col-3
+### Contacting us
+
+E-mail or Slack is the best way to get in contact with us. 
+
+We will try to respond to all course-related e-mails within 24 hours Monday-Friday.
+:::
+:::
+
+------------------------------------------------------------------------
+
+::: grid
+::: g-col-8
+:::
+
+::: g-col-4
+[{{< iconify icomoon-free github size=20px >}} View the source on GitHub](https://github.com/niederhausen/BSTA_526_W24)
+:::
+:::

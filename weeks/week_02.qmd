@@ -1,0 +1,79 @@
+---
+title: "Week 2"
+description: "Projects, data frames, reading in data, visualizing data with ggplot2"
+date: "1/17/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Pre-recorded videos
+
+* Links to __pre-recorded videos__ are posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=), in the table with the links to live class recordings. 
+* I split the class into 3 recrodings. See the table for details. 
+
+## Topics
+
+* Projects
+* Data frames
+* Tidy data
+* Reading in data
+* Getting to know a dataset
+* Visualizing data with ggplot2 (intro)
+
+
+## Announcements
+
+* Class materials for BSTA 526 will be provided in the shared OneDrive folder [BSTA_526_W24_class_materials_public](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF). 
+* For today's class, make sure to download to your computer the folder called `part_02`, and then open RStudio by double-clicking on the file called `part_02.Rproj`.
+* If you have not already done so, please join the [BSTA 526 Slack channel](https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA) and introduce yourself by posting in the `#random` channel.
+
+
+## Class materials
+
+* [Readings](../readings/02-reading.qmd)
+* One Drive [part_02 Project folder](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF)
+
+## Post-class survey
+
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 2 due on 1/29 (updated to Monday).
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+## Muddiest points
+
+* When discussing untidy data, the difference between long data and wide data was unclear.
+    * _We'll be discussing the difference between long and wide data in more detail later in the course when we convert a dataset between the two. For now, you can take a look at an [example I created for our BERD R workshops](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#27). The wide data in that example are not "tidy" since each cell contains two pieces of information: both the SBP and the visit number. In contrast, the long data have a separate column indicating which visit number the data in a given row are from._
+* for the "summary()" function, is there a way to summarize all but one variable in a dataset?
+    * _Yes! I sometimes restrict a dataset to a couple of variables for which I want to see the summary. I usually use the `select()` function for this, which we will be covering later in the course. For now, you can take a look at some [select() examples from the BERD R workshops](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#29) (see slides 29-32)._
+* Differences between a tibble and a data.frame
+    * _I'm not surprised to see this show up as a muddiest point! Depending on your level of experience with R, at this point in the class some of the differences are difficult to explain since we haven't done much coding yet. The [tibble vignette](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html) lists some of the differences though if you are interested. For our purposes, they are almost the same thing. When some differences come up later in the course, I will point them out._
+
+
+## Clearest Points
+
+_Thanks for the feedback!_
+
+* I enjoyed going through the code and viewing the functions. I haven't really used `skimr` before and that was nice to see.
+    * _I like using `skmir`, but have recently been using `get_summary_stats()` from the `rstatix` package when teaching. It is only for numeric variables though. See a [`get_summary_stats()` example from my BSTA 511 class](https://niederhausen.github.io/BSTA_511_F23/slides/Day03_bsta511.html#/get_summary_stats-from-rstatix-package)._
+* Loading data.
+* How to load data into R was clearest.
+    * _Good to know that loading data was clear. This part can be tricky sometimes!_
+* ggplot
+    * _Hopefully this will still be clear when we cover more advanced options in `ggplot`!_
+
+
+

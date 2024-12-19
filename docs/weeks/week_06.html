@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-02-14">
+<meta name="description" content="Start with your goal: more data wrangling">
+
+<title>BSTA 526 Winter 2024 - Week 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/IMG_6759_med.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">BSTA 526 Winter 2024</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../readings.html" rel="" target="">
+ <span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../weeks.html" rel="" target="">
+ <span class="menu-text">Weeks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 6</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readings</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Weeks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../function_week.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions of the Week</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#announcements" id="toc-announcements" class="nav-link active" data-scroll-target="#announcements">Announcements</a>
+  <ul class="collapse">
+  <li><a href="#reminder-to-fill-out-post-class-surveys" id="toc-reminder-to-fill-out-post-class-surveys" class="nav-link" data-scroll-target="#reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</a></li>
+  </ul></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a>
+  <ul class="collapse">
+  <li><a href="#finish-week-5" id="toc-finish-week-5" class="nav-link" data-scroll-target="#finish-week-5">Finish week 5</a></li>
+  <li><a href="#new-week-6-topics---did-not-get-to-part-6" id="toc-new-week-6-topics---did-not-get-to-part-6" class="nav-link" data-scroll-target="#new-week-6-topics---did-not-get-to-part-6">New Week 6 topics - <em>did not get to Part 6</em></a></li>
+  </ul></li>
+  <li><a href="#class-materials" id="toc-class-materials" class="nav-link" data-scroll-target="#class-materials">Class materials</a></li>
+  <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
+  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
+  <li><a href="#muddiest-points-from-week-6" id="toc-muddiest-points-from-week-6" class="nav-link" data-scroll-target="#muddiest-points-from-week-6">Muddiest points from Week 6</a>
+  <ul class="collapse">
+  <li><a href="#across" id="toc-across" class="nav-link" data-scroll-target="#across"><code>across()</code></a></li>
+  <li><a href="#case_when-vs-ifelse" id="toc-case_when-vs-ifelse" class="nav-link" data-scroll-target="#case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></a></li>
+  <li><a href="#factor-levels" id="toc-factor-levels" class="nav-link" data-scroll-target="#factor-levels">factor levels</a></li>
+  <li><a href="#pivoting-tables" id="toc-pivoting-tables" class="nav-link" data-scroll-target="#pivoting-tables">pivoting tables</a>
+  <ul class="collapse">
+  <li><a href="#how-pivot_longer-would-work-on-very-large-datasets-with-many-rowscolumns" id="toc-how-pivot_longer-would-work-on-very-large-datasets-with-many-rowscolumns" class="nav-link" data-scroll-target="#how-pivot_longer-would-work-on-very-large-datasets-with-many-rowscolumns">How pivot_longer() would work on very large datasets with many rows/columns</a></li>
+  <li><a href="#trying-to-visualize-the-joins-and-pivot-longerwider" id="toc-trying-to-visualize-the-joins-and-pivot-longerwider" class="nav-link" data-scroll-target="#trying-to-visualize-the-joins-and-pivot-longerwider">Trying to visualize the joins and pivot longer/wider</a></li>
+  <li><a href="#pivot_longer-makes-plotting-more-understandable-in-an-analysis-sense-which-situations-would-call-for-pivot_wider" id="toc-pivot_longer-makes-plotting-more-understandable-in-an-analysis-sense-which-situations-would-call-for-pivot_wider" class="nav-link" data-scroll-target="#pivot_longer-makes-plotting-more-understandable-in-an-analysis-sense-which-situations-would-call-for-pivot_wider">pivot_longer makes plotting more understandable in an analysis sense, which situations would call for pivot_wider?</a></li>
+  <li><a href="#how-to-use-arguments-of-pivot-longer." id="toc-how-to-use-arguments-of-pivot-longer." class="nav-link" data-scroll-target="#how-to-use-arguments-of-pivot-longer.">How to use arguments of pivot longer.</a></li>
+  </ul></li>
+  <li><a href="#gtgt" id="toc-gtgt" class="nav-link" data-scroll-target="#gtgt"><code>gt::gt()</code></a></li>
+  <li><a href="#herehere" id="toc-herehere" class="nav-link" data-scroll-target="#herehere"><code>here::here</code></a></li>
+  <li><a href="#clearest-points" id="toc-clearest-points" class="nav-link" data-scroll-target="#clearest-points">Clearest points</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 6</h1>
+</div>
+
+<div>
+  <div class="description">
+    Start with your goal: more data wrangling
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 14, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 28, 2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="announcements" class="level2">
+<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
+<ul>
+<li>HW 5: see the updated HW 5 assignment on OneDrive called <code>hw_05_b526_v2.qmd</code></li>
+<li>Midterm: due date extended to 2/25/24.
+<ul>
+<li>See the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.</li>
+</ul></li>
+</ul>
+<section id="reminder-to-fill-out-post-class-surveys" class="level3">
+<h3 class="anchored" data-anchor-id="reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</h3>
+<ul>
+<li>This is a reminder that 5% of your grade is based on filling out <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu">post-class surveys</a> as a way of telling us that you came to class and engaged with the material for that week.</li>
+<li>You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.</li>
+<li><strong>Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.</strong> We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.</li>
+</ul>
+<p><em>See <a href="https://niederhausen.github.io/BSTA_526_W24/syllabus.html#post-class-surveys">syllabus section on Post-class surveys</a></em></p>
+</section>
+</section>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<section id="finish-week-5" class="level3">
+<h3 class="anchored" data-anchor-id="finish-week-5">Finish week 5</h3>
+<ul>
+<li>We will first finish the material not covered from Week 5, starting with section 4.6.
+<ul>
+<li>Note: I created a new version of the code file (inside the <code>code</code> folder) called <code>part_05_b526_v2.qmd/.html</code>.</li>
+<li><em>I decided not to move the Week 5 material not covered to the Week 6 notes.</em></li>
+</ul></li>
+</ul>
+<p>From Week 5:</p>
+<ul>
+<li><strong>Learn</strong> how to <code>summarize()</code> data with <code>group_by()</code> to summarize within categories</li>
+<li><strong>Learn</strong> about the different kinds of joins and how they merge data
+<ul>
+<li><strong>Apply</strong> <code>inner_join()</code> and <code>left_join()</code> to join tables on columns</li>
+</ul></li>
+<li><strong>Utilize</strong> <code>pivot_longer()</code> to make a <em>wide</em> dataset <em>long</em></li>
+</ul>
+</section>
+<section id="new-week-6-topics---did-not-get-to-part-6" class="level3">
+<h3 class="anchored" data-anchor-id="new-week-6-topics---did-not-get-to-part-6">New Week 6 topics - <em>did not get to Part 6</em></h3>
+<ul>
+<li><strong>Practice</strong> working with real data</li>
+<li><strong>Practice</strong> joining and pivoting</li>
+<li><strong>Practice</strong> ggplot and learn more geometries</li>
+<li><strong>Learn</strong> how to deal with missing data</li>
+</ul>
+</section>
+</section>
+<section id="class-materials" class="level2">
+<h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
+<ul>
+<li><a href="../readings/05-reading.html">Week 5 Readings</a></li>
+<li><a href="../readings/06-reading.html">Week 6 Readings</a></li>
+<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_05 &amp; part_06 Project folders</a></li>
+</ul>
+</section>
+<section id="post-class-survey" class="level2">
+<h2 class="anchored" data-anchor-id="post-class-survey">Post-class survey</h2>
+<ul>
+<li>Please fill out the <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu">post-class survey</a> to provide feedback. Thank you!</li>
+</ul>
+</section>
+<section id="homework" class="level2">
+<h2 class="anchored" data-anchor-id="homework">Homework</h2>
+<ul>
+<li>See OneDrive folder for homework assignment.</li>
+<li>HW 6 due on 2/21.</li>
+</ul>
+</section>
+<section id="recording" class="level2">
+<h2 class="anchored" data-anchor-id="recording">Recording</h2>
+<ul>
+<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&amp;studentItemId=0&amp;backPath=&amp;bltiAppStores=false&amp;errorMessage=&amp;clearAttr=&amp;messageId=&amp;source=&amp;title=&amp;newTopLevel=false&amp;sendingPage=190949&amp;postedComment=false&amp;addBefore=&amp;itemId=5172228&amp;path=push&amp;topicId=&amp;addTool=-1&amp;recheck=&amp;id=&amp;forumId=">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
+</ul>
+</section>
+<section id="muddiest-points-from-week-6" class="level1">
+<h1>Muddiest points from Week 6</h1>
+<ul>
+<li><p>See Week 5 page for <a href="../weeks/week_05.html#muddiest-points-from-week-5">Week 5 feedback</a>.</p></li>
+<li><p><em>Note: During Week 6 we finished covering the part 5 material. Part 6 material will be covered during week 7.</em></p></li>
+</ul>
+<section id="across" class="level2">
+<h2 class="anchored" data-anchor-id="across"><code>across()</code></h2>
+<p><em>what exactly the across function does</em></p>
+<p><em>.fns, i.e.&nbsp;.fns=list, etc… I wasn’t really sure what that was achieving within across.</em></p>
+<ul>
+<li>The <code>across()</code> function lets us apply a function to many columns at once.</li>
+<li>For example, let’s say we want the mean value for every continuous variable in a dataset.
+<ul>
+<li>The code below calculates the mean for one variable in the penguins dataset using both base R and <code>summarize()</code>.</li>
+<li>One option to calculate the mean value for every continuous variable in the dataset is to repeat this code for the 4 other continuous variables.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      species          island    bill_length_mm  bill_depth_mm  
+ Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+ Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+ Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+                                 Mean   :43.92   Mean   :17.15  
+                                 3rd Qu.:48.50   3rd Qu.:18.70  
+                                 Max.   :59.60   Max.   :21.50  
+                                 NA's   :2       NA's   :2      
+ flipper_length_mm  body_mass_g       sex           year     
+ Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+ 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+ Median :197.0     Median :4050   NA's  : 11   Median :2008  
+ Mean   :200.9     Mean   :4202                Mean   :2008  
+ 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+ Max.   :231.0     Max.   :6300                Max.   :2009  
+ NA's   :2         NA's   :2                                 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 43.92193</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with summarize</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `mean(bill_length_mm, na.rm = TRUE)`
+                                 &lt;dbl&gt;
+1                                 43.9</code></pre>
+</div>
+</div>
+<ul>
+<li>In this case <code>across()</code> lets us apply the mean function to all the columns of interest at once:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">where</span>(is.numeric), </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   )) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="lhywqktmfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lhywqktmfw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lhywqktmfw thead, #lhywqktmfw tbody, #lhywqktmfw tfoot, #lhywqktmfw tr, #lhywqktmfw td, #lhywqktmfw th {
+  border-style: none;
+}
+
+#lhywqktmfw p {
+  margin: 0;
+  padding: 0;
+}
+
+#lhywqktmfw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lhywqktmfw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lhywqktmfw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lhywqktmfw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lhywqktmfw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lhywqktmfw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lhywqktmfw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lhywqktmfw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lhywqktmfw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lhywqktmfw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lhywqktmfw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lhywqktmfw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lhywqktmfw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lhywqktmfw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lhywqktmfw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lhywqktmfw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lhywqktmfw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lhywqktmfw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lhywqktmfw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lhywqktmfw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lhywqktmfw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lhywqktmfw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lhywqktmfw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lhywqktmfw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lhywqktmfw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lhywqktmfw .gt_left {
+  text-align: left;
+}
+
+#lhywqktmfw .gt_center {
+  text-align: center;
+}
+
+#lhywqktmfw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lhywqktmfw .gt_font_normal {
+  font-weight: normal;
+}
+
+#lhywqktmfw .gt_font_bold {
+  font-weight: bold;
+}
+
+#lhywqktmfw .gt_font_italic {
+  font-style: italic;
+}
+
+#lhywqktmfw .gt_super {
+  font-size: 65%;
+}
+
+#lhywqktmfw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lhywqktmfw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lhywqktmfw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lhywqktmfw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lhywqktmfw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lhywqktmfw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lhywqktmfw .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_length_mm">bill_length_mm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_depth_mm">bill_depth_mm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="flipper_length_mm">flipper_length_mm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="body_mass_g">body_mass_g</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year">year</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="bill_length_mm" class="gt_row gt_right">43.92193</td>
+<td headers="bill_depth_mm" class="gt_row gt_right">17.15117</td>
+<td headers="flipper_length_mm" class="gt_row gt_right">200.9152</td>
+<td headers="body_mass_g" class="gt_row gt_right">4201.754</td>
+<td headers="year" class="gt_row gt_right">2008.029</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>The <code>.fns=list</code> part of the <code>across</code> code is where we specify the function(s) that we want to apply to the specified columns.
+<ul>
+<li>Above we only specified one function (<code>mean()</code>), but we can specify additional functions as well, which is when we need to create a <code>list</code> to list all the functions we want to apply.</li>
+<li>Below I apply the mean and standard deviation functions:</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">where</span>(is.numeric), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.fns =</span> <span class="fu">list</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mean =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sd =</span> <span class="sc">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                     ))) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="urrnhgrehx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#urrnhgrehx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#urrnhgrehx thead, #urrnhgrehx tbody, #urrnhgrehx tfoot, #urrnhgrehx tr, #urrnhgrehx td, #urrnhgrehx th {
+  border-style: none;
+}
+
+#urrnhgrehx p {
+  margin: 0;
+  padding: 0;
+}
+
+#urrnhgrehx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#urrnhgrehx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#urrnhgrehx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#urrnhgrehx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#urrnhgrehx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#urrnhgrehx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#urrnhgrehx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#urrnhgrehx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#urrnhgrehx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#urrnhgrehx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#urrnhgrehx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#urrnhgrehx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#urrnhgrehx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#urrnhgrehx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#urrnhgrehx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#urrnhgrehx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#urrnhgrehx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#urrnhgrehx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#urrnhgrehx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#urrnhgrehx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#urrnhgrehx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#urrnhgrehx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#urrnhgrehx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#urrnhgrehx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#urrnhgrehx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#urrnhgrehx .gt_left {
+  text-align: left;
+}
+
+#urrnhgrehx .gt_center {
+  text-align: center;
+}
+
+#urrnhgrehx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#urrnhgrehx .gt_font_normal {
+  font-weight: normal;
+}
+
+#urrnhgrehx .gt_font_bold {
+  font-weight: bold;
+}
+
+#urrnhgrehx .gt_font_italic {
+  font-style: italic;
+}
+
+#urrnhgrehx .gt_super {
+  font-size: 65%;
+}
+
+#urrnhgrehx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#urrnhgrehx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#urrnhgrehx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#urrnhgrehx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#urrnhgrehx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#urrnhgrehx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#urrnhgrehx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_length_mm_mean">bill_length_mm_mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_length_mm_sd">bill_length_mm_sd</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_depth_mm_mean">bill_depth_mm_mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="bill_depth_mm_sd">bill_depth_mm_sd</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="flipper_length_mm_mean">flipper_length_mm_mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="flipper_length_mm_sd">flipper_length_mm_sd</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="body_mass_g_mean">body_mass_g_mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="body_mass_g_sd">body_mass_g_sd</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year_mean">year_mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year_sd">year_sd</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="bill_length_mm_mean" class="gt_row gt_right">43.92193</td>
+<td headers="bill_length_mm_sd" class="gt_row gt_right">5.459584</td>
+<td headers="bill_depth_mm_mean" class="gt_row gt_right">17.15117</td>
+<td headers="bill_depth_mm_sd" class="gt_row gt_right">1.974793</td>
+<td headers="flipper_length_mm_mean" class="gt_row gt_right">200.9152</td>
+<td headers="flipper_length_mm_sd" class="gt_row gt_right">14.06171</td>
+<td headers="body_mass_g_mean" class="gt_row gt_right">4201.754</td>
+<td headers="body_mass_g_sd" class="gt_row gt_right">801.9545</td>
+<td headers="year_mean" class="gt_row gt_right">2008.029</td>
+<td headers="year_sd" class="gt_row gt_right">0.8183559</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>In general, lists are another type of R object to store information, whether data, lists of functions, output from regression models, etc. While concatenate is just a vector of values, lists are multidimensional. We will be learning more about lists in parts 7 and 8.</p></li>
+<li><p>You can learn more about <code>across()</code> at its <a href="https://dplyr.tidyverse.org/reference/across.html">help file</a>.</p></li>
+</ul>
+</section>
+<section id="case_when-vs-ifelse" class="level2">
+<h2 class="anchored" data-anchor-id="case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></h2>
+<p><em>still a little confused on the difference between ifelse and casewhen, understand they are very similar but still confused on when it is best to use one over another</em></p>
+<ul>
+<li>The two functions can be used interchangeably. * <code>ifelse()</code> is the original function from base R
+<ul>
+<li><code>case_when()</code> is the user-friendly version of <code>ifelse()</code> from the <code>dplyr</code> package</li>
+</ul></li>
+<li>I recommend using <code>case_when()</code>, and it is what I use almost exclusively in my own work. My guess is that <code>ifelse()</code> was included in the notes since you might run into the function when reading R code on the internet.</li>
+<li>Just be careful that you preserve missing values when using <code>case_when()</code> as we discussed last time.</li>
+</ul>
+</section>
+<section id="factor-levels" class="level2">
+<h2 class="anchored" data-anchor-id="factor-levels">factor levels</h2>
+<p><em>working with factor levels doesn’t feel totally intuitive yet. I think that’s because I tend to get confused with anything involving a concatenated list.</em></p>
+<ul>
+<li>Working with factor variables takes a while to get used to, and in particular with their factor levels.</li>
+<li>We will be looking at more examples with factor variables in the part 6 notes. See sections 2.8 and 4.</li>
+<li>You can think of a concatenated list(<code>c(...)</code>) as a vector of values or a column of a dataset. Concatenating lets us create a set of values, which we typically create to use for some other purpose, such as specifying the levels of a factor variable.</li>
+<li><em>Please submit a follow-up question in the post-class survey if this is still muddy after today’s class!</em></li>
+</ul>
+</section>
+<section id="pivoting-tables" class="level2">
+<h2 class="anchored" data-anchor-id="pivoting-tables">pivoting tables</h2>
+<ul>
+<li>Definitely a tricky topic, and over half of the muddiest points were about pivoting tables.</li>
+<li>We will be looking at more examples in part 6.</li>
+</ul>
+<section id="how-pivot_longer-would-work-on-very-large-datasets-with-many-rowscolumns" class="level3">
+<h3 class="anchored" data-anchor-id="how-pivot_longer-would-work-on-very-large-datasets-with-many-rowscolumns">How pivot_longer() would work on very large datasets with many rows/columns</h3>
+<ul>
+<li>It works the same way. However the resulting long table will end up being much much longer.</li>
+<li>Extra columns in the dataset just hang out and their values get repeated (such as an age variable that is not being made long by) over and over again.
+<ul>
+<li>We will be pivoting a dataset in part 6 that has extra variables that are not being pivoted.</li>
+</ul></li>
+</ul>
+</section>
+<section id="trying-to-visualize-the-joins-and-pivot-longerwider" class="level3">
+<h3 class="anchored" data-anchor-id="trying-to-visualize-the-joins-and-pivot-longerwider">Trying to visualize the joins and pivot longer/wider</h3>
+<ul>
+<li>I recommend trying them out with small datasets where you can actually see what is happening.</li>
+<li><strong>Joins</strong>: Our <a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18">BERD workshop slides</a> have another example that might visualize joins.
+<ul>
+<li><a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18">Slide 18</a> shows to datasets x and y, and what the resulting joins look like.</li>
+<li><a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#19">Slide 19</a> shows Venn diagrams of how the different joins behave.</li>
+</ul></li>
+<li><strong>Pivoting</strong>: There’s an <a href="https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data">example with a very small dataset</a> in my (supplemental) notes from BSTA 511. The graphic that goes along with this is on <a href="https://drive.google.com/file/d/1IfubP0ei-5jTIVs33dyoEqjMIY-Q8qBe/view">Slide 28</a> from the pdf.</li>
+</ul>
+</section>
+<section id="pivot_longer-makes-plotting-more-understandable-in-an-analysis-sense-which-situations-would-call-for-pivot_wider" class="level3">
+<h3 class="anchored" data-anchor-id="pivot_longer-makes-plotting-more-understandable-in-an-analysis-sense-which-situations-would-call-for-pivot_wider">pivot_longer makes plotting more understandable in an analysis sense, which situations would call for pivot_wider?</h3>
+<ul>
+<li>I tend to use <code>pivot_longer()</code> much more frequently. However, there are times when <code>pivot_wider()</code> comes in handy. For example, below is a long table of summary statistics created with <code>group_by()</code> and <code>summarize()</code>. I would use <code>pivot_wider()</code> to reshape this table so that I have columns comparing species or columns comparing islands.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> bill_length_mm, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.fns =</span> <span class="fu">list</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">mean =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sd =</span> <span class="sc">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                     )))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'species'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+# Groups:   species [3]
+  species   island    bill_length_mm_mean bill_length_mm_sd
+  &lt;fct&gt;     &lt;fct&gt;                   &lt;dbl&gt;             &lt;dbl&gt;
+1 Adelie    Biscoe                   39.0              2.48
+2 Adelie    Dream                    38.5              2.47
+3 Adelie    Torgersen                39.0              3.03
+4 Chinstrap Dream                    48.8              3.34
+5 Gentoo    Biscoe                   47.5              3.08</code></pre>
+</div>
+</div>
+</section>
+<section id="how-to-use-arguments-of-pivot-longer." class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-arguments-of-pivot-longer.">How to use arguments of pivot longer.</h3>
+<ul>
+<li>The arguments of the pivot functions take some practice to get used to. I sometimes still pull up an <a href="https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data">example</a> to remind me what I need to specify for the various arguments, such as the one mentioned above that I have used in workshops and classes.<br>
+</li>
+<li>We have not covered all the different arguments, and I recommend reviewing the <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">help file</a> and in particular the <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html#ref-examples">examples</a> at the end of the page.</li>
+</ul>
+</section>
+</section>
+<section id="gtgt" class="level2">
+<h2 class="anchored" data-anchor-id="gtgt"><code>gt::gt()</code></h2>
+<p><em>The gt::gt package does make the tables look fancier, how do we add labels to those to have them look nice as well?</em></p>
+<ul>
+<li>I highly recommend the <a href="https://gt.rstudio.com/"><code>gt</code> webpage</a> to learn more about all the different options to create pretty tables. Note the tabs at the top of the page for “Get started” and “Reference.”</li>
+<li>See also section 3 of part 6 on “Side note about <code>gt::gt()</code>” for more on creating pretty tables.</li>
+</ul>
+</section>
+<section id="herehere" class="level2">
+<h2 class="anchored" data-anchor-id="herehere"><code>here::here</code></h2>
+<p><em>would also love more examples of here() I am starting to understand it better but still am a little confused</em></p>
+<p><em>I am still having trouble getting here() to work consistently. I was going to ask during class, but I think I am just not understanding how to manually nest my files correctly so that “here” works. I am struggling to get that set up correct, and thus, struggling to use it. </em></p>
+<ul>
+<li>We’ll have some more examples in class, but I recommend reaching out to one of us (instructors or TA) to help you troubleshoot <code>here::here</code>.</li>
+<li>Here are also some resources that might help
+<ul>
+<li><a href="https://here.r-lib.org/articles/here.html">https://here.r-lib.org/articles/here.html</a></li>
+<li><a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">http://jenrichmond.rbind.io/post/how-to-use-the-here-package/</a></li>
+<li><a href="https://github.com/jennybc/here_here">https://github.com/jennybc/here_here</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="clearest-points" class="level2">
+<h2 class="anchored" data-anchor-id="clearest-points">Clearest points</h2>
+<ul>
+<li><code>group_by()</code> function (n=3)</li>
+<li><code>summarize()</code> (n=2)</li>
+<li><code>across()</code> (n=1)</li>
+<li><code>case_when()</code> (n=1)</li>
+<li><code>drop_na( )</code> (n=2)</li>
+<li>Joining tables (n=6)</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

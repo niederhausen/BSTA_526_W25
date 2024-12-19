@@ -1,0 +1,28 @@
+---
+title: "Week 2 Readings"
+linktitle: "Wk 2 Readings"
+description: "Loading data, data.frames, and ggplot2"
+date: "2024-01-17"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Required
+
+- [Data Organization in Spreadsheets](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) by Kara Woo and Karl Broman - if there is one paper that I think is useful for everyone, it's this one.
+- [Absolute and Relative File Paths](https://ubc-dsci.github.io/introduction-to-datascience/reading.html#absolute-and-relative-file-paths) - sometimes understanding file paths can be difficult. This is a great follow up reading. The video is very helpful as well. 
+- [What are R packages?](https://moderndive.com/1-getting-started.html#packages)
+
+## Optional (Meike's suggestions for BSTA 526 W24)
+
+- [Projects in RStudio](https://niederhausen.github.io/BSTA_511_F23/resources/Projects_in_R.html) resources list Meike created for BSTA 511. 
+- [Exploring missing values in `naniar`](https://allisonhorst.shinyapps.io/missingexplorer/#section-introduction) . The notes for week 2 refer to the `visdat` package for visualizing missing values in your data. I also recommend the `naniar` package, and the link above is a great tutorial with an introduction to some really useful visualizations for missingness. 
+
+

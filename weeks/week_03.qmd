@@ -1,0 +1,141 @@
+---
+title: "Week 3"
+description: "Errors, more data loading, data manipulation, ggplot themes, factors"
+date: "1/24/2024"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Topics
+
+* Where to get help on errors
+* Revisiting data loading with the `here` package
+* Data manipulation with `dplyr` package
+* Themes in the `ggplot2` package
+* Factors
+* Boxplots and facets
+
+
+## Announcements
+
+* Class materials for BSTA 526 will be provided in the shared OneDrive folder [BSTA_526_W24_class_materials_public](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF). 
+* For today's class, make sure to download to your computer the folder called `part_03`, and then open RStudio by double-clicking on the file called `part_03.Rproj`.
+* If you have not already done so, please join the [BSTA 526 Slack channel](https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA) and introduce yourself by posting in the `#random` channel.
+
+
+## Class materials
+
+* [Readings](../readings/03-reading.qmd)
+* One Drive [part_03 Project folder](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF)
+
+## Post-class survey
+
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+
+## Homework
+
+* See OneDrive folder for homework assignment.
+* HW 3 due on 1/31.
+
+## Recording
+
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+
+
+# Feedback from post-class surveys
+
+Week 3 feedback
+
+## Muddiest points
+
+### here package
+
+The here package takes a bit to explaining, but, compared to the old way of doing things, it is a real life saver. The issue in the past had to do with relative file paths, especially with `.qmd` files that are saved in sub-folders. The `.qmd` file recognizes where it is saved as the root file path, which is okay with a one-off `.qmd` file. But when working in projects (recommended) and striving for reproducible R code (highly recommended), the `here` package save a lot of headache.
+
+For further reading:
++ [Why should I use the here package when I'm already using projects?](https://malco.io/articles/2018-11-05-why-should-i-use-the-here-package-when-i-m-already-using-projects) by Malcolm Barrett.
++ [how to use the `here` package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) by Jenny Richmond.
++ [here package vignette](https://here.r-lib.org/articles/here.html)
++ [Using here with rmarkdown](https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html)
+
+Project-oriented workflows are recommended. Here package solves some old headaches. It gets easier with practice.
+
+####  Question about using here
+
+> ... how [here] can be used in certain instances where one may not remember if they switched to a new qmd file? In that case, would you suggest to use the "here" command each time you work on a project where there's a chance that you'll switch between qmd files and would like to use the same data file throughout? Is there any other way to better use this function or tips on how you deal with it?
+
+There is a difference between working interactively in RStudio where data are loaded to the Environment. In this case, loading a data set once means that it can be used in any other code while working in the environment.
+
+Issues will com up when you go to render a `.qmd` that doesn't have the data loaded within that `.qmd`. It won't look to the environment for the data; it looks to the filepath that you specify in the `.qmd`. Best practice is to *write the code* to load the data in each `.qmd` or `.R` script so that R knows where to look for the data that you want it to operate on / analyze.
+
+### The ! function. It seems like sometimes we use ! and sometimes we use -. Are they interchangeable, or each with different types of functions?
+
++ `!` -- the exclamation point can be read as "not" it is primarily used in logical statements
++ `-` -- the minus sign can be used in more instances
+  - to do actual arithmetic (i.e. subtraction)
+  - to indicate a negative number
+  - with `dplyr::select()` to remove or not select a column, or exclusion
+  
+```{r}
+
+# Subtraction
+5 - 3
+
+# Negation
+x <- 10
+-x
+
+# Selection/exclusion
+library(dplyr)
+select(starwars, -height) |> dplyr::glimpse()
+
+```
+  
+
+### Using the fill command
+
+We didn't cover it in the lecture notes, but then it appeared in the example. I suggest to read/work through the [fill vignette](https://tidyr.tidyverse.org/reference/fill.html); the examples there are good ones to show what the function does. Then look back a the `smoke_messy` data set in Part 3 and think about why this command would be useful to clean up the data and for *fill*ing in missing values.
+
+### Loading data into R 
+
+It gets easier and hopefully you get to see more example in the notes and practice with the homework. [This tutorial](http://www.sthda.com/english/wiki/importing-data-into-r) is pretty good. So is the [readxl vignette](https://readxl.tidyverse.org/) and the [readr vignette](https://readr.tidyverse.org/).
+
+
+### Reasonable width, height, and dpi values when using ggsave
+
+This takes some trial and error and depends on the purpose. For draft figures, dpi = 70 might be okay, but a journal might require dpi above 300 for publication. In Quarto, rendering an html, the figure defaults are 7x5 inches ([Link](https://quarto.org/docs/computations/execution-options.html)). We talked about in class how you can use the plot panes to size your figures by trial and error.
+
+
+### The `tidyselect` section
+
+There were pretty good resources in the notes
+
++ See some more examples in [this slide](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#32)
+
++ For more info and learning about tidyselect, please run this code in your console:
+
+```{r}
+#| eval: false
+# install remotes package
+install.packages("remotes")
+# use remotes to install this package from github
+remotes::install_github("laderast/tidyowl")
+
+# load tidyowl package
+library(tidyowl)
+
+# interactive tutorial
+tidyowl::learn_tidyselect()
+```
+
+
+[Here is also a link](https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html) with a list of the selectors and links to each one. For example, there is a link to [`starts_with`](https://tidyselect.r-lib.org/reference/starts_with.html) and a bunch of examples.
+
+
