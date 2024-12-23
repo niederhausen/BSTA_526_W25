@@ -6,7 +6,7 @@ page-layout: full
 link-external-newwindow: true
 ---
 
-::: {style="background-color: #78c2ad"}
+::: {style="background-color: #9B8CAE"}
 ::: {style="color: #FFFFFF"}
 ::: grid
 

@@ -43,7 +43,9 @@ website:
             
 format:
   html:
-    theme: minty
+    theme: 
+      - minty
+      - minty_adapt.scss
     css: styles.css
     toc: true
 
