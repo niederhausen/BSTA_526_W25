@@ -1,6 +1,6 @@
 ---
 title: "Syllabus"
-date: "1/10/2024"
+date: "1/9/2025"
 date-modified: "today"
 format: 
   html:
@@ -32,14 +32,14 @@ This course aims to develop programming skills in R, a powerful statistical prog
 
 *__If time allows__*:
 
-8. **Create** nice tables in our R markdown reports with `gt` and/or `kableExtra`.
+8. **Create** nice tables in our R markdown reports with `gt`, `gtsummary`, and/or `kableExtra`.
 
 
 ## Course Website
 
 All course information will be available here:
 
-<https://niederhausen.github.io/BSTA_526_W24/>
+<https://niederhausen.github.io/BSTA_526_W25/>
 
 Information will also be available on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72).
 
@@ -69,8 +69,8 @@ Slack will be used for course discussions. Link to join Slack is posted on Sakai
 - **Expected Response Time**: 1 business day 
 * Meike Niederhausen, PhD
     - [niederha\@ohsu.edu](mailto:niederha@ohsu.edu)
-* Emile Latour, MS
-    - [latour\@ohsu.edu](mailto:latour@ohsu.edu)
+* Jessica Minnier, PhD
+    - [minnier\@ohsu.edu](mailto:minnier@ohsu.edu)
 
 ### Teaching Assistant
 
@@ -113,9 +113,10 @@ Please choose a function from the Function of the Week sign-up sheet (link will 
 
 Previous years' Functions of the Week can be found on the previous class websites:
 
+* <https://niederhausen.github.io/BSTA_526_W24/function_week.html>
 * <https://sph-r-programming-2023.netlify.app/functions/>
 * <https://sph-r-programming-2022.netlify.app/functions/>
-- <https://sph-r-programming.netlify.app/functions/> (2021)
+* <https://sph-r-programming.netlify.app/functions/> (2021)
 
 We will create a similar website for this year's Functions of the Week. *If you do not wish yours to be on the public facing website, just let us know. Alternatively, we can also post it anonymously.* See submitted Functions of the Week for this quarter at this [link](function_week.qmd).
 

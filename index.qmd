@@ -23,7 +23,7 @@ link-external-newwindow: true
 
 ### R Programming for Health Data Science
 
-Winter 2024
+Winter 2025
 
 OHSU-PSU School of Public Health
 
@@ -43,18 +43,17 @@ Oregon Health & Science University
 {{< iconify fluent person-24-filled size=20px >}} Meike Niederhausen, PhD  
 {{< iconify tabler mail-filled size=20px >}} [niederha\@ohsu.edu](mailto:niederha@ohsu.edu)
 
-{{< iconify fluent person-24-filled size=20px >}} Emile Latour, MS  
-{{< iconify tabler mail-filled size=20px >}} [latour\@ohsu.edu](mailto:latour@ohsu.edu)
+{{< iconify fluent person-24-filled size=20px >}} Jessica Minnier, PhD
+{{< iconify tabler mail-filled size=20px >}} [minnier\@ohsu.edu](mailto:minnier@ohsu.edu)
 :::
 
 ::: g-col-3
 ### Course details
 
-{{< iconify ci calendar-days size=20px >}} Wednesdays   
-{{< iconify icon-park-outline time size=20px >}} 3:15 pm - 6:05 pm  
-{{< iconify fa6-solid person-chalkboard size=20px >}} In-person
+{{< iconify ci calendar-days size=20px >}} Thursdays   
+{{< iconify icon-park-outline time size=20px >}} 9:00 am - 11:45 am
+{{< iconify fa6-solid person-chalkboard size=20px >}} In-person, VPT 620M
 
-See [schedule](schedule.qmd) for room information
 :::
 
 ::: g-col-3
