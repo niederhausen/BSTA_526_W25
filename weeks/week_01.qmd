@@ -38,6 +38,7 @@ editor_options:
 ## Post-class survey
 
 * Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
+* Previous muddiest points and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
 
 ## Homework
 
