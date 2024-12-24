@@ -2,7 +2,7 @@
 title: "Week 10 Readings"
 linktitle: "Wk 10 Readings"
 description: "More stats, broom, and tables (gt, gtsummary)"
-date: "2024-03-13"
+date: "2025-03-13"
 date-modified: "today"
 categories: [""]
 format: 

@@ -1,0 +1,102 @@
+---
+title: "Survey Feedback from Previous Years"
+editor: visual
+---
+
+# 2024
+
+## Week 1 
+
+### Muddiest points
+
+#### Class logistics
+
+-   Will there be presentation slides in future classes, or is everything embedded into the quarto/html files for all lectures?
+    -   *The material will primarily be in quarto/html files and not slides.*
+-   Specifics of what topics will be covered exactly. \* *I don't have a list of all the specific functions we will be covering, but you are welcome to peruse the [BSTA 504 webpage from Winter 2023](https://sph-r-programming-2023.netlify.app/) to get more details on topics we will be covering. We will be closely following the same class materials.*
+-   Identifying which section of the code we were discussing during the lecture
+    -   *Thanks for letting me know. I will try to be clearer in the future, and also jump around less. Please let me know in class if you're not sure where we are at.*
+-   The material covered towards the end of the class felt a bit difficult to keep up with. I wish we would have been told to read the materials from Week 1 (or at least skim them) ahead of Day 1, because I quickly lost track of the conversation when shortcuts were used super quickly, for example, or when we jumped from chunks of code to another topic without reflecting on them. I still had 70% of the material down and I wrote great notes during the discussion (which I later filled in with the script that was on the class website), but I think it the beginner/intermediate programming lingo that was used to explain ideas here confused me at times. Thus, I struggled to keep up with discussions around packages / best coding practices, especially when they were not mentioned directly on the script (where I could follow along!).
+    -   *Thanks for the feedback. In future years, we will reach out to students before the term to let them know about the readings to prepare for class. Please let us know if there is lingo we are using that you are not familiar with. Learning R and coding is a whole new language!*
+
+#### RStudio
+
+-   I have trouble thinking through where things are automatically downloaded, saved, and running from. I can attend office hours for this!
+    -   *Office hours are always a great idea. I do recommend paying close attention to where files are being saved when downloading and preferably specifying their location instead using the default location. Having organized files will make working on complex analyses much easier.*
+-   How to read the course material in R. While it made sense in real time it may be difficult when going back over the material.
+    -   *Getting used to reading code and navigating the rendered html files takes a while, and is a part of learning R. Figuring out how to take notes for yourself that works for you is also a learning curve. I recommend taking notes in the qmd files as we go through them in class. After class you can summarize and transfer key points to other file formats that you are more used to using. I personally have a folder in my Google drive filled with documents on different R programming topics. It started with one file, and then eventually expanded to multiple files on different topics in an attempt to organize my notes better. Whenever I learn something new (such as an R function or handy R package) that I want to keep for future reference, I add to them with links to relevant webpages and/or filenames and locations of where I used them.*
+
+#### Code
+
+-   What does the pacman package do? I have it installed but I'm not sure what it is actually used for.
+    -   *I didn't go into `pacman` in Day 1. The `p_load()` function from the `pacman` package (usually run as `pacman::p_load()`) lets you load many packages at once without separately using the `library()` function for each individually.*
+    -   *An added bonus is that by default it will install packages you don't already have, unless you specify `install = FALSE`.*
+    -   *Another option is to set `update = TRUE` so that it will automatically update packages. I do not use this option though since sometimes updating packages causes conflicts with other packages or older code.*
+    -   *You can read more about the different options in the [documentation](https://www.rdocumentation.org/packages/pacman/versions/0.5.1/topics/p_load). This [Medium article](https://medium.com/r-tutorials/an-alternative-to-loading-packages-in-r-using-pacman-p-load-6037903a301a) also has some tips on using `pacman`.*
+-   The part on when to load in packages once they've already been loaded in - like for example would it be good to put that as a step in our homework 1 .qmd at the top? Or not necessary since they're already loaded in to R Studio from the work we did in class yesterday? What would happen if we try to load them in and they were already loaded in, would the .qmd file not render and show an error?
+    -   *I always load my packages at the very top of the .qmd files, usually in the first code chunk (with the setup label). If you still have a previous R session open, then yes you don't need to load the packages again to run code within RStudio. However, when a file is rendered it starts with an empty workspace, which is why our qmd file must include code that loads the packages (either using `library()` or `pacman::p_load()`. We don't have to load packages at the beginning of the file, just before we have code that depends on the packages being used.*
+-   I didn't understand the part where we talked about num, char, logical combinations (line 503).
+    -   *The content of the objects `char_logical`, `num_char`, `num_logical`, and `tricky` were designed specifically to be confusing and thus make us aware of how R will decide to assign the data type when a vector is a mix of data types. Some key takeaways are below. Let me know if you sitll have questions about this.*
+        -   *Numbers and logical/boolean (`TRUE`, `FALSE`) do not have double quotes around them, but character strings do. If you add double quotes to a number or logical, then R will treat it as a character string.*
+        -   *If a vector is a mix of numbers and character strings, then the data type of the vector is character.*
+        -   *If a vector is a mix of numbers and logical, then the data type of the vector is numeric and the logical value is converted to a numeric value (`TRUE`=1, `FALSE`=0).*
+        -   *If a vector is a mix of character strings and logical, then the data type of the vector is character and the logical value is converted to a character string and no longer operates as a logical (i.e. no longer equal to 1 or 0).*
+-   Lines 614-619, confused what the ratio means there. Could you go over the correct code (or options of the correct code) for challenge 5?
+    -   *The code `1:4` or `6:9` creates sequences of integers starting with the first specified digit and ending at the last specified digit. For example, `1:4` is the vector with the digits 1 2 3 4. You can also create decreasing sequences by making the first number the bigger one. For example, `9:7` is the vector 9 8 7.*
+    -   *Challenge 5:*
+        -   `more_heights_complete <- na.omit(more_heights)`
+        -   `median(more_heights_complete)`
+        -   *You could also get the median of `more_heights` without first removing the missing values with `median(more_heights, na.rm = TRUE)`.*
+-   how to count the TRUE values in a logical vector
+    -   `TRUE` is equal to 1 in R (and `FALSE` is equal to 0), and the function `sum()` adds up the values in a vector. Thus, `sum(TRUE, FALSE, TRUE)` is equal to 2. Similarly, `sum(TRUE, FALSE, 5)` is equal to 6.
+    -   The way I used it in class though is by counting how many values in the vector `z` (which was 7 9 11 13) are equal to 9. To do that I used the code `sum(z == 9)`. Breaking that down, the code inside the parentheses `z == 9` is equal to `FALSE TRUE FALSE FALSE` since the `==` means "equals to" in R.
+    -   You can read up more on boolean and logical operators at the [R-bloggers post](https://www.r-bloggers.com/2021/09/r-booleans-comparison-and-logical-operators/).
+
+### Clearest Points
+
+*Thank you for the feedback!*
+
+#### Class logistics
+
+-   Syllabus/course structure
+-   The syllabus review.
+-   Overall expectations and course flow
+-   Introduction to the class (first half of the class); conversation around syllabus; and the Quarto introduction
+
+#### Quarto
+
+-   How to create and edit a Quarto document in RStudio.
+-   The differences between quarto and markdown
+-   rmarkdown is no more, quarto it is!
+
+#### Coding
+
+-   Having code missing and fixing it in front of the class was helpful in troubleshooting.
+-   Just running through all the commands was very clear and easy to follow
+-   Basic R set up for quarto and introduction to R objects, vectors, etc.
+-   Introduction, functions, and explanations was the clearest for me.
+-   Classification of the objects in logical, character, and numeric
+-   Not necessarily a point, but I really liked when we were encouraged to use the shortcut keys for various commands on R and other little things like switching code between console vs inline , I have used R before for a class briefly but I never knew all these ways by which I can save time and be efficient while writing a code.
+
+## Week 2
+
+### Muddiest points
+
+-   When discussing untidy data, the difference between long data and wide data was unclear.
+    -   *We'll be discussing the difference between long and wide data in more detail later in the course when we convert a dataset between the two. For now, you can take a look at an [example I created for our BERD R workshops](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#27). The wide data in that example are not "tidy" since each cell contains two pieces of information: both the SBP and the visit number. In contrast, the long data have a separate column indicating which visit number the data in a given row are from.*
+-   for the "summary()" function, is there a way to summarize all but one variable in a dataset?
+    -   *Yes! I sometimes restrict a dataset to a couple of variables for which I want to see the summary. I usually use the `select()` function for this, which we will be covering later in the course. For now, you can take a look at some [select() examples from the BERD R workshops](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#29) (see slides 29-32).*
+-   Differences between a tibble and a data.frame
+    -   *I'm not surprised to see this show up as a muddiest point! Depending on your level of experience with R, at this point in the class some of the differences are difficult to explain since we haven't done much coding yet. The [tibble vignette](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html) lists some of the differences though if you are interested. For our purposes, they are almost the same thing. When some differences come up later in the course, I will point them out.*
+
+### Clearest Points
+
+*Thanks for the feedback!*
+
+-   I enjoyed going through the code and viewing the functions. I haven't really used `skimr` before and that was nice to see.
+    -   *I like using `skmir`, but have recently been using `get_summary_stats()` from the `rstatix` package when teaching. It is only for numeric variables though. See a [`get_summary_stats()` example from my BSTA 511 class](https://niederhausen.github.io/BSTA_511_F23/slides/Day03_bsta511.html#/get_summary_stats-from-rstatix-package).*
+-   Loading data.
+-   How to load data into R was clearest.
+    -   *Good to know that loading data was clear. This part can be tricky sometimes!*
+-   ggplot
+    -   *Hopefully this will still be clear when we cover more advanced options in `ggplot`!*

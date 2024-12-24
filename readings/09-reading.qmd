@@ -2,7 +2,7 @@
 title: "Week 9 Readings"
 linktitle: "Wk 9 Readings"
 description: "Intro to stats/broom/More Purrrs"
-date: "2024-03-06"
+date: "2025-03-06"
 date-modified: "today"
 categories: [""]
 format: 

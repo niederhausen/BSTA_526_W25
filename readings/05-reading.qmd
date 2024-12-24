@@ -2,7 +2,7 @@
 title: "Week 5 Readings"
 linktitle: "Wk 5 Readings"
 description: "summarize() and group_by(), doing things with multiple tables (left_join() etc), reshaping data (i.e. pivot_longer())"
-date: "2024-02-07"
+date: "2025-02-06"
 date-modified: "today"
 categories: [""]
 format: 

@@ -1,7 +1,7 @@
 ---
 title: "Week 4"
 description: "`mutate()`, `case_when()`, more `ggplot2`"
-date: "1/31/2024"
+date: "1/30/2025"
 date-modified: "today"
 categories: [""]
 format: 
@@ -26,7 +26,7 @@ editor_options:
 
 * Class materials for BSTA 526 will be provided in the shared OneDrive folder [BSTA_526_W24_class_materials_public](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF). 
 * For today's class, make sure to download to your computer the folder called `part_04`, and then open RStudio by double-clicking on the file called `part_04.Rproj`.
-* If you have not already done so, please join the [BSTA 526 Slack channel](https://join.slack.com/t/slack-dpc4546/shared_invite/zt-2aczivz82-OABE0GiMx1YMiREpvzVRsA) and introduce yourself by posting in the `#random` channel.
+* If you have not already done so, please join the [BSTA 526 Slack channel](https://join.slack.com/t/bsta526w25/shared_invite/zt-2x4jl264g-KV9YvPTAqKWuEBB1gE10BA) and introduce yourself by posting in the `#random` channel.
 
 
 ## Class materials
@@ -36,7 +36,7 @@ editor_options:
 
 ## Post-class survey
 
-* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
 
 ## Homework
 

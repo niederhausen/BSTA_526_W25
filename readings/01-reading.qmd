@@ -2,7 +2,7 @@
 title: "Week 1 Readings"
 linktitle: "Wk 1 Readings"
 description: "Introduction to R/RStudio/Vectors"
-date: "2024-01-10"
+date: "2025-01-09"
 date-modified: "today"
 categories: [""]
 format: 

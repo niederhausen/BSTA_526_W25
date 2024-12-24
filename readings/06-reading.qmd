@@ -2,7 +2,7 @@
 title: "Week 6 Readings"
 linktitle: "Wk 6 Readings"
 description: "More practice with data wrangling"
-date: "2024-02-14"
+date: "2025-02-13"
 date-modified: "today"
 categories: [""]
 format: 

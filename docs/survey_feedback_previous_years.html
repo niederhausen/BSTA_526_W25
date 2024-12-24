@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-23">
-<meta name="description" content="Errors, more data loading, data manipulation, ggplot themes, factors">
 
-<title>Week 3 – BSTA 526 Winter 2025</title>
+<title>Survey Feedback from Previous Years – BSTA 526 Winter 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,59 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -114,10 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/IMG_6759_med.png" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/IMG_6759_med.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">BSTA 526 Winter 2025</span>
     </a>
   </div>
@@ -128,23 +92,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html"> 
+    <a class="nav-link" href="./schedule.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../readings.html"> 
+    <a class="nav-link" href="./readings.html"> 
 <span class="menu-text">Readings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../weeks.html"> 
+    <a class="nav-link" href="./weeks.html"> 
 <span class="menu-text">Weeks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -158,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 3</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Survey Feedback from Previous Years</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -180,37 +144,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../readings.html" class="sidebar-item-text sidebar-link">
+  <a href="./readings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Readings</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks.html" class="sidebar-item-text sidebar-link">
+  <a href="./weeks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Weeks</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../function_week.html" class="sidebar-item-text sidebar-link">
+  <a href="./function_week.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions of the Week</span></a>
   </div>
 </li>
@@ -224,22 +188,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#announcements" id="toc-announcements" class="nav-link" data-scroll-target="#announcements">Announcements</a></li>
-  <li><a href="#class-materials" id="toc-class-materials" class="nav-link" data-scroll-target="#class-materials">Class materials</a></li>
-  <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
-  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
-  <li><a href="#feedback-from-post-class-surveys" id="toc-feedback-from-post-class-surveys" class="nav-link" data-scroll-target="#feedback-from-post-class-surveys">Feedback from post-class surveys</a>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2024</a>
   <ul class="collapse">
-  <li><a href="#muddiest-points" id="toc-muddiest-points" class="nav-link" data-scroll-target="#muddiest-points">Muddiest points</a>
+  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1</a>
   <ul class="collapse">
-  <li><a href="#here-package" id="toc-here-package" class="nav-link" data-scroll-target="#here-package">here package</a></li>
-  <li><a href="#the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions" id="toc-the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions" class="nav-link" data-scroll-target="#the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions">The ! function. It seems like sometimes we use ! and sometimes we use -. Are they interchangeable, or each with different types of functions?</a></li>
-  <li><a href="#using-the-fill-command" id="toc-using-the-fill-command" class="nav-link" data-scroll-target="#using-the-fill-command">Using the fill command</a></li>
-  <li><a href="#loading-data-into-r" id="toc-loading-data-into-r" class="nav-link" data-scroll-target="#loading-data-into-r">Loading data into R</a></li>
-  <li><a href="#reasonable-width-height-and-dpi-values-when-using-ggsave" id="toc-reasonable-width-height-and-dpi-values-when-using-ggsave" class="nav-link" data-scroll-target="#reasonable-width-height-and-dpi-values-when-using-ggsave">Reasonable width, height, and dpi values when using ggsave</a></li>
-  <li><a href="#the-tidyselect-section" id="toc-the-tidyselect-section" class="nav-link" data-scroll-target="#the-tidyselect-section">The <code>tidyselect</code> section</a></li>
+  <li><a href="#muddiest-points" id="toc-muddiest-points" class="nav-link" data-scroll-target="#muddiest-points">Muddiest points</a></li>
+  <li><a href="#clearest-points" id="toc-clearest-points" class="nav-link" data-scroll-target="#clearest-points">Clearest Points</a></li>
+  </ul></li>
+  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a>
+  <ul class="collapse">
+  <li><a href="#muddiest-points-1" id="toc-muddiest-points-1" class="nav-link" data-scroll-target="#muddiest-points-1">Muddiest points</a></li>
+  <li><a href="#clearest-points-1" id="toc-clearest-points-1" class="nav-link" data-scroll-target="#clearest-points-1">Clearest Points</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -250,32 +209,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 3</h1>
+<h1 class="title">Survey Feedback from Previous Years</h1>
 </div>
 
-<div>
-  <div class="description">
-    Errors, more data loading, data manipulation, ggplot themes, factors
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 23, 2025</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 23, 2024</p>
-    </div>
-  </div>
     
   </div>
   
@@ -284,161 +226,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<section id="section" class="level1">
+<h1>2024</h1>
+<section id="week-1" class="level2">
+<h2 class="anchored" data-anchor-id="week-1">Week 1</h2>
+<section id="muddiest-points" class="level3">
+<h3 class="anchored" data-anchor-id="muddiest-points">Muddiest points</h3>
+<section id="class-logistics" class="level4">
+<h4 class="anchored" data-anchor-id="class-logistics">Class logistics</h4>
 <ul>
-<li>Where to get help on errors</li>
-<li>Revisiting data loading with the <code>here</code> package</li>
-<li>Data manipulation with <code>dplyr</code> package</li>
-<li>Themes in the <code>ggplot2</code> package</li>
-<li>Factors</li>
-<li>Boxplots and facets</li>
-</ul>
-</section>
-<section id="announcements" class="level2">
-<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
+<li>Will there be presentation slides in future classes, or is everything embedded into the quarto/html files for all lectures?
 <ul>
-<li>Class materials for BSTA 526 will be provided in the shared OneDrive folder <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">BSTA_526_W24_class_materials_public</a>.</li>
-<li>For today’s class, make sure to download to your computer the folder called <code>part_03</code>, and then open RStudio by double-clicking on the file called <code>part_03.Rproj</code>.</li>
-<li>If you have not already done so, please join the <a href="https://join.slack.com/t/bsta526w25/shared_invite/zt-2x4jl264g-KV9YvPTAqKWuEBB1gE10BA">BSTA 526 Slack channel</a> and introduce yourself by posting in the <code>#random</code> channel.</li>
-</ul>
-</section>
-<section id="class-materials" class="level2">
-<h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
+<li><em>The material will primarily be in quarto/html files and not slides.</em></li>
+</ul></li>
+<li>Specifics of what topics will be covered exactly. * <em>I don’t have a list of all the specific functions we will be covering, but you are welcome to peruse the <a href="https://sph-r-programming-2023.netlify.app/">BSTA 504 webpage from Winter 2023</a> to get more details on topics we will be covering. We will be closely following the same class materials.</em></li>
+<li>Identifying which section of the code we were discussing during the lecture
 <ul>
-<li><a href="../readings/03-reading.html">Readings</a></li>
-<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_03 Project folder</a></li>
-</ul>
-</section>
-<section id="post-class-survey" class="level2">
-<h2 class="anchored" data-anchor-id="post-class-survey">Post-class survey</h2>
+<li><em>Thanks for letting me know. I will try to be clearer in the future, and also jump around less. Please let me know in class if you’re not sure where we are at.</em></li>
+</ul></li>
+<li>The material covered towards the end of the class felt a bit difficult to keep up with. I wish we would have been told to read the materials from Week 1 (or at least skim them) ahead of Day 1, because I quickly lost track of the conversation when shortcuts were used super quickly, for example, or when we jumped from chunks of code to another topic without reflecting on them. I still had 70% of the material down and I wrote great notes during the discussion (which I later filled in with the script that was on the class website), but I think it the beginner/intermediate programming lingo that was used to explain ideas here confused me at times. Thus, I struggled to keep up with discussions around packages / best coding practices, especially when they were not mentioned directly on the script (where I could follow along!).
 <ul>
-<li>Please fill out the <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi">post-class survey</a> to provide feedback. Thank you!</li>
-</ul>
-</section>
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<ul>
-<li>See OneDrive folder for homework assignment.</li>
-<li>HW 3 due on 1/31.</li>
-</ul>
-</section>
-<section id="recording" class="level2">
-<h2 class="anchored" data-anchor-id="recording">Recording</h2>
-<ul>
-<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&amp;studentItemId=0&amp;backPath=&amp;bltiAppStores=false&amp;errorMessage=&amp;clearAttr=&amp;messageId=&amp;source=&amp;title=&amp;newTopLevel=false&amp;sendingPage=190949&amp;postedComment=false&amp;addBefore=&amp;itemId=5172228&amp;path=push&amp;topicId=&amp;addTool=-1&amp;recheck=&amp;id=&amp;forumId=">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
-</ul>
-</section>
-<section id="feedback-from-post-class-surveys" class="level1">
-<h1>Feedback from post-class surveys</h1>
-<p>Week 3 feedback</p>
-<section id="muddiest-points" class="level2">
-<h2 class="anchored" data-anchor-id="muddiest-points">Muddiest points</h2>
-<section id="here-package" class="level3">
-<h3 class="anchored" data-anchor-id="here-package">here package</h3>
-<p>The here package takes a bit to explaining, but, compared to the old way of doing things, it is a real life saver. The issue in the past had to do with relative file paths, especially with <code>.qmd</code> files that are saved in sub-folders. The <code>.qmd</code> file recognizes where it is saved as the root file path, which is okay with a one-off <code>.qmd</code> file. But when working in projects (recommended) and striving for reproducible R code (highly recommended), the <code>here</code> package save a lot of headache.</p>
-<p>For further reading: + <a href="https://malco.io/articles/2018-11-05-why-should-i-use-the-here-package-when-i-m-already-using-projects">Why should I use the here package when I’m already using projects?</a> by Malcolm Barrett. + <a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">how to use the <code>here</code> package</a> by Jenny Richmond. + <a href="https://here.r-lib.org/articles/here.html">here package vignette</a> + <a href="https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html">Using here with rmarkdown</a></p>
-<p>Project-oriented workflows are recommended. Here package solves some old headaches. It gets easier with practice.</p>
-<section id="question-about-using-here" class="level4">
-<h4 class="anchored" data-anchor-id="question-about-using-here">Question about using here</h4>
-<blockquote class="blockquote">
-<p>… how [here] can be used in certain instances where one may not remember if they switched to a new qmd file? In that case, would you suggest to use the “here” command each time you work on a project where there’s a chance that you’ll switch between qmd files and would like to use the same data file throughout? Is there any other way to better use this function or tips on how you deal with it?</p>
-</blockquote>
-<p>There is a difference between working interactively in RStudio where data are loaded to the Environment. In this case, loading a data set once means that it can be used in any other code while working in the environment.</p>
-<p>Issues will com up when you go to render a <code>.qmd</code> that doesn’t have the data loaded within that <code>.qmd</code>. It won’t look to the environment for the data; it looks to the filepath that you specify in the <code>.qmd</code>. Best practice is to <em>write the code</em> to load the data in each <code>.qmd</code> or <code>.R</code> script so that R knows where to look for the data that you want it to operate on / analyze.</p>
-</section>
-</section>
-<section id="the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions" class="level3">
-<h3 class="anchored" data-anchor-id="the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions">The ! function. It seems like sometimes we use ! and sometimes we use -. Are they interchangeable, or each with different types of functions?</h3>
-<ul>
-<li><code>!</code> – the exclamation point can be read as “not” it is primarily used in logical statements</li>
-<li><code>-</code> – the minus sign can be used in more instances
-<ul>
-<li>to do actual arithmetic (i.e.&nbsp;subtraction)</li>
-<li>to indicate a negative number</li>
-<li>with <code>dplyr::select()</code> to remove or not select a column, or exclusion</li>
+<li><em>Thanks for the feedback. In future years, we will reach out to students before the term to let them know about the readings to prepare for class. Please let us know if there is lingo we are using that you are not familiar with. Learning R and coding is a whole new language!</em></li>
 </ul></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Negation</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -10</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selection/exclusion</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="sc">-</span>height) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 87
-Columns: 13
-$ name       &lt;chr&gt; "Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Or…
-$ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…
-$ hair_color &lt;chr&gt; "blond", NA, NA, "none", "brown", "brown, grey", "brown", N…
-$ skin_color &lt;chr&gt; "fair", "gold", "white, blue", "white", "light", "light", "…
-$ eye_color  &lt;chr&gt; "blue", "yellow", "red", "yellow", "brown", "blue", "blue",…
-$ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …
-$ sex        &lt;chr&gt; "male", "none", "none", "male", "female", "male", "female",…
-$ gender     &lt;chr&gt; "masculine", "masculine", "masculine", "masculine", "femini…
-$ homeworld  &lt;chr&gt; "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "T…
-$ species    &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human", "Human", "Huma…
-$ films      &lt;list&gt; &lt;"A New Hope", "The Empire Strikes Back", "Return of the J…
-$ vehicles   &lt;list&gt; &lt;"Snowspeeder", "Imperial Speeder Bike"&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "Imp…
-$ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&gt;, "TIE Advanced x1",…</code></pre>
-</div>
-</div>
 </section>
-<section id="using-the-fill-command" class="level3">
-<h3 class="anchored" data-anchor-id="using-the-fill-command">Using the fill command</h3>
-<p>We didn’t cover it in the lecture notes, but then it appeared in the example. I suggest to read/work through the <a href="https://tidyr.tidyverse.org/reference/fill.html">fill vignette</a>; the examples there are good ones to show what the function does. Then look back a the <code>smoke_messy</code> data set in Part 3 and think about why this command would be useful to clean up the data and for <em>fill</em>ing in missing values.</p>
-</section>
-<section id="loading-data-into-r" class="level3">
-<h3 class="anchored" data-anchor-id="loading-data-into-r">Loading data into R</h3>
-<p>It gets easier and hopefully you get to see more example in the notes and practice with the homework. <a href="http://www.sthda.com/english/wiki/importing-data-into-r">This tutorial</a> is pretty good. So is the <a href="https://readxl.tidyverse.org/">readxl vignette</a> and the <a href="https://readr.tidyverse.org/">readr vignette</a>.</p>
-</section>
-<section id="reasonable-width-height-and-dpi-values-when-using-ggsave" class="level3">
-<h3 class="anchored" data-anchor-id="reasonable-width-height-and-dpi-values-when-using-ggsave">Reasonable width, height, and dpi values when using ggsave</h3>
-<p>This takes some trial and error and depends on the purpose. For draft figures, dpi = 70 might be okay, but a journal might require dpi above 300 for publication. In Quarto, rendering an html, the figure defaults are 7x5 inches (<a href="https://quarto.org/docs/computations/execution-options.html">Link</a>). We talked about in class how you can use the plot panes to size your figures by trial and error.</p>
-</section>
-<section id="the-tidyselect-section" class="level3">
-<h3 class="anchored" data-anchor-id="the-tidyselect-section">The <code>tidyselect</code> section</h3>
-<p>There were pretty good resources in the notes</p>
+<section id="rstudio" class="level4">
+<h4 class="anchored" data-anchor-id="rstudio">RStudio</h4>
 <ul>
-<li><p>See some more examples in <a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#32">this slide</a></p></li>
-<li><p>For more info and learning about tidyselect, please run this code in your console:</p></li>
+<li>I have trouble thinking through where things are automatically downloaded, saved, and running from. I can attend office hours for this!
+<ul>
+<li><em>Office hours are always a great idea. I do recommend paying close attention to where files are being saved when downloading and preferably specifying their location instead using the default location. Having organized files will make working on complex analyses much easier.</em></li>
+</ul></li>
+<li>How to read the course material in R. While it made sense in real time it may be difficult when going back over the material.
+<ul>
+<li><em>Getting used to reading code and navigating the rendered html files takes a while, and is a part of learning R. Figuring out how to take notes for yourself that works for you is also a learning curve. I recommend taking notes in the qmd files as we go through them in class. After class you can summarize and transfer key points to other file formats that you are more used to using. I personally have a folder in my Google drive filled with documents on different R programming topics. It started with one file, and then eventually expanded to multiple files on different topics in an attempt to organize my notes better. Whenever I learn something new (such as an R function or handy R package) that I want to keep for future reference, I add to them with links to relevant webpages and/or filenames and locations of where I used them.</em></li>
+</ul></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install remotes package</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use remotes to install this package from github</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"laderast/tidyowl"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load tidyowl package</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyowl)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># interactive tutorial</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>tidyowl<span class="sc">::</span><span class="fu">learn_tidyselect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html">Here is also a link</a> with a list of the selectors and links to each one. For example, there is a link to <a href="https://tidyselect.r-lib.org/reference/starts_with.html"><code>starts_with</code></a> and a bunch of examples.</p>
+</section>
+<section id="code" class="level4">
+<h4 class="anchored" data-anchor-id="code">Code</h4>
+<ul>
+<li>What does the pacman package do? I have it installed but I’m not sure what it is actually used for.
+<ul>
+<li><em>I didn’t go into <code>pacman</code> in Day 1. The <code>p_load()</code> function from the <code>pacman</code> package (usually run as <code>pacman::p_load()</code>) lets you load many packages at once without separately using the <code>library()</code> function for each individually.</em></li>
+<li><em>An added bonus is that by default it will install packages you don’t already have, unless you specify <code>install = FALSE</code>.</em></li>
+<li><em>Another option is to set <code>update = TRUE</code> so that it will automatically update packages. I do not use this option though since sometimes updating packages causes conflicts with other packages or older code.</em></li>
+<li><em>You can read more about the different options in the <a href="https://www.rdocumentation.org/packages/pacman/versions/0.5.1/topics/p_load">documentation</a>. This <a href="https://medium.com/r-tutorials/an-alternative-to-loading-packages-in-r-using-pacman-p-load-6037903a301a">Medium article</a> also has some tips on using <code>pacman</code>.</em></li>
+</ul></li>
+<li>The part on when to load in packages once they’ve already been loaded in - like for example would it be good to put that as a step in our homework 1 .qmd at the top? Or not necessary since they’re already loaded in to R Studio from the work we did in class yesterday? What would happen if we try to load them in and they were already loaded in, would the .qmd file not render and show an error?
+<ul>
+<li><em>I always load my packages at the very top of the .qmd files, usually in the first code chunk (with the setup label). If you still have a previous R session open, then yes you don’t need to load the packages again to run code within RStudio. However, when a file is rendered it starts with an empty workspace, which is why our qmd file must include code that loads the packages (either using <code>library()</code> or <code>pacman::p_load()</code>. We don’t have to load packages at the beginning of the file, just before we have code that depends on the packages being used.</em></li>
+</ul></li>
+<li>I didn’t understand the part where we talked about num, char, logical combinations (line 503).
+<ul>
+<li><em>The content of the objects <code>char_logical</code>, <code>num_char</code>, <code>num_logical</code>, and <code>tricky</code> were designed specifically to be confusing and thus make us aware of how R will decide to assign the data type when a vector is a mix of data types. Some key takeaways are below. Let me know if you sitll have questions about this.</em>
+<ul>
+<li><em>Numbers and logical/boolean (<code>TRUE</code>, <code>FALSE</code>) do not have double quotes around them, but character strings do. If you add double quotes to a number or logical, then R will treat it as a character string.</em></li>
+<li><em>If a vector is a mix of numbers and character strings, then the data type of the vector is character.</em></li>
+<li><em>If a vector is a mix of numbers and logical, then the data type of the vector is numeric and the logical value is converted to a numeric value (<code>TRUE</code>=1, <code>FALSE</code>=0).</em></li>
+<li><em>If a vector is a mix of character strings and logical, then the data type of the vector is character and the logical value is converted to a character string and no longer operates as a logical (i.e.&nbsp;no longer equal to 1 or 0).</em></li>
+</ul></li>
+</ul></li>
+<li>Lines 614-619, confused what the ratio means there. Could you go over the correct code (or options of the correct code) for challenge 5?
+<ul>
+<li><em>The code <code>1:4</code> or <code>6:9</code> creates sequences of integers starting with the first specified digit and ending at the last specified digit. For example, <code>1:4</code> is the vector with the digits 1 2 3 4. You can also create decreasing sequences by making the first number the bigger one. For example, <code>9:7</code> is the vector 9 8 7.</em></li>
+<li><em>Challenge 5:</em>
+<ul>
+<li><code>more_heights_complete &lt;- na.omit(more_heights)</code></li>
+<li><code>median(more_heights_complete)</code></li>
+<li><em>You could also get the median of <code>more_heights</code> without first removing the missing values with <code>median(more_heights, na.rm = TRUE)</code>.</em></li>
+</ul></li>
+</ul></li>
+<li>how to count the TRUE values in a logical vector
+<ul>
+<li><code>TRUE</code> is equal to 1 in R (and <code>FALSE</code> is equal to 0), and the function <code>sum()</code> adds up the values in a vector. Thus, <code>sum(TRUE, FALSE, TRUE)</code> is equal to 2. Similarly, <code>sum(TRUE, FALSE, 5)</code> is equal to 6.</li>
+<li>The way I used it in class though is by counting how many values in the vector <code>z</code> (which was 7 9 11 13) are equal to 9. To do that I used the code <code>sum(z == 9)</code>. Breaking that down, the code inside the parentheses <code>z == 9</code> is equal to <code>FALSE TRUE FALSE FALSE</code> since the <code>==</code> means “equals to” in R.</li>
+<li>You can read up more on boolean and logical operators at the <a href="https://www.r-bloggers.com/2021/09/r-booleans-comparison-and-logical-operators/">R-bloggers post</a>.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="clearest-points" class="level3">
+<h3 class="anchored" data-anchor-id="clearest-points">Clearest Points</h3>
+<p><em>Thank you for the feedback!</em></p>
+<section id="class-logistics-1" class="level4">
+<h4 class="anchored" data-anchor-id="class-logistics-1">Class logistics</h4>
+<ul>
+<li>Syllabus/course structure</li>
+<li>The syllabus review.</li>
+<li>Overall expectations and course flow</li>
+<li>Introduction to the class (first half of the class); conversation around syllabus; and the Quarto introduction</li>
+</ul>
+</section>
+<section id="quarto" class="level4">
+<h4 class="anchored" data-anchor-id="quarto">Quarto</h4>
+<ul>
+<li>How to create and edit a Quarto document in RStudio.</li>
+<li>The differences between quarto and markdown</li>
+<li>rmarkdown is no more, quarto it is!</li>
+</ul>
+</section>
+<section id="coding" class="level4">
+<h4 class="anchored" data-anchor-id="coding">Coding</h4>
+<ul>
+<li>Having code missing and fixing it in front of the class was helpful in troubleshooting.</li>
+<li>Just running through all the commands was very clear and easy to follow</li>
+<li>Basic R set up for quarto and introduction to R objects, vectors, etc.</li>
+<li>Introduction, functions, and explanations was the clearest for me.</li>
+<li>Classification of the objects in logical, character, and numeric</li>
+<li>Not necessarily a point, but I really liked when we were encouraged to use the shortcut keys for various commands on R and other little things like switching code between console vs inline , I have used R before for a class briefly but I never knew all these ways by which I can save time and be efficient while writing a code.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="week-2" class="level2">
+<h2 class="anchored" data-anchor-id="week-2">Week 2</h2>
+<section id="muddiest-points-1" class="level3">
+<h3 class="anchored" data-anchor-id="muddiest-points-1">Muddiest points</h3>
+<ul>
+<li>When discussing untidy data, the difference between long data and wide data was unclear.
+<ul>
+<li><em>We’ll be discussing the difference between long and wide data in more detail later in the course when we convert a dataset between the two. For now, you can take a look at an <a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#27">example I created for our BERD R workshops</a>. The wide data in that example are not “tidy” since each cell contains two pieces of information: both the SBP and the visit number. In contrast, the long data have a separate column indicating which visit number the data in a given row are from.</em></li>
+</ul></li>
+<li>for the “summary()” function, is there a way to summarize all but one variable in a dataset?
+<ul>
+<li><em>Yes! I sometimes restrict a dataset to a couple of variables for which I want to see the summary. I usually use the <code>select()</code> function for this, which we will be covering later in the course. For now, you can take a look at some <a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#29">select() examples from the BERD R workshops</a> (see slides 29-32).</em></li>
+</ul></li>
+<li>Differences between a tibble and a data.frame
+<ul>
+<li><em>I’m not surprised to see this show up as a muddiest point! Depending on your level of experience with R, at this point in the class some of the differences are difficult to explain since we haven’t done much coding yet. The <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">tibble vignette</a> lists some of the differences though if you are interested. For our purposes, they are almost the same thing. When some differences come up later in the course, I will point them out.</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="clearest-points-1" class="level3">
+<h3 class="anchored" data-anchor-id="clearest-points-1">Clearest Points</h3>
+<p><em>Thanks for the feedback!</em></p>
+<ul>
+<li>I enjoyed going through the code and viewing the functions. I haven’t really used <code>skimr</code> before and that was nice to see.
+<ul>
+<li><em>I like using <code>skmir</code>, but have recently been using <code>get_summary_stats()</code> from the <code>rstatix</code> package when teaching. It is only for numeric variables though. See a <a href="https://niederhausen.github.io/BSTA_511_F23/slides/Day03_bsta511.html#/get_summary_stats-from-rstatix-package"><code>get_summary_stats()</code> example from my BSTA 511 class</a>.</em></li>
+</ul></li>
+<li>Loading data.</li>
+<li>How to load data into R was clearest.
+<ul>
+<li><em>Good to know that loading data was clear. This part can be tricky sometimes!</em></li>
+</ul></li>
+<li>ggplot
+<ul>
+<li><em>Hopefully this will still be clear when we cover more advanced options in <code>ggplot</code>!</em></li>
+</ul></li>
+</ul>
 
 
 </section>
@@ -552,11 +489,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

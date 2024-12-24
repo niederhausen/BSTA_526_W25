@@ -1,7 +1,7 @@
 ---
 title: "Week 11"
 description: "Final week"
-date: "03/20/2024"
+date: "03/20/2025"
 date-modified: "today"
 categories: [""]
 format: 
@@ -20,11 +20,11 @@ editor_options:
 * Meike's office hours this week
     * Thursday 4-5 pm (instead of Friday at 3:30). 
     * Use same [Webex link](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) as usual office hours. 
-* __Final exam due Friday 3/22/2024 at 5:00 pm__.
+* __Final exam due Friday 3/22/2025 at 5:00 pm__.
     * See OneDrive folder _final_exam_ for files. 
 * __Grades for midterm projects__ have been released. 
     * Check the feedback attachment in Sakai (Excel file) for grade calculation and comments for each section.
-    * Points were calculated using the [grading rubric](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#grading-rubric) in the syllabus. The final grade is out of 10 points. See the [grading scale](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#grading-scale) for letter grade conversion.
+    * Points were calculated using the [grading rubric](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-rubric) in the syllabus. The final grade is out of 10 points. See the [grading scale](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-scale) for letter grade conversion.
     * Please review the comments and let us know if you have any questions. 
 * _Please fill out the __course evaluations__ for the class._ 
     * Course evaluations are very helpful for making improvements to our classes. 
@@ -42,7 +42,7 @@ editor_options:
 
 * See OneDrive folder for homework assignment.
 * HW 10 due on 3/20. **Assignment is in the part 8 folder.**
-    * Recall that the [lowest HW score is dropped](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#homework)
+    * Recall that the [lowest HW score is dropped](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#homework)
 
 ## Recording
 

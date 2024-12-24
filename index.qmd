@@ -59,7 +59,7 @@ Oregon Health & Science University
 ::: g-col-3
 ### Office Hours
 
-* See [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) for Webex links to office hours.
+* See [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25) for Webex links to office hours.
 - Mondays 3:00-4:00 pm (Emile)
 - Tuesdays 7:30-8:30 pm (Tia)
 - Wednesdays 6:05-7:05 pm (Tia) - Contact Tia to set up in-person option in classroom for Wed office hour
@@ -87,6 +87,6 @@ We will try to respond to all course-related e-mails within 24 hours Monday-Frid
 :::
 
 ::: g-col-4
-[{{< iconify icomoon-free github size=20px >}} View the source on GitHub](https://github.com/niederhausen/BSTA_526_W24)
+[{{< iconify icomoon-free github size=20px >}} View the source on GitHub](https://github.com/niederhausen/BSTA_526_W25)
 :::
 :::

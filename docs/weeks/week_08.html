@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-02-28">
+<meta name="dcterms.date" content="2025-02-27">
 <meta name="description" content="Lists and Functions">
 
 <title>Week 8 – BSTA 526 Winter 2025</title>
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 28, 2024</p>
+      <p class="date">February 27, 2025</p>
     </div>
   </div>
   
@@ -292,11 +292,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reminder-to-fill-out-post-class-surveys" class="level3">
 <h3 class="anchored" data-anchor-id="reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</h3>
 <ul>
-<li>This is a reminder that 5% of your grade is based on filling out <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu">post-class surveys</a> as a way of telling us that you came to class and engaged with the material for that week.</li>
+<li>This is a reminder that 5% of your grade is based on filling out <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi">post-class surveys</a> as a way of telling us that you came to class and engaged with the material for that week.</li>
 <li>You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.</li>
 <li><strong>Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.</strong> We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.</li>
 </ul>
-<p><em>See <a href="https://niederhausen.github.io/BSTA_526_W24/syllabus.html#post-class-surveys">syllabus section on Post-class surveys</a></em></p>
+<p><em>See <a href="https://niederhausen.github.io/BSTA_526_W25/syllabus.html#post-class-surveys">syllabus section on Post-class surveys</a></em></p>
 </section>
 </section>
 <section id="topics" class="level2">
@@ -403,16 +403,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 10 × 3
    id    sex     age
    &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
- 1 0001  M        63
+ 1 0001  F        19
  2 0002  F        60
- 3 0003  F        38
- 4 0004  M        50
- 5 0005  M        25
- 6 0006  M        56
- 7 0007  F        48
- 8 0008  F        27
- 9 0009  M        20
-10 0010  M        48</code></pre>
+ 3 0003  M        30
+ 4 0004  M        20
+ 5 0005  M        61
+ 6 0006  F        25
+ 7 0007  F        37
+ 8 0008  F        41
+ 9 0009  M        19
+10 0010  M        41</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Say we want to extract ID 0003.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -438,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 1 × 3
   id    sex     age
   &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
-1 0003  F        38</code></pre>
+1 0003  M        30</code></pre>
 </div>
 </div>
 <p><code>purrr::pluck</code> was created to work with deeply nested data structures. Not necessarily data frames; there’s probably a more appropriate function out there for the task.</p>

@@ -2,7 +2,7 @@
 title: "Week 8 Readings"
 linktitle: "Wk 8 Readings"
 description: "Lists and Functions"
-date: "2024-02-28"
+date: "2025-02-27"
 date-modified: "today"
 categories: [""]
 format: 

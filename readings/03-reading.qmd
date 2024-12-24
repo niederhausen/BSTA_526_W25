@@ -2,7 +2,7 @@
 title: "Week 3 Readings"
 linktitle: "Wk 3 Readings"
 description: "`ggplot2`, factors, boxplots, `dplyr`: subsetting using `filter()`/`select()`"
-date: "2024-01-24"
+date: "2025-01-23"
 date-modified: "today"
 categories: [""]
 format: 

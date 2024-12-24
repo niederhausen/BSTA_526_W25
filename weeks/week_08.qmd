@@ -1,7 +1,7 @@
 ---
 title: "Week 8"
 description: "Lists and Functions"
-date: "2/28/2024"
+date: "2/27/2025"
 date-modified: "today"
 categories: [""]
 format: 
@@ -17,11 +17,11 @@ editor_options:
 
 ### Reminder to fill out post-class surveys
 
-* This is a reminder that 5% of your grade is based on filling out [post-class surveys](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) as a way of telling us that you came to class and engaged with the material for that week.
+* This is a reminder that 5% of your grade is based on filling out [post-class surveys](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) as a way of telling us that you came to class and engaged with the material for that week.
 * You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.
 * __Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.__ We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted. 
 
-_See [syllabus section on Post-class surveys](https://niederhausen.github.io/BSTA_526_W24/syllabus.html#post-class-surveys)_
+_See [syllabus section on Post-class surveys](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#post-class-surveys)_
 
 
 
