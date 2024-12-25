@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -200,6 +234,29 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#muddiest-points-1" id="toc-muddiest-points-1" class="nav-link" data-scroll-target="#muddiest-points-1">Muddiest points</a></li>
   <li><a href="#clearest-points-1" id="toc-clearest-points-1" class="nav-link" data-scroll-target="#clearest-points-1">Clearest Points</a></li>
   </ul></li>
+  <li><a href="#week-3" id="toc-week-3" class="nav-link" data-scroll-target="#week-3">Week 3</a>
+  <ul class="collapse">
+  <li><a href="#muddiest-points-2" id="toc-muddiest-points-2" class="nav-link" data-scroll-target="#muddiest-points-2">Muddiest points</a></li>
+  </ul></li>
+  <li><a href="#week-4" id="toc-week-4" class="nav-link" data-scroll-target="#week-4">Week 4</a>
+  <ul class="collapse">
+  <li><a href="#keyboard-shortcut-for-the-pipe-or" id="toc-keyboard-shortcut-for-the-pipe-or" class="nav-link" data-scroll-target="#keyboard-shortcut-for-the-pipe-or">Keyboard shortcut for the pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</a></li>
+  <li><a href="#the-difference-between-na-value-and-0" id="toc-the-difference-between-na-value-and-0" class="nav-link" data-scroll-target="#the-difference-between-na-value-and-0">The difference between NA value and 0</a></li>
+  <li><a href="#across-and-its-usage" id="toc-across-and-its-usage" class="nav-link" data-scroll-target="#across-and-its-usage"><code>across()</code> and it’s usage</a></li>
+  <li><a href="#and-.x" id="toc-and-.x" class="nav-link" data-scroll-target="#and-.x"><code>~</code> and <code>.x</code></a></li>
+  <li><a href="#exceptions-where-we-have-seen-the-used" id="toc-exceptions-where-we-have-seen-the-used" class="nav-link" data-scroll-target="#exceptions-where-we-have-seen-the-used">Exceptions where we have seen the <code>~</code> used</a></li>
+  <li><a href="#case_when-vs.-if_else" id="toc-case_when-vs.-if_else" class="nav-link" data-scroll-target="#case_when-vs.-if_else"><code>case_when</code> vs.&nbsp;<code>if_else</code></a></li>
+  <li><a href="#the-difference-between-a-theme-and-and-a-palette." id="toc-the-difference-between-a-theme-and-and-a-palette." class="nav-link" data-scroll-target="#the-difference-between-a-theme-and-and-a-palette.">The difference between a theme and and a palette.</a></li>
+  <li><a href="#be-careful-what-you-pipe-to-and-from" id="toc-be-careful-what-you-pipe-to-and-from" class="nav-link" data-scroll-target="#be-careful-what-you-pipe-to-and-from">Be careful what you pipe to and from</a></li>
+  <li><a href="#other-muddy-points" id="toc-other-muddy-points" class="nav-link" data-scroll-target="#other-muddy-points">Other muddy points</a></li>
+  </ul></li>
+  <li><a href="#week-5" id="toc-week-5" class="nav-link" data-scroll-target="#week-5">Week 5</a>
+  <ul class="collapse">
+  <li><a href="#case_when-vs-ifelse" id="toc-case_when-vs-ifelse" class="nav-link" data-scroll-target="#case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></a></li>
+  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate"><code>separate()</code></a></li>
+  <li><a href="#herehere" id="toc-herehere" class="nav-link" data-scroll-target="#herehere"><code>here::here()</code></a></li>
+  <li><a href="#what-functions-will-only-work-within-another-function-generally" id="toc-what-functions-will-only-work-within-another-function-generally" class="nav-link" data-scroll-target="#what-functions-will-only-work-within-another-function-generally">what functions will only work within another function (generally)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -375,6 +432,846 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><em>Hopefully this will still be clear when we cover more advanced options in <code>ggplot</code>!</em></li>
 </ul></li>
+</ul>
+</section>
+</section>
+<section id="week-3" class="level2">
+<h2 class="anchored" data-anchor-id="week-3">Week 3</h2>
+<section id="muddiest-points-2" class="level3">
+<h3 class="anchored" data-anchor-id="muddiest-points-2">Muddiest points</h3>
+<section id="here-package" class="level4">
+<h4 class="anchored" data-anchor-id="here-package">here package</h4>
+<p>The here package takes a bit to explaining, but, compared to the old way of doing things, it is a real life saver. The issue in the past had to do with relative file paths, especially with <code>.qmd</code> files that are saved in sub-folders. The <code>.qmd</code> file recognizes where it is saved as the root file path, which is okay with a one-off <code>.qmd</code> file. But when working in projects (recommended) and striving for reproducible R code (highly recommended), the <code>here</code> package save a lot of headache.</p>
+<p>For further reading: + <a href="https://malco.io/articles/2018-11-05-why-should-i-use-the-here-package-when-i-m-already-using-projects">Why should I use the here package when I’m already using projects?</a> by Malcolm Barrett. + <a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">how to use the <code>here</code> package</a> by Jenny Richmond. + <a href="https://here.r-lib.org/articles/here.html">here package vignette</a> + <a href="https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html">Using here with rmarkdown</a></p>
+<p>Project-oriented workflows are recommended. Here package solves some old headaches. It gets easier with practice.</p>
+<section id="question-about-using-here" class="level5">
+<h5 class="anchored" data-anchor-id="question-about-using-here">Question about using here</h5>
+<blockquote class="blockquote">
+<p>… how [here] can be used in certain instances where one may not remember if they switched to a new qmd file? In that case, would you suggest to use the “here” command each time you work on a project where there’s a chance that you’ll switch between qmd files and would like to use the same data file throughout? Is there any other way to better use this function or tips on how you deal with it?</p>
+</blockquote>
+<p>There is a difference between working interactively in RStudio where data are loaded to the Environment. In this case, loading a data set once means that it can be used in any other code while working in the environment.</p>
+<p>Issues will com up when you go to render a <code>.qmd</code> that doesn’t have the data loaded within that <code>.qmd</code>. It won’t look to the environment for the data; it looks to the filepath that you specify in the <code>.qmd</code>. Best practice is to <em>write the code</em> to load the data in each <code>.qmd</code> or <code>.R</code> script so that R knows where to look for the data that you want it to operate on / analyze.</p>
+</section>
+</section>
+<section id="the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions" class="level4">
+<h4 class="anchored" data-anchor-id="the-function.-it-seems-like-sometimes-we-use-and-sometimes-we-use--.-are-they-interchangeable-or-each-with-different-types-of-functions">The ! function. It seems like sometimes we use ! and sometimes we use -. Are they interchangeable, or each with different types of functions?</h4>
+<ul>
+<li><code>!</code> – the exclamation point can be read as “not” it is primarily used in logical statements</li>
+<li><code>-</code> – the minus sign can be used in more instances
+<ul>
+<li>to do actual arithmetic (i.e.&nbsp;subtraction)</li>
+<li>to indicate a negative number</li>
+<li>with <code>dplyr::select()</code> to remove or not select a column, or exclusion</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Negation</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selection/exclusion</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(starwars, <span class="sc">-</span>height) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 87
+Columns: 13
+$ name       &lt;chr&gt; "Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Or…
+$ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…
+$ hair_color &lt;chr&gt; "blond", NA, NA, "none", "brown", "brown, grey", "brown", N…
+$ skin_color &lt;chr&gt; "fair", "gold", "white, blue", "white", "light", "light", "…
+$ eye_color  &lt;chr&gt; "blue", "yellow", "red", "yellow", "brown", "blue", "blue",…
+$ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …
+$ sex        &lt;chr&gt; "male", "none", "none", "male", "female", "male", "female",…
+$ gender     &lt;chr&gt; "masculine", "masculine", "masculine", "masculine", "femini…
+$ homeworld  &lt;chr&gt; "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "T…
+$ species    &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human", "Human", "Huma…
+$ films      &lt;list&gt; &lt;"A New Hope", "The Empire Strikes Back", "Return of the J…
+$ vehicles   &lt;list&gt; &lt;"Snowspeeder", "Imperial Speeder Bike"&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, "Imp…
+$ starships  &lt;list&gt; &lt;"X-wing", "Imperial shuttle"&gt;, &lt;&gt;, &lt;&gt;, "TIE Advanced x1",…</code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-fill-command" class="level4">
+<h4 class="anchored" data-anchor-id="using-the-fill-command">Using the fill command</h4>
+<p>We didn’t cover it in the lecture notes, but then it appeared in the example. I suggest to read/work through the <a href="https://tidyr.tidyverse.org/reference/fill.html">fill vignette</a>; the examples there are good ones to show what the function does. Then look back a the <code>smoke_messy</code> data set in Part 3 and think about why this command would be useful to clean up the data and for <em>fill</em>ing in missing values.</p>
+</section>
+<section id="loading-data-into-r" class="level4">
+<h4 class="anchored" data-anchor-id="loading-data-into-r">Loading data into R</h4>
+<p>It gets easier and hopefully you get to see more example in the notes and practice with the homework. <a href="http://www.sthda.com/english/wiki/importing-data-into-r">This tutorial</a> is pretty good. So is the <a href="https://readxl.tidyverse.org/">readxl vignette</a> and the <a href="https://readr.tidyverse.org/">readr vignette</a>.</p>
+</section>
+<section id="reasonable-width-height-and-dpi-values-when-using-ggsave" class="level4">
+<h4 class="anchored" data-anchor-id="reasonable-width-height-and-dpi-values-when-using-ggsave">Reasonable width, height, and dpi values when using ggsave</h4>
+<p>This takes some trial and error and depends on the purpose. For draft figures, dpi = 70 might be okay, but a journal might require dpi above 300 for publication. In Quarto, rendering an html, the figure defaults are 7x5 inches (<a href="https://quarto.org/docs/computations/execution-options.html">Link</a>). We talked about in class how you can use the plot panes to size your figures by trial and error.</p>
+</section>
+<section id="the-tidyselect-section" class="level4">
+<h4 class="anchored" data-anchor-id="the-tidyselect-section">The <code>tidyselect</code> section</h4>
+<p>There were pretty good resources in the notes</p>
+<ul>
+<li><p>See some more examples in <a href="https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part1.html#32">this slide</a></p></li>
+<li><p>For more info and learning about tidyselect, please run this code in your console:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install remotes package</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use remotes to install this package from github</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"laderast/tidyowl"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load tidyowl package</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyowl)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># interactive tutorial</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>tidyowl<span class="sc">::</span><span class="fu">learn_tidyselect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html">Here is also a link</a> with a list of the selectors and links to each one. For example, there is a link to <a href="https://tidyselect.r-lib.org/reference/starts_with.html"><code>starts_with</code></a> and a bunch of examples.</p>
+</section>
+</section>
+</section>
+<section id="week-4" class="level2">
+<h2 class="anchored" data-anchor-id="week-4">Week 4</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>               readxl, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>               janitor,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>               here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"smoke_complete.xlsx"</span>), </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">sheet =</span> <span class="dv">1</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">na =</span> <span class="st">"NA"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                                     </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr::glimpse(smoke_complete)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="keyboard-shortcut-for-the-pipe-or" class="level3">
+<h3 class="anchored" data-anchor-id="keyboard-shortcut-for-the-pipe-or">Keyboard shortcut for the pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</h3>
+<p>In office hours, someone didn’t know about this fact and wanted to make sure everyone knows about it.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important keyboard shortcut
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In RStudio the keyboard shortcut for the pipe operator <code>%&gt;%</code> (or native pipe <code>|&gt;</code>) is <code>Ctrl + Shift + M</code> (Windows) or <code>Cmd + Shift + M</code> (Mac).</p>
+<p>Note: <code>Ctrl + Shift + M</code> also works on a Mac.</p>
+</div>
+</div>
+</section>
+<section id="the-difference-between-na-value-and-0" class="level3">
+<h3 class="anchored" data-anchor-id="the-difference-between-na-value-and-0">The difference between NA value and 0</h3>
+<section id="na-not-available" class="level4">
+<h4 class="anchored" data-anchor-id="na-not-available">NA (Not Available)</h4>
+<ul>
+<li><code>NA</code> is a special value in R that represents missing or undefined data.</li>
+<li><code>0</code> is a numeric value representing the number zero. It is a valid and well-defined numerical value in R.</li>
+<li>It’s important to handle <code>NA</code> values appropriately in data analysis and to consider their impact on calculations, as operations involving <code>NA</code> may result in <code>NA</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">+</span> <span class="dv">5</span>  <span class="co"># The result is NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">+</span> <span class="dv">5</span>  <span class="co"># The results is 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)  <span class="co"># The result is NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the argument na.rm = TRUE, means to ignore the NAs</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># The results is 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="co"># The result is 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="across-and-its-usage" class="level3">
+<h3 class="anchored" data-anchor-id="across-and-its-usage"><code>across()</code> and it’s usage</h3>
+<p>The biggest advantage that across brings is the ability to perform the same data manipulation task to multiple columns.</p>
+<p>Below the values in three columns are all set to the mean value using the <code>mean()</code>. I had to write out the function and the variable names three times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">days_to_death =</span> <span class="fu">mean</span>(days_to_death, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">days_to_birth =</span> <span class="fu">mean</span>(days_to_birth, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">days_to_last_follow_up =</span> <span class="fu">mean</span>(days_to_last_follow_up, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<p>The same thing is accomplished using <code>across()</code> but we only have to call the <code>mean()</code> function once.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<section id="links-to-check-out" class="level4">
+<h4 class="anchored" data-anchor-id="links-to-check-out">Links to check out</h4>
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/across.html"><code>across()</code> vignette</a></li>
+<li><a href="https://willhipson.netlify.app/post/dplyr_across/dplyr_across/">Why I love dplyr’s across</a></li>
+</ul>
+</section>
+</section>
+<section id="and-.x" class="level3">
+<h3 class="anchored" data-anchor-id="and-.x"><code>~</code> and <code>.x</code></h3>
+<p>We’ve seen the <code>~</code> and <code>.x</code> used with <code>dplyr::across()</code>. We will see them again later when we get to the package <code>purrr</code>.</p>
+<p>In the tidyverse, <code>~</code> and <code>.x</code> are used to create what they call <em>lambda</em> functions which are part of the <code>purrr</code> syntax. We have not talked about functions yet, but <code>purrr</code> package and the <code>dplyr::across()</code> function allow you to specify functions to apply in a few different ways:</p>
+<ol type="1">
+<li><strong>A named function, e.g.&nbsp;<code>mean</code>.</strong></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Above, just using the function name, we are not able to provide the additional argument <code>na.rm = TRUE</code> to the <code>mean()</code> function, so the columns are now all <code>NA</code> values because there were missing (<code>NA</code>) values in those columns.</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>An anonymous function, e.g.&nbsp;<code>\(x) x + 1</code> or <code>function(x) x + 1</code>.</strong></li>
+</ol>
+<p>This has not been covered yet. R lets you specify your own functions and there are two basic ways to do it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> \(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<p>or</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now we are able to use the additional argument <code>na.rm = TRUE</code> and the columns are now the means of the valid values in those columns.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>A purrr-style lambda function, e.g.&nbsp;<code>~ mean(.x, na.rm = TRUE)</code></strong></li>
+</ol>
+<p>We use <code>~</code> to indicate that we are supplying a lambda function and we use <code>.x</code> as a placeholder for the argument within our lambda function to indicate where to use the variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(days_to_death, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                 days_to_birth, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                                 days_to_last_follow_up), </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,152
+Columns: 20
+$ primary_diagnosis           &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ tumor_stage                 &lt;chr&gt; "stage ia", "stage ib", "stage ib", "stage…
+$ age_at_diagnosis            &lt;dbl&gt; 24477, 26615, 28171, 27154, 23370, 19025, …
+$ vital_status                &lt;chr&gt; "dead", "dead", "dead", "alive", "alive", …
+$ morphology                  &lt;chr&gt; "8070/3", "8070/3", "8070/3", "8083/3", "8…
+$ days_to_death               &lt;dbl&gt; 852.5637, 852.5637, 852.5637, 852.5637, 85…
+$ state                       &lt;chr&gt; "live", "live", "live", "live", "live", "l…
+$ tissue_or_organ_of_origin   &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_birth               &lt;dbl&gt; -24175.38, -24175.38, -24175.38, -24175.38…
+$ site_of_resection_or_biopsy &lt;chr&gt; "C34.1", "C34.1", "C34.3", "C34.1", "C34.1…
+$ days_to_last_follow_up      &lt;dbl&gt; 944.8547, 944.8547, 944.8547, 944.8547, 94…
+$ cigarettes_per_day          &lt;dbl&gt; 10.9589041, 2.1917808, 1.6438356, 1.095890…
+$ years_smoked                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 26, NA…
+$ gender                      &lt;chr&gt; "male", "male", "female", "male", "female"…
+$ year_of_birth               &lt;dbl&gt; 1936, 1931, 1927, 1930, 1942, 1953, 1932, …
+$ race                        &lt;chr&gt; "white", "asian", "white", "white", "not r…
+$ ethnicity                   &lt;chr&gt; "not hispanic or latino", "not hispanic or…
+$ year_of_death               &lt;dbl&gt; 2004, 2003, NA, NA, NA, 2005, 2006, NA, NA…
+$ bcr_patient_barcode         &lt;chr&gt; "TCGA-18-3406", "TCGA-18-3407", "TCGA-18-3…
+$ disease                     &lt;chr&gt; "LUSC", "LUSC", "LUSC", "LUSC", "LUSC", "L…</code></pre>
+</div>
+</div>
+<section id="links-to-check-out-1" class="level4">
+<h4 class="anchored" data-anchor-id="links-to-check-out-1">Links to check out</h4>
+<p>Some of these are <code>purrr</code> focused which we have not covered yet. Others use <code>dplyr::across()</code> withing the <code>dplyr::summarize()</code> function which we will be covering soon</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/68249625/meaning-of-tilde-and-dot-notation-in-dplyr">Meaning of tilde and dot notation in dplyr</a></li>
+<li><a href="https://stackoverflow.com/questions/70665707/what-is-the-meaning-of-and-inside-the-function-map">What is the meaning of ‘~’ and ‘.’ inside the function map?</a></li>
+<li><a href="https://dplyr.tidyverse.org/reference/across.html"><code>across()</code> vignette</a></li>
+<li><a href="https://willhipson.netlify.app/post/dplyr_across/dplyr_across/">Why I love dplyr’s across</a></li>
+</ul>
+</section>
+</section>
+<section id="exceptions-where-we-have-seen-the-used" class="level3">
+<h3 class="anchored" data-anchor-id="exceptions-where-we-have-seen-the-used">Exceptions where we have seen the <code>~</code> used</h3>
+<p>In class, we have seen three instances where the <code>~</code> is used that is not for a lambda function.</p>
+<section id="case_when" class="level4">
+<h4 class="anchored" data-anchor-id="case_when"><code>case_when</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"0-5"</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"6+"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category    n    percent
+                 0-5 1100 0.95486111
+                  6+   52 0.04513889</code></pre>
+</div>
+</div>
+</section>
+<section id="facet_wrap" class="level4">
+<h4 class="anchored" data-anchor-id="facet_wrap"><code>facet_wrap</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Per the <a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html"><code>facet_wrap</code> vignettte</a>:</p>
+<blockquote class="blockquote">
+<p>For compatibility with the classic interface, can also be a formula or character vector. Use either a one sided formula, <code>~a + b</code>, or a character vector, <code>c("a", "b")</code>.</p>
+</blockquote>
+<p>Here it is being used to specify a formula.</p>
+<p>Though per the vignette, the <code>vars()</code> function is preferred syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(ggplot2<span class="sc">::</span><span class="fu">vars</span>(disease))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facet_grid" class="level4">
+<h4 class="anchored" data-anchor-id="facet_grid"><code>facet_grid</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(disease <span class="sc">~</span> vital_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Per the <a href="https://ggplot2.tidyverse.org/reference/facet_grid.html"><code>facet_grid</code> vignettte</a>:</p>
+<blockquote class="blockquote">
+<p>For compatibility with the classic interface, rows can also be a formula with the rows (of the tabular display) on the LHS and the columns (of the tabular display) on the RHS; the dot in the formula is used to indicate there should be no faceting on this dimension (either row or column).</p>
+</blockquote>
+<p>Again, it is being used to specify a formula.</p>
+<p>Though per the vignette, the <code>ggplot2::vars()</code> function with the arguments <code>rows</code> and <code>cols</code> seems to be preferred:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">rows =</span> ggplot2<span class="sc">::</span><span class="fu">vars</span>(disease), </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols =</span> ggplot2<span class="sc">::</span><span class="fu">vars</span>(vital_status))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: <code>dplyr::vars()</code> and <code>dplyr::ggplot2()</code> are the same function in different packages and can be used interchangeably.</p>
+</section>
+</section>
+<section id="case_when-vs.-if_else" class="level3">
+<h3 class="anchored" data-anchor-id="case_when-vs.-if_else"><code>case_when</code> vs.&nbsp;<code>if_else</code></h3>
+<p>In dplyr, both <code>if_else()</code> and <code>case_when()</code> are used for conditional transformations, but they have different use cases and behaviors.</p>
+<ol type="1">
+<li><code>if_else</code> function</li>
+</ol>
+<ul>
+<li><code>if_else()</code> is designed for simple vectorized conditions and is particularly useful when you have a <em>binary</em> condition (i.e., two possible outcomes).</li>
+<li>It evaluates a condition for each element of a vector and returns one of two values based on whether the condition is <code>TRUE</code> or <code>FALSE</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span>, <span class="st">"0-5"</span>, <span class="st">"6+"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category    n    percent
+                 0-5 1100 0.95486111
+                  6+   52 0.04513889</code></pre>
+</div>
+</div>
+<p>In this example, the column <code>cigarettes_category</code> is assigned the value “0-5” if <code>cigarettes_per_day</code> is less than 6 and “6+” otherwise.</p>
+<ol start="2" type="1">
+<li><code>case_when()</code> function</li>
+</ol>
+<ul>
+<li><code>case_when()</code> is more versatile and is suitable for handling multiple conditions with multiple possible outcomes. It is essentially a vectorized form of a <code>switch</code> or <code>if_else</code> chain.</li>
+<li>It allows you to specify multiple conditions and their corresponding values.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>smoke_complete <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"0 to 2"</span>, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"2 to 4"</span>, </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"4 to 6"</span>, </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>      cigarettes_per_day <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"6+"</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cigarettes_category =</span> <span class="fu">factor</span>(cigarettes_category)) <span class="sc">|&gt;</span> </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(cigarettes_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> cigarettes_category   n    percent
+              0 to 2 455 0.39496528
+              2 to 4 493 0.42795139
+              4 to 6 152 0.13194444
+                  6+  52 0.04513889</code></pre>
+</div>
+</div>
+<p>In this example, the column <code>cigarettes_category</code> is assigned the value “0 to 2” if <code>cigarettes_per_day</code> is less than 2, “2 to 4” if less than 4 (but greater than 2), “4 to 6” if less than 6 (but greater than 4), and “6+” otherwise.</p>
+<p>Use <code>if_else()</code> when you have a simple binary condition, and use <code>case_when()</code> when you need to handle multiple conditions with different outcomes. <code>case_when()</code> is more flexible and expressive when dealing with complex conditional transformations.</p>
+</section>
+<section id="the-difference-between-a-theme-and-and-a-palette." class="level3">
+<h3 class="anchored" data-anchor-id="the-difference-between-a-theme-and-and-a-palette.">The difference between a theme and and a palette.</h3>
+<p>In <code>ggplot2</code>, a theme and a palette serve different purposes and are used in different contexts. In summary, a theme controls the overall appearance of the plot, while a palette is specifically related to the colors used to represent different groups or levels within the data. Both themes and palettes contribute to visual appeal and readability of your plot.</p>
+<ol type="1">
+<li><strong>Theme:</strong></li>
+</ol>
+<ul>
+<li>A theme in <code>ggplot2</code> refers to the overall visual appearance of the plot. It includes elements such as fonts, colors, grid lines, background, and other visual attributes that define the look and feel of the entire plot.</li>
+<li>Themes are set using functions like <code>theme_minimal()</code>, <code>theme_classic()</code>, or custom themes created with the <code>theme()</code> function. Themes control the global appearance of the plot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using theme_minimal()</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day)) <span class="sc">+</span> </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Palette:</strong></li>
+</ol>
+<ul>
+<li>A palette, on the other hand, refers to a set of colors used to represent different levels or categories in the data. It is particularly relevant when working with categorical or discrete data where you want to distinguish between different groups.</li>
+<li>Palettes are set using functions like <code>scale_fill_manual()</code> or <code>scale_color_manual()</code>. You can specify a vector of colors or use pre-defined palettes from packages like RColorBrewer or viridis (we looked at the viridis package in class).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using a color palette</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> smoke_complete, </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age_at_diagnosis, </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> cigarettes_per_day, </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> disease)) <span class="sc">+</span> </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, </span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"blue"</span>, </span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="survey_feedback_previous_years_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="be-careful-what-you-pipe-to-and-from" class="level3">
+<h3 class="anchored" data-anchor-id="be-careful-what-you-pipe-to-and-from">Be careful what you pipe to and from</h3>
+<p>An error came up where a data frame was being piped to a function that did not accept a data frame as an argument (it accepted a vector)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starwars data frame was loaded earlier with the ggplot2 package</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span>  </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">n_distinct</span>(species) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'species' not found</code></pre>
+</div>
+</div>
+<ul>
+<li><code>starwars</code> is a data frame.</li>
+<li><code>dplyr::n_distinct()</code> only accepts a vector as an argument (check the help <code>?dplyr::n_distinct</code>)</li>
+</ul>
+<p>So we need to pipe a vector to the <code>dplyr::n_distinct()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">n_distinct</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38</code></pre>
+</div>
+</div>
+<p><code>dplyr::select()</code> accepts a data frame as its first argument and it return a vector (see the help <code>?dplyr::select</code>) which we can then pipe to <code>dplyr::n_distinct()</code>.</p>
+<p>The <code>%&gt;%</code> or <code>|&gt;</code> takes the output of the expression on its left and passes it as the first argument to the function on its right. The class / type of output on the left needs to agree or be acceptable as the first argument to the function on the right.</p>
+</section>
+<section id="other-muddy-points" class="level3">
+<h3 class="anchored" data-anchor-id="other-muddy-points">Other muddy points</h3>
+<ul>
+<li>Remembering applicable functions. Troubleshooting.</li>
+</ul>
+<blockquote class="blockquote">
+<p>This gets better with experience. You are all still very new to R so be patient with yourself.</p>
+</blockquote>
+<ul>
+<li>How to organize all of the material to understand the structure of how the R language works, rather than to keep track of all of the commands in an anecdotal way.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Again, I think that this gets better with experience. Though the R language, being open source, a lot of syntax is package dependent. So you need to be careful that some of the syntax we use with <code>dplyr</code> and the <code>tidyverse</code> will be different in base R or in other packages. This is something that comes with open source software (compared to Stata or SAS). The good news is that learning to use packages sets you up to better learn newer (to you) packages down the road.</p>
+</blockquote>
+</section>
+</section>
+<section id="week-5" class="level2">
+<h2 class="anchored" data-anchor-id="week-5">Week 5</h2>
+<section id="case_when-vs-ifelse" class="level3">
+<h3 class="anchored" data-anchor-id="case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></h3>
+<p><em>The difference between case_when and ifelse</em></p>
+<ul>
+<li><code>ifelse()</code> is the base R version of tidyverse’s <code>case_when()</code></li>
+<li>I prefer using <code>case_when()</code> since it’s easier to follow the logic.</li>
+<li><code>case_when()</code> is especially useful when there are more than two logical conditions being used.</li>
+</ul>
+<p>The example below creates a binary variable for bill length (long vs not long) using both <code>case_when()</code> and <code>ifelse()</code> as a comparison.</p>
+<ul>
+<li>Compare the crosstabs of the two variables!</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      species          island    bill_length_mm  bill_depth_mm  
+ Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+ Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+ Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+                                 Mean   :43.92   Mean   :17.15  
+                                 3rd Qu.:48.50   3rd Qu.:18.70  
+                                 Max.   :59.60   Max.   :21.50  
+                                 NA's   :2       NA's   :2      
+ flipper_length_mm  body_mass_g       sex           year     
+ Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+ 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+ Median :197.0     Median :4050   NA's  : 11   Median :2008  
+ Mean   :200.9     Mean   :4202                Mean   :2008  
+ 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+ Max.   :231.0     Max.   :6300                Max.   :2009  
+ NA's   :2         NA's   :2                                 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"long"</span>,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&lt;</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"not long"</span>,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill2 =</span> <span class="fu">ifelse</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">45</span>, <span class="st">"long"</span>, <span class="st">"not long"</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill1, long_bill2) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            long_bill2             
+ long_bill1       long not long NA_
+       long        166        0   0
+   not long          0      176   0
+       &lt;NA&gt;          0        0   2</code></pre>
+</div>
+</div>
+<p>Below is an example using <code>case_when()</code> to create a categorical variable with 3 groups:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill3 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"long"</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&lt;=</span> <span class="dv">40</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"medium"</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill3, long_bill1) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            long_bill1             
+ long_bill3       long not long NA_
+       long         57        0   0
+     medium        109       76   2
+      short          0      100   0</code></pre>
+</div>
+</div>
+<ul>
+<li>Creating a categorical variable with 3 groups can be done with <code>ifelse()</code>, but it’s harder to follow the logic:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill4 =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"long"</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(bill_length_mm <span class="sc">&lt;=</span> <span class="dv">40</span>, <span class="st">"short"</span>, <span class="st">"medium"</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill3, long_bill4) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            long_bill4                 
+ long_bill3       long medium short NA_
+       long         57      0     0   0
+     medium          0    185     0   2
+      short          0      0   100   0</code></pre>
+</div>
+</div>
+</section>
+<section id="separate" class="level3">
+<h3 class="anchored" data-anchor-id="separate"><code>separate()</code></h3>
+<p><em>Different ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it’ll be most relevant to use.</em></p>
+<ul>
+<li>Choosing the “best” way of using <code>separate()</code> is overwhelming at first.</li>
+<li>I recommend starting with the simplest use case with a string being specified in <code>sep = " "</code>:</li>
+</ul>
+<blockquote class="blockquote">
+<p><code>separate(data, col, into, sep = " ")</code></p>
+</blockquote>
+<ul>
+<li>Which of the various versions we showed to use depends on how the data being separated are structured.</li>
+<li>Most of the time I have a simple character, such as a space (<code>sep = " "</code>) or a comma (<code>sep = ","</code>) that I want to separate by.</li>
+<li>If the data are structured in a more complex way, then one of the <code>stringr</code> package options might come in handy.</li>
+</ul>
+</section>
+<section id="herehere" class="level3">
+<h3 class="anchored" data-anchor-id="herehere"><code>here::here()</code></h3>
+<p><em>TSV files, very neat… But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, “here: and also”here” Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial.</em></p>
+<ul>
+<li>Great question! This is definitely not intuitive, which is why I wanted to demonstrate it in class.</li>
+<li>The key is that
+<ul>
+<li>when rendering a qmd file the current working directory is the folder the file is sitting in,</li>
+<li>while when running code in a file within RStudio the working directory is the folder where the <code>.Rproj</code> file is located.<br>
+</li>
+</ul></li>
+<li>This distinction is important when loading other files from our computer during our workflow, and why <code>here::here()</code> makes our workflow so much easier!</li>
+</ul>
+</section>
+<section id="what-functions-will-only-work-within-another-function-generally" class="level3">
+<h3 class="anchored" data-anchor-id="what-functions-will-only-work-within-another-function-generally">what functions will only work within another function (generally)</h3>
+<ul>
+<li>I’m not aware of functions that only work standalone within other functions. For example, the <code>mean()</code> function works on its own, but can also be used within a <code>summarise()</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 43.92193</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+      m
+  &lt;dbl&gt;
+1  43.9</code></pre>
+</div>
+</div>
+<ul>
+<li>That being said, a function has a set of parameters to be specified that are specific to that function.</li>
 </ul>
 
 
