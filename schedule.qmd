@@ -14,7 +14,7 @@ editor_options:
 -   Links have been added to all weeks, but weeks we have not covered yet will have broken links.
 
 | Week | Date | Topics | Instructor |
-|:-------------:|:-------------:|:--------------|---------------|
+|:--:|:--:|:---|----|
 | [1](weeks/week_01.qmd) | 1/09 | Introduction to course/expectations, Intro to R/RStudio, Functions, Vectors, Data Types | Meike |
 | [2](weeks/week_02.qmd) | 1/16 | Loading Data, data.frames, and ggplot2 | Meike |
 | [3](weeks/week_03.qmd) | 1/23 | dplyr: subsetting using filter()/select() | Jessica |
