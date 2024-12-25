@@ -44,18 +44,18 @@ Readings are still the same as for Week 8, and we are using the part_07 material
 
 ## Post-class survey
 
-* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
+* Previous muddiest points and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
 
 
 ## Homework
 
-* See OneDrive folder for homework assignment.
-* HW 9 due on 3/13. __Assignment is in the part 7 folder.__
+* See Dropbox folder for homework assignment.
 
 
 ## Recording
 
-* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
 
 
 ## Muddiest points from Week 9

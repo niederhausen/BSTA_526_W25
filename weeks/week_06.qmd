@@ -14,9 +14,7 @@ editor_options:
 
 ## Announcements
 
-* HW 5: see the updated HW 5 assignment on OneDrive called `hw_05_b526_v2.qmd`
-* Midterm: due date extended to 2/25/24. 
-    * See the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.
+* HW 5: see the updated HW 5 assignment on Dropbox called `hw_05_b526_v2.qmd`
 
 ### Reminder to fill out post-class surveys
 
@@ -56,24 +54,24 @@ From Week 5:
 
 * [Week 5 Readings](../readings/05-reading.qmd)
 * [Week 6 Readings](../readings/06-reading.qmd)
-* One Drive [part_05 & part_06 Project folders](https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF)
+* Dropbox [part_05 & part_06 Project folders](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
 
 ## Post-class survey
 
-* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_5urkrdktEwkQqEu) to provide feedback. Thank you!
+* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
+* Previous muddiest points and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
 
 
 ## Homework
 
-* See OneDrive folder for homework assignment.
-* HW 6 due on 2/21.
+* See Dropbox folder for homework assignment.
+* HW 6 due on 2/20.
 
 
 ## Recording
 
-* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=190949&postedComment=false&addBefore=&itemId=5172228&path=push&topicId=&addTool=-1&recheck=&id=&forumId=). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
-
+* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
 
 # Muddiest points from Week 6
 

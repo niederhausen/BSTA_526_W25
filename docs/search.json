@@ -141,14 +141,14 @@
     "href": "weeks/week_09.html#post-class-survey",
     "title": "Week 9",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_09.html#homework",
     "href": "weeks/week_09.html#homework",
     "title": "Week 9",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 9 due on 3/13. Assignment is in the part 7 folder."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment."
   },
   {
     "objectID": "weeks/week_09.html#recording",
@@ -176,7 +176,7 @@
     "href": "weeks/week_09.html#for-loops",
     "title": "Week 9",
     "section": "for() loops",
-    "text": "for() loops\n\nStill a little confused about the for() loops…\n\nFor loops are a staple in programming languages, not just R. They are used when we want to repeat the same operation (or a set of operations) several times.\nThe basis syntax in R looks like:\n\nfor (variable in sequence) {\n  # Statements to be executed for each iteration\n}\n\nHere’s a breakdown of the components:\n\nvariable: This is a loop variable that takes on each value in the specified sequence during each iteration of the loop.\nsequence: This is the sequence of values over which the loop iterates. It can be a vector, list, or any other iterable object.\nLoop Body: The statements enclosed within the curly braces {} constitute the body of the loop. These statements are executed for each iteration of the loop.\n\n\nBasic example\n\nfor (i in 1:5) {\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nFirst iteration manually:\n\ni &lt;- 1\nprint(i)\n\n[1] 1\n\n\nSecond iteration manually:\n\ni &lt;- 2\nprint(i)\n\n[1] 2\n\n\nEtc.\n\n\nAdapted from 1st edition of R for Data Science\nHere’s a tibble for an example\n\npacman::p_load(tidyverse)\n\ndf &lt;- tibble(\n  a = rnorm(10),\n  b = rnorm(10),\n  c = rnorm(10),\n  d = rnorm(10)\n)\n\ndf\n\n# A tibble: 10 × 4\n        a       b      c      d\n    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 -2.42   0.0283  0.160  2.28 \n 2  1.38   0.670   1.51  -0.575\n 3  1.57  -0.581  -1.12   1.82 \n 4 -0.334  0.221   0.178  0.321\n 5 -0.503 -0.724  -0.972 -0.982\n 6 -0.920  1.03    1.98   1.06 \n 7 -1.26  -1.52    0.689  2.03 \n 8 -1.07   0.598  -0.615  2.21 \n 9 -0.859 -1.11    0.914 -1.25 \n10  0.810  0.120  -1.70  -0.408\n\n\nUsing a copy and paste method to calculate the mean of each column would look something like this:\n\nmedian(df$a)\n\n[1] -0.6809446\n\nmedian(df$b)\n\n[1] 0.07389515\n\nmedian(df$c)\n\n[1] 0.1687671\n\nmedian(df$d)\n\n[1] 0.6889505\n\n\nBut this breaks the rule of DRY (“Don’t repeat yourself”)\n\noutput &lt;- c()  # vector to store the results of the for loop\n\nfor (i in seq_along(df)) {\n  \n  output[i] &lt;- median(df[[i]])\n  \n}\n\noutput\n\n[1] -0.68094457  0.07389515  0.16876707  0.68895050\n\n\nFor loops in R are commonly used when you know the number of iterations in advance or when you need to iterate over a specific sequence of values. While for loops are useful, R also provides other ways to perform iteration, such as using vectorized operations (example below) and functions from the apply family (not covered). It’s often recommended to explore these alternatives when working with R for better code efficiency and readability.\n\n# Creating two vectors\nvector1 &lt;- c(1, 2, 3, 4, 5)\nvector2 &lt;- c(6, 7, 8, 9, 10)\n\n# Vectorized addition\nresult_addition &lt;- vector1 + vector2\nresult_addition\n\n[1]  7  9 11 13 15\n\n# With a for loop\nresult_addition_for_loop &lt;- c()\n\nfor (i in 1:length(vector1)) {\n  \n  result_addition_for_loop[i] &lt;- vector1[i] + vector2[i]\n  \n}\n\nresult_addition_for_loop\n\n[1]  7  9 11 13 15"
+    "text": "for() loops\n\nStill a little confused about the for() loops…\n\nFor loops are a staple in programming languages, not just R. They are used when we want to repeat the same operation (or a set of operations) several times.\nThe basis syntax in R looks like:\n\nfor (variable in sequence) {\n  # Statements to be executed for each iteration\n}\n\nHere’s a breakdown of the components:\n\nvariable: This is a loop variable that takes on each value in the specified sequence during each iteration of the loop.\nsequence: This is the sequence of values over which the loop iterates. It can be a vector, list, or any other iterable object.\nLoop Body: The statements enclosed within the curly braces {} constitute the body of the loop. These statements are executed for each iteration of the loop.\n\n\nBasic example\n\nfor (i in 1:5) {\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nFirst iteration manually:\n\ni &lt;- 1\nprint(i)\n\n[1] 1\n\n\nSecond iteration manually:\n\ni &lt;- 2\nprint(i)\n\n[1] 2\n\n\nEtc.\n\n\nAdapted from 1st edition of R for Data Science\nHere’s a tibble for an example\n\npacman::p_load(tidyverse)\n\ndf &lt;- tibble(\n  a = rnorm(10),\n  b = rnorm(10),\n  c = rnorm(10),\n  d = rnorm(10)\n)\n\ndf\n\n# A tibble: 10 × 4\n         a       b      c      d\n     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1  0.162   0.588  -0.411  0.382\n 2 -0.723   0.0728  1.99   1.18 \n 3 -0.129  -0.0748  0.587 -0.362\n 4 -1.00   -1.75    0.815  1.07 \n 5 -0.359  -0.101  -0.537 -0.791\n 6  0.985   0.482  -0.704  0.716\n 7  0.144  -0.675   0.380 -1.78 \n 8  0.951  -1.38    0.415  0.405\n 9  0.854  -0.744   0.194 -1.23 \n10  0.0741 -0.948  -0.918  0.386\n\n\nUsing a copy and paste method to calculate the mean of each column would look something like this:\n\nmedian(df$a)\n\n[1] 0.1093116\n\nmedian(df$b)\n\n[1] -0.3882745\n\nmedian(df$c)\n\n[1] 0.2874271\n\nmedian(df$d)\n\n[1] 0.3841581\n\n\nBut this breaks the rule of DRY (“Don’t repeat yourself”)\n\noutput &lt;- c()  # vector to store the results of the for loop\n\nfor (i in seq_along(df)) {\n  \n  output[i] &lt;- median(df[[i]])\n  \n}\n\noutput\n\n[1]  0.1093116 -0.3882745  0.2874271  0.3841581\n\n\nFor loops in R are commonly used when you know the number of iterations in advance or when you need to iterate over a specific sequence of values. While for loops are useful, R also provides other ways to perform iteration, such as using vectorized operations (example below) and functions from the apply family (not covered). It’s often recommended to explore these alternatives when working with R for better code efficiency and readability.\n\n# Creating two vectors\nvector1 &lt;- c(1, 2, 3, 4, 5)\nvector2 &lt;- c(6, 7, 8, 9, 10)\n\n# Vectorized addition\nresult_addition &lt;- vector1 + vector2\nresult_addition\n\n[1]  7  9 11 13 15\n\n# With a for loop\nresult_addition_for_loop &lt;- c()\n\nfor (i in 1:length(vector1)) {\n  \n  result_addition_for_loop[i] &lt;- vector1[i] + vector2[i]\n  \n}\n\nresult_addition_for_loop\n\n[1]  7  9 11 13 15"
   },
   {
     "objectID": "weeks/week_09.html#na.rm-vs-na.omit",
@@ -190,7 +190,7 @@
     "href": "weeks/week_09.html#purrrmap",
     "title": "Week 9",
     "section": "purrr::map()",
-    "text": "purrr::map()\n\nI am still a little foggy on the formatting of purrrmap and how to utilize it effectively.\n\nThe purrr::map function is used to apply a specified function to each element of a list or vector, returning the results in a new list.\n\nBasic Syntax:\n\npurrr::map(.x, .f, ...)\n\n\n.x: The input list or vector.\n.f: The function to apply to each element of .x.\n...: Additional arguments passed to the function specified in .f.\n\n\n\nKey Features:\n\nConsistent Output:\n\nmap returns a list, ensuring a consistent output format regardless of the input structure.\n\nFunction Application:\n\nThe primary purpose is to apply a specified function to each element of the input .x.\n\nFormula Interface:\n\nSupports a formula interface (~) for concise function specifications.\n\npurrr::map(.x, ~ function(.))\n\n\n\nExample:\n\n# Sample list\nmy_list &lt;- list(a = 1:3, \n                b = c(4, 5, 6), \n                c = rnorm(n = 3))\n\nmy_list\n\n$a\n[1] 1 2 3\n\n$b\n[1] 4 5 6\n\n$c\n[1] 0.0085345 0.6994740 1.4987783\n\n# Using map to square each element in the list\nsquared_list &lt;- purrr::map(.x = my_list, \n                           .f = ~ .x ^ 2)\n\nsquared_list\n\n$a\n[1] 1 4 9\n\n$b\n[1] 16 25 36\n\n$c\n[1] 0.0000728377 0.4892638374 2.2463365010\n\n\nIn this example, the map function applies the squaring function (~ .x ^ 2) to each element of the input list my_list. The resulting squared_list is a list where each element is the squared version of the corresponding element in my_list.\nThe purrr::map function is particularly useful when working with lists and helps to create cleaner and more readable code, especially in cases where you want to apply the same operation to each element of a collection."
+    "text": "purrr::map()\n\nI am still a little foggy on the formatting of purrrmap and how to utilize it effectively.\n\nThe purrr::map function is used to apply a specified function to each element of a list or vector, returning the results in a new list.\n\nBasic Syntax:\n\npurrr::map(.x, .f, ...)\n\n\n.x: The input list or vector.\n.f: The function to apply to each element of .x.\n...: Additional arguments passed to the function specified in .f.\n\n\n\nKey Features:\n\nConsistent Output:\n\nmap returns a list, ensuring a consistent output format regardless of the input structure.\n\nFunction Application:\n\nThe primary purpose is to apply a specified function to each element of the input .x.\n\nFormula Interface:\n\nSupports a formula interface (~) for concise function specifications.\n\npurrr::map(.x, ~ function(.))\n\n\n\nExample:\n\n# Sample list\nmy_list &lt;- list(a = 1:3, \n                b = c(4, 5, 6), \n                c = rnorm(n = 3))\n\nmy_list\n\n$a\n[1] 1 2 3\n\n$b\n[1] 4 5 6\n\n$c\n[1] -0.2999317 -0.8807203  1.1688468\n\n# Using map to square each element in the list\nsquared_list &lt;- purrr::map(.x = my_list, \n                           .f = ~ .x ^ 2)\n\nsquared_list\n\n$a\n[1] 1 4 9\n\n$b\n[1] 16 25 36\n\n$c\n[1] 0.08995903 0.77566826 1.36620287\n\n\nIn this example, the map function applies the squaring function (~ .x ^ 2) to each element of the input list my_list. The resulting squared_list is a list where each element is the squared version of the corresponding element in my_list.\nThe purrr::map function is particularly useful when working with lists and helps to create cleaner and more readable code, especially in cases where you want to apply the same operation to each element of a collection."
   },
   {
     "objectID": "weeks/week_09.html#general-references",
@@ -225,7 +225,7 @@
     "href": "weeks/week_11.html#homework",
     "title": "Week 11",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 10 due on 3/20. Assignment is in the part 8 folder.\n\nRecall that the lowest HW score is dropped"
+    "text": "Homework\n\nSee Dropbox folder for homework assignment.\n\nRecall that the lowest HW score is dropped"
   },
   {
     "objectID": "weeks/week_11.html#recording",
@@ -239,7 +239,7 @@
     "href": "weeks/week_11.html#muddiest-points",
     "title": "Week 11",
     "section": "Muddiest points",
-    "text": "Muddiest points\n\nSee Week 10 page for Week 10 feedback."
+    "text": "Muddiest points\n\nPrevious muddiest and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_04.html",
@@ -260,28 +260,28 @@
     "href": "weeks/week_04.html#announcements",
     "title": "Week 4",
     "section": "Announcements",
-    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared OneDrive folder BSTA_526_W24_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_04, and then open RStudio by double-clicking on the file called part_04.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
+    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_04, and then open RStudio by double-clicking on the file called part_04.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
   },
   {
     "objectID": "weeks/week_04.html#class-materials",
     "href": "weeks/week_04.html#class-materials",
     "title": "Week 4",
     "section": "Class materials",
-    "text": "Class materials\n\nReadings\nOne Drive part_04 Project folder"
+    "text": "Class materials\n\nReadings\nDropbox part_04 Project folder"
   },
   {
     "objectID": "weeks/week_04.html#post-class-survey",
     "href": "weeks/week_04.html#post-class-survey",
     "title": "Week 4",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_04.html#homework",
     "href": "weeks/week_04.html#homework",
     "title": "Week 4",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 4 due on 2/7."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment.\nHW 4 due on 2/6."
   },
   {
     "objectID": "weeks/week_04.html#recording",
@@ -358,14 +358,14 @@
     "href": "weeks/week_06.html",
     "title": "Week 6",
     "section": "",
-    "text": "HW 5: see the updated HW 5 assignment on OneDrive called hw_05_b526_v2.qmd\nMidterm: due date extended to 2/25/24.\n\nSee the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.\n\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
+    "text": "HW 5: see the updated HW 5 assignment on Dropbox called hw_05_b526_v2.qmd\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
   },
   {
     "objectID": "weeks/week_06.html#announcements",
     "href": "weeks/week_06.html#announcements",
     "title": "Week 6",
     "section": "",
-    "text": "HW 5: see the updated HW 5 assignment on OneDrive called hw_05_b526_v2.qmd\nMidterm: due date extended to 2/25/24.\n\nSee the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.\n\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
+    "text": "HW 5: see the updated HW 5 assignment on Dropbox called hw_05_b526_v2.qmd\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
   },
   {
     "objectID": "weeks/week_06.html#topics",
@@ -379,21 +379,21 @@
     "href": "weeks/week_06.html#class-materials",
     "title": "Week 6",
     "section": "Class materials",
-    "text": "Class materials\n\nWeek 5 Readings\nWeek 6 Readings\nOne Drive part_05 & part_06 Project folders"
+    "text": "Class materials\n\nWeek 5 Readings\nWeek 6 Readings\nDropbox part_05 & part_06 Project folders"
   },
   {
     "objectID": "weeks/week_06.html#post-class-survey",
     "href": "weeks/week_06.html#post-class-survey",
     "title": "Week 6",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_06.html#homework",
     "href": "weeks/week_06.html#homework",
     "title": "Week 6",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 6 due on 2/21."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment.\nHW 6 due on 2/20."
   },
   {
     "objectID": "weeks/week_06.html#recording",
@@ -470,28 +470,28 @@
     "href": "weeks/week_03.html#announcements",
     "title": "Week 3",
     "section": "Announcements",
-    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared OneDrive folder BSTA_526_W24_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_03, and then open RStudio by double-clicking on the file called part_03.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
+    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_03, and then open RStudio by double-clicking on the file called part_03.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
   },
   {
     "objectID": "weeks/week_03.html#class-materials",
     "href": "weeks/week_03.html#class-materials",
     "title": "Week 3",
     "section": "Class materials",
-    "text": "Class materials\n\nReadings\nOne Drive part_03 Project folder"
+    "text": "Class materials\n\nReadings\nDropbox part_03 Project folder"
   },
   {
     "objectID": "weeks/week_03.html#post-class-survey",
     "href": "weeks/week_03.html#post-class-survey",
     "title": "Week 3",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_03.html#homework",
     "href": "weeks/week_03.html#homework",
     "title": "Week 3",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 3 due on 1/31."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment.\nHW 3 due on 1/30."
   },
   {
     "objectID": "weeks/week_03.html#recording",
@@ -607,7 +607,7 @@
     "href": "weeks/week_02.html#announcements",
     "title": "Week 2",
     "section": "Announcements",
-    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared OneDrive folder BSTA_526_W24_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_02, and then open RStudio by double-clicking on the file called part_02.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
+    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_02, and then open RStudio by double-clicking on the file called part_02.Rproj.\nIf you have not already done so, please join the BSTA 526 Slack channel and introduce yourself by posting in the #random channel."
   },
   {
     "objectID": "weeks/week_02.html#class-materials",
@@ -621,14 +621,14 @@
     "href": "weeks/week_02.html#post-class-survey",
     "title": "Week 2",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_02.html#homework",
     "href": "weeks/week_02.html#homework",
     "title": "Week 2",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 2 due on 1/29 (updated to Monday)."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment."
   },
   {
     "objectID": "weeks/week_02.html#recording",
@@ -684,14 +684,14 @@
     "href": "weeks/week_07.html#post-class-survey",
     "title": "Week 7",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_07.html#homework",
     "href": "weeks/week_07.html#homework",
     "title": "Week 7",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 7 due on 2/28. Assignment is in the part 6 folder."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment."
   },
   {
     "objectID": "weeks/week_07.html#recording",
@@ -747,14 +747,14 @@
     "href": "weeks/week_10.html#post-class-survey",
     "title": "Week 10",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_10.html#homework",
     "href": "weeks/week_10.html#homework",
     "title": "Week 10",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 10 due on 3/20. Assignment is in the part 8 folder."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment."
   },
   {
     "objectID": "weeks/week_10.html#recording",
@@ -789,14 +789,14 @@
     "href": "weeks/week_10.html#list.files-function",
     "title": "Week 10",
     "section": "List.files function",
-    "text": "List.files function\nthe list.files() function is used to obtain a character vector of file names in a specified directory. Here’s a breakdown of how it works and its common parameters:\n\nDirectory Path: The primary argument of list.files() is the path to the directory you want to list files from. If not specified, it defaults to the current working directory.\nPattern Matching: pattern is an optional argument that allows you to specify a pattern for file names. Only file names matching this pattern will be returned. This can be useful for filtering specific types of files.\nRecursive Listing: If recursive = TRUE, the function will list files recursively, i.e., it will include files from subdirectories as well. By default, recursive is set to FALSE.\nFile Type: The full.names argument controls whether the returned file names should include the full path (if TRUE) or just the file names (if FALSE, the default).\nCharacter Encoding: You can specify the encoding argument to handle file names with non-ASCII characters. This argument is especially useful on Windows systems where file names may use a different character encoding.\n\nHere’s a simple example demonstrating the basic usage of list.files():\n\n# List files in the current directory\nfiles &lt;- list.files()\n\n# Print the file names\nprint(files)\n\n [1] \"_extensions\"                        \"_quarto.yml\"                       \n [3] \"about.qmd\"                          \"BSTA_526_W25.Rproj\"                \n [5] \"data\"                               \"docs\"                              \n [7] \"function_week.qmd\"                  \"images\"                            \n [9] \"index.qmd\"                          \"minty_adapt.css\"                   \n[11] \"minty_adapt.scss\"                   \"readings\"                          \n[13] \"readings.qmd\"                       \"resources\"                         \n[15] \"schedule.qmd\"                       \"styles.css\"                        \n[17] \"survey_feedback_previous_years.qmd\" \"syllabus.qmd\"                      \n[19] \"weeks\"                              \"weeks.qmd\"                         \n\n\nThis will print the names of all files in the current working directory.\n\n#| eval: false\n\n# List CSV files in a specific directory\ncsv_files &lt;- list.files(path = \"path/to/directory\", pattern = \"\\\\.csv$\")\n\n# Print the CSV file names\nprint(csv_files)\n\ncharacter(0)\n\n\nThis will print the names of all CSV files in the specified directory.\nOverall, list.files() is a handy function for obtaining file names within a directory, providing flexibility through various parameters for customization according to specific needs, such as filtering by pattern or handling file names with non-standard characters.\nNOTE You need to pay attention to your working directory and your relative file paths. See Week 2 or 3 (?) about here package and the discussion about files paths. Best to always use Rprojects and the here package."
+    "text": "List.files function\nthe list.files() function is used to obtain a character vector of file names in a specified directory. Here’s a breakdown of how it works and its common parameters:\n\nDirectory Path: The primary argument of list.files() is the path to the directory you want to list files from. If not specified, it defaults to the current working directory.\nPattern Matching: pattern is an optional argument that allows you to specify a pattern for file names. Only file names matching this pattern will be returned. This can be useful for filtering specific types of files.\nRecursive Listing: If recursive = TRUE, the function will list files recursively, i.e., it will include files from subdirectories as well. By default, recursive is set to FALSE.\nFile Type: The full.names argument controls whether the returned file names should include the full path (if TRUE) or just the file names (if FALSE, the default).\nCharacter Encoding: You can specify the encoding argument to handle file names with non-ASCII characters. This argument is especially useful on Windows systems where file names may use a different character encoding.\n\nHere’s a simple example demonstrating the basic usage of list.files():\n\n# List files in the current directory\nfiles &lt;- list.files()\n\n# Print the file names\nprint(files)\n\n [1] \"_extensions\"                        \"_quarto.yml\"                       \n [3] \"about.qmd\"                          \"BSTA_526_W25.Rproj\"                \n [5] \"data\"                               \"docs\"                              \n [7] \"function_week.qmd\"                  \"images\"                            \n [9] \"index.qmd\"                          \"minty_adapt.scss\"                  \n[11] \"readings\"                           \"readings.qmd\"                      \n[13] \"resources\"                          \"schedule.qmd\"                      \n[15] \"styles.css\"                         \"survey_feedback_previous_years.qmd\"\n[17] \"syllabus.qmd\"                       \"weeks\"                             \n[19] \"weeks.qmd\"                         \n\n\nThis will print the names of all files in the current working directory.\n\n#| eval: false\n\n# List CSV files in a specific directory\ncsv_files &lt;- list.files(path = \"path/to/directory\", pattern = \"\\\\.csv$\")\n\n# Print the CSV file names\nprint(csv_files)\n\ncharacter(0)\n\n\nThis will print the names of all CSV files in the specified directory.\nOverall, list.files() is a handy function for obtaining file names within a directory, providing flexibility through various parameters for customization according to specific needs, such as filtering by pattern or handling file names with non-standard characters.\nNOTE You need to pay attention to your working directory and your relative file paths. See Week 2 or 3 (?) about here package and the discussion about files paths. Best to always use Rprojects and the here package."
   },
   {
     "objectID": "weeks/week_05.html",
     "href": "weeks/week_05.html",
     "title": "Week 5",
     "section": "",
-    "text": "Updates made on 2/9/24\n\nHW 5: see the updated HW 5 assignment on OneDrive called hw_05_b526_v2.qmd\nMidterm: due date extended to 2/25/24.\n\nSee the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.\n\nMaterial covered in class on 2/7/24\n\nPart 5 Sections 1-4.4\nSolutions to Challenge 1 from section 4.3 of the Part 5 notes are in OneDrive (Challenge_1_solutions_Part5.html)"
+    "text": "Practice loading data and using mutate() and separate()\nPractice using here() to load data in a subfolder of the project\nLearn how to summarize() data with group_by() to summarize within categories\nLearn and apply bind_rows() to combine rows from two or more datasets\nLearn about the different kinds of joins and how they merge data\nApply inner_join() and left_join() to join tables on columns\nUtilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#post-class-updates",
@@ -809,36 +809,36 @@
     "objectID": "weeks/week_05.html#topics",
     "href": "weeks/week_05.html#topics",
     "title": "Week 5",
-    "section": "Topics",
-    "text": "Topics\n\nPractice loading data and using mutate() and separate()\nPractice using here() to load data in a subfolder of the project\nLearn how to summarize() data with group_by() to summarize within categories\nLearn and apply bind_rows() to combine rows from two or more datasets\nLearn about the different kinds of joins and how they merge data\nApply inner_join() and left_join() to join tables on columns\nUtilize pivot_longer() to make a wide dataset long"
+    "section": "",
+    "text": "Practice loading data and using mutate() and separate()\nPractice using here() to load data in a subfolder of the project\nLearn how to summarize() data with group_by() to summarize within categories\nLearn and apply bind_rows() to combine rows from two or more datasets\nLearn about the different kinds of joins and how they merge data\nApply inner_join() and left_join() to join tables on columns\nUtilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#announcements",
     "href": "weeks/week_05.html#announcements",
     "title": "Week 5",
     "section": "Announcements",
-    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared OneDrive folder BSTA_526_W24_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_05, and then open RStudio by double-clicking on the file called part_05.Rproj."
+    "text": "Announcements\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_05, and then open RStudio by double-clicking on the file called part_05.Rproj."
   },
   {
     "objectID": "weeks/week_05.html#class-materials",
     "href": "weeks/week_05.html#class-materials",
     "title": "Week 5",
     "section": "Class materials",
-    "text": "Class materials\n\nReadings\nOne Drive part_05 Project folder"
+    "text": "Class materials\n\nReadings\nDropbox part_05 Project folder"
   },
   {
     "objectID": "weeks/week_05.html#post-class-survey",
     "href": "weeks/week_05.html#post-class-survey",
     "title": "Week 5",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_05.html#homework",
     "href": "weeks/week_05.html#homework",
     "title": "Week 5",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 5 due on 2/14.\n\nSee the updated HW 5 assignment on OneDrive called hw_05_b526_v2.qmd"
+    "text": "Homework\n\nSee Dropbox part 5 folder for homework assignment.\nHW 5 due on 2/13."
   },
   {
     "objectID": "weeks/week_05.html#recording",
@@ -908,14 +908,14 @@
     "href": "weeks/week_08.html#post-class-survey",
     "title": "Week 8",
     "section": "Post-class survey",
-    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!"
+    "text": "Post-class survey\n\nPlease fill out the post-class survey to provide feedback. Thank you!\nPrevious muddiest points and clearest points with responses are collected here: https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years"
   },
   {
     "objectID": "weeks/week_08.html#homework",
     "href": "weeks/week_08.html#homework",
     "title": "Week 8",
     "section": "Homework",
-    "text": "Homework\n\nSee OneDrive folder for homework assignment.\nHW 8 due on 3/6. Assignment is in the part 7 folder."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment."
   },
   {
     "objectID": "weeks/week_08.html#recording",
@@ -929,7 +929,7 @@
     "href": "weeks/week_08.html#muddiest-points-from-week-8",
     "title": "Week 8",
     "section": "Muddiest points from Week 8",
-    "text": "Muddiest points from Week 8\n\nSee Week 7 page for Week 7 feedback.\n\n\nWhen loading a dataset, what does  mean?\nThis occurs when you use the data() function to load a data set from a package. Per the help on this function (?data):\n\ndata() was originally intended to allow users to load datasets from packages for use in their examples, and as such it loaded the datasets into the workspace .GlobalEnv. This avoided having large datasets in memory when not in use: that need has been almost entirely superseded by lazy-loading of datasets.\n\n\ndata(\"iris\")  # this doesn't actually load the data set, but makes it available for use\nhead(iris)    # Once it's used it will appear in the Environment as an object.\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\n\nChallenge # 2\nThis was where we created a function to load 3 data sets, clean them, and convert them to long format. These are tasks we’ve seen in previous classes. In this challenge, the main takeaway was to see the DRY (Don’t repeat yourself) concept at play. Instead of writing the code 3 times for each data set, we can create a function where we only write the cleaning code once, then use that function 3 times.\nReviewing the challenge solutions and taking more time to work through it on your own is a good idea. We went through it pretty quick in class. You won’t usually be limited on time to get a function like that to work. In practice, if it’s taking more time and too complicated, then it’s fine to duplicate code so that you know it’s working correctly. But, with very repetitive tasks, functions can make your code less prone to errors from copying and pasting.\nIf you have trouble getting your code to work for the challenges, office hours are great for helping to debug code. Else, sharing full code in an email or on Slack.\n\n\npurrr::pluck\nThere was a specific question:\n\npurrr::pluck seems really useful, I wonder if you can tell it to pluck a specific record_ID?\n\nThe short answer is no. Not a specific ID. But if you know the position of the specific ID then you could.\n\n# Load packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Create sample data\ndf &lt;- tibble::tibble(\n  id = c(\"0001\", \"0002\", \"0003\", \"0004\", \"0005\", \"0006\", \"0007\", \"0008\", \"0009\", \"0010\"), \n  sex = sample(x = c(\"M\", \"F\"), size = 10, replace = TRUE), \n  age = sample(x = 18:65, size = 10, replace = TRUE)\n  \n)\n\ndf\n\n# A tibble: 10 × 3\n   id    sex     age\n   &lt;chr&gt; &lt;chr&gt; &lt;int&gt;\n 1 0001  F        19\n 2 0002  F        60\n 3 0003  M        30\n 4 0004  M        20\n 5 0005  M        61\n 6 0006  F        25\n 7 0007  F        37\n 8 0008  F        41\n 9 0009  M        19\n10 0010  M        41\n\n# Say we want to extract ID 0003.\n\n# With purrr::pluck we need to know that it's in the 3rd row of the ID column\n\npurrr::pluck(df, \n             \"id\", \n             3)\n\n[1] \"0003\"\n\n# Gives an error\npurrr::pluck(df, \n             \"id\", \n             \"0003\")\n\nNULL\n\n# More than likely in this scenario, you would use a filter:\ndf |&gt; \n  dplyr::filter(id == \"0003\")\n\n# A tibble: 1 × 3\n  id    sex     age\n  &lt;chr&gt; &lt;chr&gt; &lt;int&gt;\n1 0003  M        30\n\n\npurrr::pluck was created to work with deeply nested data structures. Not necessarily data frames; there’s probably a more appropriate function out there for the task.\n\n\nLists – general confusion\n\nWhat do we do with lists?\nUsing lists\n\nWe will get to work more with lists in Week 9 and get more opportunities to see how they are used.\nLists are more flexible and have the ability to handle various data structures which make them a powerful tool for organizing, manipulating, and representing complex data in R.\n\n\nLists – One bracket versus two brackets.\nOne bracket [ ] and two brackets [[ ]] serves different purposes, primarily when accessing elements in a data structure like vectors, lists, or data frames.\n\nOne Bracket [ ]:\n\nVectors:\nWhen used with a single bracket, you can use it to subset or extract elements from a vector.\n\n# Example with a vector\nmy_vector &lt;- c(1, 2, 3, 4, 5)\nmy_vector[3]  # Extracts the element at index 3\n\n[1] 3\n\n\n\n\nData Frames:\nWhen used with a data frame, it can be used to extract columns or rows.\n\n# Example with a data frame\n\ndf &lt;- tibble::tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"), \n  age = c(25, 30, 22)\n  )\n\n# Extract the age column\ndf[\"age\"]\n\n# A tibble: 3 × 1\n    age\n  &lt;dbl&gt;\n1    25\n2    30\n3    22\n\n\n\n\n\nTwo Brackets [[ ]]:\n\nLists:\nWhen working with lists, double brackets are used to extract elements from the list. The result is the actual element, not a list containing the element.\n\n# Example with a list\nmy_list &lt;- list(1, \n                c(2, 3), \n                \"four\")\n\nmy_list[[2]]  # Extracts the second element (a vector) from the list\n\n[1] 2 3\n\n\nCompare to using []\n\nmy_list[2]\n\n[[1]]\n[1] 2 3\n\n\n[[]] returned the vector contained in that slot. [] returned a list containing the vector.\n\n\nNested Data Structures:\nFor accessing elements in nested data structures like lists within lists.\n\n# Example with a nested list\nnested_list &lt;- list(first = list(a = 1, b = 2), \n                    second = list(c = 3, d = 4))\n\nnested_list\n\n$first\n$first$a\n[1] 1\n\n$first$b\n[1] 2\n\n\n$second\n$second$c\n[1] 3\n\n$second$d\n[1] 4\n\nnested_list[[1]] # Extract the list contained in the first slot\n\n$a\n[1] 1\n\n$b\n[1] 2\n\nnested_list[[1]][[\"b\"]]  # Extracts the value associated with \"b\" in the first list\n\n[1] 2\n\n\nIn summary, one bracket [ ] is used for general subsetting, whether it’s extracting elements from vectors, columns from data frames, or specific elements from lists. On the other hand, two brackets [[ ]] are specifically used for extracting elements from lists and accessing elements in nested structures.\n\n\n\n\nHow and when to use curly curly within a function\n{ } will be covered in upcoming class lectures. We talked about it in Week 8 as a quick aside because a specific question came up. Not much detail was given intentionally as it is a separate topic for another day."
+    "text": "Muddiest points from Week 8\n\nSee Week 7 page for Week 7 feedback.\n\n\nWhen loading a dataset, what does  mean?\nThis occurs when you use the data() function to load a data set from a package. Per the help on this function (?data):\n\ndata() was originally intended to allow users to load datasets from packages for use in their examples, and as such it loaded the datasets into the workspace .GlobalEnv. This avoided having large datasets in memory when not in use: that need has been almost entirely superseded by lazy-loading of datasets.\n\n\ndata(\"iris\")  # this doesn't actually load the data set, but makes it available for use\nhead(iris)    # Once it's used it will appear in the Environment as an object.\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n\n\n\nChallenge # 2\nThis was where we created a function to load 3 data sets, clean them, and convert them to long format. These are tasks we’ve seen in previous classes. In this challenge, the main takeaway was to see the DRY (Don’t repeat yourself) concept at play. Instead of writing the code 3 times for each data set, we can create a function where we only write the cleaning code once, then use that function 3 times.\nReviewing the challenge solutions and taking more time to work through it on your own is a good idea. We went through it pretty quick in class. You won’t usually be limited on time to get a function like that to work. In practice, if it’s taking more time and too complicated, then it’s fine to duplicate code so that you know it’s working correctly. But, with very repetitive tasks, functions can make your code less prone to errors from copying and pasting.\nIf you have trouble getting your code to work for the challenges, office hours are great for helping to debug code. Else, sharing full code in an email or on Slack.\n\n\npurrr::pluck\nThere was a specific question:\n\npurrr::pluck seems really useful, I wonder if you can tell it to pluck a specific record_ID?\n\nThe short answer is no. Not a specific ID. But if you know the position of the specific ID then you could.\n\n# Load packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Create sample data\ndf &lt;- tibble::tibble(\n  id = c(\"0001\", \"0002\", \"0003\", \"0004\", \"0005\", \"0006\", \"0007\", \"0008\", \"0009\", \"0010\"), \n  sex = sample(x = c(\"M\", \"F\"), size = 10, replace = TRUE), \n  age = sample(x = 18:65, size = 10, replace = TRUE)\n  \n)\n\ndf\n\n# A tibble: 10 × 3\n   id    sex     age\n   &lt;chr&gt; &lt;chr&gt; &lt;int&gt;\n 1 0001  F        41\n 2 0002  M        61\n 3 0003  M        43\n 4 0004  F        60\n 5 0005  F        63\n 6 0006  M        61\n 7 0007  F        29\n 8 0008  M        52\n 9 0009  F        65\n10 0010  M        25\n\n# Say we want to extract ID 0003.\n\n# With purrr::pluck we need to know that it's in the 3rd row of the ID column\n\npurrr::pluck(df, \n             \"id\", \n             3)\n\n[1] \"0003\"\n\n# Gives an error\npurrr::pluck(df, \n             \"id\", \n             \"0003\")\n\nNULL\n\n# More than likely in this scenario, you would use a filter:\ndf |&gt; \n  dplyr::filter(id == \"0003\")\n\n# A tibble: 1 × 3\n  id    sex     age\n  &lt;chr&gt; &lt;chr&gt; &lt;int&gt;\n1 0003  M        43\n\n\npurrr::pluck was created to work with deeply nested data structures. Not necessarily data frames; there’s probably a more appropriate function out there for the task.\n\n\nLists – general confusion\n\nWhat do we do with lists?\nUsing lists\n\nWe will get to work more with lists in Week 9 and get more opportunities to see how they are used.\nLists are more flexible and have the ability to handle various data structures which make them a powerful tool for organizing, manipulating, and representing complex data in R.\n\n\nLists – One bracket versus two brackets.\nOne bracket [ ] and two brackets [[ ]] serves different purposes, primarily when accessing elements in a data structure like vectors, lists, or data frames.\n\nOne Bracket [ ]:\n\nVectors:\nWhen used with a single bracket, you can use it to subset or extract elements from a vector.\n\n# Example with a vector\nmy_vector &lt;- c(1, 2, 3, 4, 5)\nmy_vector[3]  # Extracts the element at index 3\n\n[1] 3\n\n\n\n\nData Frames:\nWhen used with a data frame, it can be used to extract columns or rows.\n\n# Example with a data frame\n\ndf &lt;- tibble::tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"), \n  age = c(25, 30, 22)\n  )\n\n# Extract the age column\ndf[\"age\"]\n\n# A tibble: 3 × 1\n    age\n  &lt;dbl&gt;\n1    25\n2    30\n3    22\n\n\n\n\n\nTwo Brackets [[ ]]:\n\nLists:\nWhen working with lists, double brackets are used to extract elements from the list. The result is the actual element, not a list containing the element.\n\n# Example with a list\nmy_list &lt;- list(1, \n                c(2, 3), \n                \"four\")\n\nmy_list[[2]]  # Extracts the second element (a vector) from the list\n\n[1] 2 3\n\n\nCompare to using []\n\nmy_list[2]\n\n[[1]]\n[1] 2 3\n\n\n[[]] returned the vector contained in that slot. [] returned a list containing the vector.\n\n\nNested Data Structures:\nFor accessing elements in nested data structures like lists within lists.\n\n# Example with a nested list\nnested_list &lt;- list(first = list(a = 1, b = 2), \n                    second = list(c = 3, d = 4))\n\nnested_list\n\n$first\n$first$a\n[1] 1\n\n$first$b\n[1] 2\n\n\n$second\n$second$c\n[1] 3\n\n$second$d\n[1] 4\n\nnested_list[[1]] # Extract the list contained in the first slot\n\n$a\n[1] 1\n\n$b\n[1] 2\n\nnested_list[[1]][[\"b\"]]  # Extracts the value associated with \"b\" in the first list\n\n[1] 2\n\n\nIn summary, one bracket [ ] is used for general subsetting, whether it’s extracting elements from vectors, columns from data frames, or specific elements from lists. On the other hand, two brackets [[ ]] are specifically used for extracting elements from lists and accessing elements in nested structures.\n\n\n\n\nHow and when to use curly curly within a function\n{ } will be covered in upcoming class lectures. We talked about it in Week 8 as a quick aside because a specific question came up. Not much detail was given intentionally as it is a separate topic for another day."
   },
   {
     "objectID": "function_week.html",
@@ -1359,5 +1359,19 @@
     "title": "Survey Feedback from Previous Years",
     "section": "",
     "text": "When discussing untidy data, the difference between long data and wide data was unclear.\n\nWe’ll be discussing the difference between long and wide data in more detail later in the course when we convert a dataset between the two. For now, you can take a look at an example I created for our BERD R workshops. The wide data in that example are not “tidy” since each cell contains two pieces of information: both the SBP and the visit number. In contrast, the long data have a separate column indicating which visit number the data in a given row are from.\n\nfor the “summary()” function, is there a way to summarize all but one variable in a dataset?\n\nYes! I sometimes restrict a dataset to a couple of variables for which I want to see the summary. I usually use the select() function for this, which we will be covering later in the course. For now, you can take a look at some select() examples from the BERD R workshops (see slides 29-32).\n\nDifferences between a tibble and a data.frame\n\nI’m not surprised to see this show up as a muddiest point! Depending on your level of experience with R, at this point in the class some of the differences are difficult to explain since we haven’t done much coding yet. The tibble vignette lists some of the differences though if you are interested. For our purposes, they are almost the same thing. When some differences come up later in the course, I will point them out.\n\n\n\n\n\nThanks for the feedback!\n\nI enjoyed going through the code and viewing the functions. I haven’t really used skimr before and that was nice to see.\n\nI like using skmir, but have recently been using get_summary_stats() from the rstatix package when teaching. It is only for numeric variables though. See a get_summary_stats() example from my BSTA 511 class.\n\nLoading data.\nHow to load data into R was clearest.\n\nGood to know that loading data was clear. This part can be tricky sometimes!\n\nggplot\n\nHopefully this will still be clear when we cover more advanced options in ggplot!"
+  },
+  {
+    "objectID": "weeks/week_05.html#week-5",
+    "href": "weeks/week_05.html#week-5",
+    "title": "Week 5",
+    "section": "Week 5",
+    "text": "Week 5\n\ncase_when() vs ifelse()\nThe difference between case_when and ifelse\n\nifelse() is the base R version of tidyverse’s case_when()\nI prefer using case_when() since it’s easier to follow the logic.\ncase_when() is especially useful when there are more than two logical conditions being used.\n\nThe example below creates a binary variable for bill length (long vs not long) using both case_when() and ifelse() as a comparison.\n\nCompare the crosstabs of the two variables!\n\n\nlibrary(tidyverse)\nlibrary(janitor)\nlibrary(palmerpenguins)\n\nsummary(penguins)\n\n      species          island    bill_length_mm  bill_depth_mm  \n Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  \n Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  \n Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  \n                                 Mean   :43.92   Mean   :17.15  \n                                 3rd Qu.:48.50   3rd Qu.:18.70  \n                                 Max.   :59.60   Max.   :21.50  \n                                 NA's   :2       NA's   :2      \n flipper_length_mm  body_mass_g       sex           year     \n Min.   :172.0     Min.   :2700   female:165   Min.   :2007  \n 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  \n Median :197.0     Median :4050   NA's  : 11   Median :2008  \n Mean   :200.9     Mean   :4202                Mean   :2008  \n 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  \n Max.   :231.0     Max.   :6300                Max.   :2009  \n NA's   :2         NA's   :2                                 \n\npenguins &lt;- penguins %&gt;% \n  mutate(\n    long_bill1 = case_when(\n      bill_length_mm &gt;= 45 ~ \"long\",\n      bill_length_mm &lt; 45 ~ \"not long\",\n    ),\n    long_bill2 = ifelse(bill_length_mm &gt;= 45, \"long\", \"not long\")\n  )\n\npenguins %&gt;% tabyl(long_bill1, long_bill2) %&gt;% \n  adorn_title()\n\n            long_bill2             \n long_bill1       long not long NA_\n       long        166        0   0\n   not long          0      176   0\n       &lt;NA&gt;          0        0   2\n\n\nBelow is an example using case_when() to create a categorical variable with 3 groups:\n\npenguins &lt;- penguins %&gt;% \n  mutate(\n    long_bill3 = case_when(\n      bill_length_mm &gt;= 50 ~ \"long\",\n      bill_length_mm &lt;= 40 ~ \"short\",\n      TRUE ~ \"medium\"\n    ))\n\npenguins %&gt;% tabyl(long_bill3, long_bill1) %&gt;% \n  adorn_title()\n\n            long_bill1             \n long_bill3       long not long NA_\n       long         57        0   0\n     medium        109       76   2\n      short          0      100   0\n\n\n\nCreating a categorical variable with 3 groups can be done with ifelse(), but it’s harder to follow the logic:\n\n\npenguins &lt;- penguins %&gt;% \n  mutate(\n    long_bill4 = ifelse(\n      bill_length_mm &gt;= 50, \"long\",\n      ifelse(bill_length_mm &lt;= 40, \"short\", \"medium\")\n      ))\n\npenguins %&gt;% tabyl(long_bill3, long_bill4) %&gt;% \n  adorn_title()\n\n            long_bill4                 \n long_bill3       long medium short NA_\n       long         57      0     0   0\n     medium          0    185     0   2\n      short          0      0   100   0\n\n\n\n\nseparate()\nDifferent ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it’ll be most relevant to use.\n\nChoosing the “best” way of using separate() is overwhelming at first.\nI recommend starting with the simplest use case with a string being specified in sep = \" \":\n\n\nseparate(data, col, into, sep = \" \")\n\n\nWhich of the various versions we showed to use depends on how the data being separated are structured.\nMost of the time I have a simple character, such as a space (sep = \" \") or a comma (sep = \",\") that I want to separate by.\nIf the data are structured in a more complex way, then one of the stringr package options might come in handy.\n\n\n\nhere::here()\nTSV files, very neat… But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, “here: and also”here” Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial.\n\nGreat question! This is definitely not intuitive, which is why I wanted to demonstrate it in class.\nThe key is that\n\nwhen rendering a qmd file the current working directory is the folder the file is sitting in,\nwhile when running code in a file within RStudio the working directory is the folder where the .Rproj file is located.\n\n\nThis distinction is important when loading other files from our computer during our workflow, and why here::here() makes our workflow so much easier!\n\n\n\nwhat functions will only work within another function (generally)\n\nI’m not aware of functions that only work standalone within other functions. For example, the mean() function works on its own, but can also be used within a summarise().\n\n\nmean(penguins$bill_length_mm, na.rm = TRUE)\n\n[1] 43.92193\n\npenguins %&gt;% summarise(\n  m = mean(bill_length_mm, na.rm = TRUE)\n)\n\n# A tibble: 1 × 1\n      m\n  &lt;dbl&gt;\n1  43.9\n\n\n\nThat being said, a function has a set of parameters to be specified that are specific to that function."
+  },
+  {
+    "objectID": "weeks/week_11.html#muddiest-points-1",
+    "href": "weeks/week_11.html#muddiest-points-1",
+    "title": "Week 11",
+    "section": "Muddiest points",
+    "text": "Muddiest points\n\nSee Week 10 page for Week 10 feedback."
   }
 ]

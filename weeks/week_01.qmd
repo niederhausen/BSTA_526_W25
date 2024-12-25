@@ -25,7 +25,7 @@ editor_options:
 
 ## Announcements
 
-* Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](XXXX). 
+* Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). 
 * For today's class, make sure to download to your computer the folder called `part_01`, and then open RStudio by double-clicking on the file called `part_01.Rproj`.
 * Please join the [BSTA 526 Slack channel](https://join.slack.com/t/bsta526w25/shared_invite/zt-2x4jl264g-KV9YvPTAqKWuEBB1gE10BA) and introduce yourself by posting in the `#random` channel.
 
@@ -33,7 +33,7 @@ editor_options:
 ## Class materials
 
 * [Readings](../readings/01-reading.qmd)
-* Dropbox [part_01 Project folder](XXX)
+* Dropbox [part_01 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
 ## Post-class survey
 

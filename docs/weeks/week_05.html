@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -224,20 +190,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#post-class-updates" id="toc-post-class-updates" class="nav-link active" data-scroll-target="#post-class-updates">Post-class updates</a></li>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
   <li><a href="#announcements" id="toc-announcements" class="nav-link" data-scroll-target="#announcements">Announcements</a></li>
   <li><a href="#class-materials" id="toc-class-materials" class="nav-link" data-scroll-target="#class-materials">Class materials</a></li>
   <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
   <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
   <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
-  <li><a href="#muddiest-points-from-week-5" id="toc-muddiest-points-from-week-5" class="nav-link" data-scroll-target="#muddiest-points-from-week-5">Muddiest points from Week 5</a>
-  <ul class="collapse">
-  <li><a href="#case_when-vs-ifelse" id="toc-case_when-vs-ifelse" class="nav-link" data-scroll-target="#case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></a></li>
-  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate"><code>separate()</code></a></li>
-  <li><a href="#herehere" id="toc-herehere" class="nav-link" data-scroll-target="#herehere"><code>here::here()</code></a></li>
-  <li><a href="#what-functions-will-only-work-within-another-function-generally" id="toc-what-functions-will-only-work-within-another-function-generally" class="nav-link" data-scroll-target="#what-functions-will-only-work-within-another-function-generally">what functions will only work within another function (generally)</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -269,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 23, 2024</p>
+      <p class="date-modified">December 24, 2024</p>
     </div>
   </div>
     
@@ -280,22 +238,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="post-class-updates" class="level2">
-<h2 class="anchored" data-anchor-id="post-class-updates">Post-class updates</h2>
-<p>Updates made on 2/9/24</p>
-<ul>
-<li>HW 5: see the updated HW 5 assignment on OneDrive called <code>hw_05_b526_v2.qmd</code></li>
-<li>Midterm: due date extended to 2/25/24.
-<ul>
-<li>See the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.</li>
-</ul></li>
-<li>Material covered in class on 2/7/24
-<ul>
-<li>Part 5 Sections 1-4.4</li>
-<li>Solutions to Challenge 1 from section 4.3 of the Part 5 notes are in OneDrive (<code>Challenge_1_solutions_Part5.html</code>)</li>
-</ul></li>
-</ul>
-</section>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
 <ul>
@@ -311,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="announcements" class="level2">
 <h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
 <ul>
-<li>Class materials for BSTA 526 will be provided in the shared OneDrive folder <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">BSTA_526_W24_class_materials_public</a>.</li>
+<li>Class materials for BSTA 526 will be provided in the shared Dropbox folder <a href="https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&amp;st=mw0r9x5l&amp;dl=0">BSTA_526_W25_class_materials_public</a>.</li>
 <li>For today’s class, make sure to download to your computer the folder called <code>part_05</code>, and then open RStudio by double-clicking on the file called <code>part_05.Rproj</code>.</li>
 </ul>
 </section>
@@ -319,189 +261,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
 <ul>
 <li><a href="../readings/05-reading.html">Readings</a></li>
-<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_05 Project folder</a></li>
+<li>Dropbox <a href="https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&amp;st=mw0r9x5l&amp;dl=0">part_05 Project folder</a></li>
 </ul>
 </section>
 <section id="post-class-survey" class="level2">
 <h2 class="anchored" data-anchor-id="post-class-survey">Post-class survey</h2>
 <ul>
 <li>Please fill out the <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi">post-class survey</a> to provide feedback. Thank you!</li>
+<li>Previous muddiest points and clearest points with responses are collected here: <a href="https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years" class="uri">https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years</a></li>
 </ul>
 </section>
 <section id="homework" class="level2">
 <h2 class="anchored" data-anchor-id="homework">Homework</h2>
 <ul>
-<li>See OneDrive folder for homework assignment.</li>
-<li>HW 5 due on 2/14.
-<ul>
-<li><em>See the updated HW 5 assignment on OneDrive called <code>hw_05_b526_v2.qmd</code></em></li>
-</ul></li>
+<li>See Dropbox part 5 folder for homework assignment.</li>
+<li>HW 5 due on 2/13.</li>
 </ul>
 </section>
 <section id="recording" class="level2">
 <h2 class="anchored" data-anchor-id="recording">Recording</h2>
 <ul>
-<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/tool/a973f2a2-ea06-4734-aab7-a066c5573ca6/ShowPage?returnView=&amp;studentItemId=0&amp;backPath=&amp;bltiAppStores=false&amp;errorMessage=&amp;clearAttr=&amp;messageId=&amp;source=&amp;title=&amp;newTopLevel=false&amp;sendingPage=190949&amp;postedComment=false&amp;addBefore=&amp;itemId=5172228&amp;path=push&amp;topicId=&amp;addTool=-1&amp;recheck=&amp;id=&amp;forumId=">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
-</ul>
-</section>
-<section id="muddiest-points-from-week-5" class="level1">
-<h1>Muddiest points from Week 5</h1>
-<ul>
-<li>See Week 4 page for <a href="../weeks/week_04.html#muddiest-points-from-week-4">Week 4 feedback</a>.</li>
-</ul>
-<section id="case_when-vs-ifelse" class="level2">
-<h2 class="anchored" data-anchor-id="case_when-vs-ifelse"><code>case_when()</code> vs <code>ifelse()</code></h2>
-<p><em>The difference between case_when and ifelse</em></p>
-<ul>
-<li><code>ifelse()</code> is the base R version of tidyverse’s <code>case_when()</code></li>
-<li>I prefer using <code>case_when()</code> since it’s easier to follow the logic.</li>
-<li><code>case_when()</code> is especially useful when there are more than two logical conditions being used.</li>
-</ul>
-<p>The example below creates a binary variable for bill length (long vs not long) using both <code>case_when()</code> and <code>ifelse()</code> as a comparison.</p>
-<ul>
-<li>Compare the crosstabs of the two variables!</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      species          island    bill_length_mm  bill_depth_mm  
- Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
- Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
- Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
-                                 Mean   :43.92   Mean   :17.15  
-                                 3rd Qu.:48.50   3rd Qu.:18.70  
-                                 Max.   :59.60   Max.   :21.50  
-                                 NA's   :2       NA's   :2      
- flipper_length_mm  body_mass_g       sex           year     
- Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
- 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
- Median :197.0     Median :4050   NA's  : 11   Median :2008  
- Mean   :200.9     Mean   :4202                Mean   :2008  
- 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
- Max.   :231.0     Max.   :6300                Max.   :2009  
- NA's   :2         NA's   :2                                 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill1 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"long"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&lt;</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">"not long"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill2 =</span> <span class="fu">ifelse</span>(bill_length_mm <span class="sc">&gt;=</span> <span class="dv">45</span>, <span class="st">"long"</span>, <span class="st">"not long"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill1, long_bill2) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            long_bill2             
- long_bill1       long not long NA_
-       long        166        0   0
-   not long          0      176   0
-       &lt;NA&gt;          0        0   2</code></pre>
-</div>
-</div>
-<p>Below is an example using <code>case_when()</code> to create a categorical variable with 3 groups:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill3 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">~</span> <span class="st">"long"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&lt;=</span> <span class="dv">40</span> <span class="sc">~</span> <span class="st">"short"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"medium"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill3, long_bill1) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            long_bill1             
- long_bill3       long not long NA_
-       long         57        0   0
-     medium        109       76   2
-      short          0      100   0</code></pre>
-</div>
-</div>
-<ul>
-<li>Creating a categorical variable with 3 groups can be done with <code>ifelse()</code>, but it’s harder to follow the logic:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">long_bill4 =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      bill_length_mm <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"long"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(bill_length_mm <span class="sc">&lt;=</span> <span class="dv">40</span>, <span class="st">"short"</span>, <span class="st">"medium"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      ))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(long_bill3, long_bill4) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            long_bill4                 
- long_bill3       long medium short NA_
-       long         57      0     0   0
-     medium          0    185     0   2
-      short          0      0   100   0</code></pre>
-</div>
-</div>
-</section>
-<section id="separate" class="level2">
-<h2 class="anchored" data-anchor-id="separate"><code>separate()</code></h2>
-<p><em>Different ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it’ll be most relevant to use.</em></p>
-<ul>
-<li>Choosing the “best” way of using <code>separate()</code> is overwhelming at first.</li>
-<li>I recommend starting with the simplest use case with a string being specified in <code>sep = " "</code>:</li>
-</ul>
-<blockquote class="blockquote">
-<p><code>separate(data, col, into, sep = " ")</code></p>
-</blockquote>
-<ul>
-<li>Which of the various versions we showed to use depends on how the data being separated are structured.</li>
-<li>Most of the time I have a simple character, such as a space (<code>sep = " "</code>) or a comma (<code>sep = ","</code>) that I want to separate by.</li>
-<li>If the data are structured in a more complex way, then one of the <code>stringr</code> package options might come in handy.</li>
-</ul>
-</section>
-<section id="herehere" class="level2">
-<h2 class="anchored" data-anchor-id="herehere"><code>here::here()</code></h2>
-<p><em>TSV files, very neat… But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, “here: and also”here” Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial.</em></p>
-<ul>
-<li>Great question! This is definitely not intuitive, which is why I wanted to demonstrate it in class.</li>
-<li>The key is that
-<ul>
-<li>when rendering a qmd file the current working directory is the folder the file is sitting in,</li>
-<li>while when running code in a file within RStudio the working directory is the folder where the <code>.Rproj</code> file is located.<br>
-</li>
-</ul></li>
-<li>This distinction is important when loading other files from our computer during our workflow, and why <code>here::here()</code> makes our workflow so much easier!</li>
-</ul>
-</section>
-<section id="what-functions-will-only-work-within-another-function-generally" class="level2">
-<h2 class="anchored" data-anchor-id="what-functions-will-only-work-within-another-function-generally">what functions will only work within another function (generally)</h2>
-<ul>
-<li>I’m not aware of functions that only work standalone within other functions. For example, the <code>mean()</code> function works on its own, but can also be used within a <code>summarise()</code>.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 43.92193</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">m =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-      m
-  &lt;dbl&gt;
-1  43.9</code></pre>
-</div>
-</div>
-<ul>
-<li>That being said, a function has a set of parameters to be specified that are specific to that function.</li>
+<li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

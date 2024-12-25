@@ -32,7 +32,7 @@ Remember, this reading is mostly supplemental and will help you if there are con
 ### Markdown Basics
 
 * This is a short reference on how to do formatting in Markdown. This is optional, but may be a helpful reference as you continue on and work with Markdown and Quarto. 
-    * https://sph-r-programming-2023.netlify.app/reference/markdown.html
+    * <https://sph-r-programming-2023.netlify.app/reference/markdown.html>
     * Most of these topics are covered above in the Day 1 notes of BSTA 511/611.
     * Skip the last two sections on Front matter and Citations, since these are different for Quarto.
         * A [similar resource for Quarto](https://quarto.org/docs/authoring/markdown-basics.html) specifically
