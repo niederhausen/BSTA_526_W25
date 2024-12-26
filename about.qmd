@@ -27,8 +27,7 @@ This webpage was created for BSTA 526 (*R Programming for Health Data Science*) 
 
 * BSTA 526 was taught in previous years as BSTA 504 by [Ted Laderas](https://laderast.github.io/) ([2021](https://sph-r-programming.netlify.app/)) and [Jessica Minnier](http://jessicaminnier.com/) ([2022](https://sph-r-programming-2022.netlify.app/), [2023](https://sph-r-programming-2023.netlify.app/)).
 * Almost all course materials were created by Ted and Jessica with minor changes for BSTA 526 (such as updating from RMarkdown to Quarto). Their work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). See previous class websites linked to above for links to their source code on GitHub.
-
-In 2024, [Meike Niederhausen](https://ohsu-psu-sph.org/our-school/faculty-directory/name/meike-niederhausen/) and [Emile Latour](https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource) taught the first BSTA 526 using these materials, <https://niederhausen.github.io/BSTA_526_W24/>
+* In 2024, [Meike Niederhausen](https://ohsu-psu-sph.org/our-school/faculty-directory/name/meike-niederhausen/) and [Emile Latour](https://www.ohsu.edu/knight-cancer-institute/biostatistics-shared-resource) taught the first BSTA 526 using these materials, <https://niederhausen.github.io/BSTA_526_W24/>
 
 
 ### Quarto webpage 
