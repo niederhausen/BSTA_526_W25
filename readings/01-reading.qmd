@@ -29,6 +29,10 @@ Remember, this reading is mostly supplemental and will help you if there are con
 
 ## Optional 
 
+### Posit/R Cheatsheets
+
+- Many useful information and tips can be found in the list of [cheatsheets](https://posit.co/resources/cheatsheets/) on the Posit website
+
 ### Markdown Basics
 
 * This is a short reference on how to do formatting in Markdown. This is optional, but may be a helpful reference as you continue on and work with Markdown and Quarto. 

@@ -50,10 +50,7 @@ Slack will be used for course discussions. Link to join Slack is posted on Sakai
 * See [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25) for Webex links to office hours
 * In addition to times below, office hours can be set up by appointment at other times. Please email or message on Slack whom who would like to set up an office hour with.
 
-- Mondays 3:00-4:00 pm (Emile)
-- Tuesdays 7:30-8:30 pm (Tia)
-- Wednesdays 6:05-7:05 pm (Tia) - Contact Tia to set up in-person option in classroom for Wed office hour
-- Fridays 3:30-4:30 pm (Meike; starting Feb 9th)
+- TBD
 
 
 ## Prerequisites or Concurrent Enrollment Requirements
@@ -74,8 +71,8 @@ Slack will be used for course discussions. Link to join Slack is posted on Sakai
 
 ### Teaching Assistant
 
-* Tia Vafeas
-    - [vafeas\@ohsu.edu](mailto:vafeas@ohsu.edu)
+* Kellen Stark
+    - [starkke\@ohsu.edu](mailto:starkke@ohsu.edu)
 
 
 ## Attendance 
@@ -228,7 +225,7 @@ We will be drawing on the following online textbooks during class and labs. Thes
 <https://ismayc.github.io/rbasics-book/>
 + **Data Science: A First Introduction**. Tiffany Timbers, Trevor Campbell, Melissa Lee. <https://datasciencebook.ca/>
 + **RMarkdown for Scientists**. Nick Tierney. <https://rmd4sci.njtierney.com/>
-+ **Statistical Inference via Data Science: A ModernDive into R and the Tidyverse**. Chester Ismay and Albert Y. Kim. <https://moderndive.com/>
++ **Statistical Inference via Data Science: A ModernDive into R and the Tidyverse**. Chester Ismay and Albert Y. Kim. <https://moderndive.com/v2/>
 + **Advanced R**. Hadley Wickham. <https://adv-r.hadley.nz/>
 + **Quarto** webpage <https://quarto.org/>
     + The [Guide](https://quarto.org/docs/guide/) and [Reference](https://quarto.org/docs/reference/) tabs have very helpful documentation.

@@ -29,7 +29,7 @@ editor_options:
 
 For learning more about statistics with R:
 
-- Modern Dive / Statistical Inference via Data Science by Chester Ismay and Albert Y Kim is a nice place to start: <https://moderndive.com/>
+- Modern Dive / Statistical Inference via Data Science by Chester Ismay and Albert Y Kim is a nice place to start: <https://moderndive.com/v2/>
 - Danielle Navarro's Learning Statistics with R is excellent and talks much more about statistics: <https://learningstatisticswithr.com/>
 - [Model Basics](https://r4ds.had.co.nz/model-basics.html) from R for Data Science
 - More on survival analysis in R
@@ -42,7 +42,7 @@ For learning more about statistics with R:
 - [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html) - in case I can't get to tidyeval use for functions with tidyverse
 - [ggplot2 in packages](https://ggplot2.tidyverse.org/articles/ggplot2-in-packages.html) - examples how to use ggplot inside functions
 - Resources for learning more statistics:
-  * Modern Dive / Statistical Inference via Data Science by Chester Ismay and Albert Y Kim is a nice place to start: <https://moderndive.com/>
+  * Modern Dive / Statistical Inference via Data Science by Chester Ismay and Albert Y Kim is a nice place to start: <https://moderndive.com/v2/>
   * Danielle Navarro's Learning Statistics with R is excellent and talks much more about statistics: <https://learningstatisticswithr.com/>
 - More on using map and nested data with modeling: [R for Data Science: Many Models](https://r4ds.had.co.nz/many-models.html)
 - [broom and dplyr](https://broom.tidymodels.org/articles/broom_and_dplyr.html)
@@ -59,4 +59,4 @@ For learning more about statistics with R:
   * [Tidymodels with R: Judging Model Effectiveness](https://www.tmwr.org/performance.html)
   * [UMAP and Cocktail Recipes](https://juliasilge.com/blog/cocktail-recipes-umap/)
   * [Tidymodels: K-means](https://www.tidymodels.org/learn/statistics/k-means/)
-  * [PCA and Penguins](https://allisonhorst.github.io/palmerpenguins/articles/articles/pca.html)
+  * [PCA and Penguins](https://allisonhorst.github.io/palmerpenguins/articles/pca.html)

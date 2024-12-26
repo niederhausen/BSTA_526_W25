@@ -18,7 +18,7 @@ editor_options:
 
 - [Data Organization in Spreadsheets](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989) by Kara Woo and Karl Broman - if there is one paper that I think is useful for everyone, it's this one.
 - [Absolute and Relative File Paths](https://ubc-dsci.github.io/introduction-to-datascience/reading.html#absolute-and-relative-file-paths) - sometimes understanding file paths can be difficult. This is a great follow up reading. The video is very helpful as well. 
-- [What are R packages?](https://moderndive.com/1-getting-started.html#packages)
+- [What are R packages?](https://moderndive.com/v2/getting-started.html)
 
 ## Optional (Meike's suggestions for BSTA 526 W24)
 

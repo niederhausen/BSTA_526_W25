@@ -22,8 +22,8 @@ editor_options:
 
 ### `dplyr`
 
-- [`dplyr` cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) - one of the best references.
-- [Combining functions using the pipe operator, %>%](https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#combining-functions-using-the-pipe-operator) - if you're confused about `%>%`, please read this.
+- [`dplyr` cheatsheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html) - one of the best references.
+- [Combining functions using the pipe operator, |> which is mostly equivalent to %>%](https://ubc-dsci.github.io/introduction-to-datascience/wrangling.html#combining-functions-using-the-pipe-operator); if you're confused about `|>` or `%>%`, please read this.
 
 ## Optional
 
