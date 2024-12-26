@@ -15,7 +15,6 @@ editor_options:
 ## Pre-recorded videos
 
 * Links to __pre-recorded videos__ are posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25), in the table with the links to live class recordings. 
-* I split the class into 3 recordings. See the table for details. 
 
 ## Topics
 

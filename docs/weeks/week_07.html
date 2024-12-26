@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -224,11 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#announcements" id="toc-announcements" class="nav-link active" data-scroll-target="#announcements">Announcements</a>
-  <ul class="collapse">
-  <li><a href="#reminder-to-fill-out-post-class-surveys" id="toc-reminder-to-fill-out-post-class-surveys" class="nav-link" data-scroll-target="#reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</a></li>
-  </ul></li>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a>
   <ul class="collapse">
   <li><a href="#part-6" id="toc-part-6" class="nav-link" data-scroll-target="#part-6">Part 6</a></li>
   </ul></li>
@@ -236,15 +198,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
   <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
   <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
-  <li><a href="#muddiest-points-from-week-7" id="toc-muddiest-points-from-week-7" class="nav-link" data-scroll-target="#muddiest-points-from-week-7">Muddiest points from Week 7</a>
-  <ul class="collapse">
-  <li><a href="#why-we-used-full_join" id="toc-why-we-used-full_join" class="nav-link" data-scroll-target="#why-we-used-full_join">Why we used <code>full_join()</code></a></li>
-  <li><a href="#visualizing-pivots-and-joins" id="toc-visualizing-pivots-and-joins" class="nav-link" data-scroll-target="#visualizing-pivots-and-joins">Visualizing pivots and joins</a></li>
-  <li><a href="#mutatefactor" id="toc-mutatefactor" class="nav-link" data-scroll-target="#mutatefactor"><code>mutate(factor ( ))</code></a></li>
-  <li><a href="#in" id="toc-in" class="nav-link" data-scroll-target="#in"><code>%in%</code></a></li>
-  <li><a href="#clearest-points" id="toc-clearest-points" class="nav-link" data-scroll-target="#clearest-points">Clearest points</a></li>
-  <li><a href="#other-comments" id="toc-other-comments" class="nav-link" data-scroll-target="#other-comments">Other comments</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 24, 2024</p>
+      <p class="date-modified">December 26, 2024</p>
     </div>
   </div>
     
@@ -287,26 +240,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="announcements" class="level2">
-<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
-<ul>
-<li><strong>HW 7 is in the part 6 folder</strong></li>
-<li>HW 6: see the updated HW 6 assignment on OneDrive in the <code>pat06</code> folder called <code>hw_06_b526-final-version.qmd</code></li>
-<li>Midterm: due date extended to 2/25/24.
-<ul>
-<li>See the updated midterm file on OneDrive with new yaml, due date, and links to previous midterm projects.</li>
-</ul></li>
-</ul>
-<section id="reminder-to-fill-out-post-class-surveys" class="level3">
-<h3 class="anchored" data-anchor-id="reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</h3>
-<ul>
-<li>This is a reminder that 5% of your grade is based on filling out <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi">post-class surveys</a> as a way of telling us that you came to class and engaged with the material for that week.</li>
-<li>You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.</li>
-<li><strong>Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.</strong> We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.</li>
-</ul>
-<p><em>See <a href="https://niederhausen.github.io/BSTA_526_W25/syllabus.html#post-class-surveys">syllabus section on Post-class surveys</a></em></p>
-</section>
-</section>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
 <section id="part-6" class="level3">
@@ -323,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
 <ul>
 <li><a href="../readings/06-reading.html">Week 6 Readings</a></li>
-<li>One Drive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_06 Project folders</a></li>
+<li>Dropbox <a href="https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&amp;st=mw0r9x5l&amp;dl=0">part_06 Project folder</a></li>
 </ul>
 </section>
 <section id="post-class-survey" class="level2">
@@ -344,387 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
 </ul>
-</section>
-<section id="muddiest-points-from-week-7" class="level1">
-<h1>Muddiest points from Week 7</h1>
-<ul>
-<li>Week 7 feedback will be added during Week 6.</li>
-<li>See Week 6 page for <a href="../weeks/week_06.html#muddiest-points-from-week-6">Week 6 feedback</a>.</li>
-</ul>
-<section id="why-we-used-full_join" class="level3">
-<h3 class="anchored" data-anchor-id="why-we-used-full_join">Why we used <code>full_join()</code></h3>
-<blockquote class="blockquote">
-<p>Why we used <code>full_join()</code> in the class example instead of the other join options</p>
-</blockquote>
-<ul>
-<li>In this case both datasets being joined had the same ID’s, and thus it did not matter whether we used <code>left_join()</code>, <code>right_join()</code>, <code>full_join()</code> or <code>inner_join()</code>. All of these would’ve given the same results.</li>
-</ul>
-</section>
-<section id="visualizing-pivots-and-joins" class="level3">
-<h3 class="anchored" data-anchor-id="visualizing-pivots-and-joins">Visualizing pivots and joins</h3>
-<blockquote class="blockquote">
-<p>pivot-longer is still hard for me to mentally visualize how it alters the dataset.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I always struggle to visualize pivots and joins.</p>
-</blockquote>
-<ul>
-<li>Reshaping data take lots of practice to get the hang of, and something where I still pause while coding to think through how it will work and how to code it. Especially for pivoting, I often refer back to existing code I am familiar with. <em>It’s normal at this point to still be muddy on these topics. Keep practicing though and read through some more examples.</em></li>
-<li>In the <a href="https://niederhausen.github.io/BSTA_526_W24/weeks/week_06.html#trying-to-visualize-the-joins-and-pivot-longerwider">week 6 muddiest points</a> I listed some additional resources for visualizing these.</li>
-<li>See also <a href="https://github.com/gadenbuie/tidyexplain">Tidy Animated Verbs</a> for visualizing <a href="https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#mutating-joins">joins</a> and <a href="https://github.com/gadenbuie/tidyexplain#tidy-data">pivoting</a>. The page also includes visualizing <code>union()</code>, <code>intersect()</code>, and <code>set_diff()</code>.</li>
-<li>Another great resource is the <a href="https://www.r4epi.com/">R for Epidemiology</a> website.
-<ul>
-<li>It has sections on <a href="https://www.r4epi.com/working-with-multiple-data-frames#combining-data-frames-horizontally-by-key-values">joins</a> and <a href="https://www.r4epi.com/restructuring-data-frames#restructuring-data-frames">pivoting</a>.</li>
-</ul></li>
-<li>Jessica also addressed <a href="https://sph-r-programming-2023.netlify.app/class/07-class/#muddiest-parts">pivoting in last year’s muddiest points</a>.</li>
-</ul>
-<p><em>Please come to office hours or set up a time to meet if this is still muddy after looking at these resources!</em></p>
-</section>
-<section id="mutatefactor" class="level3">
-<h3 class="anchored" data-anchor-id="mutatefactor"><code>mutate(factor ( ))</code></h3>
-<blockquote class="blockquote">
-<p><code>mutate(factor ( ))</code> problem we ran into in class where Emile posted on Slack.</p>
-</blockquote>
-<p>Below is the code Emile posted on Slack (commented out):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- data |&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(timepoint = factor(timepoint,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                             levels = c(1, 2, 3),</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                             labels = c(“1 month”,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                                          “6 months”,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                                          “12 months”)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>At this point we were working through the code of Section 2.8 in the Part 6 notes.</li>
-</ul>
-<p>Load the <code>mouse_data</code> dataset we were working with:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"mouse_data_longitudinal_clean.csv"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mouse_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 96
-Columns: 18
-$ sid                                &lt;dbl&gt; 137, 137, 137, 138, 138, 138, 139, …
-$ strain                             &lt;chr&gt; "C3H", "C3H", "C3H", "C3H", "C3H", …
-$ trt                                &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", …
-$ sex                                &lt;chr&gt; "M", "M", "M", "M", "M", "M", "M", …
-$ time                               &lt;chr&gt; "tp1", "tp2", "tp3", "tp1", "tp2", …
-$ normalized_bdnf_amygdala_pg_mg     &lt;dbl&gt; 492.4831, 275.1623, NA, 453.6635, 4…
-$ normalized_bdnf_cortex_pg_mg       &lt;dbl&gt; 720.0173, NA, 871.8286, 884.5668, N…
-$ normalized_bdnf_hypothalamus_pg_mg &lt;dbl&gt; NA, 1169.2845, NA, 1215.8147, 1078.…
-$ normalized_cd68_amygdala_pg_mg     &lt;dbl&gt; 988.9628, 574.0655, NA, 775.5970, 4…
-$ normalized_cd68_cortex_pg_mg       &lt;dbl&gt; 8.393707, NA, NA, 7.901366, NA, 8.8…
-$ normalized_cd68_hypothalamus_pg_mg &lt;dbl&gt; NA, 6800.870, NA, 4373.811, 4461.62…
-$ normalized_map2_cortex_pg_mg       &lt;dbl&gt; 352.9653, NA, 2693.9386, 1007.4147,…
-$ mirna1                             &lt;dbl&gt; 5.2630200, -0.0491371, -0.7367310, …
-$ mirna2                             &lt;dbl&gt; 1.6536200, -0.0773419, 0.1479940, -…
-$ learning_outcome                   &lt;dbl&gt; 3.52, 19.81, 2.44, 1.56, 14.48, 1.1…
-$ preference_obj1                    &lt;dbl&gt; 41.72205, 37.51387, 55.96768, 74.11…
-$ preference_obj2                    &lt;dbl&gt; 58.27795, 62.48613, 44.03232, 25.88…
-$ time_month                         &lt;chr&gt; "1 month", "6 months", "12 months",…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time  n   percent
-  tp1 32 0.3333333
-  tp2 32 0.3333333
-  tp3 32 0.3333333</code></pre>
-</div>
-</div>
-<ul>
-<li>The goal was to create a factor variable of the character time point column called <code>time</code> with the levels 1 month, 6 months, and 12 months, instead of <code>time</code>’s values tp1, tp2, and tp3.</li>
-<li>The code presented in class to accomplish this is below:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create time_month factor</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month =</span> <span class="fu">case_when</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp1"</span> <span class="sc">~</span> <span class="st">"1 month"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp2"</span> <span class="sc">~</span> <span class="st">"6 months"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp3"</span> <span class="sc">~</span> <span class="st">"12 months"</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_month =</span> <span class="fu">factor</span>(time_month,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1 month"</span>, <span class="st">"6 months"</span>, <span class="st">"12 months"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Compare the old and new time variables:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time, time_month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time 1 month 6 months 12 months
-  tp1      32        0         0
-  tp2       0       32         0
-  tp3       0        0        32</code></pre>
-</div>
-</div>
-<ul>
-<li>The question arose as to whether we could include <code>factor()</code> in the same step as <code>case_when()</code> when creating <code>time_month</code> above, instead of having to write it out as a second separate line in the <code>mutate()</code>.</li>
-<li>When using <code>case_when()</code>, we can do this as follows by piping the factor after the <code>case_when()</code>:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month2 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp1"</span> <span class="sc">~</span> <span class="st">"1 month"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp2"</span> <span class="sc">~</span> <span class="st">"6 months"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    time<span class="sc">==</span><span class="st">"tp3"</span> <span class="sc">~</span> <span class="st">"12 months"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">factor</span>(., <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1 month"</span>, <span class="st">"6 months"</span>, <span class="st">"12 months"</span>))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month, time_month2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month 1 month 6 months 12 months
-    1 month      32        0         0
-   6 months       0       32         0
-  12 months       0        0        32</code></pre>
-</div>
-</div>
-<ul>
-<li>Another option that is similar, is to enclose the <code>case_when()</code> within the <code>factor()</code>:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month3 =</span> <span class="fu">factor</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">case_when</span>(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      time<span class="sc">==</span><span class="st">"tp1"</span> <span class="sc">~</span> <span class="st">"1 month"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      time<span class="sc">==</span><span class="st">"tp2"</span> <span class="sc">~</span> <span class="st">"6 months"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      time<span class="sc">==</span><span class="st">"tp3"</span> <span class="sc">~</span> <span class="st">"12 months"</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      ), </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1 month"</span>, <span class="st">"6 months"</span>, <span class="st">"12 months"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month, time_month3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month 1 month 6 months 12 months
-    1 month      32        0         0
-   6 months       0       32         0
-  12 months       0        0        32</code></pre>
-</div>
-</div>
-<section id="levels-vs.-labels" class="level4">
-<h4 class="anchored" data-anchor-id="levels-vs.-labels"><code>levels</code> vs.&nbsp;<code>labels</code></h4>
-<ul>
-<li>Emile suggested using <code>factor()</code> on the <code>time</code> variable directly, and creating the new values using the <code>labels</code> option within <code>factor()</code>:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month4 =</span> <span class="fu">factor</span>(time,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"tp1"</span>, <span class="st">"tp2"</span>, <span class="st">"tp3"</span>),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"1 month"</span>, <span class="st">"6 months"</span>, <span class="st">"12 months"</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                             ))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month, time_month4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month 1 month 6 months 12 months
-    1 month      32        0         0
-   6 months       0       32         0
-  12 months       0        0        32</code></pre>
-</div>
-</div>
-<ul>
-<li>What is new her is that we have not previously discussed <code>labels</code>.</li>
-<li>You can think of the <strong><code>levels</code> as the input</strong> for the <code>factor()</code> function.
-<ul>
-<li>It’s how we specify what the different levels are for the variable we are converting to factor, as well as the <strong>order we want the levels</strong> to be in.</li>
-<li>If we do not specify the <code>levels</code>, then R will automatically use the different values of the variable being converted and arrange them in alphanumeric order. Example:</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month5 =</span> <span class="fu">factor</span>(time))</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month, time_month5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month tp1 tp2 tp3
-    1 month  32   0   0
-   6 months   0  32   0
-  12 months   0   0  32</code></pre>
-</div>
-</div>
-<ul>
-<li>While <code>levels</code> is an input for the <code>factor()</code> function, <strong><code>labels</code> is an output</strong> for the <code>factor()</code> function.</li>
-<li>The values specified in <code>labels</code> are the new values for the levels:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># time_month4 added labels</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># time_month5 did not add labels</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month4, time_month5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month4 tp1 tp2 tp3
-     1 month  32   0   0
-    6 months   0  32   0
-   12 months   0   0  32</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(mouse_data<span class="sc">$</span>time_month4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 month"   "6 months"  "12 months"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(mouse_data<span class="sc">$</span>time_month5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "tp1" "tp2" "tp3"</code></pre>
-</div>
-</div>
-<ul>
-<li>Note that both <code>time_month4</code> and <code>time_month5</code> started with the same <code>levels</code>.</li>
-<li>Instead of using the <code>labels</code> option within <code>factor()</code> (the base R way), we can also accomplish this by using <code>fct_recode()</code> from the <code>forcats</code> package (loaded as a part of <code>tidyverse</code>):</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># original tp levels:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(mouse_data<span class="sc">$</span>time_month5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "tp1" "tp2" "tp3"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="ot">&lt;-</span> mouse_data <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_month6 =</span> <span class="fu">fct_recode</span>(time_month5, </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># new_name = "old_name"</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"1 month"</span> <span class="ot">=</span> <span class="st">"tp1"</span>, </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"6 months"</span> <span class="ot">=</span> <span class="st">"tp2"</span>, </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"12 months"</span> <span class="ot">=</span> <span class="st">"tp3"</span>))</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(mouse_data<span class="sc">$</span>time_month6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 month"   "6 months"  "12 months"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mouse_data <span class="sc">%&gt;%</span> <span class="fu">tabyl</span>(time_month6, time_month5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> time_month6 tp1 tp2 tp3
-     1 month  32   0   0
-    6 months   0  32   0
-   12 months   0   0  32</code></pre>
-</div>
-</div>
-<ul>
-<li>Learn more about <code>fct_recode()</code> <a href="https://forcats.tidyverse.org/reference/fct_recode.html">here</a>.</li>
-</ul>
-</section>
-</section>
-<section id="in" class="level3">
-<h3 class="anchored" data-anchor-id="in"><code>%in%</code></h3>
-<blockquote class="blockquote">
-<p><code>%in%</code> command, I feel like I understand but have some confusion and think it might just be one of those things I have to work with/apply to fully understand</p>
-</blockquote>
-<ul>
-<li><p>We’ve used the <code>%in%</code> function in some examples, but I don’t think we’ve discussed it in detail.</p></li>
-<li><p>The %in% function is used to <strong>test whether elements of one vector are contained in another vector</strong>. It returns a logical vector indicating whether each element of the first vector is found in the second vector.</p></li>
-<li><p>Below are some examples that ChatGPT generated (and I slightly edited).</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Using %in% with two numeric vectors</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%in%</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Using %in% with two character vectors</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>, <span class="st">"grape"</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>selected_fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"banana"</span>, <span class="st">"grape"</span>, <span class="st">"kiwi"</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>selected_fruits <span class="sc">%in%</span> fruits</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Using %in% with dataframe columns</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fruit =</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>, <span class="st">"grape"</span>, <span class="st">"kiwi"</span>)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-     ID fruit 
-  &lt;dbl&gt; &lt;chr&gt; 
-1     1 apple 
-2     2 banana
-3     3 orange
-4     4 grape 
-5     5 kiwi  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where 'fruit' column contains values from selected_fruits</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>selected_fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"banana"</span>, <span class="st">"grape"</span>, <span class="st">"kiwi"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fruit <span class="sc">%in%</span> selected_fruits)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>df_filtered</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-     ID fruit 
-  &lt;dbl&gt; &lt;chr&gt; 
-1     2 banana
-2     4 grape 
-3     5 kiwi  </code></pre>
-</div>
-</div>
-</section>
-<section id="clearest-points" class="level2">
-<h2 class="anchored" data-anchor-id="clearest-points">Clearest points</h2>
-<blockquote class="blockquote">
-<p>This class was all really clear. It was helpful to be reviewing some of the things we learned last week.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I appreciate the new codes on how to clean/reshape/combine messy data. I think that was the hardest parts to do in the other Biostatistics courses during projects.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Data cleaning</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Most of the data cleaning exercises.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>different strategies to clean data sets</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>The data cleaning made a lot of sense but I think I will struggle with solving problems in a really inefficient way.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Everything before Challenge 3</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>methods to merge datasets to create a table</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>inner join and full join are the same if all vectors are the same.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Pivot</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>ggplot and how to code data in to display what we want to display</p>
-</blockquote>
-</section>
-<section id="other-comments" class="level2">
-<h2 class="anchored" data-anchor-id="other-comments">Other comments</h2>
-<blockquote class="blockquote">
-<p>Is there a difference between summarize (with z) and summarise (with s)?</p>
-</blockquote>
-<p>Great question!</p>
-<ul>
-<li>In English, summarize is American English and summarise is British English. * In R they work the same way. The <a href="https://dplyr.tidyverse.org/reference/summarise.html">reference page for <code>summarise()</code></a> lists them as synonyms.</li>
-<li>In R code I see summarise more, and now keep mixing up which is American and which is British.</li>
-<li>In general, R accepts both American and British English, such as both color and colour.</li>
-</ul>
-<blockquote class="blockquote">
-<p>Thank you for the survey reminders! The pace of the class feels much better compared to the pace at the beginning of the term</p>
-</blockquote>
-<p>Thanks for the feedback!</p>
-<blockquote class="blockquote">
-<p>I really enjoyed the walk through from start to finish of how to clean the data sheet and it really helped clear up many of the commands I was previously confused about</p>
-</blockquote>
-<p>Thanks for the feedback! Glad the data wrangling walk through was helpful.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

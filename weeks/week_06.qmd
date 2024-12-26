@@ -12,9 +12,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Announcements
 
-* HW 5: see the updated HW 5 assignment on Dropbox called `hw_05_b526_v2.qmd`
 
 ### Reminder to fill out post-class surveys
 
@@ -26,23 +24,7 @@ _See [syllabus section on Post-class surveys](https://niederhausen.github.io/BST
 
 
 
-## Topics
-
-### Finish week 5
-
-* We will first finish the material not covered from Week 5, starting with section 4.6.
-    * Note: I created a new version of the code file (inside the `code` folder) called `part_05_b526_v2.qmd/.html`.
-    * _I decided not to move the Week 5 material not covered to the Week 6 notes._
-
-From Week 5:
-
--   **Learn** how to `summarize()` data with `group_by()` to summarize within categories
--   **Learn** about the different kinds of joins and how they merge data
-    -   **Apply** `inner_join()` and `left_join()` to join tables on columns
--   **Utilize** `pivot_longer()` to make a *wide* dataset *long*
-
-
-### New Week 6 topics - _did not get to Part 6_
+## Topics (Part 6)
 
 - **Practice** working with real data
 - **Practice** joining and pivoting
@@ -52,7 +34,6 @@ From Week 5:
 
 ## Class materials
 
-* [Week 5 Readings](../readings/05-reading.qmd)
 * [Week 6 Readings](../readings/06-reading.qmd)
 * Dropbox [part_05 & part_06 Project folders](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
@@ -72,167 +53,6 @@ From Week 5:
 ## Recording
 
 * __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
-
-# Muddiest points from Week 6
-
-* See Week 5 page for [Week 5 feedback](week_05.qmd#muddiest-points-from-week-5).
-
-* _Note: During Week 6 we finished covering the part 5 material. Part 6 material will be covered during week 7._
-
-
-## `across()`
-
-_what exactly the across function does_
-
-_.fns, i.e. .fns=list, etc... I wasn't really sure what that was achieving within across._
-
-* The `across()` function lets us apply a function to many columns at once. 
-* For example, let's say we want the mean value for every continuous variable in a dataset.
-    * The code below calculates the mean for one variable in the penguins dataset using both base R and `summarize()`. 
-    * One option to calculate the mean value for every continuous variable in the dataset is to repeat this code for the 4 other continuous variables.
-
-```{r message=FALSE, warning=FALSE}
-library(tidyverse)
-library(janitor)
-library(palmerpenguins)
-library(gt)
-
-summary(penguins)
-
-  # base R
-mean(penguins$bill_length_mm, na.rm = TRUE)
-
-# with summarize
-penguins %>% 
-  summarize(mean(bill_length_mm, na.rm = TRUE))
-```
-
-* In this case `across()` lets us apply the mean function to all the columns of interest at once: 
-
-```{r}
-penguins %>%
-  summarize(across(.cols = where(is.numeric), 
-                   .fns = ~ mean(.x, na.rm = TRUE)
-                   )) %>% 
-  gt()
-```
-
-* The `.fns=list` part of the `across` code is where we specify the function(s) that we want to apply to the specified columns. 
-    * Above we only specified one function (`mean()`), but we can specify additional functions as well, which is when we need to create a `list` to list all the functions we want to apply. 
-    * Below I apply the mean and standard deviation functions:
-    
-```{r}
-penguins %>%
-  summarize(across(.cols = where(is.numeric), 
-                   .fns = list(
-                     mean = ~ mean(.x, na.rm = TRUE),
-                     sd = ~ sd(.x, na.rm = TRUE)
-                     ))) %>% 
-  gt()
-```
-
-* In general, lists are another type of R object to store information, whether data, lists of functions, output from regression models, etc. While concatenate is just a vector of values, lists are multidimensional. We will be learning more about lists in parts 7 and 8. 
-
-* You can learn more about `across()` at its [help file](https://dplyr.tidyverse.org/reference/across.html).
-
-
-
-## `case_when()` vs `ifelse()`
-
-_still a little confused on the difference between ifelse and casewhen, understand they are very similar but still confused on when it is best to use one over another_
-
-* The two functions can be used interchangeably.         * `ifelse()` is the original function from base R
-  *  `case_when()` is the user-friendly version of `ifelse()` from the `dplyr` package
-* I recommend using `case_when()`, and it is what I use almost exclusively in my own work. My guess is that `ifelse()` was included in the notes since you might run into the function when reading R code on the internet.
-* Just be careful that you preserve missing values when using `case_when()` as we discussed last time. 
-
-
-## factor levels
-
-_working with factor levels doesn't feel totally intuitive yet. I think that's because I tend to get confused with anything involving a concatenated list._
-
-* Working with factor variables takes a while to get used to, and in particular with their factor levels. 
-* We will be looking at more examples with factor variables in the part 6 notes. See sections 2.8 and 4.
-* You can think of a concatenated list(`c(...)`) as a vector of values or a column of a dataset. Concatenating lets us create a set of values, which we typically create to use for some other purpose, such as specifying the levels of a factor variable.
-* _Please submit a follow-up question in the post-class survey if this is still muddy after today's class!_
-
-
-## pivoting tables
-
-* Definitely a tricky topic, and over half of the muddiest points were about pivoting tables. 
-* We will be looking at more examples in part 6. 
-
-
-### How pivot_longer() would work on very large datasets with many rows/columns
-
-* It works the same way. However the resulting long table will end up being much much longer. 
-* Extra columns in the dataset just hang out and their values get repeated (such as an age variable that is not being made long by) over and over again. 
-    * We will be pivoting a dataset in part 6 that has extra variables that are not being pivoted.
-
-### Trying to visualize the joins and pivot longer/wider
-
-* I recommend trying them out with small datasets where you can actually see what is happening. 
-* __Joins__: Our [BERD workshop slides](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) have another example that might visualize joins. 
-    * [Slide 18](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) shows to datasets x and y, and what the resulting joins look like. 
-    * [Slide 19](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#19) shows Venn diagrams of how the different joins behave. 
-* __Pivoting__: There's an [example with a very small dataset](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) in my (supplemental) notes from BSTA 511. The graphic that goes along with this is on [Slide 28](https://drive.google.com/file/d/1IfubP0ei-5jTIVs33dyoEqjMIY-Q8qBe/view) from the pdf. 
-
-### pivot_longer makes plotting more understandable in an analysis sense, which situations would call for pivot_wider?
-
-* I tend to use `pivot_longer()` much more frequently. However, there are times when `pivot_wider()` comes in handy. For example, below is a long table of summary statistics created with `group_by()` and `summarize()`. I would use `pivot_wider()` to reshape this table so that I have columns comparing species or columns comparing islands. 
-
-```{r}
-penguins %>% 
-  group_by(species, island) %>%
-  summarize(across(.cols = bill_length_mm, 
-                   .fns = list(
-                     mean = ~ mean(.x, na.rm = TRUE),
-                     sd = ~ sd(.x, na.rm = TRUE)
-                     )))
-  
-```
-
-
-### How to use arguments of pivot longer.
-
-* The arguments of the pivot functions take some practice to get used to. I sometimes still pull up an [example](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) to remind me what I need to specify for the various arguments, such as the one mentioned above that I have used in workshops and classes.  
-* We have not covered all the different arguments, and I recommend reviewing the [help file](https://tidyr.tidyverse.org/reference/pivot_longer.html) and in particular the [examples](https://tidyr.tidyverse.org/reference/pivot_longer.html#ref-examples) at the end of the page. 
-
-
-## `gt::gt()`
-
-_The gt::gt package does make the tables look fancier, how do we add labels to those to have them look nice as well?_
-
-* I highly recommend the [`gt` webpage](https://gt.rstudio.com/) to learn more about all the different options to create pretty tables. Note the tabs at the top of the page for "Get started" and "Reference."
-* See also section 3 of part 6 on "Side note about `gt::gt()`" for more on creating pretty tables. 
-
-
-## `here::here`
-
-_would also love more examples of here() I am starting to understand it better but still am a little confused_
-
-_I am still having trouble getting here() to work consistently. I was going to ask during class, but I think I am just not understanding how to manually nest my files correctly so that "here" works. I am struggling to get that set up correct, and thus, struggling to use it. _
-
-
-* We'll have some more examples in class, but I recommend reaching out to one of us (instructors or TA) to help you troubleshoot `here::here`. 
-* Here are also some resources that might help
-    * [https://here.r-lib.org/articles/here.html](https://here.r-lib.org/articles/here.html)
-    * [http://jenrichmond.rbind.io/post/how-to-use-the-here-package/](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
-    * [https://github.com/jennybc/here_here](https://github.com/jennybc/here_here)
-    
-
-## Clearest points
-
-* `group_by()` function (n=3)
-* `summarize()` (n=2)
-* `across()` (n=1)
-* `case_when()` (n=1)
-* `drop_na( )`  (n=2)
-* Joining tables (n=6)
-
-
-
-
 
 
 

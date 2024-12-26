@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -224,11 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#announcements" id="toc-announcements" class="nav-link active" data-scroll-target="#announcements">Announcements</a>
-  <ul class="collapse">
-  <li><a href="#reminder-to-fill-out-post-class-surveys" id="toc-reminder-to-fill-out-post-class-surveys" class="nav-link" data-scroll-target="#reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</a></li>
-  </ul></li>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a>
   <ul class="collapse">
   <li><a href="#part-7" id="toc-part-7" class="nav-link" data-scroll-target="#part-7">Part 7</a></li>
   </ul></li>
@@ -236,26 +198,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#post-class-survey" id="toc-post-class-survey" class="nav-link" data-scroll-target="#post-class-survey">Post-class survey</a></li>
   <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework">Homework</a></li>
   <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
-  <li><a href="#muddiest-points-from-week-9" id="toc-muddiest-points-from-week-9" class="nav-link" data-scroll-target="#muddiest-points-from-week-9">Muddiest points from Week 9</a></li>
-  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices">Matrices</a>
-  <ul class="collapse">
-  <li><a href="#basic-way-to-create-matrices" id="toc-basic-way-to-create-matrices" class="nav-link" data-scroll-target="#basic-way-to-create-matrices">Basic way to create matrices</a></li>
-  <li><a href="#accessing-elements-of-a-matrix" id="toc-accessing-elements-of-a-matrix" class="nav-link" data-scroll-target="#accessing-elements-of-a-matrix">Accessing elements of a matrix</a></li>
-  <li><a href="#convert-to-data.frame" id="toc-convert-to-data.frame" class="nav-link" data-scroll-target="#convert-to-data.frame">Convert to data.frame</a></li>
-  </ul></li>
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><code>for()</code> loops</a>
-  <ul class="collapse">
-  <li><a href="#basic-example" id="toc-basic-example" class="nav-link" data-scroll-target="#basic-example">Basic example</a></li>
-  <li><a href="#adapted-from-1st-edition-of-r-for-data-science" id="toc-adapted-from-1st-edition-of-r-for-data-science" class="nav-link" data-scroll-target="#adapted-from-1st-edition-of-r-for-data-science">Adapted from 1st edition of R for Data Science</a></li>
-  </ul></li>
-  <li><a href="#na.rm-vs-na.omit" id="toc-na.rm-vs-na.omit" class="nav-link" data-scroll-target="#na.rm-vs-na.omit"><code>na.rm</code> vs <code>na.omit</code></a></li>
-  <li><a href="#purrrmap" id="toc-purrrmap" class="nav-link" data-scroll-target="#purrrmap"><code>purrr::map()</code></a>
-  <ul class="collapse">
-  <li><a href="#basic-syntax" id="toc-basic-syntax" class="nav-link" data-scroll-target="#basic-syntax">Basic Syntax:</a></li>
-  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features:</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example:</a></li>
-  </ul></li>
-  <li><a href="#general-references" id="toc-general-references" class="nav-link" data-scroll-target="#general-references">General references</a></li>
   </ul>
 </nav>
     </div>
@@ -287,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 24, 2024</p>
+      <p class="date-modified">December 26, 2024</p>
     </div>
   </div>
     
@@ -298,18 +240,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="announcements" class="level2">
-<h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
-<section id="reminder-to-fill-out-post-class-surveys" class="level3">
-<h3 class="anchored" data-anchor-id="reminder-to-fill-out-post-class-surveys">Reminder to fill out post-class surveys</h3>
-<ul>
-<li>This is a reminder that 5% of your grade is based on filling out <a href="https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi">post-class surveys</a> as a way of telling us that you came to class and engaged with the material for that week.</li>
-<li>You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.</li>
-<li><strong>Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.</strong> We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.</li>
-</ul>
-<p><em>See <a href="https://niederhausen.github.io/BSTA_526_W25/syllabus.html#post-class-surveys">syllabus section on Post-class surveys</a></em></p>
-</section>
-</section>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
 <section id="part-7" class="level3">
@@ -324,10 +254,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="class-materials" class="level2">
 <h2 class="anchored" data-anchor-id="class-materials">Class materials</h2>
-<p>Readings are still the same as for Week 8, and we are using the part_07 material on One Drive.</p>
+<p>Readings are still the same as for Week 8, and we are using the part_07 material on Dropbox.</p>
 <ul>
+<li><a href="../readings/08-reading.html">Week 9 Readings</a></li>
 <li><a href="../readings/08-reading.html">Week 8 Readings</a></li>
-<li>OneDrive <a href="https://ohsuitg-my.sharepoint.com/:f:/g/personal/niederha_ohsu_edu/EvZ5qnesTopKqFWN2_hqEsYBLKZmJDjVxrPCbQOpvAIYSg?e=RDggRF">part_07 Project folders</a></li>
+<li>Dropbox <a href="https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&amp;st=mw0r9x5l&amp;dl=0">part_07 Project folder</a></li>
 </ul>
 </section>
 <section id="post-class-survey" class="level2">
@@ -347,393 +278,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="recording">Recording</h2>
 <ul>
 <li><strong>In-class</strong> recording links are on <a href="https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25">Sakai</a>. Navigate to <em>Course Materials</em> -&gt; <em>Schedule with links to in-class recordings</em>. Note that the password to the recordings is at the top of the page.</li>
-</ul>
-</section>
-<section id="muddiest-points-from-week-9" class="level2">
-<h2 class="anchored" data-anchor-id="muddiest-points-from-week-9">Muddiest points from Week 9</h2>
-<ul>
-<li>See Week 8 page for <a href="../weeks/week_08.html#muddiest-points-from-week-8">Week 8 feedback</a>.</li>
-</ul>
-</section>
-<section id="matrices" class="level2">
-<h2 class="anchored" data-anchor-id="matrices">Matrices</h2>
-<blockquote class="blockquote">
-<p>Not entirely sure how to read or make sense of matrices yet (maybe I should have payed more attention in algebra), like when we saw the structure of a matrix here in the class script: <code>str(output_model$coefficients)</code></p>
-</blockquote>
-<p>In R, matrices are two-dimensional data structures that can store elements of the same data type. They are similar to vectors but have two dimensions (rows and columns). They are widely used in various statistical and mathematical operations, making them a fundamental data structure in the R.</p>
-<section id="basic-way-to-create-matrices" class="level3">
-<h3 class="anchored" data-anchor-id="basic-way-to-create-matrices">Basic way to create matrices</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix with values filled column-wise</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(mat1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3]
-[1,]    1    3    5
-[2,]    2    4    6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix with values filled row-wise</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(mat2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3]
-[1,]    1    2    3
-[2,]    4    5    6</code></pre>
-</div>
-</div>
-</section>
-<section id="accessing-elements-of-a-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="accessing-elements-of-a-matrix">Accessing elements of a matrix</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing individual elements</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>element <span class="ot">&lt;-</span> mat1[<span class="dv">1</span>, <span class="dv">2</span>]  <span class="co"># Row 1, Column 2</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>element</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing entire row or column</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>row_vector <span class="ot">&lt;-</span> mat1[<span class="dv">1</span>, ]  <span class="co"># Entire first row</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>row_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 3 5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>col_vector <span class="ot">&lt;-</span> mat1[, <span class="dv">2</span>]  <span class="co"># Entire second column</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>col_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3 4</code></pre>
-</div>
-</div>
-</section>
-<section id="convert-to-data.frame" class="level3">
-<h3 class="anchored" data-anchor-id="convert-to-data.frame">Convert to data.frame</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(mat1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  V1 V2 V3
-1  1  3  5
-2  2  4  6</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(mat1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
-`.name_repair` is omitted as of tibble 2.0.0.
-ℹ Using compatibility `.name_repair`.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-     V1    V2    V3
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     1     3     5
-2     2     4     6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also name the columns (and the rows)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mat1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>mat1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     a b c
-[1,] 1 3 5
-[2,] 2 4 6</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">as_tibble</span>(mat1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-      a     b     c
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     1     3     5
-2     2     4     6</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="for-loops" class="level2">
-<h2 class="anchored" data-anchor-id="for-loops"><code>for()</code> loops</h2>
-<blockquote class="blockquote">
-<p>Still a little confused about the for() loops…</p>
-</blockquote>
-<p>For loops are a staple in programming languages, not just R. They are used when we want to repeat the same operation (or a set of operations) several times.</p>
-<p>The basis syntax in R looks like:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (variable <span class="cf">in</span> sequence) {</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Statements to be executed for each iteration</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Here’s a breakdown of the components:</p>
-<ul>
-<li><p><code>variable</code>: This is a loop variable that takes on each value in the specified sequence during each iteration of the loop.</p></li>
-<li><p><code>sequence</code>: This is the sequence of values over which the loop iterates. It can be a vector, list, or any other iterable object.</p></li>
-<li><p>Loop Body: The statements enclosed within the curly braces <code>{}</code> constitute the body of the loop. These statements are executed for each iteration of the loop.</p></li>
-</ul>
-<section id="basic-example" class="level3">
-<h3 class="anchored" data-anchor-id="basic-example">Basic example</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5</code></pre>
-</div>
-</div>
-<p>First iteration manually:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>Second iteration manually:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>Etc.</p>
-</section>
-<section id="adapted-from-1st-edition-of-r-for-data-science" class="level3">
-<h3 class="anchored" data-anchor-id="adapted-from-1st-edition-of-r-for-data-science">Adapted from <a href="https://r4ds.had.co.nz/iteration.html#for-loops-vs.-functionals">1st edition of R for Data Science</a></h3>
-<p>Here’s a tibble for an example</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 4
-         a       b      c      d
-     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
- 1  0.162   0.588  -0.411  0.382
- 2 -0.723   0.0728  1.99   1.18 
- 3 -0.129  -0.0748  0.587 -0.362
- 4 -1.00   -1.75    0.815  1.07 
- 5 -0.359  -0.101  -0.537 -0.791
- 6  0.985   0.482  -0.704  0.716
- 7  0.144  -0.675   0.380 -1.78 
- 8  0.951  -1.38    0.415  0.405
- 9  0.854  -0.744   0.194 -1.23 
-10  0.0741 -0.948  -0.918  0.386</code></pre>
-</div>
-</div>
-<p>Using a copy and paste method to calculate the mean of each column would look something like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1093116</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.3882745</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2874271</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df<span class="sc">$</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3841581</code></pre>
-</div>
-</div>
-<p>But this breaks the rule of DRY (“Don’t repeat yourself”)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to store the results of the for loop</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  output[i] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.1093116 -0.3882745  0.2874271  0.3841581</code></pre>
-</div>
-</div>
-<p>For loops in R are commonly used when you know the number of iterations in advance or when you need to iterate over a specific sequence of values. While for loops are useful, R also provides other ways to perform iteration, such as using vectorized operations (example below) and functions from the apply family (not covered). It’s often recommended to explore these alternatives when working with R for better code efficiency and readability.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two vectors</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorized addition</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>result_addition <span class="ot">&lt;-</span> vector1 <span class="sc">+</span> vector2</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>result_addition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  7  9 11 13 15</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With a for loop</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>result_addition_for_loop <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(vector1)) {</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  result_addition_for_loop[i] <span class="ot">&lt;-</span> vector1[i] <span class="sc">+</span> vector2[i]</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>result_addition_for_loop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  7  9 11 13 15</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="na.rm-vs-na.omit" class="level2">
-<h2 class="anchored" data-anchor-id="na.rm-vs-na.omit"><code>na.rm</code> vs <code>na.omit</code></h2>
-<blockquote class="blockquote">
-<p>Is there a difference between na.rm and na.omit?</p>
-</blockquote>
-<p>Yes, there is a difference. In R, they are used in different context.</p>
-<ol type="1">
-<li><code>na.rm</code> (Remove)</li>
-</ol>
-<p><code>na.rm</code> is an <em>argument</em> found in various functions (e.g.&nbsp;<code>mean()</code>, <code>sum()</code>, etc.) that allows you to specify whether missing values (<code>NA</code> or <code>NaN</code>) should be removed before performing the calculation.</p>
-<p>From the help for <code>mean()</code> (<code>?mean</code>): <em>a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector with NA values</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>values_with_na <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(values_with_na, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)  <span class="co"># Result will be NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Excluding NA values</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(values_with_na, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Result will be (1+2+3+5)/4 = 2.75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.75</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li><code>na.omit</code> (Omit missing)</li>
-</ol>
-<p><code>na.omit</code> is a <em>function</em> that can be used to remove rows with missing values (<code>NA</code>) from a data frame or matrix.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame with NA values</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">A =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>), <span class="at">B =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">8</span>))</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs in the columns of the data frame</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   A  B
-1  1  5
-2  2 NA
-3 NA  7
-4  4  8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using na.omit to remove rows with NA values</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  A B
-1 1 5
-4 4 8</code></pre>
-</div>
-</div>
-</section>
-<section id="purrrmap" class="level2">
-<h2 class="anchored" data-anchor-id="purrrmap"><code>purrr::map()</code></h2>
-<blockquote class="blockquote">
-<p>I am still a little foggy on the formatting of purrrmap and how to utilize it effectively.</p>
-</blockquote>
-<p>The <code>purrr::map</code> function is used to apply a specified function to each element of a list or vector, returning the results in a new list.</p>
-<section id="basic-syntax" class="level3">
-<h3 class="anchored" data-anchor-id="basic-syntax">Basic Syntax:</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(.x, .f, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><p><strong><code>.x</code>:</strong> The input list or vector.</p></li>
-<li><p><strong><code>.f</code>:</strong> The function to apply to each element of <code>.x</code>.</p></li>
-<li><p><strong><code>...</code>:</strong> Additional arguments passed to the function specified in <code>.f</code>.</p></li>
-</ul>
-</section>
-<section id="key-features" class="level3">
-<h3 class="anchored" data-anchor-id="key-features">Key Features:</h3>
-<ol type="1">
-<li><strong>Consistent Output:</strong>
-<ul>
-<li><code>map</code> returns a list, ensuring a consistent output format regardless of the input structure.</li>
-</ul></li>
-<li><strong>Function Application:</strong>
-<ul>
-<li>The primary purpose is to apply a specified function to each element of the input <code>.x</code>.</li>
-</ul></li>
-<li><strong>Formula Interface:</strong>
-<ul>
-<li>Supports a formula interface (<code>~</code>) for concise function specifications.</li>
-</ul>
-<code>purrr::map(.x, ~ function(.))</code></li>
-</ol>
-</section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example:</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample list</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>))</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>my_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$a
-[1] 1 2 3
-
-$b
-[1] 4 5 6
-
-$c
-[1] -0.2999317 -0.8807203  1.1688468</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using map to square each element in the list</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>squared_list <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> my_list, </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.f =</span> <span class="sc">~</span> .x <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>squared_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$a
-[1] 1 4 9
-
-$b
-[1] 16 25 36
-
-$c
-[1] 0.08995903 0.77566826 1.36620287</code></pre>
-</div>
-</div>
-<p>In this example, the <code>map</code> function applies the squaring function (<code>~ .x ^ 2</code>) to each element of the input list <code>my_list</code>. The resulting <code>squared_list</code> is a list where each element is the squared version of the corresponding element in <code>my_list</code>.</p>
-<p>The <code>purrr::map</code> function is particularly useful when working with lists and helps to create cleaner and more readable code, especially in cases where you want to apply the same operation to each element of a collection.</p>
-</section>
-</section>
-<section id="general-references" class="level2">
-<h2 class="anchored" data-anchor-id="general-references">General references</h2>
-<blockquote class="blockquote">
-<p>Is there a good dictionary type document with “R language” or very basic function descriptions? … find it difficult to know what functions I need because it is hard to recall their name or confuse it with a different function.</p>
-</blockquote>
-<ul>
-<li>R Documentation (Built-in Help): R itself provides built-in documentation that you can access using the <code>help()</code> function or the <code>?</code> operator. For example, to get help on the <code>mean()</code> function, you can type <code>help(mean)</code> or <code>?mean</code> in the R console.</li>
-<li>R Manuals and Guides: The official R documentation, including manuals and guides, is available on the R Project website: <a href="https://cran.r-project.org/manuals.html">R Manuals</a>.</li>
-<li>R Packages Documentation: Many R packages come with detailed documentation. You can find documentation for a specific package by visiting the CRAN website (Comprehensive R Archive Network) and searching for the package of interest.</li>
-<li>Online Resources: Websites like <a href="https://www.rdocumentation.org/">RDocumentation</a> provide a searchable database of R functions along with their documentation. You can search for a specific function and find details on its usage and parameters.</li>
-<li><a href="https://posit.co/resources/cheatsheets/">RStudio cheatsheets</a></li>
-<li><a href="https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf">Base R cheatsheet</a></li>
-<li><a href="https://cran.r-project.org/doc/manuals/r-release/fullrefman.pdf">R: A Language and Environment for Statistical Computing: Reference Index</a></li>
-<li><a href="https://cran.r-project.org/web/views/">CRAN Task Views</a></li>
-<li>Part 3 section on getting help with errors.</li>
-<li>Books like <a href="https://r4ds.hadley.nz/">“R for Data Science”</a> by Hadley Wickham</li>
-<li>When you use a function or learn to use it, make notes to yourself using Google Doc or OneNote or something similar.</li>
 </ul>
 
 

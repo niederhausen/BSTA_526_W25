@@ -14,22 +14,22 @@ editor_options:
 
 ## Announcements
 
-* _No new material this week._ 
-    * Class will be office hours and held online via Webex. 
-    * See your email, Slack, or [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72?org.sakaiproject.portal.pluto.PORTLET_STATE=I1Nha2FpIFBvcnRsZXQgU3RhdGUKI1R1ZSBNYXIgMTkgMTk6MDA6MTkgUERUIDIwMjQKby5zLnAuci5zLldJTkRPV19TVEFURT1ub3JtYWwKby5zLnAuci5zLkFDVElPTj1mYWxzZQpvLnMucC5yLnMuUE9SVExFVF9NT0RFPXZpZXcKby5zLnAuci5zLklEPWYyYTE2NWFiLTFkOTQtNDRmYi1hMDQyLTJhMGMwMGE1YjcwNApvLnMucC5yLnMuU0VDVVJFPXRydWUK) for the link.  
-* Meike's office hours this week
-    * Thursday 4-5 pm (instead of Friday at 3:30). 
-    * Use same [Webex link](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) as usual office hours. 
-* __Final exam due Friday 3/22/2025 at 5:00 pm__.
-    * See OneDrive folder _final_exam_ for files. 
-* __Grades for midterm projects__ have been released. 
-    * Check the feedback attachment in Sakai (Excel file) for grade calculation and comments for each section.
-    * Points were calculated using the [grading rubric](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-rubric) in the syllabus. The final grade is out of 10 points. See the [grading scale](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-scale) for letter grade conversion.
-    * Please review the comments and let us know if you have any questions. 
-* _Please fill out the __course evaluations__ for the class._ 
-    * Course evaluations are very helpful for making improvements to our classes. 
-    * If too few students fill out the evaluations, they are not released to us.
-    * You might have two evaluations since there are two instructors. 
+<!-- * _No new material this week._  -->
+<!--     * Class will be office hours and held online via Webex.  -->
+<!--     * See your email, Slack, or [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W25) for the link.   -->
+<!-- * Meike's office hours this week -->
+<!--     * Thursday 4-5 pm (instead of Friday at 3:30).  -->
+<!--     * Use same [Webex link](https://sakai.ohsu.edu/portal/site/BSTA-526-1-AX-W24/page/45b3e0f3-33d9-46eb-9d4d-83287b0e6f72) as usual office hours.  -->
+<!-- * __Final exam due Friday 3/22/2025 at 5:00 pm__. -->
+<!--     * See OneDrive folder _final_exam_ for files.  -->
+<!-- * __Grades for midterm projects__ have been released.  -->
+<!--     * Check the feedback attachment in Sakai (Excel file) for grade calculation and comments for each section. -->
+<!--     * Points were calculated using the [grading rubric](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-rubric) in the syllabus. The final grade is out of 10 points. See the [grading scale](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#grading-scale) for letter grade conversion. -->
+<!--     * Please review the comments and let us know if you have any questions.  -->
+<!-- * _Please fill out the __course evaluations__ for the class._  -->
+<!--     * Course evaluations are very helpful for making improvements to our classes.  -->
+<!--     * If too few students fill out the evaluations, they are not released to us. -->
+<!--     * You might have two evaluations since there are two instructors.  -->
 
 
 ## Topics
@@ -52,7 +52,3 @@ editor_options:
 
 * Previous muddiest and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
 
-
-## Muddiest points 
-
-* See Week 10 page for [Week 10 feedback](week_10.qmd#muddiest-points-from-week-10).
