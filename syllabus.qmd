@@ -220,7 +220,7 @@ This class is meant to be a psychologically safe space where it's ok to ask ques
 
 We will be drawing on the following online textbooks during class and labs. These books are online and free, though you can order them as textbooks if you prefer that format.
 
-+ **R for Data Science**. Garret Grolemund and Hadley Wickham. 2nd Edition. <https://r4ds.hadley.nz/>
++ **R for Data Science**. Hadley Wickham, Mine Çetinkaya-Rundel, Garrett Grolemund. 2nd Edition. <https://r4ds.hadley.nz/>
 + **Getting Used to R, RStudio, and RMarkdown**. Chester Ismay.
 <https://ismayc.github.io/rbasics-book/>
 + **Data Science: A First Introduction**. Tiffany Timbers, Trevor Campbell, Melissa Lee. <https://datasciencebook.ca/>
