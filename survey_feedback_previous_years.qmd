@@ -4,7 +4,7 @@ date: "today"
 format: 
   html:
     link-external-newwindow: true
-    # toc: true
+    toc: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -1703,11 +1703,11 @@ Overall, `list.files()` is a handy function for obtaining file names within a di
 
 ## Week 1
 
-# Pacing
+### Pacing
 
 Mean 3.18, IQR [3,3] so, that's a good sign, though there was one comment it went a little fast. I admittedly was trying to cram in a lot of basics all at once, so I'll try to go a touch slower with the hard things.
 
-# Muddiest Points
+### Muddiest Points
 
 Remember, all of this is anonymous. I don't post everything everyone says on here, but I do read them all and think about how to improve the class based on what everyone says.
 
@@ -1789,7 +1789,7 @@ I'll talk about this again/more as well. This is a YAML option, and can be set u
 
 Understandable, I threw a lot of new stuff at most of you, and I'll focus more on these things in class 2! I haven't shown you the full benefits of using Rstudio projects yet because we haven't started working with data. But hopefully class 2 and 3 it will become a bit more clear.
 
-# Clearest Points
+### Clearest Points
 
 Lots of things here I'm not including, but, thank you for all of it!
 
@@ -1802,7 +1802,7 @@ It's a weird one, for sure!
 It's one of the main reasons why I just start using Rmd right away, because it's pretty neat. It might cause more headaches later because it takes time getting used to, but it's worth it to me.
 
 
-# Other messages, just a selection
+### Other messages, just a selection
 
 Lots of you liked having challenges. Sometimes I get carried away adding too much instruction because there is so much I want to show you, so I hope I provide enough time for challenges this year.
 
@@ -1813,3 +1813,1276 @@ You are my perfect audience, these are my goals, too!
 > After 2 years of just sort of flinging myself at R willy-nilly, the first class showed me a lot of tips for using R that have already made my life easier.
 
 So happy to hear it!
+
+## Week 2
+
+
+### Muddiest Points
+
+> the benefits of tibble vs data frame and when to use which?
+
+In this class we will always use tibble. Just remember that an object can be multiple types. A tibble is a data frame, but not vice versa. A tibble is really a data frame with "perks". See this explanation from the [tibble 1.0 package release](https://posit.co/blog/tibble-1-0-0/#:~:text=Tibbles%20vs%20data%20frames,to%20work%20with%20large%20data.)
+
+> There are two main differences in the usage of a data frame vs a tibble: printing, and subsetting.
+
+> Tibbles have a refined print method that shows only the first 10 rows, and all the columns that fit on screen. This makes it much easier to work with large data. In addition to its name, each column reports its type, a nice feature borrowed from `str()`:
+
+```{r}
+library(tidyverse)
+
+class(mtcars)
+mtcars
+
+mtcars_tib <- as_tibble(mtcars)
+class(mtcars_tib)
+mtcars_tib
+```
+
+Another interesting difference is that tibbles don't have row names, but a lot of built in data.frames in R do. But rownames are hard to get out. So, when you make a tibble of a data.frame you can tell the function to use the rownames as a column:
+
+```{r}
+mtcars_tib <- as_tibble(mtcars, rownames = "car_name")
+mtcars_tib
+```
+
+
+> Tibbles also clearly delineate [ and [[: [ always returns another tibble, [[ always returns a vector. No more drop = FALSE!
+
+If we ask for the first column using the `[]` notation, we receive a numeric vector from a data frame, and a tibble/data.frame from the tibble.
+
+We have not learned the `[[]]` yet because we have not talked about lists in R, but we will soon. The code below returns the first column as a vector for both a data frame and a tibble.
+
+```{r}
+mtcars[,1]
+mtcars_tib[,1]
+mtcars[[1]]
+mtcars_tib[[1]]
+
+class(mtcars[,1])
+class(mtcars_tib[,1])
+class(mtcars_tib[[1]])
+```
+
+As I was mentioning in class, there are some (older) functions that don't like tibbles, but all you need to do is just make its primary class a data.frame as such:
+
+> A handful of functions are don’t work with tibbles because they expect df[, 1] to return a vector, not a data frame. If you encounter one of these functions, use as.data.frame() to turn a tibble back to a data frame:
+
+```{r}
+mtcars_df <- as.data.frame(mtcars_tib)
+class(mtcars_df)
+```
+
+Back to muddy quotes:
+
+> path files and knowing if you're in a project or just an RMD
+
+> R markdown vs R projects
+
+I hope to spend more time talking about this in class 4.
+
+> ggplot stuff was the most muddy, but I also haven't done a lot of ggplot stuff before
+
+Yes this was definitely expected for a brief intro, ggplot takes a while to get the hang of! We will use ggplot every class now, so we will go through it in bite sized pieces.
+
+> Using na="NA" to pull in data and how to know that it's needed.
+
+I will show more examples of this. Rule number one of importing data in any software is to *look* at your data, and figure out if what you see in the software is what you expect. Always look at your data! The `read_excel(filename, na="NA")` is a strange case that isn't actually very common to code data as "NA" directly, but I wanted to show you how it looks different when it does happen. Usually, missing data is just a blank space, which is automatically read in as the special `NA` data type in R.
+
+```{r}
+# If you did not include `na=NA` it would have been read in like this
+df1 <- tibble(a = c("NA","C","D"), b= 1:3,  c = c(1,3,"NA"))
+# If you did include `na = NA` it would have been read in like this
+df2 <- tibble(a = c(NA,"C","D"), b= 1:3, c = c(1,3,NA))
+
+# note the character types of the two DFs, and the way NA is printed
+df1
+
+df2
+
+```
+
+
+> I saw a lot of code with the two colons (“::”) in the middle. It is unclear to me if this is an alternative way to write some commands or if there is a certain context in which it is used.
+
+Good question, what this does is pulls a function from a package, so it works whether you have *loaded* the package (using `library()` or `p_load()`) or not. I mainly use it as a clue to you to where the function is coming from. Otherwise, you may not know you need to load that package to use it! For instance:
+
+```{r, eval = FALSE}
+# does not work, haven't loaded the package janitor
+mtcars %>% tabyl(am, cyl)
+```
+
+
+```{r}
+# does work
+mtcars %>% janitor::tabyl(am, cyl)
+```
+
+```{r}
+# also works
+library(janitor)
+mtcars %>% tabyl(am, cyl)
+```
+
+### Clearest Points
+
+> skim
+
+> loading our excel to R studio
+
+> Loading in the data and selecting the sheets that are most relevant to what we are looking to do was very clear and a nice foundation for future projects. I found that showing different ways of importing the data was helpful.
+
+I'm glad, the import tool in Rstudio is very nice, just remember to save the code in your Rmd.
+
+> functionality of ggplot
+
+> tidying the data
+
+> Found out what eval=TRUE and eval=FALSE mean!
+
+Great and I'll show that again for anyone who was confused! ("still a little bit confused about the `{r, EVAL}` code")
+
+### Other messages
+
+Some people had trouble getting the `fig.path=` to work in the knitr options. I'm not sure what could be causing that but feel free to ask me during break.
+
+[Here's a good reference](https://yihui.org/knitr/options/) for all the code chunk options, if you want to read about it.
+
+
+> link to the course website that is in the overview tab in SAKAI links to last years materials.
+
+Oops thank you great catch, fixed!
+
+> Speed is going great. I'm just worried as we progress through the course, it'll be more difficult. Overall, really enjoying this class.
+
+I understand the concern, some things will get more difficult (I'm thinking `across()` in class 4, writing functions, and `purrr`), but we will also circle back to some things that might be familiar or maybe less complicated to start (stats models, making tables). Definitely keep asking questions and I will slow down as needed!
+
+## Week 3
+
+### Muddiest points
+
+> themes in ggplot
+
+[Check out this reference about ggplot themes first.](https://ggplot2-book.org/polishing.html)
+
+Here's a couple examples using this one plot, so you can see how the theme changes the look of the figure, when you use built in themes from the `ggplot2` package (yes it only works in ggplot figures, for the person who asked about that)
+
+```{r}
+library(tidyverse)
+
+p <- ggplot(mtcars, aes(x = mpg, y = carb, color = factor(cyl))) +
+  geom_point() +
+  labs(title = "My scatterplot")
+p
+```
+
+Here are some built in themes:
+
+```{r}
+p + theme_bw()
+```
+
+```{r}
+p + theme_minimal()
+```
+
+```{r}
+p + theme_classic()
+```
+
+However you can make more customized themes or plot changes where you use the `theme()` function to add in a lot of other elements. You can use this add on function to choose specific parts of the plot that you want to change, like this example from the above reference. Anything specified here will override the built in theme selected first. There are many options, and looking at specific examples will help. I am always, always googling how to change parts of the theme/plot like this, because there are just so many options it's too hard to remember them all.
+
+```{r}
+p + theme_classic() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12),
+    legend.background = element_rect(fill = "white", size = 4, colour = "white"),
+    legend.justification = c(0, 1),
+    legend.position = c(0, 1),
+    axis.ticks = element_line(colour = "grey70", size = 0.2),
+    panel.grid.major = element_line(colour = "grey70", size = 0.2),
+    panel.grid.minor = element_blank()
+  )
+```
+
+
+Here's a simpler example just changing the title (from the above reference):
+
+```{r}
+p + theme(plot.title = element_text(size = 16))
+p + theme(plot.title = element_text(face = "bold", colour = "red"))
+p + theme(plot.title = element_text(hjust = 1))
+```
+
+> here()
+
+Agreed, it's very confusing, more in class 4!
+
+> Could you please clarify about the use of select(one_of) and the count command that was mentioned in dplyr cheatsheet?
+
+These are very different, if you are talking about `select()` vs `count()`. One thing to note is that since I recorded that class, `one_of()` has been superseded/replaced by `any_of()` and `all_of()`.
+
+First, `select()` is a function to subset columns.
+
+```{r}
+library(palmerpenguins)
+```
+
+Here we specify the columns we want in the order we want:
+
+```{r}
+penguins %>% select(bill_length_mm, island, species, year)
+```
+
+Here, we pass a vector of character names, both of which work:
+
+```{r}
+penguins %>% select(c("bill_length_mm","island","species","year"))
+penguins %>% select(any_of(c("bill_length_mm","island","species","year")))
+```
+
+This might be useful if we have that character vector already saved from some other data work we are doing:
+
+```{r}
+colnames_needed <- c("bill_length_mm","island","species","year")
+penguins %>% select(colnames_needed)
+```
+
+But the key about `any_of` and `all_of` is what it allows. `any_of()` allows column names that don't exist! Using no tidyselect helper or `all_of()` does not allow this. Which you use depends on what you want to allow to happen.
+
+```{r}
+colnames_needed <- c("bill_length_mm","island","species","year","MISSING")
+# penguins %>% select((colnames_needed)) # does not work
+penguins %>% select(any_of(colnames_needed)) # works!
+# penguins %>% select(all_of(colnames_needed)) # does not work
+```
+
+`any_of()` is an example of a tidyselect helper, which we will see a lot more of when we start using `across()` with `mutate()` and `summarize()` in class 4. [See this long list of useful tidyselect functions for more.](https://tidyselect.r-lib.org/reference/language.html)
+
+On the other hand, `count()` is mainly to count the number of unique values in a column/vector:
+
+```{r}
+penguins %>% count(species)
+```
+
+This created a new tibble, that *summarizes* the species column by counting the number of each type of species. This works for any type of vector but is most useful with character and factor columns. You can also use multiple columns here to see all possible combinations:
+
+```{r}
+penguins %>% count(species, year)
+```
+
+### Clearest Points
+
+> filter, select, arrange, pipes
+
+Super! I want to take the time to mention (and hopefully not confuse everyone) that the pipe has recently (2021) been integrated into "base R", that is, it's loaded without loading the tidyverse package. HOWEVER it is this symbol `|>` and does not behave *exactly* like the tidyverse pipe `%>%` (actually from the `magrittr` package within the `tidyverse` package). For all the usual uses it works the same, so it could be used interchangeably in this class. Just know that if you see that type of pipe being used, assume it's doing basically the same thing. [Even R for Data Science is likely moving to use the native/base pipe, see this explanation](https://r4ds.hadley.nz/workflow-pipes.html). Probably next year's class I will switch everything over to use this, though I still just use `%>%` in my own work as it's slightly more flexible for more "advanced" usage.
+
+```{r}
+penguins |> count(species, year)
+```
+
+
+### Other messages
+
+> Density ridges are cool!
+
+I agree!
+
+## Week 4
+
+### Muddiest points
+
+I've noticed some confusion about what I call "saving your work", so we'll go over [these slides](https://sph-r-programming-2023.netlify.app/slides/05-saving-objects-vs-summaries).
+
+> using factors, what you're doing and the benefit of turning things into factors in mutate
+
+I usually turn something into a factor for plotting (especially if I have a categorial numeric variable), and we'll see more examples of that. We also later will see how it matters in statistical modeling/regression. It also is often easier to manage levels/categories this way, as we will see when we talk about the `forcats` package again in class 6.
+
+> case_when is not easy
+
+Correct! Also some other comments on wanting more practice with `case_when()`. We will continue to see examples with this as we finish part5 and in other classes. It's a very handy function so I use it a lot! See also the [video above about factors with another explanation](https://www.youtube.com/watch?v=bBfZFasd61c).
+
+> The function for converting a vector back from factor to character - I thought I had it, but I didn't.
+
+Oh, I didn't show this! 
+
+```{r}
+# make a character vector
+myvec <- c("medium", "low", "high", "low")
+myvec_fac <- factor(myvec)
+myvec_fac
+class(myvec_fac)
+# get the levels out
+levels(myvec_fac)
+
+# Note we can "test" the classes of something like so:
+is.factor(myvec_fac)
+is.character(myvec_fac)
+
+# Now we can change it back
+myvec2 <- as.character(myvec_fac)
+myvec2
+class(myvec2)
+levels(myvec2) # no levels, because it's not a factor
+
+# we could also change to numeric, how do you think it picks which number is which?
+myvec3 <- as.numeric(myvec_fac)
+myvec3
+
+# levels in order is assigned 1, 2, 3
+table(myvec_fac, myvec3)
+
+# change the level order
+myvec_fac2 <- factor(myvec, levels = c("low", "medium", "high"))
+levels(myvec_fac2)
+myvec4 <- as.numeric(myvec_fac2)
+myvec4
+table(myvec_fac2, myvec4)
+```
+
+> factor vs as.factor
+
+Essentially the same. From the help documentation `?factor`: "as.factor coerces its argument to a factor. It is an abbreviated (sometimes faster) form of factor."
+
+
+> I would like to know when you recommend that we save a new data set once we create new covariates. Also, it is unclear to me how you add the variable to the existing data.
+
+If I want to use that column/covariate again, I save it (so almost always, as I don't often make a column without using it later). I usually save it back into the original data set I'm working with, that is, overwrite that object to be updated with the new column. As long as I keep track of my changes this is definitely ok. It can get confusing having too many versions of a data set floating around. If something is broken, the worst that happens is that you'll just need to start from the beginning and reload your data (the data file will remain untouched) and re-run the code.
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+# does not save the new column, just prints result
+penguins %>% 
+  mutate(newvec = bill_length_mm/bill_depth_mm)
+
+# saves new column in a data frame that is called penguins2
+penguins2 <- penguins %>% 
+  mutate(newvec = bill_length_mm/bill_depth_mm)
+glimpse(penguins2)
+glimpse(penguins) # has not been changed
+
+# saves new column in a data frame in the original data frame penguins
+# *overwrites penguins*
+penguins <- penguins %>% 
+  mutate(newvec = bill_length_mm/bill_depth_mm)
+glimpse(penguins)
+```
+
+> arrange vs filter
+
+`arrange` orders or sorts your data and does not remove or add anything, while `filter` removes rows. 
+
+### Clearest points
+
+> working directory, here
+> reordering factors
+> mutate
+> tibble vs data frame
+> factors
+> filtering
+
+Glad to hear we're making progress!
+
+### Other points
+
+> Is there a list somewhere of all potential colors?
+
+A couple answers:
+
+- See [this page for a list of "named" colors in R.](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/), or the [ggplot2 cookbook for a smaller list](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
+- We will talk more about palettes when we finish part4 but there are many, many. I suggest finding a package or two that has the palettes you like and working with those. See a bunch listed [here (scroll down in the readme).](https://github.com/EmilHvitfeldt/r-color-palettes). My favorites are
+[`ggthemes`](https://github.com/jrnold/ggthemes) and [`colorBlindness`](https://cran.r-project.org/web/packages/colorBlindness/vignettes/colorBlindness.html).
+
+> I'm curious what the best practice is for stringing things together versus breaking them into pieces. For example, if I was trying to make a binary variable where all values were classified as larger or greater than the mean, I could use mean() inside several other functions like mutate(). Alternately I could calculate mean() [meanxx <- mean(xxx)] and save it as an object, and then use the other functions on that value. I'm curious because it seems like if you did too many functions at once and were getting errors, it would be hard to tell what was wrong. But if you did it in a more stepwise fashion, you could see (for example) that mean() wasn't working because there were NAs in your dataset. More importantly, I think if you were getting an erroneous answer (not an error, but a wrong answer, like if you calculated the mean of a variable but your NA's were marked with "-88" and so R considered these actual observations) you might not know if you joined too many functions together and didn't "see" what was happening under the hood. I'm curious how to deal with that.
+
+I copied over this whole question because I think it is an excellent one, and well said (hope you don't mind)! I think this is something that evolves as you become more experienced in coding and debugging, and as you find your own style of coding. I will talk some about debugging later, but what you are saying about breaking things up into pieces absolutely helps with that.
+
+The one thing to make sure of is that if you are saving intermediate steps, such as `meanxx <- mean(mydata$xx)` and using it later, but then you update the data set (filter, replace NAs, fix an incorrect data entry, whatever), you need to make sure to update/re-calculate that mean object as it no longer matches your newer data set! So there is more to keep track of, in that case.
+
+I will say that if you are keeping track of all the steps well, then functionally it does not matter too much, so if it makes things easier to break it up, do that! If you like to chain everything together (often I do) you can run each piece by highlighting the code and running just that part to see what is going on, and this is something I do often.
+
+Your example is something I would probably do, though, as using the mean inside mutate does make me a bit nervous. For example, let's use median because it's easier to check my work at the end:
+
+```{r}
+library(janitor) # for tabyl()
+
+# there are NAs in here:
+median(penguins$body_mass_g)
+
+# let's save the median as a vector of length 1, remove NAs
+tmpmedian <- median(penguins$body_mass_g, na.rm = TRUE)
+tmpmedian
+
+penguins <- penguins %>%
+  mutate(
+    large_mass = case_when(
+      body_mass_g >= tmpmedian ~ "yes",
+      body_mass_g < tmpmedian ~ "no" # this allows NAs to remain NA
+    ))
+
+penguins %>% tabyl(large_mass)
+
+# if I had just used median without checking for NAs, they all are NA:
+penguins %>%
+  mutate(large_mass = 1*(body_mass_g >= median(body_mass_g))) %>%
+  tabyl(large_mass)
+
+
+# Note if I just want females, this no longer makes sense:
+penguins %>%
+  filter(sex=="female") %>%
+  mutate(
+    large_mass = case_when(
+      body_mass_g >= tmpmedian ~ "yes",
+      body_mass_g < tmpmedian ~ "no" # this allows NAs to remain NA
+    )) %>%
+  tabyl(large_mass)
+
+# but this would:
+penguins %>%
+  filter(sex=="female") %>%
+  mutate(
+    large_mass = case_when(
+      body_mass_g >= median(body_mass_g, na.rm = TRUE) ~ "yes",
+      body_mass_g < median(body_mass_g, na.rm = TRUE) ~ "no" 
+    )) %>%
+  tabyl(large_mass)
+```
+
+## Week 5
+
+
+### Muddiest points
+
+> I wasn't super unclear about it, but just want to be more comfortable using summarize() and across and group_by functions. It looks like these will be really useful for future data projects, so that's exciting!
+> across function was a bit hazy because screen kept freezing
+
+Sorry the zoom malfunctioned during this rather important and confusing section!
+
+We will have more practice with `across` in other sections but the main points I want to get across (ha) are:
+
+- `group_by()` is used to "group the data" (a.k.a "split") by a categorical variable, and then all kinds of computations can be done within groups including `summarize()` but also `slice()` (such as `slice_sample()`) and later we will see this with `nest()` etc.
+- `summarize()` can be used with or without `group_by()` to collapse a big data set into a summarized table/data frame/tibble. This is still data, it's just summarized data. Be careful when you are saving it, don't overwrite your original data.
+- `across()` can be used inside `mutate()` and `summarize()` to "select" the columns we want to transform/mutate or summarize
+- `across()` uses what we call "tidyselect" syntax. For explanation and examples you can type `?dplyr_tidy_select` or go to this [website.](https://tidyselect.r-lib.org/reference/language.html)
+
+> the syntax of .x ~
+
+We use this when we are creating our own function inside of mutate. Think of algebra, where if we want to add something we might say:
+
+```
+y = x + 3
+y = x/10
+y = log(x)
+y = exp(x)^3 - x/10
+```
+
+This is the same idea, except it's just written with the special syntax/variable name that R knows how to interpret, where we use `.x` instead of `x`:
+
+```
+y = .x + 3
+y = .x/10
+y = log(.x)
+y = exp(.x)^3 - .x/10
+```
+
+But we also need to use `~` to tell R, here's a function! and we use the argument name and equal sign `.fns = ` to say, here we are inputting the custom function as the argument input. If you look at the help `?across` we see this is called "A purrr-style lambda" because we use it in the `purrr` package functions as well (we will see this later):
+
+```{r, eval = FALSE}
+# think of this as input to the argument of across()
+# typical argument syntax arg = _____
+.fns = ~ .x+3
+.fns = ~ .x/10
+.fns = ~ log(.x)
+.fns = ~ exp(.x)^3 - .x/10
+```
+
+And this needs to go inside the nested functions `mutate(across())` as an argument: `mutate(across(.cols = ----, .fns = ----))`:
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+penguins %>% mutate(
+  across(.cols = c(bill_length_mm, body_mass_g),
+         .fns = ~ exp(.x)^3 - .x/10))
+```
+
+We can also apply multiple functions by putting them inside a `list()` and we can give them names:
+
+```{r}
+# here we have 3 functions
+penguins %>% mutate(
+  across(.cols = c(bill_length_mm, body_mass_g),
+         .fns = list(
+           ~ .x/3,
+           log, # just using the named function, don't need .x
+           ~ exp(.x)^3 - .x/10))) %>%
+  glimpse()
+
+# here we have the same 3 functions but with names
+penguins %>% mutate(
+  across(.cols = c(bill_length_mm, body_mass_g),
+         .fns = list(
+           fn1 = ~ .x/3,
+           log = log,
+           fn2 = ~ exp(.x)^3 - .x/10))) %>%
+  glimpse()
+```
+
+
+> how do we change the names when using across() inside mutate()
+
+I skipped this for the sake of time and to avoid confusion last class and showed you how to do this using `rename()` instead, but let's go over it now a little bit. 
+
+The `.names` argument inside `across()` uses a function called `glue()` inside the package `glue`. We haven't covered `glue` package syntax yet (it's in part9) but think of it as a string concatenating ("gluing") method where we write out what we want to be in the text string inside quotes, but use variable names and code functions inside of the quotes in a special way. The important part to know right now is that the stuff inside `{}` is code, and everything else is just text. Here when we use `.col` inside the glue code that is the stand-in for the column name, so `"{.col}"` is literally just the column name, and `"{.col}_fun"` is the column name with "_fun" appended to it.
+
+Here are some simple glue examples:
+
+```{r}
+library(glue)
+glue("hello")
+
+myname <- "jessica"
+
+glue("hello {myname}")
+
+glue("hello {myname}, how are you?")
+
+firstname <- "jane"
+lastname <- "doe"
+glue("{firstname}_{lastname}")
+```
+
+Look at `?across` and the `.names` argument for some info and the defaults.
+
+```{r}
+# Does not change names of transformed columns
+# no longer accruate since not mm
+penguins %>%
+  mutate(
+    across(.cols = ends_with("mm"), .fns = ~ .x/10)) %>%
+  glimpse()
+
+# adds cm to end of column names, but still has mm, confusing
+penguins %>%
+  mutate(
+    across(.cols = ends_with("mm"),
+           .fns = ~ .x/10,
+           .names = "{.col}_cm")) %>%
+  glimpse()
+
+# code inside the {} is evaluated, 
+# so we can use stringr::str_remove() to remove what we don't want there
+# str_remove_all() also works
+# note now we have kept the original columns as well
+# note we need single quotes for the glue code because we are wrapping it in
+# double quotes already
+penguins %>%
+  mutate(
+    across(.cols = ends_with("mm"),
+           .fns = ~ .x/10,
+           .names = "{str_remove(.col,'_mm')}_cm")) %>%
+  glimpse()
+
+# alternative that works here is using str_replace()
+penguins %>%
+  mutate(
+    across(.cols = ends_with("mm"),
+           .fns = ~ .x/10,
+           .names = "{str_replace(.col,'_mm', '_cm')}")) %>%
+  glimpse()
+
+```
+
+> It's unclear to me if there is distinction between using 'str_remove_all' and 'separate()' when we talked about removing "years old" from the column "age". Are there particular circumstances where one is preferred over the other?
+
+In R and in programming in general, there are always multiple ways to do the same thing. Often many, many ways! There is no preferred way just which makes the most sense to you/which you are most comfortable with.
+
+For me, I like to use the `stringr` functions to remove stuff from columns that I don't want, because it is the most "clear" to me and also probably to anyone reading my code.
+
+The `separate()` way is more of a clever trick, an "out of the box" way to use an existing function that works for our needs in this case. There are a lot of things like that, and it's perfectly ok to use them if you understand what they are doing and why.
+
+> arrange with two variables
+
+Here's a simple example so we can see how `arrange()` works with two categories (this is analogous to sorting by two variables in excel)
+
+```{r}
+mydata <- tibble(
+  id = 1:4,
+  animal = c("cat","mouse","dog","cat"),
+  weight = c(10, 1, 20, 8),
+  age = c(15, 3, 3, 20))
+
+mydata
+
+mydata %>% arrange(weight)
+
+mydata %>% arrange(animal)
+
+# arrange by animal first, then weight within animal categories
+mydata %>% arrange(animal, weight)
+
+# does not do anything in this case, but would arrange by age if there were ties in the weight column within the animal category
+mydata %>% arrange(animal, weight, age)
+```
+
+> stringr::str_to_title()
+
+Just a clarification:
+
+Remember to read help documentation and look at examples if still not clear!
+
+```{r}
+str_to_title("hello")
+
+str_to_title("hello my name is jessica")
+
+str_to_title("HELLO MY name is jessica")
+```
+
+There are other similar "case conversion" functions as well:
+
+```{r}
+str_to_upper("HELLO MY name is jessica")
+
+str_to_lower("HELLO MY name is jessica")
+
+str_to_sentence("HELLO MY name is jessica")
+```
+
+> stringing together multiple commands in a pipe, which comes first and which functions are safe to put inside other functions- and if so- how do you know what order to put them in.
+
+You'll want to put them in the order that you want the operations to be performed.
+
+For instance, if you want to summarize a data set after filtering, then put `filter()` first then `summarize()`. When in doubt, don't string them together just do them one at a time!
+
+Regarding `which functions are safe to put inside other functions` I am not sure exactly what you mean, but perhaps it's the `summarize(across())` type situation that is causing confusion. In this case, the result of `across()` becomes an argument input for `summarize()`. We also use functions as arguments inside `across()`.
+
+This part will require just more experience seeing what functions go where and getting used to all the syntax. I'll try to point out specific examples where it makes sense to put functions inside other functions, but in general the tidyverse "verbs" such as `mutate()`, `select()`, `filter()`, `summarize()`, `separate()`, `rename()` are done in some kind of order that makes sense for how you want to transform your data, and they are chained together by pipes or done one at a time.
+
+```{r}
+
+# mutate first
+penguins <- penguins %>% mutate(bill_length_cm = bill_length_mm/10)
+
+# create a filtered data sest of just female penguins
+penguins_f <- penguins %>% filter(sex=="female")
+
+# we could have mutated *after* filtering in this case, it doesn't matter if we only care about the female penguins
+
+# summarize that female penguin data set, don't save as anything
+# just print it out
+penguins_f %>% summarize(across( # across goes inside summarize
+  .cols = where(is.numeric), # where() is a function inside across()
+  .fns = mean, na.rm = TRUE))
+
+
+```
+
+
+> Importing files from other statistical programs, such as SAS and Stata
+> joining tables
+> joining two tables seems scary!
+
+We will cover these in class 6! We haven't talked about joining yet, just "stacking" tables with `bind_rows()`. Hopefully talking about join will make the difference more clear.
+
+> zoom issues, try restarting R?
+
+Good idea I'll try that next time! Hope there isn't a next time... 
+
+Whoever had the brilliant idea of “raising hand” during zoom class, definitely do that if you want to get my attention because I can see that but not the chat while teaching, and sometimes the audio in the room forces my computer to go on mute even when I unmute it.
+
+
+### Clearest points
+
+> palettes
+> mutate()
+> case_when()
+> here
+> group_by() and summarize
+> ggplots
+
+Great, we are getting there!
+
+> The section on color palettes was clearest. It is nice to be given so many options and resources.
+
+Oh good, I was worried that I spent too much time on this, so glad you find it helpful.
+
+### Other
+
+> When we encounter many categories (eg. 100+) in a variable, how do we plot the top 5% or 10% of the data using ggplot?
+
+Hmm this is a pretty open ended question and could mean a lot of different things, but initial thought is you mean something like: "we have a lot of categories, we want to only plot a summary (i.e. boxplot) of the 5% most common categories." It's a very specific kind of question but I'll show it in class as an excuse to show more `forcats` functions with factors.
+
+```{r}
+library(gapminder)
+library(janitor)
+set.seed(500) # set my random seed so the sampling is always the same
+
+# create a data that has uneven number of obs for each country
+mydata <- gapminder %>% slice_sample(prop=.2) 
+
+# we can see some countries have more observations than others
+mydata %>%
+  tabyl(country) %>%
+  arrange(desc(n))
+
+# note country is a factor
+glimpse(mydata)
+```
+
+
+```{r}
+# If we only want the categories with at least 5 levels, for example, we could lump everything else into an "other" category:
+
+mydata <- mydata %>% mutate(country_lump = fct_lump_min(country, min=5))
+mydata %>% tabyl(country_lump)
+
+# plot all countries
+ggplot(mydata, aes(x=country, y=lifeExp, color = year)) +
+  geom_point() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+# plot just the most common ones
+ggplot(mydata, aes(x=country_lump, y=lifeExp, color = year)) +
+  geom_point() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+# remove the other category
+ggplot(mydata %>% filter(country_lump!="Other"), 
+       aes(x=country_lump, y=lifeExp, color = year)) +
+  geom_point() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+# plot in order of number of observations
+levels(mydata$country_lump)
+
+# this relevels the factor in order of frequency:
+mydata <- mydata %>% 
+  mutate(country_lump = fct_infreq(country_lump))
+levels(mydata$country_lump)
+
+# now plotting order has changed
+ggplot(mydata, aes(x=country_lump, y=lifeExp, color = year)) +
+  geom_point() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+  
+```
+
+
+## Week 6
+
+### Muddiest Points
+
+Somewhat equal numbers said that pivot/joining were clear or were muddy! I think that sounds about right, though, these concepts are tricky and will take a lot of practice. Today's class will use these methods again and I hope that will help solidify what you've learned.
+
+I really do recommend watching the short video that I recommended last class if you're still having trouble with grasping pivoting.
+
+[Dr. Kelly Bodwin's Reshaping Data Video](https://youtu.be/4ZIFb1BoIB4)
+
+For a short version, watch the [pivot_longer excerpt](https://youtu.be/4ZIFb1BoIB4?t=365) about "working backwards" from a plot. Then watch the [pivot_wider excerpt](https://youtu.be/4ZIFb1BoIB4?t=620)
+
+[Also read this join cheatsheet](https://stat545.com/join-cheatsheet.html) for some good explanations/examples about which join to use when!
+
+[The rstudio cheatsheet is also good.](https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf)
+
+Definitely do the readings in the R for Data Science in the appropriate chapters as well! [joining](https://r4ds.had.co.nz/relational-data.html), [pivoting](https://r4ds.had.co.nz/tidy-data.html?#pivoting)
+
+For the different join types, here are some visuals I find helpful.
+
+When we use `bind_rows()` we stack cases on top of each other like so:
+
+<img src="/img/bind_rows_add.png" alt=""  width="70%" height="40%"/>
+
+
+For joins, we put columns next to each other based on matching keys. The "intersection" of keys is shown in these diagrams for each type of join, with the blue denoting which keys/rows we keep from which table:
+
+<img src="/img/dplyr_join_venn.png" alt=""  width="70%" height="70%"/>
+
+A more data oriented visual is shown below. The lines denote the keys that match:
+
+<img src="/img/joins_colors.png" alt=""  />
+
+
+
+This is from the part5 Rmd:
+
+#### When do we use which join?
+
+See this [two-table verbs vignette](https://dplyr.tidyverse.org/articles/two-table.html) and this [cheatsheet](https://stat545.com/join-cheatsheet.html) for some extra explanations. 
+
+These joins are created to match SQL joins for databases.
+
+- `inner_join` = You only want data that is in both tables
+- `left_join` = You only want data that is in one table.
+    * Often the right table is a subset of the left table, so it's easy to use this to keep everything in the bigger table, and join on the smaller table
+    * If the left table contains a cohort of interest, i.e. everyone that has been given a specific treatment, and you want to get their lab values from another table, use `left_join()` to add those lab values in the cohort defined by the left table
+- `right_join` = maybe never   
+    * `right_join` does the same thing as `left_join` but backwards, I find left join easier to think about (personal preference)
+- `full_join` = does not remove any rows, you might want to use this as your default and filter later
+- `anti_join` and `semi_join` = filtering joins, probably use rarely, use right table as an exclusion criteria and find unmatched keys between two tables (`anti_join`), or filter left table based on keys in right table (`semi_join`), and keep only columns from left table
+
+#### separate example
+
+> separate(), needed a few more minutes to get it figured out
+
+Let's do another short example!
+
+```{r}
+library(tidyverse)
+
+mydata <- tibble(
+  name = c("Doe, Jane", "Smith, M", "Lee, Dave"),
+  rx = c("Advil; 4.5 mg", "Tylenol; 300mg", "Advil; 2.5 mg")
+)
+
+# obviously the dosage makes no sense, but, for sake of example
+mydata
+
+# prints a little prettier in html
+knitr::kable(mydata)
+```
+
+
+```{r}
+# by default, separates using most special/non-alphanumeric characters
+mydata %>%
+  separate(name, into = c("last_name", "first_name"))
+
+# since there are special characters in rx, will need to be more specific
+# note it tried to split on the . since we only have 2 columns named, it removed the rest
+mydata %>%
+  separate(rx, into = c("rx_name", "rx_dose"))
+
+# if we add in some more columns, we can see it's splitting based on ; . and space!
+mydata %>%
+  separate(rx, into = c("rx_name", "rx_dose", "a", "b", "c"))
+
+# still have a space
+mydata %>%
+  separate(rx, into = c("rx_name", "rx_dose"), sep=";")
+
+# removed the space
+mydata %>%
+  separate(rx, into = c("rx_name", "rx_dose"), sep="; ")
+
+# removed the space, let's also remove the mg
+mydata %>%
+  separate(rx, into = c("rx_name", "rx_dose_mg"), sep="; ") %>%
+  mutate(rx_dose_mg = str_remove_all(rx_dose_mg, "mg"),
+         rx_dose_mg = as.numeric(rx_dose_mg))
+
+# all together, and also leave the name column in
+mydata %>%
+  separate(name, into = c("last_name", "first_name"), remove = FALSE) %>%
+  separate(rx, into = c("rx_name", "rx_dose_mg"), sep="; ") %>%
+  mutate(rx_dose_mg = str_remove_all(rx_dose_mg, "mg"),
+         rx_dose_mg = as.numeric(rx_dose_mg))
+
+```
+
+
+### Other: piping troubles
+
+> I have issues with my pipes where I think I'm putting things in the wrong order and nothing happens- I don't get errors I can google, it just doesn't work. Most often it's when I end a pipe with %>% tabyl(variable), maybe that is a no-no? But I've found I end up having to break pipes into multiple pieces because I can't string them together the right way.
+
+> 	I have a hard time understanding when to pipe things together or knowing when to nest a function as well. I'm glad you've reassured us in class that it's ok that we put our functions into pieces. I think that eases the stress with learning as I feel like trying to make everything happen in one command can be very overwhelming.
+
+Yes, yes! Please separate out your pipes/commands if it makes things more clear or makes it work better for you!
+
+I'm not sure what's happening with the no-errors-broken situation. I will say that I often separate the `taybl(variable)` code when I'm doing analysis work, just because I am saving intermediate data sets after data cleaning or sub-setting and don't want to save that tabyl. Something like this:
+
+```{r}
+library(janitor)
+mtcars6 <- mtcars %>% filter(cyl==6)
+# check that it worked
+mtcars6 %>% tabyl(cyl)
+```
+
+As a beginner I definitely think doing each step individually and seeing the result and (saving it/assigning it appropriately!) is the way to learn what each function does. I tend to string things together because I am used to doing that, but I'll try not to do that so much if it's adding confusion.
+
+
+## Week 7
+
+### Muddiest Parts
+
+Still some pain points related to `pivot_`-ing. I get it, it took me a long time to get comfortable with this (and I've gone through multiple function and argument transformations from `melt()` to `gather()` to `pivot_longer()` etc, all those transitions were hard!). We might not see many more examples with this because we have so much more to cover, but keep practicing, and ask for help when you need it! Relatedly:
+
+> pivot_longer is so versatile for data manipulation but sometimes it's contains many arguments
+
+> When ever I use pivot_longer and pivot_wider I get the columns that are being switched wrong.Is there a way you think about it that helps you sort out which is which? The Stata manual uses this 'i' and 'j' notation that's helping when I'm working in Stata, but I haven't found an easy way to work with those functions in R.
+
+The argument names have changed a lot since I started pivoting with the tidyverse, but now they are using `names_to= ` because the authors think this makes more sense, and I tend to agree. This argument name helps me figure out what to do more than old versions. I think of this argument as "column names turn into one column called = X" or send the "names" of these columns "to" this new column. Therefore, I need to specify which `cols= ` are the column names going into `names_to= `
+
+Then, when we go to `pivot_wider()` we get `names_from= ` which is asking, where are the column names coming from? Also, `values_from=` which is asking, where are the actual values coming from? Pivot wider to me is easier because we don't need to specify any other information than those two pieces (you can optionally specify `id_cols= ` but the default is just to use all the other columns that you're not pivoting). Pivot wider is tricky, however, in that you do need just one value for each combination of id columns.
+
+If you're still having trouble, you're not alone, [look at this article on how to create a code snippet that pops up to tell you exactly what to do, every time:](https://www.infoworld.com/article/3637083/never-look-up-tidyrs-pivotwider-or-pivotlonger-again.html) (and there's more about what "snippets" are in that article).
+
+```
+snippet plonger
+	pivot_longer(${1:mydf},
+	             cols = ${2:columns to pivot long},
+	             names_to = "${3:desired name for category column}",
+	             values_to = "${4:desired name for value column}"
+	)
+```
+
+> I struggled with the pivoting of tables on assignment #5, and still have some trouble wrapping my head around it-- especially when we pivoted the long table back to wide but with different column names.
+
+One difficult thing to grasp about pivoting is the idea of pivoting long, and then even longer (doubly long?), and then back again to wide but in a different way, with different information in the columns. This takes a *lot* of practice to get there without a lot of struggle. After you have done this many times you'll be better able to see what you need out of the data frame and how to get it there. I wish we had more time to just pivot things in all sorts of ways, because it's a powerful form of data manipulation!
+
+
+
+> Faceting in ggplot
+> I need to play with setting plot scales to actual values with "free_x/free_y"
+
+
+This is something I think you'll need to "play around with" to just, try some things and see how it affects the plot. The homework faceting is similar to the example plot we did in class last week, but, there's a lot more you can do with faceting and it's a very powerful way to display data. The `ggplot2` book's [Faceting chapter](https://ggplot2-book.org/facet.html) is a nice review of this.
+
+I've also been meaning to mention that the ggplot2 package website has useful FAQs on lots of tricky subjects. [Here's the faceting one.](https://ggplot2.tidyverse.org/articles/faq-faceting.html)
+
+> Reading the vignette for summarize and list. Can you explain how to read this vignette.
+
+Sorry I couldn't figure out which vignette you were talking about here, could you send me the link? Or maybe you are looking for a link... Usually if I mention a vignette in class I have the link the Rmd/html file. Otherwise, the best way to find package vignettes is by going to the package website. Most of the tidyverse packages have a website, and the vignettes will often be in the "Articles" drop down. For instance, [here's dplyr's website and list of articles/vignettes](https://dplyr.tidyverse.org/articles/index.html), but I don't see one on summarize/lists! You can also see vignettes in the CRAN package's website usually, for instance here's [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html)
+
+> Can we go over how to create a summary table with percentages using summary and across?
+
+This depends on exactly what you want to do. I might use one of the fancier functions like `gtsummary::tbl_summary()` or `table1::table1` for a true "summary table" of all my categorical variables, but we can see how this would work with `summarize()` "by hand". We are going to see in part6 some examples with `tabyl`, as well.
+
+Here's an example just with summarize:
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(palmerpenguins)
+
+# First with tabyl, using adorn_ (which we will see in part6 today)
+penguins %>%
+  tabyl(species, sex) %>%
+  adorn_percentages() %>%
+  adorn_pct_formatting()
+
+# try to get the same information with summarize:
+penguins %>%
+  group_by(species) %>%
+  summarize(pct_male = sum(sex=="male", na.rm = TRUE)/length(sex),
+            pct_female = sum(sex=="female", na.rm = TRUE)/length(sex),
+            pct_NA = sum(is.na(sex), na.rm = TRUE)/length(sex)) %>%
+  mutate(across(where(is.numeric), ~.x*100))
+
+# mean also works:
+penguins %>%
+  group_by(species) %>%
+  summarize(pct_male = mean(sex=="male", na.rm = TRUE),
+            pct_female = mean(sex=="female", na.rm = TRUE),
+            pct_NA = mean(is.na(sex), na.rm = TRUE)) %>%
+  mutate(across(where(is.numeric), ~.x*100))
+```
+
+But it's hard to generalize that specific `summarize` to other columns with `across()`, because nothing else has the category "male", "female". You'd need your data to be in quite a particular format, so I think this not something you'll commonly do. You could calculate proportion missing, though, which is a similar idea:
+
+```{r}
+penguins %>% group_by(species) %>%
+  summarize(across(everything(), .fns= ~ mean(is.na(.x))))
+```
+
+### Clearest Points
+
+Lots of joining and binding, great!
+
+> Outlining the steps you took and what you are looking for in the data was really helpful.
+
+> I really liked the flow of explanation on data management yesterday, thank you!
+
+That's great to hear, I almost completely got rid of part6 because I wasn't sure if it would be that helpful. Hopefully it provided some useful practice with messier data!
+
+### Other
+
+> We followed an example where we had a graph to strive for, but is there an example or just advice you can provide when we don’t have that? How do you know to leave the demographic information aside and only join the other data first?
+
+I don't think there's good one size fits all advice here. For that particular question, I could have joined the demographic data with each piece of the other data, that is also an option. That also would have avoided the need for `bind_rows()`, so that's a good point. I do tend to create separate data sets by "type" so for instance in that example I wanted all of the biomarker/outcome data together, just so I knew where it was. That's my main reason for binding those data together first.
+
+> Working with messy data seems very scary!!!
+
+> It's so useful to learn how to work with super messy data because unfortunately that's often how people have their data set up!
+
+Messy data *is* scary, I agree!
+
+> Why do you use here::here sometimes and other times it's just here without the here:: preceding it?
+
+Usually `pckgname::functioname()` is not necessary but used for clarification where that function is coming from. I sometimes do that in case I haven't loaded the package first. Since I often use the `here` package at the beginning of my script when loading in data for an analysis, I'm not used to loading like other packages, but instead just call that function by using `here::here()`, so it's somewhat due to habit! 
+
+
+
+## Week 8
+
+### Muddiest Points
+
+Definitely functions, several comments like this:
+
+> creating our own functions still seems pretty daunting. the error check in particular
+> I am still very confused about how to write a function. I probably should practice more.
+> Making custom function seems to be so useful, but I need to be more familiar with this. 
+
+Yes this will definitely take practice! If you're doing the assigned readings, you'll have read the R for Data Science chapter on [functions](https://r4ds.had.co.nz/functions.html) which I find to be a good intro to this concept, but also the suggested reading on this topic is very good too, and I recommend it if you are still confused: [Harvard Chan Bioinformatics Core's lesson on "Functions in R"](https://hbctraining.github.io/Intro-to-R-flipped/lessons/03_introR-functions-and-arguments.html). The Software Carpentry's lesson on [functions in R](https://swcarpentry.github.io/r-novice-inflammation/02-func-R/) is also good, with some info on error handling.
+
+Hopefully doing the homework provided some good practice with functions. My tip to you is to really think about what is your input (argument) and what is your output (return).
+
+I also would not worry about error handling (using `stop()`, and `if()` etc) until you are really a pro at making the functions work without all that extra stuff.
+
+> Things with periods (.namerepair, .x, .fns) and just the general flow of what you can and can't string together in a function
+
+Note that things with periods are just an alternate way of naming arguments. I don't do that for my custom functions because I'm not making complicated functions generally, but a lot of tidyverse functions do. There is a reason for this, which is explained in the Tidyverse design guide [Dot prefix](https://design.tidyverse.org/dots-prefix.html) chapter.
+
+This has to do with the `...` argument which I briefly mentioned in one class. When you see this as an argument to a function it means that arguments supplied there are passed on to *other* functions. For instance, look at the simple base R function `plot` documentation (`?plot`). The explanation for the `...` is this:
+
+> ...	Arguments to be passed to methods, such as graphical parameters (see par). Many methods will accept the following arguments:
+
+So any arguments specified after `x` and `y` inside `plot()` such as `title = "My Plot"` will be passed to be arguments of the function `par()`.
+
+The dot prefix chapter therefore says:
+
+> When using ... to create a data structure, or when passing ... to a user-supplied function, add a . prefix to all named arguments. This reduces (but does not eliminate) the chances of matching an argument at the wrong level. Additionally, you should always provide some mechanism that allows you to escape and use that name if needed.
+
+If you look therefore at the help for `?purrr::map` you can see that the argument names start with a dot (`.x` and `.f` and `.progress`) and then everything else is passed to the function specified in `.f`.
+
+Obviously this is next level stuff, things to think about when designing your own packages, not just simple functions only you will use/see. So don't worry about it other than to know that some arguments start with a dot and some don't, they are used the same way!
+
+
+### Clearest points
+
+> List' was unfamiliar for me, but the concept was clear.
+
+Cool, more with lists today!
+
+> It was great to learn functions in R
+> Using gt() to make the table was really nice and clear to me.
+
+Great!
+
+
+### Other
+
+> gt() always seems to make my RStudio slow and glitchy. When I try to scroll past a gt() table, R Studio will freeze for a moment. Is that normal? Is there anything I can do?
+
+I have this same problem with some `gtsummary()` functions that use `gt()`, I think it depends on how much memory your computer has free, at least that is my guess. I think these do take a little bit to render and your computer may freeze because it's doing a lot of "thinking". If you google this issue and look on the `gt` package [issues](https://github.com/rstudio/gt/issues/967) page on github you can see it isn't a new or rare problem. If it really is troublesome, I'd make sure you closed all your other windows/software on your computer, or maybe just switch to `kable` and `kableExtra` packages.
+
+
+
+## Week 9
+
+### Muddiest Points
+
+A lot of things were difficult including "this whole class" as one person said, and yeah, I get it, it's hard stuff! The reason I teach these harder topics like for loops, functions, map, etc, as opposed to just going over more of the same kind of data cleaning tasks with various examples, is because it's a lot harder to be motivated to learn the hard stuff if you've never been exposed to it. It will probably seem too daunting (I know this because it took me a long time to force myself to learn `ggplot`, or `purrr::map`, or even `across` and the new `pivot_longer` because I already had other ways of doing that). 
+
+You have the tools by now to learn how to do other data cleaning tasks related to what we've learned (i.e. more factor and string manipulation, even working with dates will not be that hard to figure out). 
+
+Also, part of the reason R is so powerful and useful is that it's a "real" programming language (more similar to C, python, java, etc than SPSS or even SAS or STATA). This part of it will take a lot of practice to feel comfortable if you haven't had any programming experience. If you *have* had programming experience, seeing how it's done in R will get you started in the right direction to using the R-specific programming tools like `purrr::map` that are truly so useful when automating data tasks.
+
+> for loop was a bit confusing when making empty vector
+
+It really is, and is why I recommend not using for loops but embracing `map()`! We could get even more technical and talk about how [it's actually better (faster/efficient) to specify the length or dimension of the empty vector (or data frame, or list, or whatever, this is called pre-allocation) because of how memory is allocated in R](https://www.r-bloggers.com/2018/08/growing-objects-and-loop-memory-pre-allocation/), but, no, I refuse to go down that rabbit hole and just say, use `map()`! 
+
+Side note: If you're working with data with millions of records, you'll have plenty of speed issues to worry about, and you need an even more advanced R programming class focused on big data.
+
+
+> I think the whole creation of the function is still quite a bit hazy for me. I believe it's something that just takes some more practice. Hoping we can fit some more practice challenges to help really build this understanding.
+
+We will start class with another function example, but please ask questions about anything confusing about it during class, too!
+
+
+> I am still struggling with functions! In the reading on functions, I got confused about the difference between the && || operators and the & | operators..
+> The reading said "beware of floating point numbers" and I'm not sure what that is.
+
+As we saw in class, the & "and" operator and | "or" operator are logic operators used to string one condition to another, such as:
+
+```{r}
+thing <- 3
+is.na(thing) | thing == 3
+is.na(thing) & thing == 3
+```
+
+But remember we talked about how most functions in R are vectorized, which means they work seamlessly over a vector. This is true for | and & as well. However, if you *didn't* want that vectorized behavior and only wanted to check the first elements of a vector you'd use the double && and ||. This becomes useful for if statements, but, you likely don't need to worry about it, and you probably want the single & |.
+
+```{r}
+thing <- 1:3
+is.na(thing) | thing == 3
+is.na(thing) & thing == 3
+
+# no longer works
+# is.na(thing) || (thing == 3)
+# is.na(thing) && (thing == 3)
+```
+
+Another very specific situation mentioned in that reading is that floating point numbers (numeric values with lots of numbers after the decimal point) sometimes due to computational rounding/storage will not be *exactly* equal to each other so you just need to be wary of using `==` there. The example from the reading sums it up well:
+
+```{r}
+thing <- sqrt(2)^2 # should be 2, right?
+2==thing # huh
+identical(2,thing) # weird
+2 - thing # extremely small value
+
+# I used to check for "equality" this way...before I knew about dplyr::near()
+(2-thing) < 1e-16
+
+dplyr::near(2,thing)
+```
+
+
+
+> Still struggling with the difference between [[]] and [] and unclear on whether that distinction is actually important functionally.
+
+
+It is very important functionally, if you think back to your homework question where you got different data types depending on which you use. Sometimes you want a list, sometimes you don't want a list. Usually you only want a list ( i.e. `list[1:2]`) if you are asking for multiple elements of a list, otherwise you're wanting to pull out what's inside that "slot" and use `list[[1]]`.
+
+Note that a lot of newer packages make dealing with complex lists less common than it used to be. The example I gave was the `broom` package `tidy()` function. In the past, we all learned how to pull out parts of regression output by accessing parts of the list using `[[]]` and `$`, just like I showed in class. Probably a lot of your biostats classes still do it this way because that is how your professor learned it. But, now we just need to use `broom::tidy()` to get a data frame of coefficients, confidence intervals, and p-values.
+
+
+> If pluck and pull do the same thing, is there any advantage to using one over the other?
+
+As I mentioned last class, pluck and pull are similar in that they "pull out" elements from lists but they are used differently so there can not be any "advantage". `pluck` is for lists and `pull` is for data frames (which are also lists, but you can't use `pull` on a non-df list! you need to use `pluck` in that case).
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+# try this on your own
+# a list that is not a data frame
+# WHY is it not a data frame?
+mylist <- list("a"=1:3, "b" = 2) 
+# mylist %>% pull("a")
+# Error in UseMethod("pull") : 
+#  no applicable method for 'pull' applied to an object of class "list"
+```
+
+Side note, see the difference here:
+
+```{r}
+as.data.frame(mylist)
+
+mylist <- list("a"=1:3, "b"=2:4)
+mylist
+
+as.data.frame(mylist)
+```
+
+
+
+If we do have a data frame/tibble and want to "pull out" a column as a vector (*not* as a data frame), we are also pulling out an element from a list because a data frame is also a list!
+
+Here is how we would use pull and pluck to do the "same thing" on a data frame:
+
+```{r}
+# remember a tibble is a special kind of data frame, which is a special kind of list
+str(penguins)
+class(penguins)
+typeof(penguins)
+```
+
+
+```{r}
+s = penguins %>% pull(species)
+str(s)
+
+# does not work because you need quotes for a list element names
+# s2 = penguins %>% pluck(species)
+# Error in list2(...) : object 'species' not found
+
+s2 = penguins %>% pluck("species")
+str(s2)
+
+# are they the same?
+identical(s, s2)
+```
+
+I am not in the habit of using `pluck` yet, because I am used to `[[]]` and use it when I need it. I do use `pull` all the time to get a vector, though, for example:
+
+```{r}
+penguins %>% 
+  group_by(species) %>%
+  summarize(m = mean(bill_length_mm, na.rm = TRUE)) %>%
+  pull(m)
+```
+
+Or let's say I want a list of patient (penguin) ids of a subset:
+
+```{r}
+mypenguins <- penguins %>%
+  mutate(id = row_number(), .before = "species")
+
+mypenguins %>% 
+  filter(bill_length_mm < 35)
+
+ids_short_bill <- mypenguins %>% 
+  filter(bill_length_mm < 35) %>% 
+  pull(id)
+```
+
+Now I have a vector of IDs that satisfy my bill length requirements.
+
+```{r}
+ids_short_bill
+```
+
+
+
+
+> I just want to check my understanding is correct. The map() is for list and it can be used as itself, but the across() function is only for data frame or tibble and can be used inside the mutate() function. Is that correct? Then, can we use any function inside those map(), and mutate() ?
+
+I really like this distinction and clarification! Yes to this part
+
+- `map()` can be used by itself like, `list %>% map(.f = length)`, applied to a list or vector
+- `across()` can only be used as a *helper function inside* `mutate` or `summarize` applied to a data frame/tibble
+
+Also:
+
+- inside `across()` we need to use *very specific* syntax which is called [`tidyselect`](https://tidyselect.r-lib.org/reference/language.html). 
+- Think of `across()` and `select()` as friends, because they use the same language to select columns. 
+
+But `across()` is used more like `map()` in that it takes a "what" argument (`.cols = ` tidy select columns for across, `.x =`  a list or vector for map) and "function" argument (`.fns=` for across because multiple functions can be supplied, `.f=` for map because only *one* function can be applied)
+
+```{r}
+library(palmerpenguins)
+
+penguins %>% select(where(is.numeric))
+
+
+# penguins %>% across(where(is.numeric))
+# Error in `across()`:
+# ! Must only be used inside data-masking verbs like `mutate()`,
+#   `filter()`, and `group_by()`.
+
+# mutate requires a function that returns a vector the same length as the original vector
+penguins %>% mutate(across(.cols = where(is.numeric), .f = as.character))
+
+# this works but it shouldn't and is "deprecated" in dplyr 1.1.0
+# summarize SHOULD return a vector of length 1
+penguins %>% summarize(across(.cols = where(is.numeric), .f = as.character))
+penguins %>% summarize(across(.cols = where(is.numeric), .f = length))
+
+
+mylist <- list("a"=1:3, "b" = 2, c = penguins) 
+
+# .x can be piped into map or used as an explicit argument
+mylist %>% map(.f = length)
+map(.x = mylist, .f = length)
+
+# this also works because penguins is a data frame which means it is also a list (columns are elements)
+penguins %>% map(.f = length)
+map(.x = penguins, .f = length)
+
+```
+
+
+However, as we will see in class today, we also can use `map()` inside `mutate()` when we are using nested data frames, or when we need to "vectorize" a non-vectorized function. In this case, `map()` is being applied to a list of data that is inside a column of a data frame....it's complicated, and we'll see more today.
+
+
+
+
+### Clearest points
+
+For every topic in the muddy list it was also in the clear list, so at least it's not all lost. I think more practice will help.
+
+
+
