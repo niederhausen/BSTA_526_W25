@@ -20,6 +20,8 @@ website:
         text: Readings
       - href: weeks.qmd
         text: Weeks
+      - href: survey_feedback_previous_years.qmd
+        text: Survey
       - href: about.qmd
         text: About
   sidebar:
@@ -37,6 +39,8 @@ website:
         text: Readings
       - href: weeks.qmd
         text: Weeks
+      - href: survey_feedback_previous_years.qmd
+        text: Survey Feedback
       - href: function_week.qmd
         text: Functions of the Week
 

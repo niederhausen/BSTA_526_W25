@@ -1,11 +1,24 @@
 ---
-title: "Survey Feedback from Previous Years"
-editor: visual
+title: "Survey Feedback"
+date: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    # toc: true
+editor_options: 
+  chunk_output_type: console
 ---
+
+# 2025
+
+Please fill out the post-class survey [here](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi).
+
+## Week 1
+
 
 # 2024
 
-## Week 1 
+## Week 1
 
 ### Muddiest points
 
@@ -180,10 +193,7 @@ tidyowl::learn_tidyselect()
 
 [Here is also a link](https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html) with a list of the selectors and links to each one. For example, there is a link to [`starts_with`](https://tidyselect.r-lib.org/reference/starts_with.html) and a bunch of examples.
 
-
 ## Week 4
-
-
 
 ```{r}
 #| label: setup
@@ -206,29 +216,25 @@ smoke_complete <- readxl::read_excel(here("data", "smoke_complete.xlsx"),
 # dplyr::glimpse(smoke_complete)
 ```
 
-
 ### Keyboard shortcut for the pipe (`%>%` or `|>`)
 
 In office hours, someone didn't know about this fact and wanted to make sure everyone knows about it.
 
-::: {.callout-tip}
-
+::: callout-tip
 #### Important keyboard shortcut
 
 In RStudio the keyboard shortcut for the pipe operator `%>%` (or native pipe `|>`) is `Ctrl + Shift + M` (Windows) or `Cmd + Shift + M` (Mac).
 
 Note: `Ctrl + Shift + M` also works on a Mac.
-
 :::
-
 
 ### The difference between NA value and 0
 
 #### NA (Not Available)
 
-+ `NA` is a special value in R that represents missing or undefined data.
-+ `0` is a numeric value representing the number zero. It is a valid and well-defined numerical value in R. 
-+ It's important to handle `NA` values appropriately in data analysis and to consider their impact on calculations, as operations involving `NA` may result in `NA`.
+-   `NA` is a special value in R that represents missing or undefined data.
+-   `0` is a numeric value representing the number zero. It is a valid and well-defined numerical value in R.
+-   It's important to handle `NA` values appropriately in data analysis and to consider their impact on calculations, as operations involving `NA` may result in `NA`.
 
 ```{r}
 NA + 5  # The result is NA
@@ -251,12 +257,11 @@ sum(x) # The result is 7
 
 ```
 
-
 ### `across()` and it's usage
 
 The biggest advantage that across brings is the ability to perform the same data manipulation task to multiple columns.
 
-Below the values in three columns are all set to the mean value using the `mean()`. I had to write out the function and the variable names three times.  
+Below the values in three columns are all set to the mean value using the `mean()`. I had to write out the function and the variable names three times.
 
 ```{r}
 smoke_complete |> 
@@ -279,12 +284,10 @@ smoke_complete |>
 
 ```
 
-
 #### Links to check out
 
-+ [`across()` vignette](https://dplyr.tidyverse.org/reference/across.html)
-+ [Why I love dplyr's across](https://willhipson.netlify.app/post/dplyr_across/dplyr_across/)
-
+-   [`across()` vignette](https://dplyr.tidyverse.org/reference/across.html)
+-   [Why I love dplyr's across](https://willhipson.netlify.app/post/dplyr_across/dplyr_across/)
 
 ### `~` and `.x`
 
@@ -292,7 +295,7 @@ We've seen the `~` and `.x` used with `dplyr::across()`. We will see them again 
 
 In the tidyverse, `~` and `.x` are used to create what they call *lambda* functions which are part of the `purrr` syntax. We have not talked about functions yet, but `purrr` package and the `dplyr::across()` function allow you to specify functions to apply in a few different ways:
 
-1. **A named function, e.g. `mean`.**
+1.  **A named function, e.g. `mean`.**
 
 ```{r}
 smoke_complete |> 
@@ -304,11 +307,11 @@ smoke_complete |>
 
 ```
 
-::: {.callout-note}
+::: callout-note
 Above, just using the function name, we are not able to provide the additional argument `na.rm = TRUE` to the `mean()` function, so the columns are now all `NA` values because there were missing (`NA`) values in those columns.
 :::
 
-2. **An anonymous function, e.g. `\(x) x + 1` or `function(x) x + 1`.**
+2.  **An anonymous function, e.g. `\(x) x + 1` or `function(x) x + 1`.**
 
 This has not been covered yet. R lets you specify your own functions and there are two basic ways to do it.
 
@@ -321,7 +324,7 @@ smoke_complete |>
   dplyr::glimpse()
 ```
 
-or 
+or
 
 ```{r}
 smoke_complete |> 
@@ -332,13 +335,13 @@ smoke_complete |>
   dplyr::glimpse()
 ```
 
-::: {.callout-note}
+::: callout-note
 Now we are able to use the additional argument `na.rm = TRUE` and the columns are now the means of the valid values in those columns.
 :::
 
-3. **A purrr-style lambda function, e.g. `~ mean(.x, na.rm = TRUE)`**
+3.  **A purrr-style lambda function, e.g. `~ mean(.x, na.rm = TRUE)`**
 
-We use `~` to indicate that we are supplying a lambda function and we use `.x` as a placeholder for the argument within our lambda function to indicate where to use the variable. 
+We use `~` to indicate that we are supplying a lambda function and we use `.x` as a placeholder for the argument within our lambda function to indicate where to use the variable.
 
 ```{r}
 smoke_complete |> 
@@ -349,16 +352,14 @@ smoke_complete |>
   dplyr::glimpse()
 ```
 
-
 #### Links to check out
 
 Some of these are `purrr` focused which we have not covered yet. Others use `dplyr::across()` withing the `dplyr::summarize()` function which we will be covering soon
 
-+ [Meaning of tilde and dot notation in dplyr](https://stackoverflow.com/questions/68249625/meaning-of-tilde-and-dot-notation-in-dplyr)
-+ [What is the meaning of '~' and '.' inside the function map? ](https://stackoverflow.com/questions/70665707/what-is-the-meaning-of-and-inside-the-function-map)
-+ [`across()` vignette](https://dplyr.tidyverse.org/reference/across.html)
-+ [Why I love dplyr's across](https://willhipson.netlify.app/post/dplyr_across/dplyr_across/)
-
+-   [Meaning of tilde and dot notation in dplyr](https://stackoverflow.com/questions/68249625/meaning-of-tilde-and-dot-notation-in-dplyr)
+-   [What is the meaning of '\~' and '.' inside the function map?](https://stackoverflow.com/questions/70665707/what-is-the-meaning-of-and-inside-the-function-map)
+-   [`across()` vignette](https://dplyr.tidyverse.org/reference/across.html)
+-   [Why I love dplyr's across](https://willhipson.netlify.app/post/dplyr_across/dplyr_across/)
 
 ### Exceptions where we have seen the `~` used
 
@@ -429,18 +430,16 @@ ggplot(data = smoke_complete,
              cols = ggplot2::vars(vital_status))
 ```
 
-
 Note: `dplyr::vars()` and `dplyr::ggplot2()` are the same function in different packages and can be used interchangeably.
-
 
 ### `case_when` vs. `if_else`
 
 In dplyr, both `if_else()` and `case_when()` are used for conditional transformations, but they have different use cases and behaviors.
 
-1. `if_else` function
+1.  `if_else` function
 
-+ `if_else()` is designed for simple vectorized conditions and is particularly useful when you have a *binary* condition (i.e., two possible outcomes).
-+ It evaluates a condition for each element of a vector and returns one of two values based on whether the condition is `TRUE` or `FALSE`.
+-   `if_else()` is designed for simple vectorized conditions and is particularly useful when you have a *binary* condition (i.e., two possible outcomes).
+-   It evaluates a condition for each element of a vector and returns one of two values based on whether the condition is `TRUE` or `FALSE`.
 
 ```{r}
 smoke_complete |> 
@@ -451,10 +450,10 @@ smoke_complete |>
 
 In this example, the column `cigarettes_category` is assigned the value "0-5" if `cigarettes_per_day` is less than 6 and "6+" otherwise.
 
-2. `case_when()` function
+2.  `case_when()` function
 
-+ `case_when()` is more versatile and is suitable for handling multiple conditions with multiple possible outcomes. It is essentially a vectorized form of a `switch` or `if_else` chain.
-+ It allows you to specify multiple conditions and their corresponding values.
+-   `case_when()` is more versatile and is suitable for handling multiple conditions with multiple possible outcomes. It is essentially a vectorized form of a `switch` or `if_else` chain.
+-   It allows you to specify multiple conditions and their corresponding values.
 
 ```{r}
 smoke_complete |> 
@@ -468,22 +467,18 @@ smoke_complete |>
   janitor::tabyl(cigarettes_category)
 ```
 
-In this example, the column `cigarettes_category` is assigned the value "0 to 2" if `cigarettes_per_day` is less than 2, 
-"2 to 4" if less than 4 (but greater than 2), "4 to 6" if less than 6 (but greater than 4), and "6+" otherwise.
-
+In this example, the column `cigarettes_category` is assigned the value "0 to 2" if `cigarettes_per_day` is less than 2, "2 to 4" if less than 4 (but greater than 2), "4 to 6" if less than 6 (but greater than 4), and "6+" otherwise.
 
 Use `if_else()` when you have a simple binary condition, and use `case_when()` when you need to handle multiple conditions with different outcomes. `case_when()` is more flexible and expressive when dealing with complex conditional transformations.
 
-
-### The difference between a theme and and a palette. 
-
+### The difference between a theme and and a palette.
 
 In `ggplot2`, a theme and a palette serve different purposes and are used in different contexts. In summary, a theme controls the overall appearance of the plot, while a palette is specifically related to the colors used to represent different groups or levels within the data. Both themes and palettes contribute to visual appeal and readability of your plot.
 
-1. **Theme:**
+1.  **Theme:**
 
-- A theme in `ggplot2` refers to the overall visual appearance of the plot. It includes elements such as fonts, colors, grid lines, background, and other visual attributes that define the look and feel of the entire plot.
-- Themes are set using functions like `theme_minimal()`, `theme_classic()`, or custom themes created with the `theme()` function. Themes control the global appearance of the plot.
+-   A theme in `ggplot2` refers to the overall visual appearance of the plot. It includes elements such as fonts, colors, grid lines, background, and other visual attributes that define the look and feel of the entire plot.
+-   Themes are set using functions like `theme_minimal()`, `theme_classic()`, or custom themes created with the `theme()` function. Themes control the global appearance of the plot.
 
 ```{r}
 library(ggplot2)
@@ -498,10 +493,10 @@ ggplot(data = smoke_complete,
 
 ```
 
-2. **Palette:**
+2.  **Palette:**
 
-- A palette, on the other hand, refers to a set of colors used to represent different levels or categories in the data. It is particularly relevant when working with categorical or discrete data where you want to distinguish between different groups.
-- Palettes are set using functions like `scale_fill_manual()` or `scale_color_manual()`. You can specify a vector of colors or use pre-defined palettes from packages like RColorBrewer or viridis (we looked at the viridis package in class).
+-   A palette, on the other hand, refers to a set of colors used to represent different levels or categories in the data. It is particularly relevant when working with categorical or discrete data where you want to distinguish between different groups.
+-   Palettes are set using functions like `scale_fill_manual()` or `scale_color_manual()`. You can specify a vector of colors or use pre-defined palettes from packages like RColorBrewer or viridis (we looked at the viridis package in class).
 
 ```{r}
 # Example using a color palette
@@ -528,8 +523,8 @@ starwars |>
   dplyr::n_distinct(species) 
 ```
 
-+ `starwars` is a data frame.
-+ `dplyr::n_distinct()` only accepts a vector as an argument (check the help `?dplyr::n_distinct`)
+-   `starwars` is a data frame.
+-   `dplyr::n_distinct()` only accepts a vector as an argument (check the help `?dplyr::n_distinct`)
 
 So we need to pipe a vector to the `dplyr::n_distinct()` function:
 
@@ -543,34 +538,29 @@ starwars |>
 
 The `%>%` or `|>` takes the output of the expression on its left and passes it as the first argument to the function on its right. The class / type of output on the left needs to agree or be acceptable as the first argument to the function on the right.
 
-
 ### Other muddy points
 
-+ Remembering applicable functions. Troubleshooting.
+-   Remembering applicable functions. Troubleshooting.
 
-> This gets better with experience. You are all still very new to R so be patient with yourself. 
+> This gets better with experience. You are all still very new to R so be patient with yourself.
 
-+ How to organize all of the material to understand the structure of how the R language works, rather than to keep track of all of the commands in an anecdotal way.
+-   How to organize all of the material to understand the structure of how the R language works, rather than to keep track of all of the commands in an anecdotal way.
 
 > Again, I think that this gets better with experience. Though the R language, being open source, a lot of syntax is package dependent. So you need to be careful that some of the syntax we use with `dplyr` and the `tidyverse` will be different in base R or in other packages. This is something that comes with open source software (compared to Stata or SAS). The good news is that learning to use packages sets you up to better learn newer (to you) packages down the road.
-
-
 
 ## Week 5
 
 ### `case_when()` vs `ifelse()`
 
-_The difference between case_when and ifelse_
+*The difference between case_when and ifelse*
 
-* `ifelse()` is the base R version of tidyverse's `case_when()`
-* I prefer using `case_when()` since it's easier to follow the logic.
-* `case_when()` is especially useful when there are more than two logical conditions being used.
-
-
+-   `ifelse()` is the base R version of tidyverse's `case_when()`
+-   I prefer using `case_when()` since it's easier to follow the logic.
+-   `case_when()` is especially useful when there are more than two logical conditions being used.
 
 The example below creates a binary variable for bill length (long vs not long) using both `case_when()` and `ifelse()` as a comparison.
 
-* Compare the crosstabs of the two variables!
+-   Compare the crosstabs of the two variables!
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -608,7 +598,7 @@ penguins %>% tabyl(long_bill3, long_bill1) %>%
   adorn_title()
 ```
 
-* Creating a categorical variable with 3 groups can be done with `ifelse()`, but it's harder to follow the logic:
+-   Creating a categorical variable with 3 groups can be done with `ifelse()`, but it's harder to follow the logic:
 
 ```{r}
 penguins <- penguins %>% 
@@ -622,37 +612,32 @@ penguins %>% tabyl(long_bill3, long_bill4) %>%
   adorn_title()
 ```
 
-
 ### `separate()`
 
-_Different ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it'll be most relevant to use._
+*Different ways of using the function separate, it was a bit unclear that when to use one or the other or examples of my research data where it'll be most relevant to use.*
 
-* Choosing the "best" way of using `separate()` is overwhelming at first. 
-* I recommend starting with the simplest use case with a string being specified in `sep = " "`:
+-   Choosing the "best" way of using `separate()` is overwhelming at first.
+-   I recommend starting with the simplest use case with a string being specified in `sep = " "`:
 
->`separate(data, col, into, sep = " ")`
+> `separate(data, col, into, sep = " ")`
 
-* Which of the various versions we showed to use depends on how the data being separated are structured. 
-* Most of the time I have a simple character, such as a space (`sep = " "`) or a comma (`sep = ","`) that I want to separate by.
-* If the data are structured in a more complex way, then one of the `stringr` package options might come in handy.
-
-
+-   Which of the various versions we showed to use depends on how the data being separated are structured.
+-   Most of the time I have a simple character, such as a space (`sep = " "`) or a comma (`sep = ","`) that I want to separate by.
+-   If the data are structured in a more complex way, then one of the `stringr` package options might come in handy.
 
 ### `here::here()`
 
-_TSV files, very neat... But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, "here: and also "here" Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial._
+*TSV files, very neat... But also, I got a bit confused when you did the render process around 22:00-23:00 minutes. Also, "here: and also "here" Directories/root directories. I was a bit confused about in what situations we would tangibly utilize this/if it is beneficial.*
 
-* Great question! This is definitely not intuitive, which is why I wanted to demonstrate it in class. 
-* The key is that 
-    * when rendering a qmd file the current working directory is the folder the file is sitting in, 
-    * while when running code in a file within RStudio the working directory is the folder where the `.Rproj` file is located.  
-* This distinction is important when loading other files from our computer during our workflow, and why `here::here()` makes our workflow so much easier!
+-   Great question! This is definitely not intuitive, which is why I wanted to demonstrate it in class.
+-   The key is that
+    -   when rendering a qmd file the current working directory is the folder the file is sitting in,
+    -   while when running code in a file within RStudio the working directory is the folder where the `.Rproj` file is located.\
+-   This distinction is important when loading other files from our computer during our workflow, and why `here::here()` makes our workflow so much easier!
 
+### what functions will only work within another function (generally)
 
-###  what functions will only work within another function (generally)
-
-* I'm not aware of functions that only work standalone within other functions. For example, the `mean()` function works on its own, but can also be used within a `summarise()`.
-
+-   I'm not aware of functions that only work standalone within other functions. For example, the `mean()` function works on its own, but can also be used within a `summarise()`.
 
 ```{r}
 mean(penguins$bill_length_mm, na.rm = TRUE)
@@ -662,23 +647,20 @@ penguins %>% summarise(
 )
 ```
 
-* That being said, a function has a set of parameters to be specified that are specific to that function. 
-
-
+-   That being said, a function has a set of parameters to be specified that are specific to that function.
 
 ## Week 6 (Part 5 contd.)
 
-
 ### `across()`
 
-_what exactly the across function does_
+*what exactly the across function does*
 
-_.fns, i.e. .fns=list, etc... I wasn't really sure what that was achieving within across._
+*.fns, i.e. .fns=list, etc... I wasn't really sure what that was achieving within across.*
 
-* The `across()` function lets us apply a function to many columns at once. 
-* For example, let's say we want the mean value for every continuous variable in a dataset.
-    * The code below calculates the mean for one variable in the penguins dataset using both base R and `summarize()`. 
-    * One option to calculate the mean value for every continuous variable in the dataset is to repeat this code for the 4 other continuous variables.
+-   The `across()` function lets us apply a function to many columns at once.
+-   For example, let's say we want the mean value for every continuous variable in a dataset.
+    -   The code below calculates the mean for one variable in the penguins dataset using both base R and `summarize()`.
+    -   One option to calculate the mean value for every continuous variable in the dataset is to repeat this code for the 4 other continuous variables.
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -696,7 +678,7 @@ penguins %>%
   summarize(mean(bill_length_mm, na.rm = TRUE))
 ```
 
-* In this case `across()` lets us apply the mean function to all the columns of interest at once: 
+-   In this case `across()` lets us apply the mean function to all the columns of interest at once:
 
 ```{r}
 penguins %>%
@@ -706,10 +688,10 @@ penguins %>%
   gt()
 ```
 
-* The `.fns=list` part of the `across` code is where we specify the function(s) that we want to apply to the specified columns. 
-    * Above we only specified one function (`mean()`), but we can specify additional functions as well, which is when we need to create a `list` to list all the functions we want to apply. 
-    * Below I apply the mean and standard deviation functions:
-    
+-   The `.fns=list` part of the `across` code is where we specify the function(s) that we want to apply to the specified columns.
+    -   Above we only specified one function (`mean()`), but we can specify additional functions as well, which is when we need to create a `list` to list all the functions we want to apply.
+    -   Below I apply the mean and standard deviation functions:
+
 ```{r}
 penguins %>%
   summarize(across(.cols = where(is.numeric), 
@@ -720,55 +702,50 @@ penguins %>%
   gt()
 ```
 
-* In general, lists are another type of R object to store information, whether data, lists of functions, output from regression models, etc. While concatenate is just a vector of values, lists are multidimensional. We will be learning more about lists in parts 7 and 8. 
+-   In general, lists are another type of R object to store information, whether data, lists of functions, output from regression models, etc. While concatenate is just a vector of values, lists are multidimensional. We will be learning more about lists in parts 7 and 8.
 
-* You can learn more about `across()` at its [help file](https://dplyr.tidyverse.org/reference/across.html).
-
-
+-   You can learn more about `across()` at its [help file](https://dplyr.tidyverse.org/reference/across.html).
 
 ### `case_when()` vs `ifelse()`
 
-_still a little confused on the difference between ifelse and casewhen, understand they are very similar but still confused on when it is best to use one over another_
+*still a little confused on the difference between ifelse and casewhen, understand they are very similar but still confused on when it is best to use one over another*
 
-* The two functions can be used interchangeably.         * `ifelse()` is the original function from base R
-  *  `case_when()` is the user-friendly version of `ifelse()` from the `dplyr` package
-* I recommend using `case_when()`, and it is what I use almost exclusively in my own work. My guess is that `ifelse()` was included in the notes since you might run into the function when reading R code on the internet.
-* Just be careful that you preserve missing values when using `case_when()` as we discussed last time. 
-
+-   The two functions can be used interchangeably. \* `ifelse()` is the original function from base R
+    -   `case_when()` is the user-friendly version of `ifelse()` from the `dplyr` package
+-   I recommend using `case_when()`, and it is what I use almost exclusively in my own work. My guess is that `ifelse()` was included in the notes since you might run into the function when reading R code on the internet.
+-   Just be careful that you preserve missing values when using `case_when()` as we discussed last time.
 
 ### factor levels
 
-_working with factor levels doesn't feel totally intuitive yet. I think that's because I tend to get confused with anything involving a concatenated list._
+*working with factor levels doesn't feel totally intuitive yet. I think that's because I tend to get confused with anything involving a concatenated list.*
 
-* Working with factor variables takes a while to get used to, and in particular with their factor levels. 
-* We will be looking at more examples with factor variables in the part 6 notes. See sections 2.8 and 4.
-* You can think of a concatenated list(`c(...)`) as a vector of values or a column of a dataset. Concatenating lets us create a set of values, which we typically create to use for some other purpose, such as specifying the levels of a factor variable.
-* _Please submit a follow-up question in the post-class survey if this is still muddy after today's class!_
-
+-   Working with factor variables takes a while to get used to, and in particular with their factor levels.
+-   We will be looking at more examples with factor variables in the part 6 notes. See sections 2.8 and 4.
+-   You can think of a concatenated list(`c(...)`) as a vector of values or a column of a dataset. Concatenating lets us create a set of values, which we typically create to use for some other purpose, such as specifying the levels of a factor variable.
+-   *Please submit a follow-up question in the post-class survey if this is still muddy after today's class!*
 
 ### pivoting tables
 
-* Definitely a tricky topic, and over half of the muddiest points were about pivoting tables. 
-* We will be looking at more examples in part 6. 
-
+-   Definitely a tricky topic, and over half of the muddiest points were about pivoting tables.
+-   We will be looking at more examples in part 6.
 
 #### How pivot_longer() would work on very large datasets with many rows/columns
 
-* It works the same way. However the resulting long table will end up being much much longer. 
-* Extra columns in the dataset just hang out and their values get repeated (such as an age variable that is not being made long by) over and over again. 
-    * We will be pivoting a dataset in part 6 that has extra variables that are not being pivoted.
+-   It works the same way. However the resulting long table will end up being much much longer.
+-   Extra columns in the dataset just hang out and their values get repeated (such as an age variable that is not being made long by) over and over again.
+    -   We will be pivoting a dataset in part 6 that has extra variables that are not being pivoted.
 
 #### Trying to visualize the joins and pivot longer/wider
 
-* I recommend trying them out with small datasets where you can actually see what is happening. 
-* __Joins__: Our [BERD workshop slides](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) have another example that might visualize joins. 
-    * [Slide 18](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) shows to datasets x and y, and what the resulting joins look like. 
-    * [Slide 19](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#19) shows Venn diagrams of how the different joins behave. 
-* __Pivoting__: There's an [example with a very small dataset](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) in my (supplemental) notes from BSTA 511. The graphic that goes along with this is on [Slide 28](https://drive.google.com/file/d/1IfubP0ei-5jTIVs33dyoEqjMIY-Q8qBe/view) from the pdf. 
+-   I recommend trying them out with small datasets where you can actually see what is happening.
+-   **Joins**: Our [BERD workshop slides](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) have another example that might visualize joins.
+    -   [Slide 18](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#18) shows to datasets x and y, and what the resulting joins look like.
+    -   [Slide 19](https://jminnier-berd-r-courses.netlify.app/02-data-wrangling-tidyverse/02_data_wrangling_slides_part2.html#19) shows Venn diagrams of how the different joins behave.
+-   **Pivoting**: There's an [example with a very small dataset](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) in my (supplemental) notes from BSTA 511. The graphic that goes along with this is on [Slide 28](https://drive.google.com/file/d/1IfubP0ei-5jTIVs33dyoEqjMIY-Q8qBe/view) from the pdf.
 
 #### pivot_longer makes plotting more understandable in an analysis sense, which situations would call for pivot_wider?
 
-* I tend to use `pivot_longer()` much more frequently. However, there are times when `pivot_wider()` comes in handy. For example, below is a long table of summary statistics created with `group_by()` and `summarize()`. I would use `pivot_wider()` to reshape this table so that I have columns comparing species or columns comparing islands. 
+-   I tend to use `pivot_longer()` much more frequently. However, there are times when `pivot_wider()` comes in handy. For example, below is a long table of summary statistics created with `group_by()` and `summarize()`. I would use `pivot_wider()` to reshape this table so that I have columns comparing species or columns comparing islands.
 
 ```{r}
 penguins %>% 
@@ -781,77 +758,68 @@ penguins %>%
   
 ```
 
-
 #### How to use arguments of pivot longer.
 
-* The arguments of the pivot functions take some practice to get used to. I sometimes still pull up an [example](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) to remind me what I need to specify for the various arguments, such as the one mentioned above that I have used in workshops and classes.  
-* We have not covered all the different arguments, and I recommend reviewing the [help file](https://tidyr.tidyverse.org/reference/pivot_longer.html) and in particular the [examples](https://tidyr.tidyverse.org/reference/pivot_longer.html#ref-examples) at the end of the page. 
-
+-   The arguments of the pivot functions take some practice to get used to. I sometimes still pull up an [example](https://niederhausen.github.io/BSTA_511_F23/slides_code/Day03_bsta511_code_part3_data_wrangling.html#reshaping-data) to remind me what I need to specify for the various arguments, such as the one mentioned above that I have used in workshops and classes.\
+-   We have not covered all the different arguments, and I recommend reviewing the [help file](https://tidyr.tidyverse.org/reference/pivot_longer.html) and in particular the [examples](https://tidyr.tidyverse.org/reference/pivot_longer.html#ref-examples) at the end of the page.
 
 ### `gt::gt()`
 
-_The gt::gt package does make the tables look fancier, how do we add labels to those to have them look nice as well?_
+*The gt::gt package does make the tables look fancier, how do we add labels to those to have them look nice as well?*
 
-* I highly recommend the [`gt` webpage](https://gt.rstudio.com/) to learn more about all the different options to create pretty tables. Note the tabs at the top of the page for "Get started" and "Reference."
-* See also section 3 of part 6 on "Side note about `gt::gt()`" for more on creating pretty tables. 
-
+-   I highly recommend the [`gt` webpage](https://gt.rstudio.com/) to learn more about all the different options to create pretty tables. Note the tabs at the top of the page for "Get started" and "Reference."
+-   See also section 3 of part 6 on "Side note about `gt::gt()`" for more on creating pretty tables.
 
 ### `here::here`
 
-_would also love more examples of here() I am starting to understand it better but still am a little confused_
+*would also love more examples of here() I am starting to understand it better but still am a little confused*
 
-_I am still having trouble getting here() to work consistently. I was going to ask during class, but I think I am just not understanding how to manually nest my files correctly so that "here" works. I am struggling to get that set up correct, and thus, struggling to use it. _
+*I am still having trouble getting here() to work consistently. I was going to ask during class, but I think I am just not understanding how to manually nest my files correctly so that "here" works. I am struggling to get that set up correct, and thus, struggling to use it.*
 
-
-* We'll have some more examples in class, but I recommend reaching out to one of us (instructors or TA) to help you troubleshoot `here::here`. 
-* Here are also some resources that might help
-    * [https://here.r-lib.org/articles/here.html](https://here.r-lib.org/articles/here.html)
-    * [http://jenrichmond.rbind.io/post/how-to-use-the-here-package/](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
-    * [https://github.com/jennybc/here_here](https://github.com/jennybc/here_here)
-    
+-   We'll have some more examples in class, but I recommend reaching out to one of us (instructors or TA) to help you troubleshoot `here::here`.
+-   Here are also some resources that might help
+    -   <https://here.r-lib.org/articles/here.html>
+    -   <http://jenrichmond.rbind.io/post/how-to-use-the-here-package/>
+    -   <https://github.com/jennybc/here_here>
 
 ### Clearest points
 
-* `group_by()` function (n=3)
-* `summarize()` (n=2)
-* `across()` (n=1)
-* `case_when()` (n=1)
-* `drop_na( )`  (n=2)
-* Joining tables (n=6)
-
-
-
+-   `group_by()` function (n=3)
+-   `summarize()` (n=2)
+-   `across()` (n=1)
+-   `case_when()` (n=1)
+-   `drop_na( )` (n=2)
+-   Joining tables (n=6)
 
 ## Week 7 (Part 6)
 
-
-
 #### Why we used `full_join()`
 
->Why we used `full_join()` in the class example instead of the other join options
+> Why we used `full_join()` in the class example instead of the other join options
 
-* In this case both datasets being joined had the same ID's, and thus it did not matter whether we used `left_join()`, `right_join()`, `full_join()` or `inner_join()`. All of these would've given the same results. 
+-   In this case both datasets being joined had the same ID's, and thus it did not matter whether we used `left_join()`, `right_join()`, `full_join()` or `inner_join()`. All of these would've given the same results.
 
 #### Visualizing pivots and joins
 
->pivot-longer is still hard for me to mentally visualize how it alters the dataset.
+> pivot-longer is still hard for me to mentally visualize how it alters the dataset.
 
->I always struggle to visualize pivots and joins. 
+> I always struggle to visualize pivots and joins.
 
-* Reshaping data take lots of practice to get the hang of, and something where I still pause while coding to think through how it will work and how to code it. Especially for pivoting, I often refer back to existing code I am familiar with. _It's normal at this point to still be muddy on these topics. Keep practicing though and read through some more examples._ 
-* In the [week 6 muddiest points](https://niederhausen.github.io/BSTA_526_W24/weeks/week_06.html#trying-to-visualize-the-joins-and-pivot-longerwider) I listed some additional resources for visualizing these. 
-* See also [Tidy Animated Verbs](https://github.com/gadenbuie/tidyexplain) for visualizing [joins](https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#mutating-joins) and [pivoting](https://github.com/gadenbuie/tidyexplain#tidy-data). The page  also includes visualizing `union()`, `intersect()`, and `set_diff()`. 
-* Another great resource is the [R for Epidemiology](https://www.r4epi.com/) website. 
-    * It has sections on [joins](https://www.r4epi.com/working-with-multiple-data-frames#combining-data-frames-horizontally-by-key-values) and [pivoting](https://www.r4epi.com/restructuring-data-frames#restructuring-data-frames).
-* Jessica also addressed [pivoting in last year's muddiest points](https://sph-r-programming-2023.netlify.app/class/07-class/#muddiest-parts). 
+-   Reshaping data take lots of practice to get the hang of, and something where I still pause while coding to think through how it will work and how to code it. Especially for pivoting, I often refer back to existing code I am familiar with. *It's normal at this point to still be muddy on these topics. Keep practicing though and read through some more examples.*
+-   In the [week 6 muddiest points](https://niederhausen.github.io/BSTA_526_W24/weeks/week_06.html#trying-to-visualize-the-joins-and-pivot-longerwider) I listed some additional resources for visualizing these.
+-   See also [Tidy Animated Verbs](https://github.com/gadenbuie/tidyexplain) for visualizing [joins](https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#mutating-joins) and [pivoting](https://github.com/gadenbuie/tidyexplain#tidy-data). The page also includes visualizing `union()`, `intersect()`, and `set_diff()`.
+-   Another great resource is the [R for Epidemiology](https://www.r4epi.com/) website.
+    -   It has sections on [joins](https://www.r4epi.com/working-with-multiple-data-frames#combining-data-frames-horizontally-by-key-values) and [pivoting](https://www.r4epi.com/restructuring-data-frames#restructuring-data-frames).
+-   Jessica also addressed [pivoting in last year's muddiest points](https://sph-r-programming-2023.netlify.app/class/07-class/#muddiest-parts).
 
-_Please come to office hours or set up a time to meet if this is still muddy after looking at these resources!_
+*Please come to office hours or set up a time to meet if this is still muddy after looking at these resources!*
 
 #### `mutate(factor ( ))`
 
->`mutate(factor ( ))` problem we ran into in class where Emile posted on Slack.
+> `mutate(factor ( ))` problem we ran into in class where Emile posted on Slack.
 
 Below is the code Emile posted on Slack (commented out):
+
 ```{r eval=FALSE}
 # data <- data |>
 #   mutate(timepoint = factor(timepoint,
@@ -861,7 +829,7 @@ Below is the code Emile posted on Slack (commented out):
 #                                          “12 months”)))
 ```
 
-* At this point we were working through the code of Section 2.8 in the Part 6 notes. 
+-   At this point we were working through the code of Section 2.8 in the Part 6 notes.
 
 Load the `mouse_data` dataset we were working with:
 
@@ -879,8 +847,8 @@ glimpse(mouse_data)
 mouse_data %>% tabyl(time)
 ```
 
-* The goal was to create a factor variable of the character time point column called `time` with the levels 1 month, 6 months, and 12 months, instead of `time`'s values tp1, tp2, and tp3. 
-* The code presented in class to accomplish this is below:
+-   The goal was to create a factor variable of the character time point column called `time` with the levels 1 month, 6 months, and 12 months, instead of `time`'s values tp1, tp2, and tp3.
+-   The code presented in class to accomplish this is below:
 
 ```{r}
 # create time_month factor
@@ -894,14 +862,14 @@ mouse_data <- mouse_data %>%
                       levels = c("1 month", "6 months", "12 months")))
 ```
 
-* Compare the old and new time variables:
+-   Compare the old and new time variables:
 
 ```{r}
 mouse_data %>% tabyl(time, time_month)
 ```
 
-* The question arose as to whether we could include `factor()` in the same step as `case_when()` when creating `time_month` above, instead of having to write it out as a second separate line in the `mutate()`. 
-* When using `case_when()`, we can do this as follows by piping the factor after the `case_when()`:
+-   The question arose as to whether we could include `factor()` in the same step as `case_when()` when creating `time_month` above, instead of having to write it out as a second separate line in the `mutate()`.
+-   When using `case_when()`, we can do this as follows by piping the factor after the `case_when()`:
 
 ```{r}
 mouse_data <- mouse_data %>%
@@ -915,7 +883,7 @@ mouse_data <- mouse_data %>%
 mouse_data %>% tabyl(time_month, time_month2)
 ```
 
-* Another option that is similar, is to enclose the `case_when()` within the `factor()`:
+-   Another option that is similar, is to enclose the `case_when()` within the `factor()`:
 
 ```{r}
 mouse_data <- mouse_data %>%
@@ -933,7 +901,7 @@ mouse_data %>% tabyl(time_month, time_month3)
 
 ##### `levels` vs. `labels`
 
-* Emile suggested using `factor()` on the `time` variable directly, and creating the new values using the `labels` option within `factor()`:
+-   Emile suggested using `factor()` on the `time` variable directly, and creating the new values using the `labels` option within `factor()`:
 
 ```{r}
 mouse_data <- mouse_data %>% 
@@ -945,10 +913,10 @@ mouse_data <- mouse_data %>%
 mouse_data %>% tabyl(time_month, time_month4)
 ```
 
-* What is new her is that we have not previously discussed `labels`.
-* You can think of the __`levels` as the input__ for the `factor()` function. 
-    * It's how we specify what the different levels are for the variable we are converting to factor, as well as the __order we want the levels__ to be in.
-    * If we do not specify the `levels`, then R will automatically use the different values of the variable being converted and arrange them in alphanumeric order. Example: 
+-   What is new her is that we have not previously discussed `labels`.
+-   You can think of the **`levels` as the input** for the `factor()` function.
+    -   It's how we specify what the different levels are for the variable we are converting to factor, as well as the **order we want the levels** to be in.
+    -   If we do not specify the `levels`, then R will automatically use the different values of the variable being converted and arrange them in alphanumeric order. Example:
 
 ```{r}
 mouse_data <- mouse_data %>% 
@@ -957,8 +925,8 @@ mouse_data <- mouse_data %>%
 mouse_data %>% tabyl(time_month, time_month5)
 ```
 
-* While `levels` is an input for the `factor()` function, __`labels` is an output__ for the `factor()` function.
-* The values specified in `labels` are the new values for the levels:
+-   While `levels` is an input for the `factor()` function, **`labels` is an output** for the `factor()` function.
+-   The values specified in `labels` are the new values for the levels:
 
 ```{r}
 # time_month4 added labels
@@ -970,8 +938,8 @@ levels(mouse_data$time_month4)
 levels(mouse_data$time_month5)
 ```
 
-* Note that both `time_month4` and `time_month5` started with the same `levels`. 
-* Instead of using the `labels` option within `factor()` (the base R way), we can also accomplish this by using `fct_recode()` from the `forcats` package (loaded as a part of `tidyverse`):
+-   Note that both `time_month4` and `time_month5` started with the same `levels`.
+-   Instead of using the `labels` option within `factor()` (the base R way), we can also accomplish this by using `fct_recode()` from the `forcats` package (loaded as a part of `tidyverse`):
 
 ```{r}
 # original tp levels:
@@ -989,19 +957,17 @@ levels(mouse_data$time_month6)
 mouse_data %>% tabyl(time_month6, time_month5)
 ```
 
-* Learn more about `fct_recode()` [here](https://forcats.tidyverse.org/reference/fct_recode.html).
-
-
+-   Learn more about `fct_recode()` [here](https://forcats.tidyverse.org/reference/fct_recode.html).
 
 #### `%in%`
 
->`%in%` command, I feel like I understand but have some confusion and think it might just be one of those things I have to work with/apply to fully understand 
+> `%in%` command, I feel like I understand but have some confusion and think it might just be one of those things I have to work with/apply to fully understand
 
-* We've used the `%in%` function in some examples, but I don't think we've discussed it in detail.
+-   We've used the `%in%` function in some examples, but I don't think we've discussed it in detail.
 
-* The %in% function is used to __test whether elements of one vector are contained in another vector__. It returns a logical vector indicating whether each element of the first vector is found in the second vector.
+-   The %in% function is used to **test whether elements of one vector are contained in another vector**. It returns a logical vector indicating whether each element of the first vector is found in the second vector.
 
-* Below are some examples that ChatGPT generated (and I slightly edited). 
+-   Below are some examples that ChatGPT generated (and I slightly edited).
 
 ```{r}
 #| warning: false
@@ -1039,9 +1005,6 @@ df_filtered
 
 ```
 
-
-
-
 ### Clearest points
 
 > This class was all really clear. It was helpful to be reviewing some of the things we learned last week.
@@ -1050,7 +1013,7 @@ df_filtered
 
 > Data cleaning
 
-> Most of the data cleaning exercises. 
+> Most of the data cleaning exercises.
 
 > different strategies to clean data sets
 
@@ -1062,35 +1025,27 @@ df_filtered
 
 > inner join and full join are the same if all vectors are the same.
 
-> Pivot 
+> Pivot
 
-> ggplot and how to code data in to display what we want to display 
-
-
-
-
+> ggplot and how to code data in to display what we want to display
 
 ### Other comments
 
-
 > Is there a difference between summarize (with z) and summarise (with s)?
 
-Great question! 
+Great question!
 
-* In English, summarize is American English and summarise is British English. * In R they work the same way. The [reference page for `summarise()`](https://dplyr.tidyverse.org/reference/summarise.html) lists them as synonyms.
-* In R code I see summarise more, and now keep mixing up which is American and which is British. 
-* In general, R accepts both American and British English, such as both color and colour. 
+-   In English, summarize is American English and summarise is British English. \* In R they work the same way. The [reference page for `summarise()`](https://dplyr.tidyverse.org/reference/summarise.html) lists them as synonyms.
+-   In R code I see summarise more, and now keep mixing up which is American and which is British.
+-   In general, R accepts both American and British English, such as both color and colour.
 
 > Thank you for the survey reminders! The pace of the class feels much better compared to the pace at the beginning of the term
 
 Thanks for the feedback!
 
+> I really enjoyed the walk through from start to finish of how to clean the data sheet and it really helped clear up many of the commands I was previously confused about
 
-> I really enjoyed the walk through from start to finish of how to clean the data sheet and it really helped clear up many of the commands I was previously confused about 
-
-Thanks for the feedback! Glad the data wrangling walk through was helpful. 
-
-
+Thanks for the feedback! Glad the data wrangling walk through was helpful.
 
 ## Week 8 (Part 7)
 
@@ -1105,14 +1060,13 @@ data("iris")  # this doesn't actually load the data set, but makes it available 
 head(iris)    # Once it's used it will appear in the Environment as an object.
 ```
 
-### Challenge # 2
+### Challenge \# 2
 
 This was where we created a function to load 3 data sets, clean them, and convert them to long format. These are tasks we've seen in previous classes. In this challenge, the main takeaway was to see the DRY (Don't repeat yourself) concept at play. Instead of writing the code 3 times for each data set, we can create a function where we only write the cleaning code once, then use that function 3 times.
 
 Reviewing the challenge solutions and taking more time to work through it on your own is a good idea. We went through it pretty quick in class. You won't usually be limited on time to get a function like that to work. In practice, if it's taking more time and too complicated, then it's fine to duplicate code so that you know it's working correctly. But, with very repetitive tasks, functions can make your code less prone to errors from copying and pasting.
 
-If you have trouble getting your code to work for the challenges, office hours are great for helping to debug code. Else, sharing full code in an email or on Slack. 
-
+If you have trouble getting your code to work for the challenges, office hours are great for helping to debug code. Else, sharing full code in an email or on Slack.
 
 ### `purrr::pluck`
 
@@ -1120,7 +1074,7 @@ There was a specific question:
 
 > `purrr::pluck` seems really useful, I wonder if you can tell it to pluck a specific record_ID?
 
-The short answer is no. Not a specific ID. But if you know the *position* of the specific ID then you could. 
+The short answer is no. Not a specific ID. But if you know the *position* of the specific ID then you could.
 
 ```{r}
 # Load packages
@@ -1163,15 +1117,14 @@ df |>
 
 ### Lists -- general confusion
 
-+ What do we do with lists? 
-+ Using lists
+-   What do we do with lists?
+-   Using lists
 
 We will get to work more with lists in Week 9 and get more opportunities to see how they are used.
 
 Lists are more flexible and have the ability to handle various data structures which make them a powerful tool for organizing, manipulating, and representing complex data in R.
 
-
-### Lists -- One bracket versus two brackets. 
+### Lists -- One bracket versus two brackets.
 
 One bracket `[ ]` and two brackets `[[ ]]` serves different purposes, primarily when accessing elements in a data structure like vectors, lists, or data frames.
 
@@ -1249,7 +1202,6 @@ In summary, one bracket `[ ]` is used for general subsetting, whether it's extra
 
 `{{ }}` will be covered in upcoming class lectures. We talked about it in Week 8 as a quick aside because a specific question came up. Not much detail was given intentionally as it is a separate topic for another day.
 
-
 ## Week 9 (Part 7)
 
 ### Matrices
@@ -1304,7 +1256,6 @@ tibble::as_tibble(mat1)
 
 ```
 
-
 ### `for()` loops
 
 > Still a little confused about the for() loops...
@@ -1322,11 +1273,11 @@ for (variable in sequence) {
 
 Here's a breakdown of the components:
 
-+ `variable`: This is a loop variable that takes on each value in the specified sequence during each iteration of the loop.
+-   `variable`: This is a loop variable that takes on each value in the specified sequence during each iteration of the loop.
 
-+ `sequence`: This is the sequence of values over which the loop iterates. It can be a vector, list, or any other iterable object.
+-   `sequence`: This is the sequence of values over which the loop iterates. It can be a vector, list, or any other iterable object.
 
-+ Loop Body: The statements enclosed within the curly braces `{}` constitute the body of the loop. These statements are executed for each iteration of the loop.
+-   Loop Body: The statements enclosed within the curly braces `{}` constitute the body of the loop. These statements are executed for each iteration of the loop.
 
 #### Basic example
 
@@ -1394,7 +1345,6 @@ output
 
 ```
 
-
 For loops in R are commonly used when you know the number of iterations in advance or when you need to iterate over a specific sequence of values. While for loops are useful, R also provides other ways to perform iteration, such as using vectorized operations (example below) and functions from the apply family (not covered). It's often recommended to explore these alternatives when working with R for better code efficiency and readability.
 
 ```{r}
@@ -1419,15 +1369,13 @@ result_addition_for_loop
 
 ```
 
-
-
 ### `na.rm` vs `na.omit`
 
 > Is there a difference between na.rm and na.omit?
 
 Yes, there is a difference. In R, they are used in different context.
 
-1. `na.rm` (Remove)
+1.  `na.rm` (Remove)
 
 `na.rm` is an *argument* found in various functions (e.g. `mean()`, `sum()`, etc.) that allows you to specify whether missing values (`NA` or `NaN`) should be removed before performing the calculation.
 
@@ -1444,7 +1392,7 @@ mean(values_with_na, na.rm = TRUE)  # Result will be (1+2+3+5)/4 = 2.75
 
 ```
 
-2. `na.omit` (Omit missing)
+2.  `na.omit` (Omit missing)
 
 `na.omit` is a *function* that can be used to remove rows with missing values (`NA`) from a data frame or matrix.
 
@@ -1461,7 +1409,6 @@ df |>
 
 ```
 
-
 ### `purrr::map()`
 
 > I am still a little foggy on the formatting of purrrmap and how to utilize it effectively.
@@ -1475,24 +1422,27 @@ The `purrr::map` function is used to apply a specified function to each element 
 purrr::map(.x, .f, ...)
 ```
 
-- **`.x`:** The input list or vector.
+-   **`.x`:** The input list or vector.
 
-- **`.f`:** The function to apply to each element of `.x`.
+-   **`.f`:** The function to apply to each element of `.x`.
 
-- **`...`:** Additional arguments passed to the function specified in `.f`.
+-   **`...`:** Additional arguments passed to the function specified in `.f`.
 
 #### Key Features:
 
-1. **Consistent Output:**
-   - `map` returns a list, ensuring a consistent output format regardless of the input structure.
+1.  **Consistent Output:**
 
-2. **Function Application:**
-   - The primary purpose is to apply a specified function to each element of the input `.x`.
+    -   `map` returns a list, ensuring a consistent output format regardless of the input structure.
 
-3. **Formula Interface:**
-   - Supports a formula interface (`~`) for concise function specifications.
+2.  **Function Application:**
 
-   `purrr::map(.x, ~ function(.))`
+    -   The primary purpose is to apply a specified function to each element of the input `.x`.
+
+3.  **Formula Interface:**
+
+    -   Supports a formula interface (`~`) for concise function specifications.
+
+    `purrr::map(.x, ~ function(.))`
 
 #### Example:
 
@@ -1516,24 +1466,21 @@ In this example, the `map` function applies the squaring function (`~ .x ^ 2`) t
 
 The `purrr::map` function is particularly useful when working with lists and helps to create cleaner and more readable code, especially in cases where you want to apply the same operation to each element of a collection.
 
-
 ### General references
 
 > Is there a good dictionary type document with "R language" or very basic function descriptions? ... find it difficult to know what functions I need because it is hard to recall their name or confuse it with a different function.
 
-+ R Documentation (Built-in Help): R itself provides built-in documentation that you can access using the `help()` function or the `?` operator. For example, to get help on the `mean()` function, you can type `help(mean)` or `?mean` in the R console.
-+ R Manuals and Guides: The official R documentation, including manuals and guides, is available on the R Project website: [R Manuals](https://cran.r-project.org/manuals.html).
-+ R Packages Documentation: Many R packages come with detailed documentation. You can find documentation for a specific package by visiting the CRAN website (Comprehensive R Archive Network) and searching for the package of interest.
-+ Online Resources: Websites like [RDocumentation](https://www.rdocumentation.org/) provide a searchable database of R functions along with their documentation. You can search for a specific function and find details on its usage and parameters.
-+ [RStudio cheatsheets](https://posit.co/resources/cheatsheets/)
-+ [Base R cheatsheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
-+ [R: A Language and Environment for Statistical Computing: Reference Index](https://cran.r-project.org/doc/manuals/r-release/fullrefman.pdf)
-+ [CRAN Task Views](https://cran.r-project.org/web/views/)
-+ Part 3 section on getting help with errors.
-+ Books like ["R for Data Science"](https://r4ds.hadley.nz/) by Hadley Wickham
-+ When you use a function or learn to use it, make notes to yourself using Google Doc or OneNote or something similar.
-
-
+-   R Documentation (Built-in Help): R itself provides built-in documentation that you can access using the `help()` function or the `?` operator. For example, to get help on the `mean()` function, you can type `help(mean)` or `?mean` in the R console.
+-   R Manuals and Guides: The official R documentation, including manuals and guides, is available on the R Project website: [R Manuals](https://cran.r-project.org/manuals.html).
+-   R Packages Documentation: Many R packages come with detailed documentation. You can find documentation for a specific package by visiting the CRAN website (Comprehensive R Archive Network) and searching for the package of interest.
+-   Online Resources: Websites like [RDocumentation](https://www.rdocumentation.org/) provide a searchable database of R functions along with their documentation. You can search for a specific function and find details on its usage and parameters.
+-   [RStudio cheatsheets](https://posit.co/resources/cheatsheets/)
+-   [Base R cheatsheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)
+-   [R: A Language and Environment for Statistical Computing: Reference Index](https://cran.r-project.org/doc/manuals/r-release/fullrefman.pdf)
+-   [CRAN Task Views](https://cran.r-project.org/web/views/)
+-   Part 3 section on getting help with errors.
+-   Books like ["R for Data Science"](https://r4ds.hadley.nz/) by Hadley Wickham
+-   When you use a function or learn to use it, make notes to yourself using Google Doc or OneNote or something similar.
 
 ## Week 10 (Part 8)
 
@@ -1547,8 +1494,8 @@ The `purrr::map` function is particularly useful when working with lists and hel
 map(.x, .f, ..., .progress = FALSE)
 ```
 
-+ `.x` the vector or list that you operate on
-+ `.f` the function you want to apply to each element of the input vector or list. This function can be a built-in R function, a user-defined function, or an anonymous function defined on the fly.
+-   `.x` the vector or list that you operate on
+-   `.f` the function you want to apply to each element of the input vector or list. This function can be a built-in R function, a user-defined function, or an anonymous function defined on the fly.
 
 #### Simple example
 
@@ -1565,17 +1512,13 @@ squared_numbers <- purrr::map(.x = numbers,
                               .f = ~ .x ^ 2)
 ```
 
-In this example:
-- `numbers` is a list containing numbers from 1 to 5.
-- `~ .x ^ 2` is an anonymous function that squares its input.
-- `map()` applies this anonymous function to each element of the `numbers` list, resulting in a new list where each element is the square of the corresponding element in the original list.
+In this example: - `numbers` is a list containing numbers from 1 to 5. - `~ .x ^ 2` is an anonymous function that squares its input. - `map()` applies this anonymous function to each element of the `numbers` list, resulting in a new list where each element is the square of the corresponding element in the original list.
 
 After executing this code, the `squared_numbers` variable will contain the squared values of the original list:
 
 ```{r}
 squared_numbers
 ```
-
 
 #### Example with a list of data frames
 
@@ -1593,7 +1536,7 @@ sales_data
 
 ```
 
-Create a function `` and apply it to each slot in `sales_data` list:
+Create a function \``and apply it to each slot in`sales_data\` list:
 
 ```{r}
 # Function to calculate total sales for each data frame
@@ -1607,10 +1550,7 @@ total_sales_per_product <- purrr::map(.x = sales_data,
                                       .f = calculate_total_sales)
 ```
 
-In this example:
-- `sales_data` is a list containing three data frames, each representing the sales data for a different product.
-- `calculate_total_sales()` is a function that takes a data frame as input and calculates the total sales for that product.
-- `map()` applies the `calculate_total_sales()` function to each data frame in the `sales_data` list, resulting in a new list `total_sales_per_product`, where each element is the total sales for a specific product across all months.
+In this example: - `sales_data` is a list containing three data frames, each representing the sales data for a different product. - `calculate_total_sales()` is a function that takes a data frame as input and calculates the total sales for that product. - `map()` applies the `calculate_total_sales()` function to each data frame in the `sales_data` list, resulting in a new list `total_sales_per_product`, where each element is the total sales for a specific product across all months.
 
 After executing this code, the `total_sales_per_product` variable will contain the total sales for each product:
 
@@ -1618,20 +1558,17 @@ After executing this code, the `total_sales_per_product` variable will contain t
 total_sales_per_product
 ```
 
-
 So, `total_sales_per_product` is a named list where each element represents the total sales for a specific product across all the data frames in the original list.
-
 
 ### `purrr::reduce()`
 
-#### How does it compare to `purrr::map()`? 
+#### How does it compare to `purrr::map()`?
 
 The big difference between map() and reduce() has to do with what it returns:
 
 > `map()` usually returns a list or data structure with the same number as its input; The goal of `reduce()` is to take a list of items and return a single object.
 
 See the [purrr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf).
-
 
 #### Simple example
 
@@ -1646,10 +1583,7 @@ cumulative_sum <- purrr::reduce(.x = numbers,
 
 ```
 
-In this example:
-- `numbers` is the vector we want to operate on.
-- The function `+` is used as the operation to perform at each step of reduction, which in this case is addition.
-- `reduce()` will start by adding the first two elements (1 and 2), then add the result to the third element (3), and so on, until all elements have been processed.
+In this example: - `numbers` is the vector we want to operate on. - The function `+` is used as the operation to perform at each step of reduction, which in this case is addition. - `reduce()` will start by adding the first two elements (1 and 2), then add the result to the third element (3), and so on, until all elements have been processed.
 
 After executing this code, the `cumulative_sum` variable will contain the cumulative sum of the numbers:
 
@@ -1672,7 +1606,6 @@ The steps are as follows:
 (cum_numbers <- cum_numbers + numbers[5])
 ```
 
-
 #### With data frames
 
 Using our sales data list from above
@@ -1694,10 +1627,7 @@ combined_sales_data <- purrr::reduce(.x = sales_data,
                                      .f = dplyr::bind_rows)
 ```
 
-In this example:
-- We use an anonymous function within `reduce()` that takes two arguments `x` and `y`, representing the accumulated result and the next element in the list, respectively.
-- Inside the anonymous function, we use `bind_rows()` to combine the accumulated result `x` with the next element `y`, effectively stacking them on top of each other.
-- `reduce()` applies this anonymous function iteratively to the list of data frames, resulting in a single data frame `combined_sales_data` that contains the combined sales data for all products.
+In this example: - We use an anonymous function within `reduce()` that takes two arguments `x` and `y`, representing the accumulated result and the next element in the list, respectively. - Inside the anonymous function, we use `bind_rows()` to combine the accumulated result `x` with the next element `y`, effectively stacking them on top of each other. - `reduce()` applies this anonymous function iteratively to the list of data frames, resulting in a single data frame `combined_sales_data` that contains the combined sales data for all products.
 
 ```{r}
 combined_sales_data
@@ -1718,28 +1648,26 @@ Doing this in steps:
 
 ```
 
-
 #### Examples of reduce
 
-+ [Pretty involved example from Maelle Salmon, but good practice](https://masalmon.eu/2023/07/26/reduce/)
-+ [Tidyverse reference with examples](https://purrr.tidyverse.org/reference/reduce.html)
-+ [R for Data Science, First Edition](https://r4ds.had.co.nz/iteration.html?q=reduce#reduce-and-accumulate)
-+ [Another exmple blog post](https://yjunechoe.github.io/posts/2020-12-13-collapse-repetitive-piping-with-reduce/)
-
+-   [Pretty involved example from Maelle Salmon, but good practice](https://masalmon.eu/2023/07/26/reduce/)
+-   [Tidyverse reference with examples](https://purrr.tidyverse.org/reference/reduce.html)
+-   [R for Data Science, First Edition](https://r4ds.had.co.nz/iteration.html?q=reduce#reduce-and-accumulate)
+-   [Another exmple blog post](https://yjunechoe.github.io/posts/2020-12-13-collapse-repetitive-piping-with-reduce/)
 
 ### List.files function
 
 the `list.files()` function is used to obtain a character vector of file names in a specified directory. Here's a breakdown of how it works and its common parameters:
 
-1. **Directory Path**: The primary argument of `list.files()` is the path to the directory you want to list files from. If not specified, it defaults to the current working directory.
+1.  **Directory Path**: The primary argument of `list.files()` is the path to the directory you want to list files from. If not specified, it defaults to the current working directory.
 
-2. **Pattern Matching**: `pattern` is an optional argument that allows you to specify a pattern for file names. Only file names matching this pattern will be returned. This can be useful for filtering specific types of files.
+2.  **Pattern Matching**: `pattern` is an optional argument that allows you to specify a pattern for file names. Only file names matching this pattern will be returned. This can be useful for filtering specific types of files.
 
-3. **Recursive Listing**: If `recursive = TRUE`, the function will list files recursively, i.e., it will include files from subdirectories as well. By default, `recursive` is set to `FALSE`.
+3.  **Recursive Listing**: If `recursive = TRUE`, the function will list files recursively, i.e., it will include files from subdirectories as well. By default, `recursive` is set to `FALSE`.
 
-4. **File Type**: The `full.names` argument controls whether the returned file names should include the full path (if `TRUE`) or just the file names (if `FALSE`, the default).
+4.  **File Type**: The `full.names` argument controls whether the returned file names should include the full path (if `TRUE`) or just the file names (if `FALSE`, the default).
 
-5. **Character Encoding**: You can specify the `encoding` argument to handle file names with non-ASCII characters. This argument is especially useful on Windows systems where file names may use a different character encoding.
+5.  **Character Encoding**: You can specify the `encoding` argument to handle file names with non-ASCII characters. This argument is especially useful on Windows systems where file names may use a different character encoding.
 
 Here's a simple example demonstrating the basic usage of `list.files()`:
 
@@ -1770,3 +1698,118 @@ Overall, `list.files()` is a handy function for obtaining file names within a di
 
 **NOTE** You need to pay attention to your working directory and your relative file paths. See Week 2 or 3 (?) about `here` package and the discussion about files paths. Best to always use Rprojects and the `here` package.
 
+
+# 2023
+
+## Week 1
+
+# Pacing
+
+Mean 3.18, IQR [3,3] so, that's a good sign, though there was one comment it went a little fast. I admittedly was trying to cram in a lot of basics all at once, so I'll try to go a touch slower with the hard things.
+
+# Muddiest Points
+
+Remember, all of this is anonymous. I don't post everything everyone says on here, but I do read them all and think about how to improve the class based on what everyone says.
+
+> Boolean data, until you explained it
+
+We will talk more about boolean data in class 2, I kind of rushed the intro to that but we'll definitely see more examples!
+
+> default arguments
+
+I added this one, I want to make sure to show you the help in R and how we know what the "default" arguments are, that we don't need to specify.
+
+> removing missing values
+
+Yes this is a confusing thing in R, one point to remember is the difference between a function like `na.omit()` and an argument like `na.rm = TRUE` which sets the missing data behavior within a specific function like `mean()`.
+
+```{r}
+myvec <- c(1, NA, 3)
+# removes missing values, does not save your work!
+na.omit(myvec)
+# removes missing values, overwrites the object/variable myvec after removing them
+myvec <- na.omit(myvec)
+
+
+myvec <- c(1, NA, 3)
+# default behavior is to include NA in the computation
+mean(myvec)
+# specifies that we want to get rid of NA first
+mean(myvec, na.rm = TRUE)
+
+# different functions have different arguments to handle missing data
+# see ?cor for help and the explanation of the use argument
+vec1 <- c(1, NA, 2, 3)
+vec2 <- c(2, 3, NA, 4)
+cor(vec1, vec2)
+cor(vec1, vec2, use = "pairwise.complete.obs")
+# cor(vec1, vec2, use = "all.obs") # this throws an error, why?
+
+```
+
+> Data types and vectors. It was clear, however, when I watched the class recording.
+
+We will go over this again in class 2 when we talk about data!
+
+> While I was reading the materials about vectors and variables, I'm still not very clear on the differences between vectors and variables. For instance, when we concatenate a list of regions (example from book) and create a vector named "region." It sounds similar to how we assign values or characters to create a variable
+
+This is a great point, and I tend to be a little lax with the definitions of some of these terms so apologies if it is confusing. 
+
+I would say a variable is the same as an object in R. It is the name of something that we save and that we can see in our environment tab. That means it could be a vector, a data set, a list, a unique object type -- all data types we will talk about in the coming classes.
+
+I also use the word "variable" when talking about columns of a data set or data frame, though. Therefore, it's not a precise word and I'm sorry I use it so much!
+
+A vector is a specific type of object in R. It has a length and a class/type. It does not have a "width" like a data frame does (we will talk about these in class 2). We will also talk about types or classes of vectors (character, numeric, boolean) a bit more in these classes.
+
+For a more thorough introduction, read R for Data Science [Vector](https://r4ds.had.co.nz/vectors.html). If you want a rather advanced treatment of data types, see [Advanced R](https://adv-r.hadley.nz/vectors-chap.html).
+
+As far as naming vectors or data, we often call them something that we can easily remember or make sense of. I think that also can cause confusion though, in the regions example.
+
+This all make more sense once we talk about data frames, which contain vectors as columns!
+
+> packages - why did my R crash?
+
+Ugh I'm so sorry and I don't have a clear idea. My best guess is that there were older packages installed and for some reason `pacman::p_load` tried to install packages without installing their dependencies first [packages that the installed package relies on to work, and often need at least a certain version](https://stackoverflow.com/questions/31717850/error-package-or-namespace-load-failed-for-ggplot2-and-for-data-table). Perhaps if you don't update your packages all that often, `install.packages()` is the safer option?
+
+> The options for code blocks in r markdown
+
+I didn't talk about this much yet, but I will keep showing examples of this. In the meantime, here are some good references, that I often have to go back to because I forget most of them most of the time:
+
+[Chunk options long list](https://yihui.org/knitr/options/)
+
+[R markdown book, chunk options chapter](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html)
+
+I will also try to mention global options in class 2 as well.
+
+> how to also have an output below my code chuck as well
+
+I'll talk about this again/more as well. This is a YAML option, and can be set using the "gear" icon next to the "Knit" button at the top of an Rmd (Chunk Output Inline vs Chunk Output Console). I think we can't have it both ways. Also note that table output will look different from interactive R markdown and knitted R markdown sometimes. That can be a point of confusion. You can also change how that looks in "Output Options" from that gear dropdown menu (General -> print data frames as:)
+
+> R markdown in general, also R studio projects
+
+Understandable, I threw a lot of new stuff at most of you, and I'll focus more on these things in class 2! I haven't shown you the full benefits of using Rstudio projects yet because we haven't started working with data. But hopefully class 2 and 3 it will become a bit more clear.
+
+# Clearest Points
+
+Lots of things here I'm not including, but, thank you for all of it!
+
+> Concatenate! I have never known what c() stood for!
+
+It's a weird one, for sure!
+
+> First time real exposure to R, so I REALLY was amazed by knitting the Rmd and how the class content was all "interactively" set in the Rmd.
+
+It's one of the main reasons why I just start using Rmd right away, because it's pretty neat. It might cause more headaches later because it takes time getting used to, but it's worth it to me.
+
+
+# Other messages, just a selection
+
+Lots of you liked having challenges. Sometimes I get carried away adding too much instruction because there is so much I want to show you, so I hope I provide enough time for challenges this year.
+
+> i've had R experience but it's difficult for me to quickly learn and adapt to it. I understand how to use it but have difficulty creating things like tables or organizing data. I'm hoping by the end of this course, i'll be able to gain more knowledge to allow me to do those types of task.
+
+You are my perfect audience, these are my goals, too!
+
+> After 2 years of just sort of flinging myself at R willy-nilly, the first class showed me a lot of tips for using R that have already made my life easier.
+
+So happy to hear it!
