@@ -17,13 +17,13 @@ editor_options:
 |:--:|:--:|:---|----|
 | [1](weeks/week_01.qmd) | 1/09 | Introduction to course/expectations, Intro to R/RStudio, Functions, Vectors, Data Types | Meike |
 | [2](weeks/week_02.qmd) | 1/16 | Loading Data, data.frames, and ggplot2 | Jessica |
-| [3](weeks/week_03.qmd) | 1/23 | dplyr: subsetting using filter()/select() | Jessica |
-| [4](weeks/week_04.qmd) | 1/30 | dplyr: mutate(),across(), case_when(), factors, ggplot2 boxplots, facets, scales | Jessica |
-| [5](weeks/week_05.qmd) | 2/6 | summarize() and group_by(), doing things with multiple tables (left_join() etc), reshaping data (i.e. pivot_longer()) | Meike |
+| [3](weeks/week_03.qmd) | 1/23 | dplyr: subsetting using filter()/select(), more ggplot: themes, scales, facets | Jessica |
+| [4](weeks/week_04.qmd) | 1/30 | dplyr: mutate(), across(), case_when(), factors, summarize() and group_by(), ggplot: boxplots, scales | Jessica |
+| [5](weeks/week_05.qmd) | 2/6 |  Dealing with multiple tables (left_join() etc), reshaping data (i.e. pivot_longer()) | Meike |
 |  | 2/6 | **Take Home Midterm Assigned** |  |
 | [6](weeks/week_06.qmd) | 2/13 | More data wrangling practice | Meike |
 |  |  |  |  |
-| [7](weeks/week_07.qmd) | 2/20 | More data wrangling practice | Jessica |
+| [7](weeks/week_07.qmd) | 2/20 | More data wrangling practice | Meike |
 |  | 2/22 | **Take home midterm due (Sunday)** |  |
 | [8](weeks/week_08.qmd) | 2/27 | Intro to functions, working with lists | Jessica |
 | [9](weeks/week_09.qmd) | 3/6 | Intro to functions, working with lists cont'd | Meike |
