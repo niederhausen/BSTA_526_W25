@@ -1,6 +1,6 @@
 ---
 title: "Week 5"
-description: "Data summarizing, reshaping, and wrangling with multiple tables"
+description: "Data cleaning, reshaping, and wrangling with multiple tables"
 date: "2/6/2025"
 date-modified: "today"
 categories: [""]
@@ -18,7 +18,7 @@ editor_options:
 
 -   **Practice** using `here()` to load data in a subfolder of the project
 -   **Learn** and **apply** `bind_rows()` to combine rows from two or more datasets
--   **Practice** working with and cleaning real data
+-   **Practice** working with and cleaning real data using `forcats`, `stringr`, `separate()` 
 -   **Learn** about the different kinds of joins and how they merge data
     -   **Apply** `inner_join()` and `left_join()` to join tables on columns
 -   **Utilize** `pivot_longer()` to make a *wide* dataset *long*
@@ -26,9 +26,12 @@ editor_options:
 
 ## Announcements
 
-* If you haven't already, please __sign up for your function of the week presentation__. 
+* If you haven't already, please __[sign up for your function of the week presentation]{style="color:darkorange"}__. 
     * Please limit presentations to 3 per week. 
     * Link to sign-up sheet is posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25/tool/ab7a0690-1284-4701-b6dd-fa66cd20aeee/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=212612&postedComment=false&addBefore=&itemId=5350024&path=push&reviewAssessment=false&topicId=&addTool=-1&recheck=&id=&forumId=).
+* The **[Midterm]{style="color:darkorange"}** is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due 2/22/25. 
+    * Please start early on this since finding a suitable dataset might take some time. 
+    * We encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track. 
 * Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). 
 * For today's class, make sure to download to your computer the folder called `part_05`, and then open RStudio by double-clicking on the file called `part_05.Rproj`.
 

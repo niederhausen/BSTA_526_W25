@@ -4,11 +4,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Schedule is subject to change.\nLinks have been added to all weeks, but weeks we have not covered yet will have broken links.\n\n\n\n\nWeek\nDate\nTopics\nInstructor\n\n\n\n\n1\n1/09\nIntroduction to course/expectations, Intro to R/RStudio, Functions, Vectors, Data Types\nMeike\n\n\n2\n1/16\nLoading Data, data.frames, and ggplot2\nJessica\n\n\n3\n1/23\ndplyr: subsetting using filter()/select(), more ggplot: themes, scales, facets\nJessica\n\n\n4\n1/30\ndplyr: mutate(), across(), case_when(), factors, summarize() and group_by(), ggplot: boxplots, scales\nJessica\n\n\n5\n2/6\nDealing with multiple tables (left_join() etc), reshaping data (i.e. pivot_longer())\nMeike\n\n\n\n2/6\nTake Home Midterm Assigned\n\n\n\n6\n2/13\nMore data wrangling practice\nMeike\n\n\n\n\n\n\n\n\n7\n2/20\nMore data wrangling practice\nJessica\n\n\n\n2/22\nTake home midterm due (Sunday)\n\n\n\n8\n2/27\nIntro to functions, working with lists\nJessica\n\n\n9\n3/6\nIntro to functions, working with lists cont’d\nMeike\n\n\n10\n3/10\nFinal Project Assigned (Monday)\n\n\n\n10\n3/13\nFunctions/batch processing/purrr; Intro to stats/formulas/broom/More Purrr\nMeike\n\n\n11\n3/20\nNo Class, Office Hour\n\n\n\n\n3/22\nFinal Project Due (Saturday)",
-    "crumbs": [
-      "Home",
-      "Schedule"
-    ]
+    "text": "Schedule is subject to change.\nLinks have been added to all weeks, but weeks we have not covered yet will have broken links.\n\n\n\n\nWeek\nDate\nTopics\nInstructor\n\n\n\n\n1\n1/09\nIntroduction to course/expectations, Intro to R/RStudio, Functions, Vectors, Data Types\nMeike\n\n\n2\n1/16\nLoading Data, data.frames, and ggplot2\nJessica\n\n\n3\n1/23\ndplyr: subsetting using filter()/select(), more ggplot: themes, scales, facets\nJessica\n\n\n4\n1/30\ndplyr: mutate(), across(), case_when(), factors, summarize() and group_by(); ggplot: boxplots, scales\nJessica\n\n\n5\n2/6\ndata wrangling practice: forcats, stringr, separate(); combining multiple tables (left_join() etc); reshaping data (i.e. pivot_longer())\nMeike\n\n\n\n2/6\nTake Home Midterm Assigned\n\n\n\n6\n2/13\nMore data wrangling practice\nMeike\n\n\n\n\n\n\n\n\n7\n2/20\nMore data wrangling practice\nJessica\n\n\n\n2/22\nTake home midterm due (Sunday)\n\n\n\n8\n2/27\nIntro to functions, working with lists\nJessica\n\n\n9\n3/6\nIntro to functions, working with lists cont’d\nMeike\n\n\n10\n3/10\nFinal Project Assigned (Monday)\n\n\n\n10\n3/13\nFunctions/batch processing/purrr; Intro to stats/formulas/broom/More Purrr\nMeike\n\n\n11\n3/20\nNo Class, Office Hour\n\n\n\n\n3/22\nFinal Project Due (Saturday)"
   },
   {
     "objectID": "readings/06-reading.html",
@@ -92,7 +88,7 @@
     "href": "weeks.html",
     "title": "Weekly Pages",
     "section": "",
-    "text": "Links to weekly pages\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n1/9/25\n\n\nWeek 1\n\n\nIntro to R/RStudio, Functions, Vectors, Data Types\n\n\n\n\n1/16/25\n\n\nWeek 2\n\n\nProjects, data frames, reading in data, visualizing data with ggplot2\n\n\n\n\n1/23/25\n\n\nWeek 3\n\n\nErrors, more data loading, data manipulation, ggplot themes, factors\n\n\n\n\n1/30/25\n\n\nWeek 4\n\n\nmutate(), case_when(), summarize(), group_by(), across(), more ggplot2\n\n\n\n\n2/6/25\n\n\nWeek 5\n\n\nData summarizing, reshaping, and wrangling with multiple tables\n\n\n\n\n2/13/25\n\n\nWeek 6\n\n\nStart with your goal: more data wrangling\n\n\n\n\n2/20/25\n\n\nWeek 7\n\n\nStart with your goal: more data wrangling\n\n\n\n\n2/27/25\n\n\nWeek 8\n\n\nLists and Functions\n\n\n\n\n3/6/25\n\n\nWeek 9\n\n\nLists and Functions (continued)\n\n\n\n\n3/13/25\n\n\nWeek 10\n\n\nIntro to stats, broom, more purrr\n\n\n\n\n3/20/25\n\n\nWeek 11\n\n\nFinal week\n\n\n\n\n\n\nNo matching items"
+    "text": "Links to weekly pages\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n1/9/25\n\n\nWeek 1\n\n\nIntro to R/RStudio, Functions, Vectors, Data Types\n\n\n\n\n1/16/25\n\n\nWeek 2\n\n\nProjects, data frames, reading in data, visualizing data with ggplot2\n\n\n\n\n1/23/25\n\n\nWeek 3\n\n\nErrors, more data loading, data manipulation, ggplot themes, factors\n\n\n\n\n1/30/25\n\n\nWeek 4\n\n\nmutate(), case_when(), summarize(), group_by(), across(), more ggplot2\n\n\n\n\n2/6/25\n\n\nWeek 5\n\n\nData cleaning, reshaping, and wrangling with multiple tables\n\n\n\n\n2/13/25\n\n\nWeek 6\n\n\nStart with your goal: more data wrangling\n\n\n\n\n2/20/25\n\n\nWeek 7\n\n\nStart with your goal: more data wrangling\n\n\n\n\n2/27/25\n\n\nWeek 8\n\n\nLists and Functions\n\n\n\n\n3/6/25\n\n\nWeek 9\n\n\nLists and Functions (continued)\n\n\n\n\n3/13/25\n\n\nWeek 10\n\n\nIntro to stats, broom, more purrr\n\n\n\n\n3/20/25\n\n\nWeek 11\n\n\nFinal week\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -788,7 +784,7 @@
     "href": "weeks/week_05.html",
     "title": "Week 5",
     "section": "",
-    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
+    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#post-class-updates",
@@ -802,14 +798,14 @@
     "href": "weeks/week_05.html#topics",
     "title": "Week 5",
     "section": "",
-    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
+    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#announcements",
     "href": "weeks/week_05.html#announcements",
     "title": "Week 5",
     "section": "Announcements",
-    "text": "Announcements\n\nIf you haven’t already, please sign up for your function of the week presentation.\n\nPlease limit presentations to 3 per week.\nLink to sign-up sheet is posted on Sakai.\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_05, and then open RStudio by double-clicking on the file called part_05.Rproj."
+    "text": "Announcements\n\nIf you haven’t already, please sign up for your function of the week presentation.\n\nPlease limit presentations to 3 per week.\nLink to sign-up sheet is posted on Sakai.\n\nThe Midterm is now posted in Dropbox. It is due 2/22/25.\n\nPlease start early on this since finding a suitable dataset might take some time.\nWe encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track.\n\nClass materials for BSTA 526 will be provided in the shared Dropbox folder BSTA_526_W25_class_materials_public.\nFor today’s class, make sure to download to your computer the folder called part_05, and then open RStudio by double-clicking on the file called part_05.Rproj."
   },
   {
     "objectID": "weeks/week_05.html#class-materials",
