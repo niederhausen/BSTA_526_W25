@@ -16,8 +16,7 @@ editor_options:
 
 ## Required
 
-- [Control your Factors Using Forcats](https://sciencificity-blog.netlify.app/posts/2021-01-30-control-your-factors-with-forcats/)
-- More on joining data in [Joins (Ch 19)](https://r4ds.hadley.nz/joins.html) from *R for Data Science* 2nd Ed
+- coming soon!
 
 ## Suggested
 

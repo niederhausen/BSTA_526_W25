@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-01-30">
-<meta name="description" content="mutate(), case_when(), more ggplot2">
+<meta name="description" content="mutate(), case_when(), summarize(), group_by(), across(), more ggplot2">
 
 <title>BSTA 526 Winter 2025 - Week 4</title>
 <style>
@@ -103,6 +103,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Weeks</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../survey_feedback_previous_years.html" rel="" target="">
+ <span class="menu-text">Survey</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
@@ -169,6 +173,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../survey_feedback_previous_years.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey Feedback</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../function_week.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions of the Week</span></a>
   </div>
@@ -202,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    <code>mutate()</code>, <code>case_when()</code>, more <code>ggplot2</code>
+    <code>mutate()</code>, <code>case_when()</code>, <code>summarize()</code>, <code>group_by()</code>, <code>across()</code>, more <code>ggplot2</code>
   </div>
 </div>
 
@@ -220,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 6, 2025</p>
+      <p class="date-modified">February 6, 2025</p>
     </div>
   </div>
     
@@ -236,6 +246,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Apply</strong> <code>mutate()</code> to calculate a new variable based on other variables in a <code>data.frame</code>.</li>
 <li><strong>Apply</strong> <code>case_when</code> in a <code>mutate()</code> statement to make a continuous variable categorical</li>
 <li><strong>Learn</strong> how to <code>mutate()</code> <code>across()</code> multiple columns at once.</li>
+<li><strong>Learn</strong> how to <code>summarize()</code> data with <code>group_by()</code> to summarize within categories</li>
 <li><strong>Learn</strong> to facet and change scales/palettes of ggplots.</li>
 </ul>
 </section>

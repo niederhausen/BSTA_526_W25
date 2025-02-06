@@ -1,6 +1,6 @@
 ---
 title: "Week 4"
-description: "`mutate()`, `case_when()`, more `ggplot2`"
+description: "`mutate()`, `case_when()`, `summarize()`, `group_by()`, `across()`, more `ggplot2`"
 date: "1/30/2025"
 date-modified: "today"
 categories: [""]
@@ -19,6 +19,7 @@ editor_options:
 - **Apply** `mutate()` to calculate a new variable based on other variables in a `data.frame`.
 - **Apply** `case_when` in a `mutate()` statement to make a continuous variable categorical
 - **Learn** how to `mutate()` `across()` multiple columns at once.
+- **Learn** how to `summarize()` data with `group_by()` to summarize within categories
 - **Learn** to facet and change scales/palettes of ggplots.
 
 
