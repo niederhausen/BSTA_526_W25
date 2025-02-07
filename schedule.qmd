@@ -24,7 +24,7 @@ editor_options:
 | [6](weeks/week_06.qmd) | 2/13 | More data wrangling practice | Meike |
 |  |  |  |  |
 | [7](weeks/week_07.qmd) | 2/20 | More data wrangling practice | Jessica |
-|  | 2/22 | **Take home midterm due (Sunday)** |  |
+|  | 2/23 | **Take home midterm due (Sunday)** |  |
 | [8](weeks/week_08.qmd) | 2/27 | Intro to functions, working with lists | Jessica |
 | [9](weeks/week_09.qmd) | 3/6 | Intro to functions, working with lists cont'd | Meike |
 | 10 | 3/10 | **Final Project Assigned (Monday)** |  |

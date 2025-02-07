@@ -29,7 +29,7 @@ editor_options:
 * If you haven't already, please __[sign up for your function of the week presentation]{style="color:darkorange"}__. 
     * Please limit presentations to 3 per week. 
     * Link to sign-up sheet is posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25/tool/ab7a0690-1284-4701-b6dd-fa66cd20aeee/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=212612&postedComment=false&addBefore=&itemId=5350024&path=push&reviewAssessment=false&topicId=&addTool=-1&recheck=&id=&forumId=).
-* The **[Midterm]{style="color:darkorange"}** is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due 2/22/25. 
+* The **[Midterm]{style="color:darkorange"}** is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due Sunday 2/23/25. 
     * Please start early on this since finding a suitable dataset might take some time. 
     * We encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track. 
 * Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). 
@@ -41,6 +41,7 @@ editor_options:
 * [Readings](../readings/05-reading.qmd)
     * Note: I updated the [Week 4 Readings](../readings/05-reading.qmd) to include topics that we had moved from part 5 to 4 this year.
 * Dropbox [part_05 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
+
 
 ## Post-class survey
 
