@@ -784,7 +784,7 @@
     "href": "weeks/week_05.html",
     "title": "Week 5",
     "section": "",
-    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
+    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nWill cover Week 6: Utilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#post-class-updates",
@@ -798,7 +798,7 @@
     "href": "weeks/week_05.html#topics",
     "title": "Week 5",
     "section": "",
-    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nUtilize pivot_longer() to make a wide dataset long"
+    "text": "Practice using here() to load data in a subfolder of the project\nLearn and apply bind_rows() to combine rows from two or more datasets\nPractice working with and cleaning real data using forcats, stringr, separate()\nLearn about the different kinds of joins and how they merge data\n\nApply inner_join() and left_join() to join tables on columns\n\nWill cover Week 6: Utilize pivot_longer() to make a wide dataset long"
   },
   {
     "objectID": "weeks/week_05.html#announcements",
@@ -812,7 +812,7 @@
     "href": "weeks/week_05.html#class-materials",
     "title": "Week 5",
     "section": "Class materials",
-    "text": "Class materials\n\nReadings\n\nNote: I updated the Week 4 Readings to include topics that we had moved from part 5 to 4 this year.\n\nDropbox part_05 Project folder"
+    "text": "Class materials\n\nReadings\n\nNote: I updated the Week 4 Readings to include topics that we had moved from part 5 to 4 this year.\n\nDropbox part_05 Project folder\n\nWe got through Section 12 of the html file (joining data) and will cover Section 13 (Reshaping data) during Week 6."
   },
   {
     "objectID": "weeks/week_05.html#post-class-survey",
@@ -826,7 +826,7 @@
     "href": "weeks/week_05.html#homework",
     "title": "Week 5",
     "section": "Homework",
-    "text": "Homework\n\nSee Dropbox part 5 folder for homework assignment.\nHW 5 due on 2/13."
+    "text": "Homework\n\nSee Dropbox part 5 folder for homework assignment.\n\nHW 5 was updated after class to remove questions 4 & 5, which will be on HW 6 instead. Make sure to use the file hw_05_b526_v2.qmd on Dropbox.\n\nHW 5 due on 2/13."
   },
   {
     "objectID": "weeks/week_05.html#recording",

@@ -12,47 +12,44 @@ editor_options:
   chunk_output_type: console
 ---
 
-
 ## Topics
-
 
 -   **Practice** using `here()` to load data in a subfolder of the project
 -   **Learn** and **apply** `bind_rows()` to combine rows from two or more datasets
--   **Practice** working with and cleaning real data using `forcats`, `stringr`, `separate()` 
+-   **Practice** working with and cleaning real data using `forcats`, `stringr`, `separate()`
 -   **Learn** about the different kinds of joins and how they merge data
     -   **Apply** `inner_join()` and `left_join()` to join tables on columns
--   **Utilize** `pivot_longer()` to make a *wide* dataset *long*
-
+-   ***Will cover Week 6:*** **Utilize** `pivot_longer()` to make a *wide* dataset *long*
 
 ## Announcements
 
-* If you haven't already, please __[sign up for your function of the week presentation]{style="color:darkorange"}__. 
-    * Please limit presentations to 3 per week. 
-    * Link to sign-up sheet is posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25/tool/ab7a0690-1284-4701-b6dd-fa66cd20aeee/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=212612&postedComment=false&addBefore=&itemId=5350024&path=push&reviewAssessment=false&topicId=&addTool=-1&recheck=&id=&forumId=).
-* The **[Midterm]{style="color:darkorange"}** is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due Sunday 2/23/25. 
-    * Please start early on this since finding a suitable dataset might take some time. 
-    * We encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track. 
-* Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). 
-* For today's class, make sure to download to your computer the folder called `part_05`, and then open RStudio by double-clicking on the file called `part_05.Rproj`.
-
+-   If you haven't already, please [**sign up for your function of the week presentation**]{style="color:darkorange"}.
+    -   Please limit presentations to 3 per week.
+    -   Link to sign-up sheet is posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25/tool/ab7a0690-1284-4701-b6dd-fa66cd20aeee/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=212612&postedComment=false&addBefore=&itemId=5350024&path=push&reviewAssessment=false&topicId=&addTool=-1&recheck=&id=&forumId=).
+-   The [**Midterm**]{style="color:darkorange"} is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due Sunday 2/23/25.
+    -   Please start early on this since finding a suitable dataset might take some time.
+    -   We encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track.
+-   Class materials for BSTA 526 will be provided in the shared Dropbox folder [BSTA_526_W25_class_materials_public](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0).
+-   For today's class, make sure to download to your computer the folder called `part_05`, and then open RStudio by double-clicking on the file called `part_05.Rproj`.
 
 ## Class materials
 
-* [Readings](../readings/05-reading.qmd)
-    * Note: I updated the [Week 4 Readings](../readings/05-reading.qmd) to include topics that we had moved from part 5 to 4 this year.
-* Dropbox [part_05 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
-
+-   [Readings](../readings/05-reading.qmd)
+    -   Note: I updated the [Week 4 Readings](../readings/05-reading.qmd) to include topics that we had moved from part 5 to 4 this year.
+-   Dropbox [part_05 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
+    -   **We got through Section 12 of the html file (joining data) and will cover Section 13 (Reshaping data) during Week 6.**
 
 ## Post-class survey
 
-* Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
-* Previous muddiest points and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
+-   Please fill out the [post-class survey](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) to provide feedback. Thank you!
+-   Previous muddiest points and clearest points with responses are collected here: <https://niederhausen.github.io/BSTA_526_W25/survey_feedback_previous_years>
 
 ## Homework
 
-* See Dropbox part 5 folder for homework assignment.
-* HW 5 due on 2/13. 
+-   See Dropbox part 5 folder for homework assignment.
+    -   **HW 5 was updated after class to remove questions 4 & 5**, which will be on HW 6 instead. Make sure to use the file `hw_05_b526_v2.qmd` on Dropbox.
+-   HW 5 due on 2/13.
 
 ## Recording
 
-* __In-class__ recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25). Navigate to _Course Materials_ -> _Schedule with links to in-class recordings_. Note that the password to the recordings is at the top of the page. 
+-   **In-class** recording links are on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25). Navigate to *Course Materials* -\> *Schedule with links to in-class recordings*. Note that the password to the recordings is at the top of the page.
