@@ -13,13 +13,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-
-## Required
-
-- coming soon!
-
-## Suggested
-
-
-- [Dates and timess (Ch 17)](https://r4ds.hadley.nz/datetimes.html) in *R for Data Science* 2nd Ed
-
+>No new readings. Catch up on the previously assigned ones. :) 

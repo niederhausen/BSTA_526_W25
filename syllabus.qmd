@@ -85,7 +85,7 @@ Slack will be used for course discussions. Link to join Slack is posted on Sakai
 
 * 5% of your grade is based on filling out [post-class surveys](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) as a way of telling us that you came to class and engaged with the material for that week.
 * You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.
-* __Please fill out surveys by the following class period.
+* __Please fill out surveys by the following class period.__
 * The questions on the survey are:
     * Rating the pace of the lecture and lab
     * Clearest Point: *What point of the class was clearest for you?*

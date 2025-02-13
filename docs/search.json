@@ -11,7 +11,7 @@
     "href": "readings/06-reading.html",
     "title": "Week 6 Readings",
     "section": "",
-    "text": "coming soon!"
+    "text": "No new readings. Catch up on the previously assigned ones. :)"
   },
   {
     "objectID": "readings/06-reading.html#required",
@@ -350,14 +350,14 @@
     "href": "weeks/week_06.html",
     "title": "Week 6",
     "section": "",
-    "text": "This is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
+    "text": "If you haven’t already, please sign up for your function of the week presentation.\n\nPlease limit presentations to 3 per week.\nLink to sign-up sheet is posted on Sakai.\n\nThe Midterm is now posted in Dropbox. It is due Sunday 2/23/25.\n\nPlease start early on this since finding a suitable dataset might take some time.\nWe encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track.\n\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
   },
   {
     "objectID": "weeks/week_06.html#announcements",
     "href": "weeks/week_06.html#announcements",
     "title": "Week 6",
     "section": "",
-    "text": "HW 5: see the updated HW 5 assignment on Dropbox called hw_05_b526_v2.qmd\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
+    "text": "If you haven’t already, please sign up for your function of the week presentation.\n\nPlease limit presentations to 3 per week.\nLink to sign-up sheet is posted on Sakai.\n\nThe Midterm is now posted in Dropbox. It is due Sunday 2/23/25.\n\nPlease start early on this since finding a suitable dataset might take some time.\nWe encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track.\n\n\n\n\n\nThis is a reminder that 5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted. We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted.\n\nSee syllabus section on Post-class surveys"
   },
   {
     "objectID": "weeks/week_06.html#topics",
@@ -1124,7 +1124,7 @@
     "href": "syllabus.html#attendance",
     "title": "Syllabus",
     "section": "Attendance",
-    "text": "Attendance\n\nThis class will meet in-person and you are expected to attend class regularly. However, we understand that it is not always possible to attend class and daily attendance will not be monitored.\nClasses will be recorded, but we cannot guarantee the in-person format will lend itself to effective recordings. If you miss class, please reach out to a classmate for missed material.\n\n\nPost-class surveys\n\n5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\n__Please fill out surveys by the following class period.\nThe questions on the survey are:\n\nRating the pace of the lecture and lab\nClearest Point: What point of the class was clearest for you?\nMuddiest Point: What point of class was the muddiest (unclear) for you?\nAnything Else: Anything else you’d like me to know?"
+    "text": "Attendance\n\nThis class will meet in-person and you are expected to attend class regularly. However, we understand that it is not always possible to attend class and daily attendance will not be monitored.\nClasses will be recorded, but we cannot guarantee the in-person format will lend itself to effective recordings. If you miss class, please reach out to a classmate for missed material.\n\n\nPost-class surveys\n\n5% of your grade is based on filling out post-class surveys as a way of telling us that you came to class and engaged with the material for that week.\nYou only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.\nPlease fill out surveys by the following class period.\nThe questions on the survey are:\n\nRating the pace of the lecture and lab\nClearest Point: What point of the class was clearest for you?\nMuddiest Point: What point of class was the muddiest (unclear) for you?\nAnything Else: Anything else you’d like me to know?"
   },
   {
     "objectID": "syllabus.html#homework",
@@ -1371,7 +1371,7 @@
     "href": "weeks/week_06.html#topics-part-6",
     "title": "Week 6",
     "section": "Topics (Part 6)",
-    "text": "Topics (Part 6)\n\nPractice working with real data\nPractice joining and pivoting\nPractice ggplot and learn more geometries\nLearn how to deal with missing data"
+    "text": "Topics (Part 6)\n\nPractice working with real data\nPractice joining and pivoting\nPractice ggplot and Learn more geometries\nPractice modifying factor levels\nLearn new options for personalizing tables"
   },
   {
     "objectID": "survey_feedback_previous_years.html#week-1-1",
