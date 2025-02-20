@@ -15,16 +15,13 @@ editor_options:
 
 ## Required
 
-- [Introduction to Functions and Arguments](https://hbctraining.github.io/Intro-to-R-flipped/lessons/03_introR-functions-and-arguments.html)
-- [Introduction to Lists in R](https://towardsdatascience.com/introduction-to-lists-in-r-ff6469e6ca79)
-- [Functions in R for Data Science](https://r4ds.hadley.nz/functions.html)
+
 - [Iteration in R for Data Science](https://r4ds.hadley.nz/iteration.html)
 - [Learn to purrr](http://www.rebeccabarter.com/blog/2019-08-19_purrr/)
 
 
 ## Suggested
 
-- [Vectors and Lists](https://jennybc.github.io/purrr-tutorial/bk00_vectors-and-lists.html) - Jenny Bryan
 - [Introduction to map()](https://jennybc.github.io/purrr-tutorial/ls01_map-name-position-shortcuts.html) - Jenny Bryan
 - [Software Carpentry’s lesson on functions in R](https://swcarpentry.github.io/r-novice-inflammation/02-func-R.html)
 

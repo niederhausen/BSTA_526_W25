@@ -1,7 +1,7 @@
 ---
 title: "Week 7 Readings"
 linktitle: "Wk 7 Readings"
-description: "More practice with data wrangling"
+description: "Finish part 6 + part 7 functions and lists"
 date: "2025-02-20"
 date-modified: "today"
 categories: [""]
@@ -15,3 +15,15 @@ editor_options:
 
 
 * Continue with Week 6 readings.
+
+## Required
+
+- [Introduction to Functions and Arguments](https://hbctraining.github.io/Intro-to-R-flipped/lessons/03_introR-functions-and-arguments.html)
+- [Introduction to Lists in R](https://towardsdatascience.com/introduction-to-lists-in-r-ff6469e6ca79)
+- [Functions in R for Data Science](https://r4ds.hadley.nz/functions.html)
+
+
+## Suggested
+
+- [Vectors and Lists](https://jennybc.github.io/purrr-tutorial/bk00_vectors-and-lists.html) - Jenny Bryan
+- Would also recommend reading week 8's readings in advance!
