@@ -19,13 +19,12 @@ editor_options:
 
 * Writing functions
 * `lists()`
-* For Loops
-* Iteration
+
 
 ## Class materials
 
-* [Week 8 Readings](../readings/08-reading.qmd)
 * [Week 7 Readings](../readings/07-reading.qmd)
+* [Week 8 Readings](../readings/08-reading.qmd)
 * Dropbox [part_07 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
 

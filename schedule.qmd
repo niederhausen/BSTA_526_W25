@@ -23,11 +23,11 @@ editor_options:
 |  | 2/6 | **Take Home Midterm Assigned** |  |
 | [6](weeks/week_06.qmd) | 2/13 | More data wrangling practice | Meike |
 |  |  |  |  |
-| [7](weeks/week_07.qmd) | 2/20 | (part 6 ctd) + part 7 Intro to functions, working with lists  | Jessica |
+| [7](weeks/week_07.qmd) | 2/20 | More data wrangling practice ctd.  | Meike |
 |  | 2/23 | **Take home midterm due (Sunday)** |  |
-| [8](weeks/week_08.qmd) | 2/27 | Iteration | Jessica |
-| [9](weeks/week_09.qmd) | 3/6 | Iteration cont'd | Meike |
+| [8](weeks/week_08.qmd) | 2/27 | Intro to functions, working with lists | Jessica |
+| [9](weeks/week_09.qmd) | 3/6 | Iteration | Jessica |
 | 10 | 3/10 | **Final Project Assigned (Monday)** |  |
-| [10](weeks/week_10.qmd) | 3/13 | Functions/batch processing/purrr; Intro to stats/formulas/broom/More Purrr | Meike |
+| [10](weeks/week_10.qmd) | 3/13 | Intro to stats/formulas/broom/More Purrr | Meike |
 | 11 | 3/20 | No Class, Office Hour |  |
 |  | 3/22 | **Final Project Due (Saturday)** |  |

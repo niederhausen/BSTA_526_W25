@@ -1,6 +1,6 @@
 ---
 title: "Week 9"
-description: "Lists and Functions (continued)"
+description: "Iteration"
 date: "03/06/2025"
 date-modified: "today"
 categories: [""]
@@ -15,20 +15,17 @@ editor_options:
 
 ## Topics
 
-### Part 7 
+### Part 8
 
-* Writing functions
-* `lists()`
 * For Loops
 * Iteration
+* Purrr
 
 ## Class materials
 
-Readings are still the same as for Week 8, and we are using the part_07 material on Dropbox.
-
-* [Week 9 Readings](../readings/08-reading.qmd)
 * [Week 8 Readings](../readings/08-reading.qmd)
-* Dropbox [part_07 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
+* [Week 9 Readings](../readings/08-reading.qmd)
+* Dropbox [part_08 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
 
 ## Post-class survey

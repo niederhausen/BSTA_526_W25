@@ -1,6 +1,6 @@
 ---
 title: "Week 7"
-description: "Start with your goal: more data wrangling"
+description: "Start with your goal: more data wrangling (cont'd)"
 date: "2/20/2025"
 date-modified: "today"
 categories: [""]
@@ -13,9 +13,29 @@ editor_options:
 ---
 
 
+
+## Announcements
+
+-   If you haven't already, please [**sign up for your function of the week presentation**]{style="color:darkorange"}.
+    -   Please limit presentations to 3 per week.
+    -   Link to sign-up sheet is posted on [Sakai](https://sakai.ohsu.edu/portal/site/BSTA-526-1-21901-W25/tool/ab7a0690-1284-4701-b6dd-fa66cd20aeee/ShowPage?returnView=&studentItemId=0&backPath=&bltiAppStores=false&errorMessage=&clearAttr=&messageId=&source=&title=&newTopLevel=false&sendingPage=212612&postedComment=false&addBefore=&itemId=5350024&path=push&reviewAssessment=false&topicId=&addTool=-1&recheck=&id=&forumId=).
+-   The [**Midterm**]{style="color:darkorange"} is now posted in [Dropbox](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0). It is due Sunday 2/23/25.
+    -   Please start early on this since finding a suitable dataset might take some time.
+    -   We encourage you to meet with either of us to discuss your research question and data to make sure you are on the right track.
+    
+### Reminder to fill out post-class surveys
+
+* This is a reminder that 5% of your grade is based on filling out [post-class surveys](https://ohsu.ca1.qualtrics.com/jfe/form/SV_dhbhugCU2UnjYOi) as a way of telling us that you came to class and engaged with the material for that week.
+* You only need to fill out 5 surveys (of the 10 class sessions) for the full 5%. We encourage you to fill out as many surveys as possible to provide feedback on the class though.
+* __Please fill out surveys by 8 pm on Sunday evenings to guarantee that they will be counted.__ We usually download them some time on Sunday evening or Monday. If you turn it in before we download the responses, it will get counted. 
+
+_See [syllabus section on Post-class surveys](https://niederhausen.github.io/BSTA_526_W25/syllabus.html#post-class-surveys)_
+
+
+
 ## Topics
 
-### Part 6 
+### Part 6 ctd.
 
 - **Practice** working with real data
 - **Practice** joining and pivoting
@@ -37,7 +57,7 @@ editor_options:
 
 ## Homework
 
-* See Dropbox folder for homework assignment.
+* See Dropbox folder part06 for homework assignment 7.
 
 
 
