@@ -148,7 +148,7 @@
     "href": "weeks/week_09.html#homework",
     "title": "Week 9",
     "section": "Homework",
-    "text": "Homework\n\nSee Dropbox folder for homework assignment."
+    "text": "Homework\n\nSee Dropbox folder for homework assignment 9."
   },
   {
     "objectID": "weeks/week_09.html#recording",
@@ -575,7 +575,7 @@
     "href": "readings.html",
     "title": "Readings",
     "section": "",
-    "text": "Links to weekly readings\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n1/9/25\n\n\nWeek 1 Readings\n\n\nIntroduction to R/RStudio/Vectors\n\n\n\n\n1/16/25\n\n\nWeek 2 Readings\n\n\nLoading data, data.frames, and ggplot2\n\n\n\n\n1/23/25\n\n\nWeek 3 Readings\n\n\nggplot2, factors, boxplots, dplyr: subsetting using filter()/select()\n\n\n\n\n1/30/25\n\n\nWeek 4 Readings\n\n\nmutate(), across(), summarize(), group_by(), ggplot: faceting, scales\n\n\n\n\n2/6/25\n\n\nWeek 5 Readings\n\n\njoining multiple tables (left_join() etc), reshaping data (i.e. pivot_longer())\n\n\n\n\n2/13/25\n\n\nWeek 6 Readings\n\n\nMore practice with data wrangling\n\n\n\n\n2/20/25\n\n\nWeek 7 Readings\n\n\nFinish part 6 + part 7 functions and lists\n\n\n\n\n2/27/25\n\n\nWeek 8 Readings\n\n\nLists and Functions\n\n\n\n\n3/6/25\n\n\nWeek 9 Readings\n\n\nIntro to stats/broom/More Purrrs\n\n\n\n\n3/13/25\n\n\nWeek 10 Readings\n\n\nMore stats, broom, and tables (gt, gtsummary)\n\n\n\n\n\nNo matching items",
+    "text": "Links to weekly readings\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n1/9/25\n\n\nWeek 1 Readings\n\n\nIntroduction to R/RStudio/Vectors\n\n\n\n\n1/16/25\n\n\nWeek 2 Readings\n\n\nLoading data, data.frames, and ggplot2\n\n\n\n\n1/23/25\n\n\nWeek 3 Readings\n\n\nggplot2, factors, boxplots, dplyr: subsetting using filter()/select()\n\n\n\n\n1/30/25\n\n\nWeek 4 Readings\n\n\nmutate(), across(), summarize(), group_by(), ggplot: faceting, scales\n\n\n\n\n2/6/25\n\n\nWeek 5 Readings\n\n\njoining multiple tables (left_join() etc), reshaping data (i.e. pivot_longer())\n\n\n\n\n2/13/25\n\n\nWeek 6 Readings\n\n\nMore practice with data wrangling\n\n\n\n\n2/20/25\n\n\nWeek 7 Readings\n\n\nFinish part 6 + part 7 functions and lists\n\n\n\n\n2/27/25\n\n\nWeek 8 Readings\n\n\nLists and Functions\n\n\n\n\n3/6/25\n\n\nWeek 9 Readings\n\n\nIteration (part 8)\n\n\n\n\n3/13/25\n\n\nWeek 10 Readings\n\n\nMore stats, broom, and tables (gt, gtsummary)\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Home",
       "Readings"
@@ -1536,5 +1536,19 @@
     "title": "Week 7 Readings",
     "section": "Suggested",
     "text": "Suggested\n\nVectors and Lists - Jenny Bryan\nWould also recommend reading week 8’s readings in advance!"
+  },
+  {
+    "objectID": "readings/09-reading.html#required",
+    "href": "readings/09-reading.html#required",
+    "title": "Week 9 Readings",
+    "section": "Required",
+    "text": "Required\n\nIteration in R for Data Science\nLearn to purrr"
+  },
+  {
+    "objectID": "readings/09-reading.html#suggested",
+    "href": "readings/09-reading.html#suggested",
+    "title": "Week 9 Readings",
+    "section": "Suggested",
+    "text": "Suggested\n\nIntroduction to map() - Jenny Bryan\nSoftware Carpentry’s lesson on functions in R"
   }
 ]

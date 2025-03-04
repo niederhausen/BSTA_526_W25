@@ -1,7 +1,7 @@
 ---
 title: "Week 9 Readings"
 linktitle: "Wk 9 Readings"
-description: "Intro to stats/broom/More Purrrs"
+description: "Iteration (part 8)"
 date: "2025-03-06"
 date-modified: "today"
 categories: [""]
@@ -16,3 +16,18 @@ editor_options:
 
 
 * Same readings as [Week 8](../readings/08-reading.qmd).
+
+
+## Required
+
+
+- [Iteration in R for Data Science](https://r4ds.hadley.nz/iteration.html)
+- [Learn to purrr](http://www.rebeccabarter.com/blog/2019-08-19_purrr/)
+
+
+## Suggested
+
+- [Introduction to map()](https://jennybc.github.io/purrr-tutorial/ls01_map-name-position-shortcuts.html) - Jenny Bryan
+- [Software Carpentry’s lesson on functions in R](https://swcarpentry.github.io/r-novice-inflammation/02-func-R.html)
+
+

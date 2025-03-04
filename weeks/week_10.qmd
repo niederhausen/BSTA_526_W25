@@ -1,6 +1,6 @@
 ---
 title: "Week 10"
-description: "Intro to stats, broom, more purrr"
+description: "More stats and purrr"
 date: "03/13/2025"
 date-modified: "today"
 categories: [""]
