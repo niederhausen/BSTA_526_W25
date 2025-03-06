@@ -1,0 +1,65 @@
+---
+title: "dplyr::rowwise()"
+subtitle: "Function of the Week"
+description: "Lets you apply operations to each row of a data frame individually"
+author: "Kelsey Zionskowski"
+date: "Due 3/06/25"
+format: html
+---
+
+### 1. dplyr::rowwise()
+
+In this document, I will introduce the `rowwise()` function and demonstrate its use.
+
+```{r, tidy=TRUE, tidy.opts=list(width.cutoff=80)}
+library(tidyverse)
+library(palmerpenguins)
+library(formatR)
+library(gapminder)
+```
+
+### 1.1 What is it for?
+
+The rowwise() function in **dplyr** lets you apply operations to each row of a data frame individually. Unlike typical **dplyr** functions that work column-wise like `mutate()`, `rowwise()` focuses to rows. It’s particularly useful for calculations across multiple columns per row, working with list-columns, or applying row-specific functions.
+
+### 1.2 Example Usage
+
+#### Example 1: Row-wise Summation
+
+Let’s use the `mtcars` dataset to calculate a combined performance score for each car by summing `horsepower (hp)`, `miles per gallon (mpg)`, and `weight (wt)`.
+
+```{r, tidy=TRUE, tidy.opts=list(width.cutoff=80)}
+data <- mtcars %>% select(hp, mpg, wt) %>% rowwise() %>% mutate(performance_sum = round(sum(c(hp, mpg, wt)), 2)) %>% ungroup()
+
+head(data)
+```
+
+For each car, `rowwise()` makes sure that `sum()` function is applied separately to hp, mpg, and wt within each row, creating a new column called `performance_sum`. This provides a rough aggregate performance metric for each car. Without `rowwise()`, `sum()` would operate across entire columns instead of computing row-specific values.
+
+#### Example 2: Applying Functions to Each Row
+
+Let’s use the iris dataset to compute the average of sepal and petal lengths for each flower, simulating a per-row measurement summary.
+
+```{r, tidy=TRUE, tidy.opts=list(width.cutoff=80)}
+data <- iris %>% rowwise() %>% mutate(avg_length = mean(c(Sepal.Length, Petal.Length)))
+
+head(data)
+```
+
+Here, `rowwise()` ensures `mean()` calculates the average of `Sepal.Length` and `Petal.Length` for each flower individually. Without `rowwise()`, `mean()` would compute a single average across all rows, losing the per-flower detail.
+
+#### Example 3: Row-wise Calculations After Grouping
+
+Using the `gapminder` dataset, let’s compute a custom “wealth index” for each country in its most recent year, combining GDP per capita and population with a row-specific formula.
+
+```{r, tidy=TRUE, tidy.opts=list(width.cutoff=80)}
+result <- gapminder %>% group_by(country) %>% filter(year == max(year)) %>% rowwise() %>% mutate(wealth_index = log(gdpPercap * pop / 1e6)) %>% select(country, year, wealth_index)
+
+head(result)
+```
+
+Here, we first group by country and use `filter(year == max(year))` to keep only the most recent year for each country. Then use `rowwise()` to apply a custom function that takes the log of GDP (in millions). This example shows how `rowwise()` works for more than just basic math and can be useful for more complex row-by-row calculations.
+
+### 1.3 Is it helpful?
+
+Yes! `rowwise()` is great for row-level operations without loops or `apply()` functions and for keeping your code tidyverse-friendly. It works best with list-columns (Example 1), per-row summaries (Example 2), or custom row-wise calculations (Example 3). When vectorized operations are sufficent, like `mutate()` or `across()`, it's better to avoid `rowwise()` since it can slow down computations. For large datasets `rowwise()` can also be computationally expensive since it forces operations to be done row-by-row instead of using vectorized approaches.

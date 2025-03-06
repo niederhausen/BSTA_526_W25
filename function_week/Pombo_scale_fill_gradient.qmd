@@ -1,0 +1,165 @@
+---
+title: "ggplot2:scale_fill_gradient()"
+subtitle: "Function of the Week"
+description: "Customize the color gradient of a fill in a plot"
+author: "Madison Pombo"
+date: "03/06/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+pacman::p_load(tidyverse,
+              ggplot2,
+              gridExtra)
+data(diamonds)
+data(airquality)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# `scale_fill_gradient()`
+
+In this document, I will introduce the scale_fill_gradient function and show what it's for.
+
+## What is it for?
+
+The scale_fill_gradient function() allows you to manually assign the colors used to map a continuous variable to a color gradient in a plot.
+
+**Required Arguments:**
+
+low = "" (color of the lowest value of your gradient)
+
+high = "" (color of the highest value of your gradient)
+
+```{r}
+diamonds %>% ggplot() +
+    aes(x = carat,
+        y = price,
+        fill = carat) +
+    geom_point(shape = 21, size = 2) +
+    scale_fill_gradient(low = "blue",
+                        high = "red") +
+    labs(title = "Diamond Price vs Carat Plot",
+         x = "Carat",
+         y = "Price",
+         fill = "Carat") +
+    theme_minimal()
+```
+
+```{r}
+sfg_plot <- diamonds %>% ggplot() +
+  aes(x = x,
+      y = y,
+      fill = z) +
+  geom_point(shape = 21) +
+  scale_x_continuous(limits = c(3, 9.5)) +
+  scale_y_continuous(limits = c(3,10)) +
+  scale_fill_gradient(name = "Z (mm)", low = "yellow", high = "red", limits = c(2,6)) +
+  labs(title = "Diamond Dimensions X, Y, and Z in mm",
+       x= "X (mm)",
+       y = "Y (mm)") +
+  theme_minimal()
+default_plot <- diamonds %>% ggplot() +
+  aes(x = x,
+      y = y,
+      fill = z) +
+  geom_point(shape = 21) +
+  scale_x_continuous(limits = c(3, 9.5)) +
+  scale_y_continuous(limits = c(3,10)) +
+  scale_fill_continuous(name = "Z (mm)", limits = c(2,6)) +
+  labs(title = "Diamond Dimensions X, Y, and Z in mm",
+       x= "X (mm)",
+       y = "Y (mm)") +
+  theme_minimal()
+grid.arrange(default_plot, sfg_plot, nrow = 2)
+```
+
+na.value = can be used to assign a fill color to any na.values in the scale
+
+```{r}
+# Create a plot with geom_tile to visualize ozone levels
+airquality %>% ggplot() +
+  aes(x = factor(Month),
+      y = Day,
+      fill = Ozone) +
+  geom_tile() +
+  scale_fill_gradient(low = "blue", high = "red", na.value = "light grey") +
+  labs(title = "Ozone Concentration by Date", 
+       x = "Month",
+       y = "Day",
+       fill = "Ozone") +
+  theme_minimal()
+```
+
+scale_fill_gradient() has tons of other accepts arguments including...
+
+name = , space = "" , transform = , guide = , aesthetics =
+
+**Related Functions:**
+
+scale_fill_gradient2() allows you to assign a midpoint value and color to your scale.
+
+midpoint = assigns midpoint value
+
+mid = assigns midpoint color.
+
+```{r}
+# Create a tile plot by date filling with temperature where the lows are blue, the highs are red, and the days closer to the mean temp get closer to white.
+airquality %>% ggplot() +
+  aes(x = Month,
+      y = Day,
+      fill = Temp) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue",
+                      high = "red",
+                      midpoint = mean(airquality$Temp),
+                      mid = "white") +
+  theme_minimal()
+
+```
+
+scale_fill_gradientn allows you to assign more than 3 values to your scale using colors=
+
+values = accepts values between 0 and 1 and is used to assign the relative positions along the gradient that you want each color to be mapped to.
+
+This is useful if you have a few very high or very low values and you don't want to remove them, but also don't want to shift all the colors of your gradient according to a few values.
+
+```{r}
+diamonds2 <- diamonds %>% 
+  mutate(long_dim = pmax(x,y,z))
+diamonds2 %>% ggplot() +
+  aes(x = carat,
+      y = long_dim,
+      fill = price) +
+  geom_point(shape = 23, size = 1) +
+  scale_y_continuous(limits = c(3,10)) +
+  scale_x_continuous(limits = c(0,4)) +
+  scale_fill_gradientn(
+    colors= c("red", "orange", "yellow", "green", "blue", "purple"),
+              values = c(1, 0.8, 0.6, 0.4, 0.2, 0)) +
+  labs(title = "Longest Dimension vs Carat Filled by Price",
+       x = "Carat",
+       y = "Longest Dimension (mm)",
+       fill = "Price") +
+  theme_minimal()
+  
+```
+
+## Is it helpful?
+
+It is a useful tool for customizing your plots. Ggplot's default gradients are not very aesthetic, so scale_fill_gradient() is great. scale_fill_gradient2 and scale_fill_gradientn give you even more freedom when it comes to customization.

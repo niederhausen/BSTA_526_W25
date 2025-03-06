@@ -1,0 +1,123 @@
+---
+title: "writexl::write_xlsx"
+subtitle: "Function of the Week"
+description: "Export data to xlsx"
+author: "Kathryn Fowler"
+date: "1/25/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+# load packages
+library(tidyverse) # data management + ggplot2 graphics 
+pacman::p_load(
+  vembedr,      # youtube embedder
+  skimr,        # get overview of data
+  readxl,       # import excel data
+  writexl,      # export excel data
+  visdat,       # visualize data
+  ggthemes,     # lots of themes
+  gtsummary,    # summary statistics and tests
+  here,         # helps with file management
+  janitor       # for data cleaning, making tables
+  )
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Function of the Week: write_xlsx
+
+In this document, I will introduce the write_xlsx function and show what it's for.
+
+```{r}
+#load tidyverse up
+library(tidyverse)
+#example dataset
+library(palmerpenguins)
+data(penguins)
+```
+
+## What is it for?
+
+> This function exports your data frame to an xlsx file. You can create an excel file with your data in, write it to a specific path, and even create an excel with multiple named sheets.
+
+```{r}
+# load data; reading in multiple files so can demonstrate utility of write_xlsx later
+PDAC_normal_clinical_data <- read_excel(here("function_week", "data","S061_CPTAC_PDA_Discovery_Cohort_Clinical_Data_r1_Feb2021.xlsx"),
+                                        sheet = 2,
+                                        na = " ") %>%
+  mutate(ethnicity_race_ancestry_identified = na_if(ethnicity_race_ancestry_identified, "TSS did not collect this information")) # fixing na values as na
+
+PDAC_normal_biospecimen_attributes <- read_excel(here("function_week", "data","S061_CPTAC_PDA_Discovery_Cohort_Clinical_Data_r1_Feb2021.xlsx"),
+                                                 sheet = 3,
+                                                 na = " ")
+
+PDAC_normal_completeness <- read_excel(here("function_week", "data","S061_CPTAC_PDA_Discovery_Cohort_Clinical_Data_r1_Feb2021.xlsx"),
+                                       sheet = 4,
+                                       na = " ")
+
+PDAC_normal_case_IDs <- read_excel(here("function_week", "data","S061_Case_IDs_for_GDC_release_of_PDAC_140_and_normal_pancreas_7.xlsx"),
+                                   na = " ") %>%
+  clean_names() # fix column names
+PDAC_normal_case_IDs_clean <- PDAC_normal_case_IDs[!is.na(PDAC_normal_case_IDs$case_id), ] # removes empty rows
+```
+
+```{r}
+# manipulate data a bit
+PDAC_normal_biospecimen_attributes_clean <- PDAC_normal_biospecimen_attributes %>%
+  filter(biospecimen_disqualified != "Yes") # trying to filter out those samples w/ specimens that were disqualified
+
+glimpse(PDAC_normal_biospecimen_attributes)
+glimpse(PDAC_normal_biospecimen_attributes_clean) # looks like we successfully filtered out the disqualified specimens from this data
+
+PDAC_normal_clinical_biospecimen_join <- inner_join(PDAC_normal_biospecimen_attributes_clean, PDAC_normal_clinical_data, by = "case_id") # join biospecimen dataset and clinical data dataset excluding those IDs that have disqualified specimens
+
+glimpse(PDAC_normal_clinical_data)
+glimpse(PDAC_normal_clinical_biospecimen_join) # dataset has longer number of rows than clinical data sheet did itself because duplicate case_ids for normal and tumor specimens included
+```
+
+Now we will export our data! Using write_xlsx
+
+```{r}
+# we can export simply to a single excel
+write_xlsx(PDAC_normal_clinical_biospecimen_join, path = here("function_week", "data", "output_data", "PDAC_normal_clinical_biospecimen_join.xlsx"))
+
+# we can also export with column names included or not
+write_xlsx(PDAC_normal_clinical_biospecimen_join, path = here("function_week", "data", "output_data", "PDAC_normal_clinical_biospecimen_join2.xlsx"), col_names = FALSE) # deletes column names
+
+# can export with column names centered and bold
+write_xlsx(PDAC_normal_clinical_biospecimen_join, path = here("function_week", "data", "output_data", "PDAC_normal_clinical_biospecimen_join3.xlsx"), format_headers = TRUE)
+
+# you can write different data frames to multiple sheets in your exported excel file
+data_list <- list(Sheet1 = PDAC_normal_clinical_data, Sheet2 = PDAC_normal_biospecimen_attributes, Sheet3 = PDAC_normal_completeness, Sheet4 = PDAC_normal_case_IDs_clean) # have to create a list of data frames; you can also name these sheets if you want
+
+write_xlsx(data_list,
+           path = here("function_week", "data", "output_data", "PDAC_normal_all_data.xlsx"))
+
+# you can also name each of the sheets when they export to excel if you want
+data_list <- list(clinical_data = PDAC_normal_clinical_data, biospecimen_attributes = PDAC_normal_biospecimen_attributes, completeness = PDAC_normal_completeness, case_ids = PDAC_normal_case_IDs_clean) # have to create a list of data frames; you can also name these sheets if you want
+
+write_xlsx(data_list,
+           path = here("function_week", "data", "output_data", "PDAC_normal_all_data_named.xlsx"))
+```
+
+## Is it helpful?
+
+> Yes, I think this is helpful when you have manipulated your data - possibly done some calculations or manipulated things in some way - and want to save a new data from from there. You can also rework data with mutates, joins, merges, etc and save the data in its new form as an xlsx.

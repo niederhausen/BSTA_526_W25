@@ -1,0 +1,95 @@
+---
+title: "stringr::str_trim"
+subtitle: "Function of the Week"
+description: "Removes whitespace from the begining and/or end of a string"
+author: "Destine Krenik"
+date: "2/27/25"
+format: 
+  html:
+    theme: superhero
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# str_trim()
+
+In this document, I will introduce the str_trim function and show what it's for.
+
+```{r}
+#load libraries
+library(tidyverse)
+library(stringr)
+```
+
+## What is it for?
+
+The str_trim() function removes whitespace from the begining and/or end of a string. You can specify which end by setting "side" equal to "left", "right", or "both".
+
+```{r}
+#Create example data frame
+id <- c(1:3)
+name_animal <- c(" Jeff bear", "Anne penguin   ", "       Richard lion ")
+
+df1 <- data.frame(id, name_animal)
+df2 <- data.frame(id, name_animal)
+df3 <- data.frame(id, name_animal)
+
+print(df1)
+```
+```{r}
+#What happens if you try to separate the column name_animal?
+df_sep <- df1 %>%
+  separate(col = name_animal,
+           into = c("name", "animal"),
+           sep = " ")
+
+print(df_sep)
+```
+
+```{r}
+#Trim whitespace from the beginning
+str_trim(df1$name_animal, side = "left")
+
+#Trim whitespace from the end
+str_trim(df2$name_animal, side = "right")
+
+#Trim whitespace from both sides
+str_trim(df3$name_animal, side = "both")
+```
+```{r}
+#Now what happens when we try to separate our cleaned vector?
+df3 <- df3 %>%
+  mutate(name_animal = str_trim(name_animal))
+
+df_sep <- df3 %>%
+  separate(col = name_animal,
+           into = c("name", "animal"),
+           sep = " ")
+
+print(df_sep)
+```
+
+
+## Is it helpful?
+
+This function can be very helpful when cleaning data. However, there is another function that may be better for general use called str_squish(). The str_squish() function removes all excess whitespace from the beginning and end of a string, and replaces all whitespace between words with a single space. 

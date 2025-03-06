@@ -1,0 +1,91 @@
+---
+title: "forcats::fct_rev()"
+subtitle: "Function of the Week"
+description: "fct_rev(): Reverse factor levels"
+author: "Michael Daily"
+date: "3/5/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+ 
+
+# Factor Reverse: fct_rev()
+
+This document discusses fct_rev() and its use. fct_rev() is from the forcats package and, similar to other functions from forcats, is a tool for handling factor type variables. 
+
+```{r}
+#load packages
+library(tidyverse)
+library(datasets)
+library(forcats)
+library(janitor)
+#ChickWeight dataset
+chick_wgt <-ChickWeight %>% clean_names()
+glimpse(chick_wgt)
+```
+
+## What does it do and what is it for?
+
+### What fct_rev() does:
+
+fct_rev() does what it sounds like. It reverses the levels of the factor variable. It takes only one argument which is a factor (or character vector). 
+
+```{r}
+#look at the levels of diet
+levels(chick_wgt$diet)
+#revers the levels
+levels(fct_rev(chick_wgt$diet))
+```
+
+
+### What fct_rev() is useful for: 
+
+fct_rev() is useful for plotting factors on the y-axis. By default, the levels are plotted with the first level at the bottom and the last at the top as shown below.  
+
+```{r}
+ggplot(chick_wgt) + 
+  aes(y=diet,
+      x=weight,
+      fill=diet) +
+  geom_boxplot() +
+  scale_fill_viridis_d()+
+  theme_bw()+
+  theme(axis.text.y=element_blank(),
+        plot.title=element_text(hjust=.5))+
+  labs(y='Diet', x='Weight', fill='Diet', title='Weight Distribution per Diet (original order)')
+  
+```
+
+fct_rev() makes it easy to plot the reverse with the first level at the top and the last level at the bottom as shown in the following figure. 
+
+```{r}
+ggplot(chick_wgt) + 
+  aes(y=fct_rev(diet),
+      x=weight,
+      fill=diet) +
+  geom_boxplot() +
+  scale_fill_viridis_d()+
+  theme_bw()+
+  theme(axis.text.y=element_blank(),
+        plot.title=element_text(hjust=.5))+
+  labs(y='Diet', x='Weight', fill='Diet', title='Weight Distribution per Diet (reversed order)')
+```
+
+
+
+
+## Is it helpful?
+
+In cases where you want to plot a factor on the y-axis, this is a helpful function; this is particularly true when the factor variable has many levels and it would be tedious to reorder by hand. Aside from reordering levels for a figure, this function seems like it would rarely, if ever, be useful. 
