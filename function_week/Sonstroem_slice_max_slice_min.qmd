@@ -3,7 +3,7 @@ title: "dplyr::slice_max, slice_min"
 subtitle: "Function of the Week"
 description: "Two of several different slice functions, all of which allow you to select specific **rows** in order to view, delete, mutate, or otherwise interact with them"
 author: "Anneka Sonstroem"
-date: "today"
+date: "2/6/25"
 format: 
   html:
     link-external-newwindow: true

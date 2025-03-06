@@ -1,8 +1,9 @@
 ---
 title: "ggplot2::coord_cartesian"
 subtitle: "Function of the Week"
+description: "Allows you to view a smaller section of a plot without changing the underlying data"
 author: "Katie Hand"
-date: "today"
+date: "2/20/25"
 format: 
   html:
     link-external-newwindow: true

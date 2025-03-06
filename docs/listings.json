@@ -35,14 +35,14 @@
     "items": [
       "/function_week/presentation_example.html",
       "/function_week/McVeety_geom_rug.html",
+      "/function_week/Surya_geom_tile.html",
       "/function_week/Hindley_geom_density_ridges.html",
       "/function_week/Bovenkamp_fct_collapse.html",
+      "/function_week/Sonstroem_slice_max_slice_min.html",
       "/function_week/Mann_between.html",
-      "/function_week/Mandalapu_FotW_.geom_errorbar.html",
+      "/function_week/Mandalapu_geom_errorbar.html",
       "/function_week/Coonfield_na_if.html",
-      "/function_week/Hand_coord_cartesian.html",
-      "/function_week/Surya_geom_tile.html",
-      "/function_week/Sonstroem_slice_max_slice_min.html"
+      "/function_week/Hand_coord_cartesian.html"
     ]
   }
 ]

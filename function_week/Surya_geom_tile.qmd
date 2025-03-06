@@ -1,8 +1,9 @@
 ---
 title: "ggplot2::geom_tile"
 subtitle: "Function of the Week"
+description: "Used for data visualization, specifically in the form of heatmaps or other tile plots"
 author: "Sanya Surya"
-date: "today"
+date: "1/30/25"
 format: 
   html:
     link-external-newwindow: true
