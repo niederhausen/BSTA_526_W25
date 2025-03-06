@@ -1,0 +1,92 @@
+---
+title: "ggplot2::geom_tile"
+subtitle: "Function of the Week"
+author: "Sanya Surya"
+date: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# geom_tile()
+
+In this document, I will introduce the geom_tile() function and show what it's for.
+
+```{r}
+# Loading tidyverse and other libraries
+pacman::p_load(
+  tidyverse,    
+  readxl,       
+  ggthemes,     
+  ggplot2,
+  here
+  )
+```
+
+## What is it for?
+
+-   This function comes from the ggplot2 library and is used for data visualization, specifically in the form of heatmaps or other tile plots.
+
+-   Heatmaps are a useful visual way to show the intensity of a numerical variable in the context of two categorical variables.
+
+-   In the code below, I will show how geom_tile() can be used to create a heatmap looking at a data set of HIV Diagnoses and AIDS Deaths in Oregon from 2012 to 2022. We will be looking at the count of cases of these indicators.
+
+-   *Data Source: Retrieved from CDC.gov.*
+
+-   *To get a CSV file, which I converted to an Excel file, I chose STI data in the form of a table and specified parameters: Indicators: AIDS Deaths, HIV Diagnoses, Age: 13+, Sex: Both, State: Oregon, Years: 2012-2022, All transmission categories, All races and ethnicities.*
+
+```{r}
+
+# Load and view the STI Dataset
+# Skip the first 11 lines to reach the headers
+OR_STI <- read_excel(here("function_week", "data", "data_SURYA.xlsx"), sheet = 1, skip = 11, na = "NA")
+OR_STI
+
+```
+
+```         
+```
+
+```{r}
+# Create the heatmap
+myplot <- ggplot(OR_STI,
+       aes(x = Year,
+           y = Indicator,
+           fill = Cases)) +
+  geom_tile() +
+  scale_fill_viridis_c() +
+  theme_minimal() +
+  # Customize the angle and positions of x and y tick mark labels for better visualization (especially because the 2020 label has a much longer name)
+  theme(axis.text.y = element_text(angle = 90, size = 8, hjust = 0.5),
+        axis.text.x = element_text(angle = 25, hjust = 1, vjust = 1, size = 8)) +
+  # Add a graph title
+  labs(title = "Count of Cases of HIV and AIDS Indicators in Oregon from 2012 to 2022")
+myplot
+```
+
+## Is it helpful?
+
+-   Heatmaps are helpful to visualize categorical variables with a third numeric variable
+
+-   When there is a greater range of values, such as in this dataset, heatmaps can show intensity in an easy-to-digest visual way as opposed to other options where readers would need to read numeric scales on a graph.
+
+-   Can be helpful to visually stack and compare variables. In this data for instance, we can visually see that there have historically been a lot more HIV diagnoses than AIDS deaths, and HIV diagnoses fluctuate often with time. However, in recent years we can see a clear upward trend in counts of AIDS deaths since the color becomes lighter, indicating increasing cases.

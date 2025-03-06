@@ -1,0 +1,125 @@
+---
+title: "dplyr::slice_max, slice_min"
+subtitle: "Function of the Week"
+description: "Two of several different slice functions, all of which allow you to select specific **rows** in order to view, delete, mutate, or otherwise interact with them"
+author: "Anneka Sonstroem"
+date: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# `slice_max() and slice_min()`
+
+In this document, I will introduce the slice_max and slice_min functions and show what they're for.
+
+```{r}
+#| echo: false
+#| message: false
+
+#load tidyverse up
+library(tidyverse)
+#example dataset
+library(palmerpenguins)
+data(penguins)
+```
+
+## What is it for?
+
+slice_max() and slice_min() are two of several different slice functions, all of which allow you to select specific **rows** in order to view, delete, mutate, or otherwise interact with them. slice_max() selects the rows with the highest values of a particular variable, and slice_min() selects the rows with the lowest values.
+
+### Syntax
+
+The necessary arguments are your data frame and **order_by**, which specifies the variable to select the highest and lowest values from
+
+The optional arguments include:
+
+-   **n**, which specifies the number of rows to select, or **prop**, which specifies a proportion of rows. The default value is n=1.
+
+-   **with_ties**, which specifies whether or not to include ties. The default value is TRUE, which means that the function may return more rows than requested if there are ties.
+
+### Examples
+
+#### View a subset of your data
+
+Which are the 5 penguins with the longest beaks?
+
+```{r}
+slice_max(penguins, order_by=bill_length_mm, n=5)
+```
+
+#### Subsetting quantiles
+
+Which penguins are in the lowest quartile of beak length?
+
+```{r}
+penguins %>% slice_min(bill_length_mm, prop=0.25)
+```
+
+#### Creating new data frames and variables
+
+What is the average beak length for the penguins in the lowest quartile of beak length?
+
+```{r}
+shortbeak <- slice_min(penguins, order_by=bill_length_mm, prop=0.25)
+mean(shortbeak$bill_length_mm)
+```
+
+### Weird examples
+
+#### What happens if you try to use slice_max() or slice_min() with a non-numeric variable?
+
+```{r}
+penguins %>% slice_min(species, n=5)
+```
+
+The values will be sorted alphabetically! This seems less useful than using the functions for numeric values, but it would allow you to do things like pull the first 5 people alphabetically from a list.
+
+#### What happens if you set ties to FALSE even though there are lots of ties?
+
+As we saw with the species example above, I requested n=5 but got far more rows than that. If I'd set with_ties to false, I would have gotten...
+
+```{r}
+penguins %>% slice_min(species, n=5, with_ties=FALSE)
+```
+
+... the five Adelie penguins that happen to be listed first in the data frame.
+
+#### What happens if you set prop\>=1?
+
+```{r}
+penguins %>% slice_min(bill_length_mm, prop=1.3)
+```
+
+Setting prop\>=1 will return all of the rows in the data frame, sorted by your relevant variable. This means that you can use slice_min() and slice_max() as substitutes for arrange() or order(), if you wanted to do that for some reason!
+
+## Is it helpful?
+
+Yes, I can think of at least three situations where these functions would be helpful:
+
+-   Subsetting your data into quantiles
+
+-   Verifying that a mutation worked correctly by double checking the highest and lowest values
+
+-   Looking quickly for apparent outlier values

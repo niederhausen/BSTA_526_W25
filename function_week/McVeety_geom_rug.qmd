@@ -1,0 +1,149 @@
+---
+title: "ggplot2::geom_rug()"
+subtitle: "Function of the Week"
+description: "Build rug plots in ggplot()"
+author: "Mickey McVeety"
+date: "1/25/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# `geom_rug()`
+
+In this document, I will introduce the `geom_rug()` function and show what it's for.
+
+```{r}
+#load tidyverse up
+library(tidyverse) #this will include the ggplot2 package, which we need!
+
+#example dataset
+library(palmerpenguins)
+data(penguins)
+```
+
+## What is it for?
+
+> Discuss what the function does. Learn from the examples, but show how to use it using another dataset such as `penguins`. If you can provide two examples, even better!
+
+Like other `geom_` family functions, `geom_rug()` creates a plot using `ggplot()` - in this case, a rug plot! A rug plot shows the distribution of a single numeric variable as marks on an axis, making it look like a rug or tufts of grass sticking up. 
+
+This can help us visualize the distribution of a single variable - it functions much like a histogram or a scatterplot with only one variable. For example, using the `penguins` dataset, we can look at the distribution of bill length with the following:
+
+```{r}
+ggplot(data = penguins, 
+       aes(x = bill_length_mm)) + 
+  geom_rug()
+```
+
+Let's compare it to a histogram:
+
+```{r}
+ggplot(data = penguins, 
+       aes(x = bill_length_mm)) + 
+  geom_rug() + 
+  geom_histogram()
+```
+
+You can see the lines are more dense where the histogram is taller - both show that where data points are clustered (here, around 40 mm and 50 mm).
+
+On its own, a rug plot isn't very pretty or exciting. But it comes in handy when you want to display the distribution of a single variable in addition to multiple variables. 
+
+Let's say we have a scatterplot showing bill depth compared to bill length in penguins. 
+
+```{r}
+ggplot(data = penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm)) + 
+  geom_point()
+```
+
+We can see where there are clusters in the 2D space, but it's a little harder to see the distribution of each individual variable (bill depth and bill length) from this graph. Adding a rug plot can help.
+
+```{r}
+ggplot(data = penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm)) + 
+  geom_point() + 
+  geom_rug()
+```
+
+This makes it easier to tell where bill length is more concentrated, and to see that bill depth appears to be very evenly distributed across the range of values - however, it's unclear whether that uniformity is because of overlap in the lines, where points have the same bill depth value. 
+
+We can fix this by adding jitter! Let's try it with the `iris` dataset. 
+
+```{r}
+ggplot(data = iris, 
+       aes(x = Sepal.Length,
+           y = Petal.Length)) + 
+  geom_point() + 
+  geom_rug()
+```
+
+In this plot, sepal length (the x-axis) appears to have extremely uniform distribution. But by adding jitter, we can see that there are areas with actual higher density, which were hidden by observations having the exact same values. 
+
+```{r}
+ggplot(data = iris, 
+       aes(x = Sepal.Length,
+           y = Petal.Length)) + 
+  geom_point() + 
+  geom_rug(position = "jitter")
+```
+
+
+### Other Customization Options
+
+You can control which variable(s) to display the rug plot for and where they go using the `sides = ` argument.  
+```{r}
+ggplot(data = iris, 
+       aes(x = Sepal.Length,
+           y = Petal.Length)) + 
+  geom_point() + 
+  geom_rug(position = "jitter", 
+           sides = "b")
+```
+
+Change the length of the lines using the `length = ` argument, opacity with the `alpha = ` argument, color with the `color = ` argument, and the width of the lines with the `linewidth = ` argument. 
+```{r}
+ggplot(data = iris, 
+       aes(x = Sepal.Length,
+           y = Petal.Length)) + 
+  geom_point() + 
+  geom_rug(position = "jitter", 
+           length = unit(0.06, "npc"),
+           alpha = 0.2, 
+           color = 'red', 
+           linewidth = 0.5)
+```
+
+
+## Is it helpful?
+
+> Discuss whether you think this function is useful for you and your work. Is it the best thing since sliced bread, or is it not really relevant to your work?
+
+Rug plots are most helpful when you are comparing multiple numeric variables but still want to see the individual variable distribution(s), particularly in datasets where you have relatively few observations. Once there are a lot of points, it can be hard to see relative density in a rug plot. They're also most effective when variables are truly continuous (e.g., not something like age in years), because otherwise we see a lot of overlap in the points (or you can use the 'jitter' option).
+
+Overall, this can be a helpful visualization for some types of data, but its use-case is specific enough that it's unlikely to be relevant in a lot of cases. 

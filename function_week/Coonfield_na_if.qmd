@@ -1,0 +1,150 @@
+---
+title: "dplyr::na_if"
+subtitle: "Function of the Week"
+author: "Emma Coonfield"
+date: "02/19/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Function Of Interest: `dplyr - na_if(x,y)`
+
+In this document, I will introduce the dplyr na_if() function and show what it's for.
+
+```{r}
+#load tidyverse up
+knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load(
+  tidyverse,
+  readxl,
+  here,         
+  janitor,
+  gt
+  )
+
+#load example dataset
+clinical_data <- read_excel(here("function_week", "data", "tcga_clinical_data.xlsx"), 
+                             sheet = 2,
+                             na = "NA")
+```
+
+## What is it for?
+
+This function is used to replace annoying values with `NA`. It allows you to replace `NaN` with `NA`, even though `NaN == NaN` returns `NA`.
+
+### Example 1: The Basics
+
+```{r}
+# Example 1: The basics
+# na_if functions as `na_if(x, y)`; where x is the vector to modify and y is the value to replace with NA.
+
+x <- c(1, 25, -5, 0, 10)
+
+x_inf <- 100/x
+# This enters us an infinite value, which has downstream effects on common data analysis.
+x_inf
+
+mean(x_inf, na.rm = T)
+# We see that we are not given a proper mean.
+
+x_na_if <- 100/ na_if(x, 0)
+x_na_if
+
+mean(x_na_if, na.rm = T)
+# Success! What a meaningful change!
+```
+
+The previous example we adapted from [Rdocumentation.org](https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/na_if).
+
+### Lets Set The Table: Data Clean Up
+
+Now that we have glimpsed the power of na_if, lets see how to utilize it in an actual data set.
+
+```{r}
+# First, lets clean up column names to aid data viewing.
+
+clinical_clean <- clinical_data %>%
+  rename(tumor_class = classification_of_tumor,
+         last_status = last_known_disease_status,
+         vital = vital_status,
+         morph = morphology,
+         diagnosis = primary_diagnosis,
+         stage = tumor_stage,
+         last_diseasestat = days_to_last_known_disease_status,
+         datetime = created_datetime,
+         recurrence = days_to_recurrence,
+         origin = tissue_or_organ_of_origin,
+         progression = progression_or_recurrence,
+         biopsy_site = site_of_resection_or_biopsy,
+         last_follow_up = days_to_last_follow_up,
+         intent_type = treatment_intent_type,
+         treatment = treatment_or_therapy) %>%
+  select(c(-updated_datetime))
+
+```
+
+### Putting It All On The Table
+
+```{r}
+
+clinical_table <- clinical_clean %>%
+  head(2)
+
+gt(clinical_table)
+
+# As you can see there are many entries that use the phrase "not reported". This phrase did not get caught when we loaded that data into R.
+```
+
+### Example 2: Are You Tired of Data Being `not reported`?
+
+```{r}
+# Now if we want all the not reported inputs to be catergorzed as "NA" we will use the na_if function.
+
+clinical_na_if <- clinical_clean %>%
+  mutate(tumor_class = na_if(tumor_class, "not reported"),
+         last_status = na_if(last_status, "not reported"),
+         stage = na_if(stage, "not reported"),
+         tumor_grade = na_if(tumor_grade, "not reported"))
+
+gt(head(clinical_na_if, 2))
+```
+
+As you can see editing one column is very accessible, but once you get past three columns writing the `na_if` function gets tedious. There has got to be a better way! Akin to any late night infomercial, there is a better way by using our good old friend `across` function.
+
+### Example 3: Have No Fear `na_if` Is Here!
+
+```{r}
+## Example 3: Multiple columns
+
+clinical_across <- clinical_clean %>%
+  mutate(across(where(is.character), 
+                ~na_if(., "not reported")))
+
+gt(head(clinical_across, 2))
+```
+
+## Is it helpful?
+
+This function would be particularly useful is you wanted to change any `NaN` inputs to `NA`, or if you had very cluttered data with lots of "unknowns" or "not reported" or any other unusual entry for `NA`. This is also useful because when loading excel data you cannot have two different `NA` arguments.
+
+What is particularly useful about this function is when nesting it in the `mutate` and `across` function because you can make large edits to several vectors.

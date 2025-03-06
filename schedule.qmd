@@ -28,6 +28,6 @@ editor_options:
 | [8](weeks/week_08.qmd) | 2/27 | Intro to functions, working with lists | Jessica |
 | [9](weeks/week_09.qmd) | 3/6 | Iteration | Jessica |
 | 10 | 3/10 | **Final Project Assigned (Monday)** |  |
-| [10](weeks/week_10.qmd) | 3/13 | Intro to stats/formulas/broom/More Purrr | Meike |
+| [10](weeks/week_10.qmd) | 3/13 | More Stats/Purrr | Meike |
 | 11 | 3/20 | No Class, Office Hour |  |
 |  | 3/22 | **Final Project Due (Saturday)** |  |

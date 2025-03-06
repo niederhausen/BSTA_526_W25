@@ -1,0 +1,154 @@
+---
+title: "ggplot2::coord_cartesian"
+subtitle: "Function of the Week"
+author: "Katie Hand"
+date: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+    theme: superhero
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Cartesian Coordinates
+
+In this document, I will introduce the coord_cartesian() function and
+show what it's for.
+
+```{r}
+#| include: false
+#load tidyverse up
+library(tidyverse)
+#example dataset
+library(palmerpenguins)
+data(penguins)
+data(mtcars)
+```
+
+## The function and its parts
+
+coord_cartesian( xlim = NULL, ylim = NULL, expand = TRUE, default =
+FALSE, clip = "on" )
+
+**xlim/ylim:** The values you would like to set for the x and y axes.
+
+**expand:** True by default, adds a small buffer to limits to ensure
+data and axes do not overlap.
+
+**default:** False by default, adds warning message to user to alert
+that coordinate system is being replaced.
+
+**clip:** "on" by default, should remain on unless for very specific
+cases, when turned off data points can be anywhere on the plot including
+in the margins. This is the setting that removes the points outside of
+the set limits.
+
+## What is it for?
+
+This function allows you to view a smaller section of a plot without
+changing the underlying data.
+
+First lets look at our unchanged penguin data.
+
+```{r}
+#making a ggplot of penguin flipper length
+
+ggplot(penguins, aes(x = species, 
+                   y = flipper_length_mm, 
+                   color = species)) +
+  geom_jitter(size = 1, alpha = .6, width = 0.2, 
+              show.legend = FALSE) +     # removed legend since not needed
+  labs(x = "Species", 
+       y = "Flipper lengths (mm)",
+       title = "Flipper lengths by penguin species")
+```
+
+Now lets test what the standard zoom using scale_y_continuous looks
+like.
+
+```{r}
+ggplot(penguins, aes(x = species, 
+                   y = flipper_length_mm, 
+                   color = species)) +
+  scale_y_continuous(limits = c(170, 190)) +
+  geom_jitter(size = 1, alpha = .6, width = 0.2, 
+              show.legend = FALSE) +     # removed legend since not needed
+  labs(x = "Species", 
+       y = "Flipper lengths (mm)",
+       title = "Flipper lengths by penguin species")
+```
+
+As you can see the shape of the data changes here, this is because this
+sort of scaling sets anything outside of the set limits to NA and
+re-scales the data based on what is inside of the range.
+
+Next lets look at the same range of data using the new function
+coord_cartesian()
+
+```{r}
+ggplot(penguins, aes(x = species, 
+                   y = flipper_length_mm, 
+                   color = species)) +
+  coord_cartesian(ylim = c(170, 190)) +
+  geom_jitter(size = 1, alpha = .6, width = 0.2, 
+              show.legend = FALSE) +     # removed legend since not needed
+  labs(x = "Species", 
+       y = "Flipper lengths (mm)",
+       title = "Flipper lengths by penguin species")
+```
+
+Here we can see the shape of the data remains the same as from the main
+graph, we are simply zooming in on the set limits.
+
+Using the penguin data the effect is there but it can be hard to see,
+lets look at some other data.
+
+This data is from the R dataset called mtcars.
+
+```{r}
+plot <- ggplot(mtcars, aes(qsec, hp)) +
+  geom_point() +
+  geom_smooth() +
+  labs(x="Gross Horsepower", y="1/4 mile time (sec)", title="1/4 Mile Time by Horsepower" )
+plot
+```
+
+```{r}
+plot + scale_x_continuous(limits = c(16, 18))
+plot + coord_cartesian(xlim = c(16, 18))
+```
+
+Here we can more clearly see the difference in the two scaling methods.
+
+## Is it helpful?
+
+This function is useful especially when doing any sort of modeling.
+Using a loess curve and zooming in using the standard method would
+ignore your other data points and can change the shape of your modeled
+line. By instead using coord_cartesian() you can ensure that the zoomed
+in plot is only magnifying the original section of data and not changing
+the relationship between the data points in any way.
+
+Presentation adapted from the webpage:
+https://ggplot2.tidyverse.org/reference/coord_cartesian.html

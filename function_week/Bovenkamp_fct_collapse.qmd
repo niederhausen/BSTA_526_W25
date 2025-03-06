@@ -1,0 +1,166 @@
+---
+title: "forcats::fct_collapse"
+subtitle: "Function of the Week"
+description: "Collapse factor levels into manually defined groups"
+author: "Alexa Bovenkamp"
+date: "2/6/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+pacman::p_load(
+  skimr,     
+  rstatix,    
+  tidyverse,  
+  readxl, 
+  visdat,      
+  gtsummary,   
+  janitor,
+  here,
+  palmerpenguins)
+```
+
+
+# `fct_collapse`
+
+In this document, I will introduce the fct_collapse function that allows you to collapse factor levels into manually defined groups.
+
+```{r}
+#| label: setup
+#| include: false
+smoke_complete <- read_excel(here::here("function_week", "data", "smoke_complete.xlsx"))
+```
+
+
+## What is it for? 
+
+The `fct_collapse` function accepts a factor or character vector and multiple named character levels. 'fct_collapse' consolidates several factor levels into fewer groups. Let's look at tumor_stage:
+
+```{r}
+#mutating tumor_stage into a factor
+
+smoke_complete2 <- smoke_complete %>% 
+    mutate(stage_factor = 
+               factor(tumor_stage,
+                      levels = c("not reported", 
+                                 "stage i", 
+                                 "stage ia", 
+                                 "stage ib", 
+                                 "stage ii", 
+                                 "stage iia", 
+                                 "stage iib", 
+                                 "stage iii", 
+                                 "stage iiia", 
+                                 "stage iiib", 
+                                 "stage iv")))
+```
+
+```{r}
+smoke_complete2 %>% 
+  select(stage_factor) %>% 
+  tbl_summary()
+```
+
+
+That's a lot of levels right? Here are visual examples of the tumor_stage variable before any manipulation:
+
+```{r}
+#boxplot
+ggplot(smoke_complete2) +
+  aes(x = tumor_stage, y = cigarettes_per_day) +
+  geom_boxplot() +
+  labs(x="Tumor Stage", y="Cigarettes Per Day") +
+  ylim(c(0,15))
+```
+
+
+```{r}
+#bar graph
+ggplot(smoke_complete2) +
+  aes(x = tumor_stage, y = cigarettes_per_day) +
+  geom_col() +
+  labs(x="Tumor Stage", y="Cigarettes Per Day")
+```
+
+
+Having a large amount of categories can be overwhelming in some graphics. There are distinguishable categories that these levels could be reduced to using 'fct_collapse'.
+
+```{r}
+smoke_complete3 <- smoke_complete2 %>% 
+  mutate(stage_collapsed = fct_collapse(
+    stage_factor,
+    not_reported = c("not reported"),
+    stage_i = c("stage i", "stage ia", "stage ib"),
+    stage_ii = c("stage ii", "stage iia", "stage iib"),
+    stage_iii = c("stage iii", "stage iiia", "stage iiib"),
+    stage_iv = c("stage iv"))) %>% 
+  glimpse()
+```
+
+
+
+You can also use the 'other_level' argument to set any category levels you'd like to 'NA'.
+
+```{r}
+smoke_complete4 <- smoke_complete3 %>% 
+  mutate(stage_collapsed_na = fct_collapse(
+    stage_factor,
+    not_reported = c("not reported"),
+    stage_i = c("stage i", "stage ia", "stage ib"),
+    stage_ii = c("stage ii", "stage iia", "stage iib"),
+    stage_iii = c("stage iii", "stage iiia", "stage iiib"),
+    other_level = NA)) %>% 
+  glimpse()
+```
+
+
+Now there are 5 factor levels instead of 11. 
+
+```{r}
+smoke_complete3 %>% 
+  select(stage_collapsed) %>% 
+  tbl_summary()
+```
+
+```{r}
+ggplot(smoke_complete3) +
+  aes(x = stage_collapsed, y = cigarettes_per_day) +
+  geom_boxplot() +
+  labs(x="Tumor Stage", y="Cigarettes Per Day") +
+  ylim(c(0,15))
+```
+
+```{r}
+#bar graph
+ggplot(smoke_complete3) +
+  aes(x = stage_collapsed, y = cigarettes_per_day) +
+  geom_col() +
+  labs(x="Tumor Stage", y="Cigarettes Per Day")
+```
+
+
+## Is it helpful?
+
+Collapsing factor levels could be done in general when variables  have broader classifications that many levels could be reduced under. 'fct_collapse' can help with data visualization and comparing groups together. This function is very useful when working with large data sets or a data set like 'smoke_complete' where there are variables with ordered categories and subcategories. Many other 'fct_ ...' functions can be used in conjunction with 'fct_collapse' to further manipulate factor levels. 

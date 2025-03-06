@@ -1,0 +1,180 @@
+---
+title: "ggplot2::geom_errorbar()"
+subtitle: "Function of the Week"
+description: "Adding error bars to plots"
+author: "Rohit Mandalapu"
+date: "2/13/2025"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# `geom_errorbar()`
+
+In this document, I will introduce the geom_errorbar() function and show what it's for.
+
+```{r}
+#| warning: false
+
+# load packages
+library(tidyverse)
+
+# load dataset
+library(palmerpenguins)
+data(penguins)
+```
+
+-   The tidyverse package automatically includes ggplot2
+
+-   The Palmer penguins dataset contains data on 344 penguins from the Palmer Archipelago
+
+## What is it for?
+
+-   Estimates from a dataset often have some degree of uncertainty
+
+-   Error bars are a graphical representation of this uncertainty or variability
+
+    -   They can show variability via standard deviation, standard error, or confidence intervals
+
+-   `geom_errorbar()` is a function that lets us add error bars to existing plots to understand the level of variability around measurements
+
+    -   Critical inputs into this function are the min and max values for the bars for each measurement (in our case, `ymin` and `ymax`)
+
+```{r}
+# make a summary table with aggregated stats
+penguins_summary <- penguins %>%
+  filter(!is.na(body_mass_g)) %>% 
+  group_by(species) %>%
+  summarise(
+    mean_mass = mean(body_mass_g),
+    sd_mass = sd(body_mass_g),
+    se_mass = sd_mass / sqrt(n()),
+    ci_lower = mean_mass - qt(0.975, df = n() - 1) * se_mass,
+    ci_upper = mean_mass + qt(0.975, df = n() - 1) * se_mass
+  )
+```
+
+### 95% Confidence intervals
+
+Confidence intervals are good for inference and show us the range where the true population mean is likely to fall for a given group and give us an idea of the uncertainty in a measurement.
+
+```{r}
+ggplot(penguins_summary, aes(x = species, y = mean_mass)) +
+  geom_col(fill = "thistle") +
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper),
+                width = 0.2) +
+  ggtitle("Mean Mass by Species") +
+  labs(x = "Species", y="Mean Body Mass (g)") +
+  theme_minimal()
+```
+
+From the above, we can conclude that there is a statistically significant difference in body mass between Gentoo and Adelie/Chinstrap penguins, but not between Adelie and Chinstrap. We can additionally conduct a t-test to confirm this significance.
+
+### Changing colors & width
+
+We can change the colors of the data as well as the error bars, along with the width of error bars.
+
+```{r}
+ggplot(penguins_summary, aes(x = species, y = mean_mass)) +
+  geom_col(fill = "beige") +
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper),
+                width = 1, color = "purple") +
+  ggtitle("Mean Mass by Species") +
+  labs(x = "Species", y="Mean Body Mass (g)") +
+  theme_minimal()
+```
+
+### Other changes
+
+-   Size (thickness) of the error bars with the `size = X` argument
+
+-   Type of line with the `linetype = "X"` argument ("solid", "dashed", "dotted", etc.)
+
+-   Transparency (opacity) with the `alpha = X` argument
+
+### Other measurements
+
+The inputs for min and max for error bars can be anything such as standard deviation:
+
+```{r}
+ggplot(penguins_summary, aes(x = species, y = mean_mass)) +
+  geom_col(fill = "thistle") +
+  geom_errorbar(aes(ymin = mean_mass - sd_mass, ymax = mean_mass + sd_mass),
+                width = 0.2) +
+  ggtitle("Mean Mass by Species") +
+  labs(x = "Species", y="Mean Body Mass (g)") +
+  theme_minimal()
+```
+
+Standard deviation doesn't provide statistical significance, but we can see the spread of data within each species. For example, Gentoo penguins have the larger standard deviation (taller error bars) meaning more variation.
+
+### Going horizontal
+
+We can also add error bars for horizontal plots! Just change the function to be `geom_errorbarh` and the inputs are now `xmin` and `xmax`, and `height` instead of `width`.
+
+```{r}
+ggplot(penguins_summary, aes(y = species, x = mean_mass)) +
+  geom_col(fill = "thistle") +
+  geom_errorbarh(aes(xmin = ci_lower, xmax = ci_upper),
+                height = 0.2) +
+  ggtitle("Mean Mass by Species") +
+  labs(x = "Mean Body Mass (g)", y="Species") +
+  theme_minimal()
+```
+
+### Other use cases
+
+It doesn't have to be just bar plots. We can add error bars most plot types!
+
+```{r}
+#| warning: false
+
+# econ summary table
+econ_summary <- economics %>%
+  summarise(
+    mean_unemploy = mean(unemploy, na.rm = TRUE),
+    sd_unemploy = sd(unemploy, na.rm = TRUE),
+    se_unemploy = sd_unemploy / sqrt(n()),
+    ci_lower = unemploy - qt(0.975, df = n() - 1) * se_unemploy,
+    ci_upper = unemploy + qt(0.975, df = n() - 1) * se_unemploy
+  )
+
+# plot with 95% CI
+ggplot(economics, aes(x = date, y = unemploy)) +
+  geom_line(color = "red") +  
+  geom_errorbar(aes(ymin = econ_summary$ci_lower, ymax = econ_summary$ci_upper),         width = 1) +
+  ggtitle("US Unemployment Over Time") +
+  labs(x = "Date", y="# Unemployed (000s)") +
+  theme_minimal()
+```
+
+## Is it helpful?
+
+Yes! It's a great addition to any data visualization and allows us to:
+
+-   Understand variability of measurements
+
+-   Compare differences between groups and assess their significance
+
+-   Provides context to raw data and shows uncertainty
