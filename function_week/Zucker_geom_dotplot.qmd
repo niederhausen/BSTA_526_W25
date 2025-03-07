@@ -1,0 +1,187 @@
+---
+title: "ggplot::geom_dotplot"
+subtitle: "Function of the Week"
+description: "Plot the distribution or density of a variable for your category of interest"
+author: "Amanda Zucker"
+date: "2/13/25"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc_float:
+      collapsed: false
+    number-sections: true
+    number-depth: 4
+    self-contained: true
+    html-math-method: mathjax
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r, include=FALSE}
+
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# `ggplot::geom_dotplot`
+
+In this document, I will introduce the geom_dotplot() function and show what it's for.
+
+```{r}
+#load tidyverse up
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(janitor)
+library(ggplot2)
+
+NS_PDAC <- read_excel(here::here("function_week", "data", "NS_PDAC.xlsx"),
+                      sheet = 2,
+                      skip = 1,
+                      na = c("N/A", "?"))
+glimpse(NS_PDAC)
+NS_PDAC <- clean_names(NS_PDAC)
+
+NS_PDAC <- NS_PDAC %>%
+  mutate(across(.cols = c(disease_state, stage, collected_on_surgery_day, history_of_pancreatitis),
+                .fns = as.factor))
+NS_PDAC <- NS_PDAC %>%
+  mutate(across(.cols = c(ca19_9_initial, ca19_9_current),
+                .fns = as.numeric))
+glimpse(NS_PDAC)
+
+```
+
+## What is it for?
+
+> geom_dotplot can be used to plot the distribution or density of a variable for your category of interest. They can be plotted vertically or horizontally.
+
+```{r}
+ggplot(NS_PDAC,
+       aes(x = age)) +
+  geom_dotplot()
+
+ggplot(NS_PDAC,
+       aes(x = age, fill = disease_state)) +
+  geom_dotplot() +
+  theme(legend.position = "bottom")
+
+ggplot(NS_PDAC,
+       aes(x = age, fill = disease_state)) +
+  geom_dotplot() +
+  theme(legend.position = "bottom")
+```
+
+```{r}
+NS_PDAC <- NS_PDAC %>%
+  mutate(CA19_9_Level = case_when(
+    ca19_9_initial <= 100 ~ "0-100",
+    (ca19_9_initial > 100 & ca19_9_initial <= 400) ~ "99-400",
+    (ca19_9_initial > 400 & ca19_9_initial <= 800) ~ "401-800",
+    ca19_9_initial > 800 ~ "801+"
+  ))
+
+glimpse(NS_PDAC)
+
+
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level)) +
+  geom_dotplot()
+```
+
+```{r}
+# Binwidth is the dot density - how close the dots are to each other (larger value = more spaced out, smaller value = closer together)
+
+# I changed the binwidth which plotted the dots fully on the graph, but still have the problem that the x-axis is not in the right order for the categories --> CA19_9_Levels is a 'character' not a factor
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level)) +
+  geom_dotplot(binwidth = 0.08) 
+
+```
+
+```{r}
+NS_PDAC$CA19_9_Level <- factor(NS_PDAC$CA19_9_Level)
+glimpse(NS_PDAC)
+levels(NS_PDAC$CA19_9_Level) # now CA19_9_Levels is a factor, but still need to reset the order
+NS_PDAC$CA19_9_Level <- factor(NS_PDAC$CA19_9_Level,
+                               levels = c("0-100", "99-400","401-800","801+"))
+levels(NS_PDAC$CA19_9_Level)
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level,)) +
+  geom_dotplot(binwidth = 0.08)
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = sex)) + # adding this fill removed missing values
+  geom_dotplot(binwidth = 0.08)
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = disease_state)) +
+  geom_dotplot(binwidth = 0.2, alpha = 0.4)
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = disease_state)) +
+  geom_dotplot(binwidth = 0.2, alpha = 1, stackdir = "center")
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = disease_state)) +
+  geom_dotplot(binwidth = 0.2, alpha = 1, stackdir = "centerwhole")
+```
+
+```{r}
+# setting stack groups as 'true' enabled me to see every dot color corresponding to the legend
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = disease_state)) +
+  geom_dotplot(binwidth = 0.14, alpha = 1, stackdir = "centerwhole", stackgroups = TRUE)
+
+
+ggplot(NS_PDAC,
+       aes(x = CA19_9_Level, fill = disease_state)) +
+  geom_dotplot(binwidth = 0.14, alpha = 1, stackdir = "centerwhole", stackgroups = TRUE) +
+  scale_fill_viridis_d()
+
+```
+
+```{r}
+# You can alter whether the dots are stacked according to the x-axis (default) or y-axis (need to indicate this in the code). 
+# This can be useful for some datasets because as we can see here, the dots from different categories overlap when binned by the x-axis, but can be more clearly seen in their respective categories when binned according to the y-axis.
+ggplot(NS_PDAC, aes(x = hx_diabetes_before_diagnosis, y = CA19_9_Level)) +
+  geom_dotplot(stackdir = "center")
+
+ggplot(NS_PDAC, aes(x = hx_diabetes_before_diagnosis, y = CA19_9_Level)) +
+  geom_dotplot(binaxis = "y",stackdir = "center")
+```
+
+```{r}
+# You can add summary statistics to the plot using stat_sum(), indicating the statistical value you want with fun=
+ggplot(NS_PDAC, aes(x = age, y = CA19_9_Level)) +
+  geom_dotplot(binaxis = "y",stackdir = "center") +
+  stat_sum(fun=mean, geom = "point", color = "red")
+```
+
+```{r}
+# You can use the function coord_flip() to change what is on the x and y axes - can do this with a plot that is saved as an object. 
+# In this example, we would want to adjust the binwidth when flipping the axes to visualize all of the data.
+ggplot(NS_PDAC, aes(x = hx_diabetes_before_diagnosis, y = CA19_9_Level)) +
+  geom_dotplot(binaxis = "y",stackdir = "center") +
+  coord_flip()
+
+ggplot(NS_PDAC, aes(x = hx_diabetes_before_diagnosis, y = CA19_9_Level)) +
+  geom_dotplot(binaxis = "y",stackdir = "center",binwidth = 0.06) +
+  coord_flip()
+```
+
+
+## Is it helpful?
+
+> Discuss whether you think this function is useful for you and your work. Is it the best thing since sliced bread, or is it not really relevant to your work?
+
+It can be helpful, but definitely depends on what you want to plot. If you have specific variables that you want to plot on the x and y axes, this will be a less useufl funciton as you can specify your x-axis variable, but not one for the y-axis. For example, I could not plot CA19-9 levels by disease state category - this would be more effectively done with geom_point().

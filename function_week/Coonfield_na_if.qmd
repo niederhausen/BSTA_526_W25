@@ -1,7 +1,7 @@
 ---
 title: "dplyr::na_if"
 subtitle: "Function of the Week"
-description: "Used to replace annoying values with `NA`"
+description: "Replace annoying values with `NA`"
 author: "Emma Coonfield"
 date: "02/19/2025"
 format: 
