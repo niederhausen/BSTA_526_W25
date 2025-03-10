@@ -51,6 +51,7 @@ NS_PDAC <- clean_names(NS_PDAC)
 NS_PDAC <- NS_PDAC %>%
   mutate(across(.cols = c(disease_state, stage, collected_on_surgery_day, history_of_pancreatitis),
                 .fns = as.factor))
+
 NS_PDAC <- NS_PDAC %>%
   mutate(across(.cols = c(ca19_9_initial, ca19_9_current),
                 .fns = as.numeric))
