@@ -729,14 +729,14 @@
     "href": "weeks/week_10.html#topics",
     "title": "Week 10",
     "section": "Topics",
-    "text": "Topics\n\nPart 8\n\nIntroduce simple statistical modelling\nLearn about the useful broom package\nMore iteration with purrr\nSlitting up data for iteration\nOther useful purrr"
+    "text": "Topics\n\nPart 9\n\nUse map() functions from the purrr package to iterate functions\nNest datasets into list-columns, and iterate statistical modeling and/or visualization functions over those elements\nUse map2() from the purrr package to iterate functions across two inputs\nLearn how to iterate regression modeling across different model variables"
   },
   {
     "objectID": "weeks/week_10.html#class-materials",
     "href": "weeks/week_10.html#class-materials",
     "title": "Week 10",
     "section": "Class materials",
-    "text": "Class materials\nReadings are linked below, and we are using the part_08 material on Dropbox\n\nWeek 10 Readings\nDropbox part_08 Project folder"
+    "text": "Class materials\nReadings are linked below, and we are using the part_08 material on Dropbox\n\nWeek 10 Readings\nDropbox part_09 Project folder"
   },
   {
     "objectID": "weeks/week_10.html#post-class-survey",

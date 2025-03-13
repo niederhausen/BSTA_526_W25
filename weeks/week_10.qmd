@@ -38,20 +38,19 @@ _See [syllabus section on Post-class surveys](https://niederhausen.github.io/BST
 
 ## Topics
 
-### Part 8
+### Part 9
 
-* Introduce simple statistical modelling
-* Learn about the useful `broom` package
-* More iteration with `purrr`
-* Slitting up data for iteration
-* Other useful `purrr`
+- **Use** `map()` functions from the `purrr` package to iterate functions
+- **Nest** datasets into list-columns, and iterate statistical modeling and/or visualization functions over those elements
+- **Use** `map2()` from the `purrr` package to iterate functions across two inputs
+- **Learn** how to iterate regression modeling across different model variables 
 
 ## Class materials
 
 Readings are linked below, and we are using the part_08 material on Dropbox
 
 * [Week 10 Readings](../readings/10-reading.qmd)
-* Dropbox [part_08 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
+* Dropbox [part_09 Project folder](https://www.dropbox.com/scl/fo/rovllkq3xlopagm0sbxzj/ABM98XUq_9iKejQtv9yZPRo?rlkey=6neu91bghsns7tk2z8k2yvquh&st=mw0r9x5l&dl=0)
 
 
 ## Post-class survey
